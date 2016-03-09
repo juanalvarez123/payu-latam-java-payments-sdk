@@ -1,0 +1,7 @@
+2014-09-08
+----------
+Ajustes para permitir nuevos medios de pago y se agregaron nuevos parámetros
+
+Issues:
+PAGOSONLINEPPS-9652 Permitir recibir todos los medios de pago en SDK Java
+PAGOSONLINEPPS-9653 Recibir fecha de nacimiento en el SDK de Java

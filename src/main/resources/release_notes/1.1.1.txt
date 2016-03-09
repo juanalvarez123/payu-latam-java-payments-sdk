@@ -1,0 +1,14 @@
+2014-07-03
+
+Generalidades:
+Inclusión de nuevas operaciones referentes a la gestión de cuentas bancarias y pago recurrente usando Débitos Automáticos/ACH.
+Ajuste en las nuevas consultas para diferenciar cuando el API retorna un código 404 (NOT FOUND) por conectividad y por no encontrar resultados.
+
+Issues:
+PAGOSONLINEPPS-6921 Consulta del listado de tarjetas de crédito de un pagador
+PAGOSONLINEPPS-6919 Consulta de planes de pago recurrente por comercio
+PAGOSONLINEPPS-6925 Consulta de cargos extra de facturas de pago recurrente
+PAGOSONLINEPPS-7457 Mensaje de error 404 Not Found en SDK Java
+PAGOSONLINEPPS-6922 CRUD de Cuentas Bancarias de pago recurrente - Débitos ACH
+PAGOSONLINEPPS-6924 Consulta de Facturas de pago recurrente
+PAGOSONLINEPPS-7058 Edición de Cuentas Bancarias de pago recurrente

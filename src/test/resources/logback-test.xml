@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>|%d{HH:mm:ss.SSS}|%p|%t|%c:%L| %m%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="org.apache.http" level="ERROR" />
+	<logger name="org.apache.commons" level="ERROR" />
+	<logger name="org.apache.velocity" level="ERROR" />
+	<logger name="org.apache.axis2" level="ERROR" />
+	<logger name="org.apache.axiom" level="ERROR" />
+	<logger name="httpclient" level="ERROR" />
+	<logger name="org.springframework" level="ERROR" />
+	<logger name="org.hibernate" level="ERROR" />
+
+	<logger name="com.payu.sdk" level="INFO" />
+
+	<root level="DEBUG">
+		<appender-ref ref="Console" />
+	</root>
+</configuration>

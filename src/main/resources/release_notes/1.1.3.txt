@@ -1,0 +1,8 @@
+2015-04-08
+----------
+Ajuste para agregar dos nuevos parámetros de URL de página confirmación y
+URL de página de respuesta
+
+Issue:
+https://pagosonline.jira.com/browse/PAGOSONLINEPPS-14323
+https://pagosonline.jira.com/browse/PAGOSONLINEPPS-16588
