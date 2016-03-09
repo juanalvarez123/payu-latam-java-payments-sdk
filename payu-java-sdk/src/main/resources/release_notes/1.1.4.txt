@@ -1,0 +1,6 @@
+2016-02-10
+----------
+Ajuste para eliminar medio de pago DIESTEL de los medios de pago activos de PayU
+
+Issue:
+https://pagosonline.jira.com/browse/PAGOSONLINEPPS-22874
