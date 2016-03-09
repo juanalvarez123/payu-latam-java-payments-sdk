@@ -1,8 +1,7 @@
-sudo: false
 language: java
 jdk:
-  - oraclejdk7
-after_script: mvn -f payu-java-sdk/pom.xml test 
+  - oraclejdk6
+after_script: mvn test 
 notifications:
   recipients:
     - jeanpaul.manjarres@payulatam.com

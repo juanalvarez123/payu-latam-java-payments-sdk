@@ -1,10 +1,34 @@
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2016 developers-payu-latam
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
 package com.payu.sdk;
 
 import com.payu.sdk.model.Language;
 
 /**
  * Holds basic request information
- * 
+ *
  * @author PayU Latam
  * @since 1.0.0
  * @version 1.0.0, 21/08/2013
@@ -61,13 +85,13 @@ public abstract class PayU {
 	 * parameters Map.
 	 */
 	public interface PARAMETERS {
-		
+
 		String API_LOGIN = "apiLogin";
 		String API_KEY = "apiKey";
 		String MARCHANT_ID = "merchantId";
 		String LANGUAGE = "language";
 		String IS_TEST = "isTest";
-		
+
 		String LIMIT = "limit";
 		String OFFSET = "offset";
 
@@ -99,7 +123,7 @@ public abstract class PayU {
 		String BATCH_TOKEN_ID = "batchTokenId";
 		/** The payment method to use, {@link #com.payu.sdk.model.PaymentMethod} */
 		String PAYMENT_METHOD = "paymentMethod";
-		
+
 		/**
 		 * Explains why a transaction is requested to be cancelled
 		 */
@@ -115,7 +139,7 @@ public abstract class PayU {
 		String CREDIT_CARD_SECURITY_CODE = "creditCardSecurityCode";
 		/** The credit card holder's identification number */
 		String CREDIT_CARD_DOCUMENT = "document";
-		
+
 		/** Create a credit card token **/
 		String CREATE_CREDIT_CARD_TOKEN = "createCreditCardToken";
 
@@ -141,7 +165,7 @@ public abstract class PayU {
 		String BANK_ACCOUNT_AGENCY_DIGIT = "agencyNumber";
 		/** Agency number (Only valid for Brazil) */
 		String BANK_ACCOUNT_AGENCY_NUMBER = "agencyDigit";
-		
+
 		/** The payer's name */
 		String PAYER_NAME = "payerName";
 		/** The payer's id on the merchant. */
@@ -253,7 +277,7 @@ public abstract class PayU {
 
 		/** The subscription id. */
 		String SUBSCRIPTION_ID = "subscriptionId";
-		
+
 		/** The state. */
 		String STATE = "state";
 
@@ -261,10 +285,10 @@ public abstract class PayU {
 		String TRIAL_DAYS = "trialDays";
 		/** The quantity to purchase. */
 		String QUANTITY = "quantity";
-		
+
 		/** If the client accepted the terms and conditions document. */
 		String TERMS_AND_CONDITIONS_ACEPTED = "termsAndConditionsAcepted";
-		
+
 
 		/** The recurring bill id. */
 		String RECURRING_BILL_ID = "recurringBillId";
@@ -291,7 +315,7 @@ public abstract class PayU {
 		String PROCESS_WITHOUT_CVV2 = "processWithoutCvv2";
 		/** The recurring bill id. */
 		String RECURRING_ITEM_ID = "recurringItemId";
-		
+
 		/** The cookie corresponding with the current web session (Only for
 		 * validation purposes) */
 		String COOKIE = "cookie";
@@ -301,7 +325,7 @@ public abstract class PayU {
 		String USER_AGENT = "userAgent";
 		/*** Client(Payer) IP */
 		String IP_ADDRESS = "ipAddress";
-		
+
 		/** PSE payer ISO document type, see {@link #com.payu.sdk.model.DocumentType}  */
 		String PAYER_DOCUMENT_TYPE = "payerDocumentType";
 		/** PSE payer person type (N - Natural or J - Legal), see {@link #com.payu.sdk.model.PersonType} */
@@ -310,12 +334,12 @@ public abstract class PayU {
 		String PSE_FINANCIAL_INSTITUTION_CODE = "pseFinancialInstitutionCode";
 		/** PSE financial institution name (Bank Name) */
 		String PSE_FINANCIAL_INSTITUTION_NAME = "pseFinancialInstitutionName";
-		
+
 		/** The confirmation page URL */
 		String NOTIFY_URL = "notifyUrl";
 		/**The response page URL */
 		String RESPONSE_URL = "responseUrl";
-		
+
 	}
-	
+
 }

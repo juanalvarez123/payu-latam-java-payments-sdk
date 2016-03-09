@@ -3,13 +3,14 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>pol</groupId>
+	<groupId>com.payulatam.sdk</groupId>
 	<artifactId>payu-java-sdk</artifactId>
 	<packaging>jar</packaging>
 	<version>1.1.4</version>
+	
 	<name>payu-java-sdk</name>
 	<description>PAYU SDK - Java 6+</description>
-	<url>http://www.payu.com</url>
+	<url>http://www.payu.com.co</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -18,7 +19,6 @@
 		<maven.compile.target>1.6</maven.compile.target>
 		<maven.compile.optimize>true</maven.compile.optimize>
 		<maven.compile.deprecation>true</maven.compile.deprecation>
-
 
 		<jacoco.outputDir>${project.build.directory}</jacoco.outputDir>
 		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
