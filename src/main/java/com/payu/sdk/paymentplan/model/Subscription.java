@@ -1,3 +1,26 @@
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2016 developers-payu-latam
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package com.payu.sdk.paymentplan.model;
 
 import java.util.Date;
@@ -16,7 +39,7 @@ import com.payu.sdk.utils.JaxbUtil;
 
 /**
  * Represents a Subscription (Recurrent Payment) in the PayU SDK.
- * 
+ *
  * @author PayU Latam
  * @since 1.0.0
  * @version 1.0.0, 06/09/2013
@@ -37,7 +60,7 @@ public class Subscription extends Request {
 	 * The subscription identifier
 	 */
 	private String id;
-	
+
 	/**
 	 * The subscription identifier to use oinly on URLs
 	 */
@@ -82,13 +105,13 @@ public class Subscription extends Request {
 	 * The credit card token
 	 */
 	private String creditCardToken;
-	
+
 	/**
-	 * Bank account identifier to modify for the subscription 
+	 * Bank account identifier to modify for the subscription
 	 */
 	private String  bankAccountId;
-	
-	
+
+
 	/*
 	 *  If the client accepted the terms and conditions document.
 	 */
@@ -100,14 +123,14 @@ public class Subscription extends Request {
 
 	/**
 	 * Returns the subscription identifier
-	 * 
+	 *
 	 * @return the subscription id
 	 */
 	public String getId() {
 		return id;
 	}
-	
-	
+
+
 	/**
 	 * Returns the urlId
 	 * @return the urlId
@@ -121,12 +144,12 @@ public class Subscription extends Request {
 	 * @return the termsAndConditionsAcepted
 	 */
 	public Boolean getTermsAndConditionsAcepted() {
-	
+
 		return termsAndConditionsAcepted;
 	}
 	/**
 	 * Returns the subscription plan
-	 * 
+	 *
 	 * @return the subscription plan
 	 */
 	public SubscriptionPlan getPlan() {
@@ -135,7 +158,7 @@ public class Subscription extends Request {
 
 	/**
 	 * Returns the customer
-	 * 
+	 *
 	 * @return the customer
 	 */
 	public Customer getCustomer() {
@@ -144,7 +167,7 @@ public class Subscription extends Request {
 
 	/**
 	 * Returns the trialDays
-	 * 
+	 *
 	 * @return the trialDays
 	 */
 	public Integer getTrialDays() {
@@ -153,7 +176,7 @@ public class Subscription extends Request {
 
 	/**
 	 * Returns the installments
-	 * 
+	 *
 	 * @return the installments
 	 */
 	public Integer getInstallments() {
@@ -162,7 +185,7 @@ public class Subscription extends Request {
 
 	/**
 	 * Returns the quantity
-	 * 
+	 *
 	 * @return the quantity
 	 */
 	public Integer getQuantity() {
@@ -171,7 +194,7 @@ public class Subscription extends Request {
 
 	/**
 	 * Returns the current period start date
-	 * 
+	 *
 	 * @return the current period start date
 	 */
 	public Date getCurrentPeriodStart() {
@@ -180,7 +203,7 @@ public class Subscription extends Request {
 
 	/**
 	 * Returns the current period end date
-	 * 
+	 *
 	 * @return the current period end date
 	 */
 	public Date getCurrentPeriodEnd() {
@@ -189,7 +212,7 @@ public class Subscription extends Request {
 
 	/**
 	 * Returns the credit card token
-	 * 
+	 *
 	 * @return the credit card token
 	 */
 	public String getCreditCardToken() {
@@ -197,7 +220,7 @@ public class Subscription extends Request {
 	}
 	/**
 	 * Returns the subscription bank account identifier
-	 * 
+	 *
 	 * @return the bank account identifier
 	 */
 	public String getBankAccountId() {
@@ -207,14 +230,14 @@ public class Subscription extends Request {
 
 	/**
 	 * Sets the subscription identifier
-	 * 
+	 *
 	 * @param id the subcription id
 	 */
 	public void setId(String id) {
 		this.id = id;
 	}
-	
-	
+
+
 	/**
 	 * Sets the urlId
 	 * @param urlId the urlId to set
@@ -225,7 +248,7 @@ public class Subscription extends Request {
 
 	/**
 	 * Sets the subscription plan
-	 * 
+	 *
 	 * @param plan
 	 *            the subscription Plan to set
 	 */
@@ -235,7 +258,7 @@ public class Subscription extends Request {
 
 	/**
 	 * Sets the customer
-	 * 
+	 *
 	 * @param customer
 	 *            the customer to set
 	 */
@@ -245,7 +268,7 @@ public class Subscription extends Request {
 
 	/**
 	 * Sets the trialDays
-	 * 
+	 *
 	 * @param trialDays
 	 *            the trialDays to set
 	 */
@@ -255,7 +278,7 @@ public class Subscription extends Request {
 
 	/**
 	 * Sets the installments
-	 * 
+	 *
 	 * @param installments
 	 *            the installments to set
 	 */
@@ -265,7 +288,7 @@ public class Subscription extends Request {
 
 	/**
 	 * Sets the quantity
-	 * 
+	 *
 	 * @param quantity
 	 *            the quantity to set
 	 */
@@ -275,7 +298,7 @@ public class Subscription extends Request {
 
 	/**
 	 * Sets the current period start date
-	 * 
+	 *
 	 * @param currentPeriodStart
 	 */
 	public void setCurrentPeriodStart(Date currentPeriodStart) {
@@ -284,7 +307,7 @@ public class Subscription extends Request {
 
 	/**
 	 * Sets the current period end date
-	 * 
+	 *
 	 * @param currentPeriodEnd
 	 */
 	public void setCurrentPeriodEnd(Date currentPeriodEnd) {
@@ -293,30 +316,30 @@ public class Subscription extends Request {
 
 	/**
 	 * Sets the credit card token
-	 * 
+	 *
 	 * @param creditCardToken
 	 */
 	public void setCreditCardToken(String creditCardToken) {
 		this.creditCardToken = creditCardToken;
 	}
-	
+
 	/**
 	 * @param termsAndConditionsAcepted the termsAndConditionsAcepted to set
 	 */
 	public void setTermsAndConditionsAcepted(Boolean termsAndConditionsAcepted) {
-	
+
 		this.termsAndConditionsAcepted = termsAndConditionsAcepted;
 	}
-	
+
 	/**
 	 * Sets the subscription bank account identifier
-	 * 
+	 *
 	 */
 	public void setBankAccountId(String bankAccountId) {
 
 		this.bankAccountId = bankAccountId;
 	}
-	
+
 
 	/* (non-Javadoc)
 	 * @see com.payu.sdk.model.request.Request#getBaseRequestUrl(java.lang.String, com.payu.sdk.constants.Resources.RequestMethod)
@@ -345,7 +368,7 @@ public class Subscription extends Request {
 
 	/**
 	 * Converts a XML string into a subscription response object
-	 * 
+	 *
 	 * @param xml
 	 *            The object in a XML format
 	 * @return The subscription response format

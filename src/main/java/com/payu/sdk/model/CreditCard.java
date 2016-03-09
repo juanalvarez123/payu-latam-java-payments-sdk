@@ -1,3 +1,26 @@
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2016 developers-payu-latam
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package com.payu.sdk.model;
 
 import java.io.Serializable;
@@ -9,7 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Represents a credit card in the PayU SDK.
- * 
+ *
  * @author PayU Latam
  * @since 1.0.0
  * @version 1.0.0, 06/09/2013
@@ -44,7 +67,7 @@ public class CreditCard implements Serializable {
 
 	/**
 	 * Returns the credit card number.
-	 * 
+	 *
 	 * @return the number
 	 */
 	public String getNumber() {
@@ -53,7 +76,7 @@ public class CreditCard implements Serializable {
 
 	/**
 	 * Returns the credit card security code
-	 * 
+	 *
 	 * @return the securityCode
 	 */
 	public String getSecurityCode() {
@@ -62,7 +85,7 @@ public class CreditCard implements Serializable {
 
 	/**
 	 * Returns the credit card expiration date
-	 * 
+	 *
 	 * @return the expiration date
 	 */
 	public String getExpirationDate() {
@@ -71,7 +94,7 @@ public class CreditCard implements Serializable {
 
 	/**
 	 * Returns the name on the credit card
-	 * 
+	 *
 	 * @return the name
 	 */
 	public String getName() {
@@ -80,7 +103,7 @@ public class CreditCard implements Serializable {
 
 	/**
 	 * Returns the credit card issuer bank
-	 * 
+	 *
 	 * @return the issuer bank
 	 */
 	public String getIssuerBank() {
@@ -89,10 +112,10 @@ public class CreditCard implements Serializable {
 
 	/**
 	 * Returns the credit card masked number
-	 * 
+	 *
 	 * @return the masked number
 	 */
-	public String getMaskedNumber() {	
+	public String getMaskedNumber() {
 		return maskedNumber;
 	}
 
@@ -105,7 +128,7 @@ public class CreditCard implements Serializable {
 
 	/**
 	 * Sets the credit card number
-	 * 
+	 *
 	 * @param number the number to set
 	 */
 	public void setNumber(String number) {
@@ -114,7 +137,7 @@ public class CreditCard implements Serializable {
 
 	/**
 	 * Sets the credit card security code
-	 * 
+	 *
 	 * @param securityCode the security code to set
 	 */
 	public void setSecurityCode(String securityCode) {
@@ -123,7 +146,7 @@ public class CreditCard implements Serializable {
 
 	/**
 	 * Sets the credit card expiration date
-	 * 
+	 *
 	 * @param expirationDate the expiration date to set
 	 */
 	public void setExpirationDate(String expirationDate) {
@@ -132,25 +155,25 @@ public class CreditCard implements Serializable {
 
 	/**
 	 * Sets the name on the credit card
-	 * 
+	 *
 	 * @param name the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	/**
 	 * Sets the credit card issuer bank
-	 * 
+	 *
 	 * @param issuerBank the issuer bank to set
 	 */
 	public void setIssuerBank(String issuerBank) {
 		this.issuerBank = issuerBank;
 	}
-	
+
 	/**
 	 * Sets the credit card masked number
-	 * 
+	 *
 	 * @param maskedNumber the masked number to set
 	 */
 	public void setMaskedNumber(String maskedNumber) {
@@ -163,5 +186,5 @@ public class CreditCard implements Serializable {
 	public void setProcessWithoutCvv2(Boolean processWithoutCvv2) {
 		this.processWithoutCvv2 = processWithoutCvv2;
 	}
-	
+
 }

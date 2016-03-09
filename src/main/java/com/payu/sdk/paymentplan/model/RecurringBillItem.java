@@ -1,3 +1,26 @@
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2016 developers-payu-latam
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package com.payu.sdk.paymentplan.model;
 
 import java.util.List;
@@ -18,7 +41,7 @@ import com.payu.sdk.utils.JaxbUtil;
 
 /**
  * Represents a recurring bill item in the PayU SDK.
- * 
+ *
  * @author PayU Latam
  * @since 1.0.0
  * @version 1.0.0, 10/10/2013
@@ -48,12 +71,12 @@ public class RecurringBillItem extends Request {
 	 * The subscription identifier
 	 */
 	private String subscriptionId;
-	
+
 	/**
 	 * The recurring bill identifier
 	 */
 	private String recurringBillId;
-	
+
 
 	/**
 	 * Recurring bill item values list
@@ -66,7 +89,7 @@ public class RecurringBillItem extends Request {
 
 	/**
 	 * Returns recurring bill item identifier
-	 * 
+	 *
 	 * @return the recurring bill item id
 	 */
 	public String getId() {
@@ -76,7 +99,7 @@ public class RecurringBillItem extends Request {
 
 	/**
 	 * Returns recurring bill item description
-	 * 
+	 *
 	 * @return the recurring bill item description
 	 */
 	@XmlElement
@@ -87,7 +110,7 @@ public class RecurringBillItem extends Request {
 
 	/**
 	 * Returns subscription identifier
-	 * 
+	 *
 	 * @return the subscription id
 	 */
 	@XmlElement
@@ -97,7 +120,7 @@ public class RecurringBillItem extends Request {
 	}
 	/**
 	 * Returns recurring bill identifier
-	 * 
+	 *
 	 * @return the  recurring bill id
 	 */
 	public String getRecurringBillId() {
@@ -107,7 +130,7 @@ public class RecurringBillItem extends Request {
 
 	/**
 	 * Recurring bill item values list
-	 * 
+	 *
 	 * @return Recurring bill item values list
 	 */
 	@XmlElementWrapper(name = "additionalValues")
@@ -123,7 +146,7 @@ public class RecurringBillItem extends Request {
 
 	/**
 	 * Sets recurring bill item identifier
-	 * 
+	 *
 	 * @param id
 	 *            recurring bill item identifier to set
 	 */
@@ -134,7 +157,7 @@ public class RecurringBillItem extends Request {
 
 	/**
 	 * Sets the subscription identifier
-	 * 
+	 *
 	 * @param subscription
 	 *            identifier to set
 	 */
@@ -145,7 +168,7 @@ public class RecurringBillItem extends Request {
 
 	/**
 	 * Sets the recurring bill identifier
-	 * 
+	 *
 	 * @param recurring bill
 	 *            identifier to set
 	 */
@@ -156,7 +179,7 @@ public class RecurringBillItem extends Request {
 
 	/**
 	 * Sets recurring bill item description
-	 * 
+	 *
 	 * @param recurring
 	 *            bill item description to set
 	 */
@@ -167,7 +190,7 @@ public class RecurringBillItem extends Request {
 
 	/**
 	 * Sets recurring bill item values list
-	 * 
+	 *
 	 * @param recurring
 	 *            bill item values list to set
 	 */
@@ -178,7 +201,7 @@ public class RecurringBillItem extends Request {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * com.payu.sdk.model.request.Request#getBaseRequestUrl(java.lang.String,
 	 * com.payu.sdk.constants.Resources.RequestMethod)
@@ -202,7 +225,7 @@ public class RecurringBillItem extends Request {
 
 	/**
 	 * Converts a XML string into a recurring bill item response object
-	 * 
+	 *
 	 * @param xml
 	 *            The object in a XML format
 	 * @return The recurring bill item response format

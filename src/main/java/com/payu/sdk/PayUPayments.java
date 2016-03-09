@@ -1,3 +1,26 @@
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2016 developers-payu-latam
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package com.payu.sdk;
 
 import java.util.ArrayList;
@@ -27,7 +50,7 @@ import com.payu.sdk.utils.RequestUtil;
 
 /**
  * Manages all PayU payments operations
- * 
+ *
  * @author PayU Latam
  * @since 1.0.0
  * @version 1.0.0, 21/08/2013
@@ -42,7 +65,7 @@ public final class PayUPayments extends PayU {
 
 	/**
 	 * Makes a ping petition
-	 * 
+	 *
 	 * @return true if the ping is done successfully
 	 * @throws PayUException
 	 * @throws ConnectionException
@@ -58,7 +81,7 @@ public final class PayUPayments extends PayU {
 
 	/**
 	 * Makes a get payment methods petition
-	 * 
+	 *
 	 * @return The payment method list
 	 * @throws PayUException
 	 * @throws ConnectionException
@@ -77,15 +100,15 @@ public final class PayUPayments extends PayU {
 	}
 
 	/**
-	 * Get payment method Availability 
-	 * 
+	 * Get payment method Availability
+	 *
 	 * @return The payment method list
 	 * @throws PayUException
 	 * @throws ConnectionException
 	 */
 	public static PaymentMethodApi getPaymentMethodAvailability(String paymentMethod)
 			throws PayUException, ConnectionException {
-		//find the PaymentMethod object in the map 
+		//find the PaymentMethod object in the map
 		PaymentMethodApi paymentMethodApi = PaymentMethodMap.getInstance().getPaymentMethod(paymentMethod);
 		if (paymentMethodApi == null){
 			//Makes a get payment method Availability request in the API
@@ -96,8 +119,8 @@ public final class PayUPayments extends PayU {
 			}
 		}
 		return paymentMethodApi;
-	}	
-	
+	}
+
 	/**
 	 * Makes a get payment method Availability request
 	 * @param paymentMethod
@@ -114,11 +137,11 @@ public final class PayUPayments extends PayU {
 		PaymentMethodResponse response = PaymentMethodResponse.fromXml(res);
 
 		return response.getPaymentMethod();
-	}	
-	
+	}
+
 	/**
 	 * Makes a get PSE Banks petition
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to be sent to the server
 	 * @return The bank list information
@@ -147,7 +170,7 @@ public final class PayUPayments extends PayU {
 
 	/**
 	 * Do an authorization transaction
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to be sent to the server
 	 * @return The transaction response to the request sent
@@ -164,7 +187,7 @@ public final class PayUPayments extends PayU {
 
 	/**
 	 * Do a capture transaction
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to be sent to the server
 	 * @return The transaction response to the request sent
@@ -181,7 +204,7 @@ public final class PayUPayments extends PayU {
 
 	/**
 	 * Do an authorization and capture transaction
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to be sent to the server
 	 * @return The transaction response to the request sent
@@ -195,14 +218,14 @@ public final class PayUPayments extends PayU {
 
 		return doPayment(parameters, TransactionType.AUTHORIZATION_AND_CAPTURE, HttpClientHelper.SOCKET_TIMEOUT);
 	}
-	
-	
+
+
 	/**
 	 * Do an authorization and capture transaction
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to be sent to the server
-	 * @param the socket time out.           
+	 * @param the socket time out.
 	 * @return The transaction response to the request sent
 	 * @throws PayUException
 	 * @throws ConnectionException
@@ -214,11 +237,11 @@ public final class PayUPayments extends PayU {
 
 		return doPayment(parameters, TransactionType.AUTHORIZATION_AND_CAPTURE, socketTimeOut);
 	}
-	
+
 
 	/**
 	 * Do a void (Cancel) transaction
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to be sent to the server
 	 * @return The transaction response to the request sent
@@ -235,7 +258,7 @@ public final class PayUPayments extends PayU {
 
 	/**
 	 * Do a refund transaction
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to be sent to the server
 	 * @return The transaction response to the request sent
@@ -252,7 +275,7 @@ public final class PayUPayments extends PayU {
 
 	/**
 	 * Makes payment petition
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to be sent to the server
 	 * @param transactionType
@@ -269,11 +292,11 @@ public final class PayUPayments extends PayU {
 
 		return doPayment(parameters, transactionType, HttpClientHelper.SOCKET_TIMEOUT);
 	}
-	
-	
+
+
 	/**
 	 * Makes payment petition
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to be sent to the server
 	 * @param transactionType
@@ -301,12 +324,12 @@ public final class PayUPayments extends PayU {
 
 		return response.getTransactionResponse();
 	}
-	
 
-	
+
+
 	/**
-	 * Gets the PaymentMethod value parameter from the parameters map. 
-	 * If the parameter is not null find the Payment method in the map, but if not found then make request to API  
+	 * Gets the PaymentMethod value parameter from the parameters map.
+	 * If the parameter is not null find the Payment method in the map, but if not found then make request to API
 	 * @param parameters The parameters to be sent to the server
 	 * @param paramName  the parameter to get
 	 * @return the PaymentMethod value or null
@@ -316,16 +339,16 @@ public final class PayUPayments extends PayU {
 		PaymentMethodApi paymentMethod = null;
 		String parameter = CommonRequestUtil.getParameter(parameters, paramName);
 		if (parameter != null){
-			//find the PaymentMethod object in the map 
+			//find the PaymentMethod object in the map
 			paymentMethod = getPaymentMethodAvailability(parameter);
 		}
 		return paymentMethod;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * Returns the required parameters based on the payment method
-	 * 
+	 *
 	 * @param parameters
 	 * @return
 	 * @throws PayUException
@@ -333,14 +356,14 @@ public final class PayUPayments extends PayU {
 	 */
 	private static String[] getRequiredParameters(Map<String, String> parameters)
 			throws PayUException, InvalidParametersException, ConnectionException {
-		
+
 		//Initialize the list with default parameters
 		List<String> requiredParameters= new ArrayList<String>();
 		requiredParameters.add(PayU.PARAMETERS.REFERENCE_CODE);
 		requiredParameters.add(PayU.PARAMETERS.DESCRIPTION);
 		requiredParameters.add(PayU.PARAMETERS.CURRENCY);
 		requiredParameters.add(PayU.PARAMETERS.VALUE);
-		
+
 		/* Token methods */
 		if (parameters.containsKey(PayU.PARAMETERS.TOKEN_ID)) {
 			requiredParameters.add(PayU.PARAMETERS.INSTALLMENTS_NUMBER);
@@ -349,10 +372,10 @@ public final class PayUPayments extends PayU {
 		}
 
 		RequestUtil.validateParameters(parameters, PayU.PARAMETERS.PAYMENT_METHOD);
-		
+
 		//Obtains the payment method. If the parameter is a value that doesn't available this return null and continue
 		PaymentMethodApi paymentMethod = getPaymentMethodParameter(parameters,PayU.PARAMETERS.PAYMENT_METHOD);
-		
+
 		if (paymentMethod != null){
 			if ("BOLETO_BANCARIO".equals(paymentMethod.getName())) {
 				requiredParameters.add(PayU.PARAMETERS.PAYER_NAME);
@@ -363,7 +386,7 @@ public final class PayUPayments extends PayU {
 				requiredParameters.add(PayU.PARAMETERS.PAYER_CITY);
 				requiredParameters.add(PayU.PARAMETERS.PAYER_STATE);
 				requiredParameters.add(PayU.PARAMETERS.PAYER_POSTAL_CODE);
-				
+
 			}
 			else if (paymentMethod.getType() != null){
 				switch (paymentMethod.getType()) {
@@ -379,25 +402,25 @@ public final class PayUPayments extends PayU {
 				case PSE:
 					requiredParameters.add(PayU.PARAMETERS.PAYER_NAME);
 					requiredParameters.add(PayU.PARAMETERS.PAYMENT_METHOD);
-					requiredParameters.add(PayU.PARAMETERS.PAYER_DOCUMENT_TYPE);					
-					requiredParameters.add(PayU.PARAMETERS.PAYER_DNI);					
-					requiredParameters.add(PayU.PARAMETERS.PAYER_EMAIL);					
-					requiredParameters.add(PayU.PARAMETERS.PAYER_CONTACT_PHONE);					
-					requiredParameters.add(PayU.PARAMETERS.PSE_FINANCIAL_INSTITUTION_CODE);					
-					requiredParameters.add(PayU.PARAMETERS.PAYER_PERSON_TYPE);					
-					requiredParameters.add(PayU.PARAMETERS.IP_ADDRESS);					
-					requiredParameters.add(PayU.PARAMETERS.COOKIE);					
-					requiredParameters.add(PayU.PARAMETERS.USER_AGENT);					
+					requiredParameters.add(PayU.PARAMETERS.PAYER_DOCUMENT_TYPE);
+					requiredParameters.add(PayU.PARAMETERS.PAYER_DNI);
+					requiredParameters.add(PayU.PARAMETERS.PAYER_EMAIL);
+					requiredParameters.add(PayU.PARAMETERS.PAYER_CONTACT_PHONE);
+					requiredParameters.add(PayU.PARAMETERS.PSE_FINANCIAL_INSTITUTION_CODE);
+					requiredParameters.add(PayU.PARAMETERS.PAYER_PERSON_TYPE);
+					requiredParameters.add(PayU.PARAMETERS.IP_ADDRESS);
+					requiredParameters.add(PayU.PARAMETERS.COOKIE);
+					requiredParameters.add(PayU.PARAMETERS.USER_AGENT);
 					break;
 				case CREDIT_CARD:
 
-					boolean optionalSecurityCode = (parameters.containsKey(PayU.PARAMETERS.PROCESS_WITHOUT_CVV2) && 
+					boolean optionalSecurityCode = (parameters.containsKey(PayU.PARAMETERS.PROCESS_WITHOUT_CVV2) &&
 							Boolean.TRUE.toString().equalsIgnoreCase(parameters.get(PayU.PARAMETERS.PROCESS_WITHOUT_CVV2)));
 
 					requiredParameters.add(PayU.PARAMETERS.PAYER_NAME);
 					requiredParameters.add(PayU.PARAMETERS.PAYMENT_METHOD);
-					requiredParameters.add(PayU.PARAMETERS.INSTALLMENTS_NUMBER);					
-					requiredParameters.add(PayU.PARAMETERS.CREDIT_CARD_NUMBER);	
+					requiredParameters.add(PayU.PARAMETERS.INSTALLMENTS_NUMBER);
+					requiredParameters.add(PayU.PARAMETERS.CREDIT_CARD_NUMBER);
 					requiredParameters.add(PayU.PARAMETERS.CREDIT_CARD_EXPIRATION_DATE);
 					if (!optionalSecurityCode) {
 						requiredParameters.add(PayU.PARAMETERS.CREDIT_CARD_SECURITY_CODE);
@@ -415,7 +438,7 @@ public final class PayUPayments extends PayU {
 
 	/**
 	 * Makes a transaction dependent petition
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to be sent to the server
 	 * @param transactionType

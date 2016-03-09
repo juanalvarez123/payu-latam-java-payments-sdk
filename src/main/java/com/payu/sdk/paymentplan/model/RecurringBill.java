@@ -1,3 +1,26 @@
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2016 developers-payu-latam
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package com.payu.sdk.paymentplan.model;
 
 import java.math.BigDecimal;
@@ -22,7 +45,7 @@ import com.payu.sdk.utils.JaxbUtil;
 
 /**
  * Represents a recurring bill in the PayU SDK.
- * 
+ *
  * @author PayU Latam
  * @since 1.1.1
  * @version 1.1.1, 07/01/2014
@@ -86,7 +109,7 @@ public class RecurringBill extends Request {
 
 	/**
 	 * Gets the recurring bill identifier.
-	 * 
+	 *
 	 * @return The recurring bill identifier.
 	 */
 	@XmlElement
@@ -96,7 +119,7 @@ public class RecurringBill extends Request {
 
 	/**
 	 * Gets the {@link Order} identifier.
-	 * 
+	 *
 	 * @return The {@link Order} identifier.
 	 */
 	@XmlElement
@@ -106,7 +129,7 @@ public class RecurringBill extends Request {
 
 	/**
 	 * Gets the {@link PaymentMethodType} used.
-	 * 
+	 *
 	 * @return The {@link PaymentMethodType} used.
 	 */
 	@XmlElement(name="paymentMethod")
@@ -116,7 +139,7 @@ public class RecurringBill extends Request {
 
 	/**
 	 * Gets the {@link PaymentPlanCreditCard} used.
-	 * 
+	 *
 	 * @return The {@link PaymentPlanCreditCard} used.
 	 */
 	@XmlElement
@@ -126,7 +149,7 @@ public class RecurringBill extends Request {
 
 	/**
 	 * Gets the {@link BankAccount} used.
-	 * 
+	 *
 	 * @return The {@link BankAccount} used.
 	 */
 	@XmlElement
@@ -136,7 +159,7 @@ public class RecurringBill extends Request {
 
 	/**
 	 * Gets the identifier of the {@link SubscriptionPlan} to which the recurring bill belongs.
-	 * 
+	 *
 	 * @return The identifier of the {@link SubscriptionPlan} to which the recurring bill belongs.
 	 */
 	@XmlElement
@@ -146,7 +169,7 @@ public class RecurringBill extends Request {
 
 	/**
 	 * Gets the code of the {@link SubscriptionPlan} to which the recurring bill belongs.
-	 * 
+	 *
 	 * @return The code of the {@link SubscriptionPlan} to which the recurring bill belongs.
 	 */
 	@XmlElement
@@ -156,7 +179,7 @@ public class RecurringBill extends Request {
 
 	/**
 	 * Gets the identifier of the {@link Subscription} to which the recurring bill belongs.
-	 * 
+	 *
 	 * @return The identifier of the {@link Subscription} to which the recurring bill belongs.
 	 */
 	@XmlElement
@@ -166,7 +189,7 @@ public class RecurringBill extends Request {
 
 	/**
 	 * Gets the identifier of the {@link Customer} to which the recurring bill belongs.
-	 * 
+	 *
 	 * @return The identifier of the {@link Customer} to which the recurring bill belongs.
 	 */
 	@XmlElement
@@ -176,7 +199,7 @@ public class RecurringBill extends Request {
 
 	/**
 	 * Gets the state of the recurring bill.
-	 * 
+	 *
 	 * @return The state of the recurring bill.
 	 */
 	@XmlElement
@@ -186,7 +209,7 @@ public class RecurringBill extends Request {
 
 	/**
 	 * Gets the amount to pay in the recurring bill.
-	 * 
+	 *
 	 * @return The amount to pay in the recurring bill.
 	 */
 	@XmlElement
@@ -196,7 +219,7 @@ public class RecurringBill extends Request {
 
 	/**
 	 * Gets the {@link Currency} of the amount to pay in the recurring bill.
-	 * 
+	 *
 	 * @return The {@link Currency} of the amount to pay in the recurring bill.
 	 */
 	@XmlElement
@@ -206,7 +229,7 @@ public class RecurringBill extends Request {
 
 	/**
 	 * Gets the date in which the recurring bill will be charged.
-	 * 
+	 *
 	 * @return The date in which the recurring bill will be charged.
 	 */
 	@XmlElement
@@ -216,7 +239,7 @@ public class RecurringBill extends Request {
 
 	/**
 	 * Gets the list of {@link RecurringBillItem} associated to the recurring bill.
-	 * 
+	 *
 	 * @return The list of {@link RecurringBillItem} associated to the recurring bill.
 	 */
 	@XmlElementWrapper(name = "recurringBillItems")
@@ -232,7 +255,7 @@ public class RecurringBill extends Request {
 
 	/**
 	 * Sets the recurring bill identifier.
-	 * 
+	 *
 	 * @param id the recurring bill identifier.
 	 */
 	public void setId(String id) {
@@ -241,7 +264,7 @@ public class RecurringBill extends Request {
 
 	/**
 	 * Sets the {@link Order} identifier.
-	 * 
+	 *
 	 * @param orderId The {@link Order} identifier.
 	 */
 	public void setOrderId(Integer orderId) {
@@ -250,7 +273,7 @@ public class RecurringBill extends Request {
 
 	/**
 	 * Sets the {@link PaymentMethodType} used.
-	 * 
+	 *
 	 * @param paymentMethodType The {@link PaymentMethodType} used.
 	 */
 	public void setPaymentMethodType(PaymentMethodType paymentMethodType) {
@@ -259,7 +282,7 @@ public class RecurringBill extends Request {
 
 	/**
 	 * Sets the {@link PaymentPlanCreditCard} used.
-	 * 
+	 *
 	 * @param creditCard The {@link PaymentPlanCreditCard} used.
 	 */
 	public void setCreditCard(PaymentPlanCreditCard creditCard) {
@@ -268,7 +291,7 @@ public class RecurringBill extends Request {
 
 	/**
 	 * Sets the {@link BankAccount} used.
-	 * 
+	 *
 	 * @param bankAccount The {@link BankAccount} used.
 	 */
 	public void setBankAccount(BankAccount bankAccount) {
@@ -277,7 +300,7 @@ public class RecurringBill extends Request {
 
 	/**
 	 * Sets the identifier of the {@link SubscriptionPlan} to which the recurring bill belongs.
-	 * 
+	 *
 	 * @param planId The identifier of the {@link SubscriptionPlan} to which the recurring bill belongs.
 	 */
 	public void setPlanId(String planId) {
@@ -286,7 +309,7 @@ public class RecurringBill extends Request {
 
 	/**
 	 * Sets the code of the {@link SubscriptionPlan} to which the recurring bill belongs.
-	 * 
+	 *
 	 * @param planCode The code of the {@link SubscriptionPlan} to which the recurring bill belongs.
 	 */
 	public void setPlanCode(String planCode) {
@@ -295,7 +318,7 @@ public class RecurringBill extends Request {
 
 	/**
 	 * Sets the identifier of the {@link Subscription} to which the recurring bill belongs.
-	 * 
+	 *
 	 * @param subscriptionId The identifier of the {@link Subscription} to which the recurring bill belongs.
 	 */
 	public void setSubscriptionId(String subscriptionId) {
@@ -304,7 +327,7 @@ public class RecurringBill extends Request {
 
 	/**
 	 * Sets the identifier of the {@link Customer} to which the recurring bill belongs.
-	 * 
+	 *
 	 * @param customerId The identifier of the {@link Customer} to which the recurring bill belongs.
 	 */
 	public void setCustomerId(String customerId) {
@@ -313,7 +336,7 @@ public class RecurringBill extends Request {
 
 	/**
 	 * Sets the state of the recurring bill.
-	 * 
+	 *
 	 * @param state The state of the recurring bill.
 	 */
 	public void setState(String state) {
@@ -322,7 +345,7 @@ public class RecurringBill extends Request {
 
 	/**
 	 * Sets the amount to pay in the recurring bill.
-	 * 
+	 *
 	 * @param amount The amount to pay in the recurring bill.
 	 */
 	public void setAmount(BigDecimal amount) {
@@ -331,7 +354,7 @@ public class RecurringBill extends Request {
 
 	/**
 	 * Sets the {@link Currency} of the amount to pay in the recurring bill.
-	 * 
+	 *
 	 * @param currency The {@link Currency} of the amount to pay in the recurring bill.
 	 */
 	public void setCurrency(Currency currency) {
@@ -340,7 +363,7 @@ public class RecurringBill extends Request {
 
 	/**
 	 * Sets the date in which the recurring bill will be charged.
-	 * 
+	 *
 	 * @param dateCharge The date in which the recurring bill will be charged.
 	 */
 	public void setDateCharge(Date dateCharge) {
@@ -349,7 +372,7 @@ public class RecurringBill extends Request {
 
 	/**
 	 * Sets the list of {@link RecurringBillItem} associated to the recurring bill.
-	 * 
+	 *
 	 * @param recurringBillItems The list of {@link RecurringBillItem} associated to the recurring bill.
 	 */
 	public void setRecurringBillItems(List<RecurringBillItem> recurringBillItems) {
@@ -371,7 +394,7 @@ public class RecurringBill extends Request {
 
 	/**
 	 * Converts a xml string into a recurring bill response object.
-	 * 
+	 *
 	 * @param xml The object in a xml format.
 	 * @return The recurring bill response format.
 	 * @throws PayUException If there is a problem unmarshalling the XML.

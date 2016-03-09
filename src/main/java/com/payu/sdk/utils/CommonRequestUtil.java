@@ -1,3 +1,26 @@
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2016 developers-payu-latam
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package com.payu.sdk.utils;
 
 import java.math.BigDecimal;
@@ -16,7 +39,7 @@ import com.payu.sdk.model.PaymentMethod;
 
 /**
  * Utility for post requests in the PayU SDK.
- * 
+ *
  * @author PayU Latam
  * @since 1.0.0
  * @version 1.0.0, 11/09/2013
@@ -34,7 +57,7 @@ public class CommonRequestUtil {
 
 	/**
 	 * Validates the parameters given, against the required ones.
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters that need to be validated. If the parameters
 	 *            are null or empty, exception is thrown.
@@ -75,7 +98,7 @@ public class CommonRequestUtil {
 
 	/**
 	 * Validates the given parameters against the not allowed
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters that need to be validated. If the parameters
 	 *            are null or empty, exception is thrown.
@@ -113,7 +136,7 @@ public class CommonRequestUtil {
 
 	/**
 	 * Validates a date string whit the payments date format
-	 * 
+	 *
 	 * @param dateParameter
 	 *            the parameter to validate
 	 * @param name
@@ -129,9 +152,9 @@ public class CommonRequestUtil {
 	}
 
 	/**
-	 * Validates a date string whit the payments date format. 
+	 * Validates a date string whit the payments date format.
 	 * Evaluates the format of permissive form or not as indicated in the parameter
-	 * 
+	 *
 	 * @param dateParameter the parameter to validate
 	 * @param parameterName the name of the parameter (log purposes)
 	 * @param dateFormat the date format
@@ -159,12 +182,12 @@ public class CommonRequestUtil {
 
 		return date;
 	}
-	
+
 	/* Get Values Methods */
 
 	/**
 	 * Gets a big decimal value from parameters
-	 * 
+	 *
 	 * @param value
 	 *            the value to convert to big decimal
 	 * @param name
@@ -188,7 +211,7 @@ public class CommonRequestUtil {
 
 	/**
 	 * Gets a parameter based on it's name
-	 * 
+	 *
 	 * @param enumClass
 	 *            The class that defines the parameters
 	 * @param value
@@ -212,7 +235,7 @@ public class CommonRequestUtil {
 
 	/**
 	 * Gets a integer value from the parameters
-	 * 
+	 *
 	 * @param value
 	 *            the value to convert to integer
 	 * @param name
@@ -235,7 +258,7 @@ public class CommonRequestUtil {
 
 	/**
 	 * Gets a boolean value from the parameters
-	 * 
+	 *
 	 * @param value
 	 *            the value to convert to Boolean
 	 * @param name
@@ -258,7 +281,7 @@ public class CommonRequestUtil {
 
 	/**
 	 * Get a parameter from the parameters map
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to be sent to the server
 	 * @param paramName
@@ -268,20 +291,20 @@ public class CommonRequestUtil {
 	public static String getParameter(Map<String, String> parameters,
 			String paramName) {
 		String parameter = parameters.get(paramName);
-		
+
 		if(parameter != null){
 			parameter = parameter.trim();
 			if(parameter.isEmpty()){
 				parameter = null;
 			}
 		}
-		
+
 		return parameter;
 	}
 
 	/**
 	 * Gets an integer parameter from the parameters map
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to be sent to the server
 	 * @param paramName
@@ -304,7 +327,7 @@ public class CommonRequestUtil {
 
 	/**
 	 * Gets a BigDecimal parameter from the parameters map
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to be sent to the server
 	 * @param paramName
@@ -327,7 +350,7 @@ public class CommonRequestUtil {
 
 	/**
 	 * Gets an Enum value parameter from the parameters map
-	 * 
+	 *
 	 * @param enumClass The enum class
 	 * @param parameters
 	 *            The parameters to be sent to the server
@@ -346,14 +369,14 @@ public class CommonRequestUtil {
 
 		return enumValueParameter;
 	}
-	
+
 	/**
-	 * Gets the PaymentMethod value parameter from the parameters map. 
+	 * Gets the PaymentMethod value parameter from the parameters map.
 	 * If the parameter is null or does not belong to the enumeration returns null
 	 * @param parameters The parameters to be sent to the server
 	 * @param paramName  the parameter to get
 	 * @return the PaymentMethod value or null
-	 * @deprecated Not for public use in the future because the class PaymentMethod is deprecated 
+	 * @deprecated Not for public use in the future because the class PaymentMethod is deprecated
 	 * @see #com.payu.sdk.PayUPayments.getPaymentMethodParameter(Map<String, String> parameters, String paramName)
 	 */
 	@Deprecated
@@ -365,10 +388,10 @@ public class CommonRequestUtil {
 		}
 		return paymentMethod;
 	}
-	
+
 	/**
 	 * Gets a Boolean parameter from the parameters map
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to be sent to the server
 	 * @param paramName
@@ -393,7 +416,7 @@ public class CommonRequestUtil {
 
 	/**
 	 * Build the transaction additional values (currency and value)
-	 * 
+	 *
 	 * @param txCurrency
 	 *            The currency of the transaction
 	 * @param txValue
@@ -428,7 +451,7 @@ public class CommonRequestUtil {
 
 	/**
 	 * Adds an additional value
-	 * 
+	 *
 	 * @param txCurrency
 	 *            The currency of the transaction
 	 * @param name

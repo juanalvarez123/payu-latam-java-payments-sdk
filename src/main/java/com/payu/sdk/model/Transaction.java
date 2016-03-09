@@ -1,3 +1,26 @@
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2016 developers-payu-latam
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package com.payu.sdk.model;
 
 import java.io.Serializable;
@@ -18,7 +41,7 @@ import com.payu.sdk.utils.xml.MapExtraParameterAdapter;
 
 /**
  * Represents a transaction in the PayU SDK.
- * 
+ *
  * @author PayU Latam
  * @since 1.0.0
  * @version 1.0.0, 21/08/2013
@@ -93,7 +116,7 @@ public class Transaction implements Serializable {
 	/** The extra parameters. */
 	@XmlJavaTypeAdapter(MapExtraParameterAdapter.class)
 	private Map<String, String> extraParameters;
-	
+
 	/** the related transaction id. */
 	@XmlElement(required = false)
 	private String id;
@@ -103,10 +126,10 @@ public class Transaction implements Serializable {
 	 */
 	@XmlElement(required = false)
 	private String reason;
-	
+
 	/**
 	 * Returns the transaction order
-	 * 
+	 *
 	 * @return the order
 	 */
 	public Order getOrder() {
@@ -115,7 +138,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Returns the transaction credit card
-	 * 
+	 *
 	 * @return the creditCard
 	 */
 	public CreditCard getCreditCard() {
@@ -124,7 +147,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Returns the transaction credit card swipe
-	 * 
+	 *
 	 * @return the credit card swipe
 	 */
 	public CreditCardSwipe getCreditCardSwipe() {
@@ -133,7 +156,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Returns the transaction credit card token id
-	 * 
+	 *
 	 * @return the credit card token Id for recurrent payments.
 	 */
 	public String getCreditCardTokenId() {
@@ -142,7 +165,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Returns the create credit card token flag for recurrent payments
-	 * 
+	 *
 	 * @return the flag.
 	 */
 	public Boolean getCreateCreditCardToken() {
@@ -151,7 +174,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Returns the transaction type
-	 * 
+	 *
 	 * @return the type
 	 */
 	public TransactionType getType() {
@@ -160,7 +183,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Returns the transaction parent id
-	 * 
+	 *
 	 * @return the parent transaction
 	 */
 	public String getParentTransactionId() {
@@ -169,7 +192,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Returns the transaction payment method
-	 * 
+	 *
 	 * @return the payment method
 	 */
 	public String getPaymentMethod() {
@@ -178,7 +201,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Returns the transaction source
-	 * 
+	 *
 	 * @return the source
 	 */
 	public TransactionSource getSource() {
@@ -187,7 +210,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Returns the transaction payment country
-	 * 
+	 *
 	 * @return the payment country
 	 */
 	public PaymentCountry getPaymentCountry() {
@@ -196,7 +219,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Returns the transaction response
-	 * 
+	 *
 	 * @return the transaction response
 	 */
 	public TransactionResponse getTransactionResponse() {
@@ -205,7 +228,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Returns the transaction payer
-	 * 
+	 *
 	 * @return the payer
 	 */
 	public Payer getPayer() {
@@ -214,7 +237,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Returns the transaction device session id
-	 * 
+	 *
 	 * @return the device session id
 	 */
 	public String getDeviceSessionId() {
@@ -223,7 +246,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Returns the buyer IP address.
-	 * 
+	 *
 	 * @return the IP address
 	 */
 	public String getIpAddress() {
@@ -232,7 +255,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Returns the browser cookie
-	 * 
+	 *
 	 * @return the cookie
 	 */
 	public String getCookie() {
@@ -241,7 +264,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Returns the browser user agent
-	 * 
+	 *
 	 * @return the user agent
 	 */
 	public String getUserAgent() {
@@ -250,7 +273,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Returns the transaction expiration date
-	 * 
+	 *
 	 * @return the expiration date
 	 */
 	public Date getExpirationDate() {
@@ -259,7 +282,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Returns the transaction additional values
-	 * 
+	 *
 	 * @return the additional values
 	 */
 	public Map<String, AdditionalValue> getAdditionalValues() {
@@ -268,7 +291,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Returns the transaction extra parameters
-	 * 
+	 *
 	 * @return the extra parameters
 	 */
 	public Map<String, String> getExtraParameters() {
@@ -277,7 +300,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Sets the transaction order
-	 * 
+	 *
 	 * @param order
 	 *            the order to set
 	 */
@@ -287,7 +310,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Sets the transaction credit card
-	 * 
+	 *
 	 * @param creditCard
 	 *            the credit card to set
 	 */
@@ -297,7 +320,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Sets the transaction credit card swipe
-	 * 
+	 *
 	 * @param creditCardSwipe
 	 *            the credit card swipe to set
 	 */
@@ -307,7 +330,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Sets the transaction credit card token id
-	 * 
+	 *
 	 * @param creditCardTokenId
 	 *            the creditCardTokenId to set
 	 */
@@ -317,7 +340,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Sets the transaction create credit card token flag
-	 * 
+	 *
 	 * @param createCreditCardToken
 	 *            the flag to set
 	 */
@@ -327,7 +350,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Sets the transaction type
-	 * 
+	 *
 	 * @param type
 	 *            the type to set
 	 */
@@ -337,7 +360,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Sets the transaction parent id
-	 * 
+	 *
 	 * @param parentTransaction
 	 *            the parent transaction to set
 	 */
@@ -347,7 +370,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Sets the transaction payment method
-	 * 
+	 *
 	 * @param paymentMethod
 	 *            the payment method to set
 	 */
@@ -357,7 +380,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Sets the transaction source
-	 * 
+	 *
 	 * @param source
 	 *            the source to set
 	 */
@@ -367,7 +390,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Sets the transaction payment country
-	 * 
+	 *
 	 * @param paymentCountry
 	 *            the payment country to set
 	 */
@@ -377,7 +400,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Sets the transaction response
-	 * 
+	 *
 	 * @param transactionResponse
 	 *            the transaction response to set
 	 */
@@ -387,7 +410,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Sets the transactions payer
-	 * 
+	 *
 	 * @param payer
 	 *            the payer to set
 	 */
@@ -397,7 +420,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Sets the transaction device session id
-	 * 
+	 *
 	 * @param deviceSessionId
 	 *            the device session id to set
 	 */
@@ -407,7 +430,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Sets the buyer IP address.
-	 * 
+	 *
 	 * @param ipAddress
 	 *            the IP address to set
 	 */
@@ -417,7 +440,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Sets the browser cookie
-	 * 
+	 *
 	 * @param cookie
 	 *            the cookie to set
 	 */
@@ -427,7 +450,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Sets the browser user agent
-	 * 
+	 *
 	 * @param userAgent
 	 *            the user agent to set
 	 */
@@ -437,7 +460,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Sets the transaction expiration date
-	 * 
+	 *
 	 * @param expirationDate
 	 *            the expiration date to set
 	 */
@@ -447,7 +470,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Sets the transaction additional values
-	 * 
+	 *
 	 * @param additionalValues
 	 *            the additional values to set
 	 */
@@ -458,7 +481,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Sets the transaction extra parameters
-	 * 
+	 *
 	 * @param extraParameters
 	 *            the extra parameters to set
 	 */
@@ -468,7 +491,7 @@ public class Transaction implements Serializable {
 
 	/**
 	 * Adds an extra parameter to the transaction
-	 * 
+	 *
 	 * @param name
 	 *            The name of the extra parameter
 	 * @param value
@@ -490,12 +513,12 @@ public class Transaction implements Serializable {
 
 		extraParameters.put(name, value);
 	}
-	
+
 	/**
 	 * @return the reason
 	 */
 	public String getReason() {
-	
+
 		return reason;
 	}
 
@@ -503,23 +526,23 @@ public class Transaction implements Serializable {
 	 * @param reason the reason to set
 	 */
 	public void setReason(String reason) {
-	
+
 		this.reason = reason;
 	}
-	
+
 	/**
 	 * Sets the transaction id
-	 * 
+	 *
 	 * @param transactionId
 	 *            the transactionId to set
 	 */
 	public void setId(String id) {
 		this.id = id;
 	}
-	
+
 	/**
 	 * Returns the transaction id
-	 * 
+	 *
 	 * @return the transactionId
 	 */
 	public String getId() {

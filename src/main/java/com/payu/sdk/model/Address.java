@@ -1,3 +1,26 @@
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2016 developers-payu-latam
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package com.payu.sdk.model;
 
 import java.io.Serializable;
@@ -10,7 +33,7 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * Represents a physical address in the PayU SDK.
- * 
+ *
  * @author PayU Latam
  * @since 1.0.0
  * @version 1.0.0, 21/08/2013
@@ -82,7 +105,7 @@ public class Address implements Serializable {
 
 	/**
 	 * Returns the address line 1
-	 * 
+	 *
 	 * @return the line1
 	 */
 	@XmlElement
@@ -92,7 +115,7 @@ public class Address implements Serializable {
 
 	/**
 	 * Returns the address line 2
-	 * 
+	 *
 	 * @return the line2
 	 */
 	@XmlElement
@@ -102,7 +125,7 @@ public class Address implements Serializable {
 
 	/**
 	 * Returns the address line 3
-	 * 
+	 *
 	 * @return the line3
 	 */
 	@XmlElement
@@ -112,7 +135,7 @@ public class Address implements Serializable {
 
 	/**
 	 * Returns the city name
-	 * 
+	 *
 	 * @return the city
 	 */
 	@XmlElement
@@ -122,7 +145,7 @@ public class Address implements Serializable {
 
 	/**
 	 * Returns the state name
-	 * 
+	 *
 	 * @return the state
 	 */
 	@XmlElement
@@ -132,7 +155,7 @@ public class Address implements Serializable {
 
 	/**
 	 * Returns the ISO country code
-	 * 
+	 *
 	 * @return the country
 	 */
 	@XmlElement
@@ -142,7 +165,7 @@ public class Address implements Serializable {
 
 	/**
 	 * Returns the postal code
-	 * 
+	 *
 	 * @return the postalCode
 	 */
 	@XmlElement
@@ -152,7 +175,7 @@ public class Address implements Serializable {
 
 	/**
 	 * Returns the phone number
-	 * 
+	 *
 	 * @return the phone
 	 */
 	@XmlElement
@@ -162,7 +185,7 @@ public class Address implements Serializable {
 
 	/**
 	 * Set the address line 1
-	 * 
+	 *
 	 * @param line1
 	 *            the line1 to set
 	 */
@@ -172,7 +195,7 @@ public class Address implements Serializable {
 
 	/**
 	 * Set the address line 2
-	 * 
+	 *
 	 * @param line2
 	 *            the line2 to set
 	 */
@@ -182,7 +205,7 @@ public class Address implements Serializable {
 
 	/**
 	 * Set the address line 3
-	 * 
+	 *
 	 * @param line3
 	 *            the line3 to set
 	 */
@@ -192,7 +215,7 @@ public class Address implements Serializable {
 
 	/**
 	 * Set the city name
-	 * 
+	 *
 	 * @param city
 	 *            the city to set
 	 */
@@ -202,7 +225,7 @@ public class Address implements Serializable {
 
 	/**
 	 * Set the state name
-	 * 
+	 *
 	 * @param state
 	 *            the state to set
 	 */
@@ -212,7 +235,7 @@ public class Address implements Serializable {
 
 	/**
 	 * Set the ISO country code
-	 * 
+	 *
 	 * @param country
 	 *            the country to set
 	 */
@@ -222,7 +245,7 @@ public class Address implements Serializable {
 
 	/**
 	 * Set the postal code
-	 * 
+	 *
 	 * @param postalCode
 	 *            the postalCode to set
 	 */
@@ -232,7 +255,7 @@ public class Address implements Serializable {
 
 	/**
 	 * Set the phone number
-	 * 
+	 *
 	 * @param phone
 	 *            the phone to set
 	 */

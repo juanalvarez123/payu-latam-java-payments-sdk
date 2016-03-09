@@ -1,3 +1,26 @@
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2016 developers-payu-latam
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package com.payu.sdk;
 
 import java.util.List;
@@ -15,7 +38,7 @@ import com.payu.sdk.utils.PaymentPlanRequestUtil;
 
 /**
  * Manages all PayU subscriptions operations
- * 
+ *
  * @author PayU Latam
  * @since 1.0.0
  * @version 1.0.0, 09/09/2013
@@ -30,7 +53,7 @@ public final class PayUSubscription extends PayU {
 
 	/**
 	 * Creates a subscription
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to be sent to the server
 	 * @return the created subscription
@@ -81,7 +104,7 @@ public final class PayUSubscription extends PayU {
 					"You must register the [customerName] or [customerEmail]");
 		}
 
-		
+
 		params = new String[] { PayU.PARAMETERS.CREDIT_CARD_NUMBER,
 				PayU.PARAMETERS.CREDIT_CARD_EXPIRATION_DATE,
 				PayU.PARAMETERS.PAYMENT_METHOD, PayU.PARAMETERS.PAYER_NAME,
@@ -97,20 +120,20 @@ public final class PayUSubscription extends PayU {
 			PaymentPlanRequestUtil.validateNotAllowedParameters(
 					parameters.keySet(), params);
 		} else if(CollectionsUtil.interceptMaps(parameters.keySet(), params)){
-			
+
 			String[] validateParamsCreditCard = new String[] { PayU.PARAMETERS.CREDIT_CARD_NUMBER,
 					PayU.PARAMETERS.CREDIT_CARD_EXPIRATION_DATE,
 					PayU.PARAMETERS.PAYMENT_METHOD, PayU.PARAMETERS.PAYER_NAME };
-			
+
 			PaymentPlanRequestUtil.validateParameters(parameters, validateParamsCreditCard);
 		}
-		
+
 		//BankAccount parameters
 		if (parameters.containsKey(PayU.PARAMETERS.BANK_ACCOUNT_ID)) {
 
 			params = new String[] { PayU.PARAMETERS.BANK_ACCOUNT_DOCUMENT_NUMBER,
 					PayU.PARAMETERS.BANK_ACCOUNT_DOCUMENT_NUMBER_TYPE,
-					PayU.PARAMETERS.BANK_ACCOUNT_CUSTOMER_NAME, 
+					PayU.PARAMETERS.BANK_ACCOUNT_CUSTOMER_NAME,
 					PayU.PARAMETERS.BANK_ACCOUNT_AGENCY_NUMBER,
 					PayU.PARAMETERS.BANK_ACCOUNT_AGENCY_DIGIT,
 					PayU.PARAMETERS.BANK_ACCOUNT_ACCOUNT_DIGIT,
@@ -122,8 +145,8 @@ public final class PayUSubscription extends PayU {
 			PaymentPlanRequestUtil.validateNotAllowedParameters(
 					parameters.keySet(), params);
 		}
-		
- 
+
+
 		String res = HttpClientHelper.sendRequest(
 				PaymentPlanRequestUtil.buildSubscriptionRequest(parameters),
 				RequestMethod.POST);
@@ -133,7 +156,7 @@ public final class PayUSubscription extends PayU {
 
 	/**
 	 * Cancel a subscription
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to be sent to the server
 	 * @return true if the subscription was canceled
@@ -156,9 +179,9 @@ public final class PayUSubscription extends PayU {
 		return true;
 
 	}
-	
+
 	/**
-	 * Update a subscription 
+	 * Update a subscription
 	 * @param parameters The parameters to be sent to the server
 	 * @return
 	 * @throws InvalidParametersException
@@ -168,29 +191,29 @@ public final class PayUSubscription extends PayU {
 	public static Subscription update(Map<String, String> parameters)
 			throws InvalidParametersException, ConnectionException,
 			PayUException {
-		
+
 		String[] params;
 
 		// Plan parameters
 		params = new String[] { PayU.PARAMETERS.SUBSCRIPTION_ID};
-		
+
 		PaymentPlanRequestUtil.validateParameters(parameters, params);
-			
-		
+
+
 		String res = HttpClientHelper.sendRequest(
 				PaymentPlanRequestUtil.buildSubscriptionUpdateRequest(parameters),
 				RequestMethod.PUT);
-		
+
 		return Subscription.fromXml(res);
-		
+
 	}
-	
+
 	/**
 	 * Find a subscription based in its identifier
-	 * 
+	 *
 	 * @param parameters The parameters to be sent to the server
 	 * @return The subscription with the given identifier if found
-	 * 
+	 *
 	 * @throws PayUException
 	 * @throws InvalidParametersException
 	 * @throws ConnectionException
@@ -200,23 +223,23 @@ public final class PayUSubscription extends PayU {
 			ConnectionException {
 
 		String[] required = new String[] { PayU.PARAMETERS.SUBSCRIPTION_ID };
-		
+
 		PaymentPlanRequestUtil.validateParameters(parameters, required);
-		
+
 		String res = HttpClientHelper.sendRequest(
 				PaymentPlanRequestUtil.buildSubscriptionRequest(parameters),
 				RequestMethod.GET);
-		
+
 		return Subscription.fromXml(res);
-		
+
 	}
 
 	/**
 	 * Finds a subscription list based on some parameters
-	 * 
+	 *
 	 * @param parameters The parameters to be sent to the server
 	 * @return The subscription list
-	 * 
+	 *
 	 * @throws PayUException
 	 * @throws InvalidParametersException
 	 * @throws ConnectionException

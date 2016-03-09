@@ -1,3 +1,26 @@
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2016 developers-payu-latam
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package com.payu.sdk.model.request;
 
 import javax.xml.bind.annotation.XmlElement;
@@ -9,7 +32,7 @@ import com.payu.sdk.model.Merchant;
 
 /**
  * Represents a command request in the PayU SDK.
- * 
+ *
  * @author PayU Latam
  * @since 1.0.0
  * @version 1.0.0, 21/08/2013
@@ -30,7 +53,7 @@ public abstract class CommandRequest extends Request {
 
 	/**
 	 * Returns the language
-	 * 
+	 *
 	 * @return the language
 	 */
 	public Language getLanguage() {
@@ -39,7 +62,7 @@ public abstract class CommandRequest extends Request {
 
 	/**
 	 * Returns the command
-	 * 
+	 *
 	 * @return the command
 	 */
 	public Command getCommand() {
@@ -48,7 +71,7 @@ public abstract class CommandRequest extends Request {
 
 	/**
 	 * Returns the merchant
-	 * 
+	 *
 	 * @return the merchant
 	 */
 	public Merchant getMerchant() {
@@ -57,7 +80,7 @@ public abstract class CommandRequest extends Request {
 
 	/**
 	 * Sets the language
-	 * 
+	 *
 	 * @param language
 	 *            the language to set
 	 */
@@ -67,7 +90,7 @@ public abstract class CommandRequest extends Request {
 
 	/**
 	 * Sets the command
-	 * 
+	 *
 	 * @param command
 	 *            the command to set
 	 */
@@ -77,7 +100,7 @@ public abstract class CommandRequest extends Request {
 
 	/**
 	 * Sets the merchant
-	 * 
+	 *
 	 * @param merchant
 	 *            the merchant to set
 	 */
@@ -87,7 +110,7 @@ public abstract class CommandRequest extends Request {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see com.payu.sdk.model.Request#getBaseRequestUrl(java.lang.String,
 	 * com.payu.sdk.constants#RequestMethod)
 	 */

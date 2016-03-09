@@ -1,3 +1,26 @@
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2016 developers-payu-latam
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package com.payu.sdk.paymentplan.model;
 
 import java.util.List;
@@ -18,7 +41,7 @@ import com.payu.sdk.utils.JaxbUtil;
 
 /**
  * Represents a subscription plan in the PayU SDK.
- * 
+ *
  * @author PayU Latam
  * @since 1.0.0
  * @version 1.0.0, 06/09/2013
@@ -111,7 +134,7 @@ public class SubscriptionPlan extends Request {
 
 	/**
 	 * Returns the subscription plan id
-	 * 
+	 *
 	 * @return the id
 	 */
 	public String getId() {
@@ -121,7 +144,7 @@ public class SubscriptionPlan extends Request {
 
 	/**
 	 * Returns the subscription plan code
-	 * 
+	 *
 	 * @return the plan code
 	 */
 	public String getPlanCode() {
@@ -130,8 +153,8 @@ public class SubscriptionPlan extends Request {
 	}
 
 	/**
-	 * Returns the subscription plan description 
-	 * 
+	 * Returns the subscription plan description
+	 *
 	 * @return the description
 	 */
 	public String getDescription() {
@@ -140,8 +163,8 @@ public class SubscriptionPlan extends Request {
 	}
 
 	/**
-	 * Returns the subscription plan account id 
-	 * 
+	 * Returns the subscription plan account id
+	 *
 	 * @return the account id
 	 */
 	public Integer getAccountId() {
@@ -150,8 +173,8 @@ public class SubscriptionPlan extends Request {
 	}
 
 	/**
-	 * Returns the subscription plan interval count 
-	 * 
+	 * Returns the subscription plan interval count
+	 *
 	 * @return the interval count
 	 */
 	public Integer getIntervalCount() {
@@ -161,7 +184,7 @@ public class SubscriptionPlan extends Request {
 
 	/**
 	 * Returns the subscription plan interval
-	 * 
+	 *
 	 * @return the interval
 	 */
 	public String getInterval() {
@@ -171,7 +194,7 @@ public class SubscriptionPlan extends Request {
 
 	/**
 	 * Returns the subscription plan maximum number of payments allowed
-	 * 
+	 *
 	 * @return the max payments allowed
 	 */
 	public Integer getMaxPaymentsAllowed() {
@@ -180,8 +203,8 @@ public class SubscriptionPlan extends Request {
 	}
 
 	/**
-	 * Returns the subscription plan maximum number of payment attempts 
-	 * 
+	 * Returns the subscription plan maximum number of payment attempts
+	 *
 	 * @return the max payment attempts
 	 */
 	public Integer getMaxPaymentAttempts() {
@@ -190,8 +213,8 @@ public class SubscriptionPlan extends Request {
 	}
 
 	/**
-	 * Returns the subscription plan payment attempts delay 
-	 * 
+	 * Returns the subscription plan payment attempts delay
+	 *
 	 * @return the payment attempts delay
 	 */
 	public Integer getPaymentAttemptsDelay() {
@@ -200,8 +223,8 @@ public class SubscriptionPlan extends Request {
 	}
 
 	/**
-	 * Returns the subscription plan maximum number of pending payments 
-	 * 
+	 * Returns the subscription plan maximum number of pending payments
+	 *
 	 * @return the max pending payments
 	 */
 	public Integer getMaxPendingPayments() {
@@ -211,7 +234,7 @@ public class SubscriptionPlan extends Request {
 
 	/**
 	 * Returns the subscription plan trial days
-	 * 
+	 *
 	 * @return the trial days
 	 */
 	public Integer getTrialDays() {
@@ -221,7 +244,7 @@ public class SubscriptionPlan extends Request {
 
 	/**
 	 * Returns the subscription plan additional values
-	 * 
+	 *
 	 * @return the additional values
 	 */
 	public List<AdditionalValue> getAdditionalValues() {
@@ -232,7 +255,7 @@ public class SubscriptionPlan extends Request {
 
 	/**
 	 * Sets the subscription plan id
-	 * 
+	 *
 	 * @param id
 	 *            the id to set
 	 */
@@ -242,7 +265,7 @@ public class SubscriptionPlan extends Request {
 	}
 
 	/**Sets the subscription plan cod
-	 * 
+	 *
 	 * @param planCode
 	 *            the plan code to set
 	 */
@@ -252,8 +275,8 @@ public class SubscriptionPlan extends Request {
 	}
 
 	/**
-	 * Sets the subscription plan description 
-	 * 
+	 * Sets the subscription plan description
+	 *
 	 * @param description
 	 *            the description to set
 	 */
@@ -264,7 +287,7 @@ public class SubscriptionPlan extends Request {
 
 	/**
 	 * Sets the subscription plan account id
-	 * 
+	 *
 	 * @param accountId
 	 *            the account id to set
 	 */
@@ -275,7 +298,7 @@ public class SubscriptionPlan extends Request {
 
 	/**
 	 * Sets the subscription plan interval count
-	 * 
+	 *
 	 * @param intervalCount
 	 *            the interval count to set
 	 */
@@ -285,8 +308,8 @@ public class SubscriptionPlan extends Request {
 	}
 
 	/**
-	 * Sets the subscription plan interval 
-	 * 
+	 * Sets the subscription plan interval
+	 *
 	 * @param interval
 	 *            the interval to set
 	 */
@@ -296,8 +319,8 @@ public class SubscriptionPlan extends Request {
 	}
 
 	/**
-	 * Sets the subscription plan maximum number of payments allowed 
-	 * 
+	 * Sets the subscription plan maximum number of payments allowed
+	 *
 	 * @param maxPaymentsAllowed
 	 *            the max payments allowed to set
 	 */
@@ -307,8 +330,8 @@ public class SubscriptionPlan extends Request {
 	}
 
 	/**
-	 * Sets the subscription plan maximum payment attempts 
-	 * 
+	 * Sets the subscription plan maximum payment attempts
+	 *
 	 * @param maxPaymentAttempts
 	 *            the max payment attempts to set
 	 */
@@ -319,7 +342,7 @@ public class SubscriptionPlan extends Request {
 
 	/**
 	 * Sets the subscription plan payment attempts delay
-	 * 
+	 *
 	 * @param paymentAttemptsDelay
 	 *            the payment attempts delay to set
 	 */
@@ -330,7 +353,7 @@ public class SubscriptionPlan extends Request {
 
 	/**
 	 * Sets the subscription plan maximum number of panding payments
-	 * 
+	 *
 	 * @param maxPendingPayments
 	 *            the max pending payments to set
 	 */
@@ -341,7 +364,7 @@ public class SubscriptionPlan extends Request {
 
 	/**
 	 * Sets the subscription plan trial days
-	 * 
+	 *
 	 * @param trialDays
 	 *            the trial days to set
 	 */
@@ -351,8 +374,8 @@ public class SubscriptionPlan extends Request {
 	}
 
 	/**
-	 * Sets the subscription plan additional values 
-	 * 
+	 * Sets the subscription plan additional values
+	 *
 	 * @param additionalValues
 	 *            the additional values to set
 	 */
@@ -363,7 +386,7 @@ public class SubscriptionPlan extends Request {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see com.payu.sdk.model.Request#getBaseRequestUrl(java.lang.String,
 	 * com.payu.sdk.constants#RequestMethod)
 	 */
@@ -386,7 +409,7 @@ public class SubscriptionPlan extends Request {
 
 	/**
 	 * Converts a xml string into a SubscriptionPlan response object
-	 * 
+	 *
 	 * @param xml
 	 *            The object in a xml format
 	 * @return The SubscriptionPlan response format

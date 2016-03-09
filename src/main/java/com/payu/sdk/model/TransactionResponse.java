@@ -1,3 +1,26 @@
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2016 developers-payu-latam
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package com.payu.sdk.model;
 
 import java.io.Serializable;
@@ -15,7 +38,7 @@ import com.payu.sdk.utils.xml.MapExtraParameterAdapter;
 
 /**
  * Represents a response for a transaction in the PayU SDK.
- * 
+ *
  * @author PayU Latam
  * @since 1.0.0
  * @version 1.0.0, 21/08/2013
@@ -76,7 +99,7 @@ public class TransactionResponse implements Serializable {
 
 	/**
 	 * Returns the order id
-	 * 
+	 *
 	 * @return the orderId
 	 */
 	public Integer getOrderId() {
@@ -85,7 +108,7 @@ public class TransactionResponse implements Serializable {
 
 	/**
 	 * Returns the transaction id
-	 * 
+	 *
 	 * @return the transactionId
 	 */
 	public String getTransactionId() {
@@ -94,7 +117,7 @@ public class TransactionResponse implements Serializable {
 
 	/**
 	 * Returns the transaction state
-	 * 
+	 *
 	 * @return the state
 	 */
 	public TransactionState getState() {
@@ -103,7 +126,7 @@ public class TransactionResponse implements Serializable {
 
 	/**
 	 * Returns the payment network response code
-	 * 
+	 *
 	 * @return the paymentNetworkResponseCode
 	 */
 	public String getPaymentNetworkResponseCode() {
@@ -112,7 +135,7 @@ public class TransactionResponse implements Serializable {
 
 	/**
 	 * Returns the payment network response error message
-	 * 
+	 *
 	 * @return the paymentNetworkResponseErrorMessage
 	 */
 	public String getPaymentNetworkResponseErrorMessage() {
@@ -121,7 +144,7 @@ public class TransactionResponse implements Serializable {
 
 	/**
 	 * Returns the trazability code
-	 * 
+	 *
 	 * @return the trazabilityCode
 	 */
 	public String getTrazabilityCode() {
@@ -130,7 +153,7 @@ public class TransactionResponse implements Serializable {
 
 	/**
 	 * Returns the authorization code
-	 * 
+	 *
 	 * @return the authorizationCode
 	 */
 	public String getAuthorizationCode() {
@@ -139,7 +162,7 @@ public class TransactionResponse implements Serializable {
 
 	/**
 	 * Returns the transaction pending reason
-	 * 
+	 *
 	 * @return the pendingReason
 	 */
 	public TransactionPendingReason getPendingReason() {
@@ -148,7 +171,7 @@ public class TransactionResponse implements Serializable {
 
 	/**
 	 * Returns the transaction response code
-	 * 
+	 *
 	 * @return the responseCode
 	 */
 	public TransactionResponseCode getResponseCode() {
@@ -157,7 +180,7 @@ public class TransactionResponse implements Serializable {
 
 	/**
 	 * Returns the transaction error code
-	 * 
+	 *
 	 * @return the errorCode
 	 */
 	public TransactionErrorCode getErrorCode() {
@@ -166,7 +189,7 @@ public class TransactionResponse implements Serializable {
 
 	/**
 	 * Returns the response message
-	 * 
+	 *
 	 * @return the responseMessage
 	 */
 	public String getResponseMessage() {
@@ -175,7 +198,7 @@ public class TransactionResponse implements Serializable {
 
 	/**
 	 * Returns the transaction date
-	 * 
+	 *
 	 * @return the transactionDate
 	 */
 	public String getTransactionDate() {
@@ -184,7 +207,7 @@ public class TransactionResponse implements Serializable {
 
 	/**
 	 * Returns the transaction time
-	 * 
+	 *
 	 * @return the transactionTime
 	 */
 	public String getTransactionTime() {
@@ -193,7 +216,7 @@ public class TransactionResponse implements Serializable {
 
 	/**
 	 * Returns the operation date
-	 * 
+	 *
 	 * @return the operationDate
 	 */
 	public Date getOperationDate() {
@@ -202,7 +225,7 @@ public class TransactionResponse implements Serializable {
 
 	/**
 	 * Returns the extra parameters map
-	 * 
+	 *
 	 * @return the extraParameters
 	 */
 	public Map<String, Object> getExtraParameters() {
@@ -211,7 +234,7 @@ public class TransactionResponse implements Serializable {
 
 	/**
 	 * Sets the order id
-	 * 
+	 *
 	 * @param orderId
 	 *            the orderId to set
 	 */
@@ -221,7 +244,7 @@ public class TransactionResponse implements Serializable {
 
 	/**
 	 * Sets the transaction id
-	 * 
+	 *
 	 * @param transactionId
 	 *            the transactionId to set
 	 */
@@ -231,7 +254,7 @@ public class TransactionResponse implements Serializable {
 
 	/**
 	 * Sets the transaction state
-	 * 
+	 *
 	 * @param state
 	 *            the state to set
 	 */
@@ -241,7 +264,7 @@ public class TransactionResponse implements Serializable {
 
 	/**
 	 * Sets the payment network response code
-	 * 
+	 *
 	 * @param paymentNetworkResponseCode
 	 *            the paymentNetworkResponseCode to set
 	 */
@@ -251,7 +274,7 @@ public class TransactionResponse implements Serializable {
 
 	/**
 	 * Sets the payment network response error message
-	 * 
+	 *
 	 * @param paymentNetworkResponseErrorMessage
 	 *            the paymentNetworkResponseErrorMessage to set
 	 */
@@ -262,7 +285,7 @@ public class TransactionResponse implements Serializable {
 
 	/**
 	 * Sets the trazability code
-	 * 
+	 *
 	 * @param trazabilityCode
 	 *            the trazabilityCode to set
 	 */
@@ -272,7 +295,7 @@ public class TransactionResponse implements Serializable {
 
 	/**
 	 * Sets the authorization code
-	 * 
+	 *
 	 * @param authorizationCode
 	 *            the authorizationCode to set
 	 */
@@ -282,7 +305,7 @@ public class TransactionResponse implements Serializable {
 
 	/**
 	 * Sets the transaction pending reason
-	 * 
+	 *
 	 * @param pendingReason
 	 *            the pendingReason to set
 	 */
@@ -292,7 +315,7 @@ public class TransactionResponse implements Serializable {
 
 	/**
 	 * Sets the transaction response code
-	 * 
+	 *
 	 * @param responseCode
 	 *            the responseCode to set
 	 */
@@ -302,7 +325,7 @@ public class TransactionResponse implements Serializable {
 
 	/**
 	 * Sets the transaction error code
-	 * 
+	 *
 	 * @param errorCode
 	 *            the errorCode to set
 	 */
@@ -312,7 +335,7 @@ public class TransactionResponse implements Serializable {
 
 	/**
 	 * Sets the response message
-	 * 
+	 *
 	 * @param responseMessage
 	 *            the responseMessage to set
 	 */
@@ -322,7 +345,7 @@ public class TransactionResponse implements Serializable {
 
 	/**
 	 * Sets the transaction date
-	 * 
+	 *
 	 * @param transactionDate
 	 *            the transactionDate to set
 	 */
@@ -332,7 +355,7 @@ public class TransactionResponse implements Serializable {
 
 	/**
 	 * Sets the transaction time
-	 * 
+	 *
 	 * @param transactionTime
 	 *            the transactionTime to set
 	 */
@@ -342,7 +365,7 @@ public class TransactionResponse implements Serializable {
 
 	/**
 	 * Sets the operation date
-	 * 
+	 *
 	 * @param operationDate
 	 *            the operationDate to set
 	 */
@@ -352,7 +375,7 @@ public class TransactionResponse implements Serializable {
 
 	/**
 	 * Sets the extra parameters map
-	 * 
+	 *
 	 * @param extraParameters
 	 *            the extraParameters to set
 	 */

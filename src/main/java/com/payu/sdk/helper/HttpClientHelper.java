@@ -1,3 +1,26 @@
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2016 developers-payu-latam
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package com.payu.sdk.helper;
 
 import java.io.BufferedReader;
@@ -47,7 +70,7 @@ import com.payu.sdk.utils.xml.XmlFormatter;
 
 /**
  * The PayU SDK Helper for Http Client
- * 
+ *
  * @author PayU Latam
  * @since 1.0.0
  * @version 1.0.0, 21/08/2013
@@ -60,7 +83,7 @@ public final class HttpClientHelper {
 
 	/** The socket timeout in ms. */
 	public static final int SOCKET_TIMEOUT = 85000;
-	
+
 	/**
 	 * Default private empty constructor
 	 */
@@ -69,7 +92,7 @@ public final class HttpClientHelper {
 
 	/**
 	 * Sends the post request to the server
-	 * 
+	 *
 	 * @param request
 	 *            The request to be sent to the server
 	 * @param requestMethod
@@ -83,11 +106,11 @@ public final class HttpClientHelper {
 
 		return sendRequest(request, requestMethod, SOCKET_TIMEOUT);
 	}
-	
-	
+
+
 	/**
 	 * Sends the post request to the server
-	 * 
+	 *
 	 * @param request
 	 *            The request to be sent to the server
 	 * @param requestMethod
@@ -142,7 +165,7 @@ public final class HttpClientHelper {
 
 	/**
 	 * Manage the response with specific exceptions
-	 * 
+	 *
 	 * @param httpResponse
 	 *            The response sent by the server
 	 * @return The reason of the error response
@@ -182,7 +205,7 @@ public final class HttpClientHelper {
 
 	/**
 	 * Gets the response error message
-	 * 
+	 *
 	 * @param httpResponse
 	 *            The response sent by the server
 	 * @return The message associated to the error response
@@ -225,7 +248,7 @@ public final class HttpClientHelper {
 
 	/**
 	 * Get xml response
-	 * 
+	 *
 	 * @param httpResponse
 	 *            The response sent by the server
 	 * @return The xml associated to the response
@@ -248,10 +271,10 @@ public final class HttpClientHelper {
 
 	/**
 	 * Sets the parameters to the request
-	 * 
+	 *
 	 * @param params
 	 *            The parameters to be set
-	 * @param the socket time out.           
+	 * @param the socket time out.
 	 */
 	private static void setHttpClientParameters(HttpParams params, Integer socketTimeOut) {
 
@@ -263,7 +286,7 @@ public final class HttpClientHelper {
 
 	/**
 	 * Creates a http request with the given request
-	 * 
+	 *
 	 * @param request
 	 *            The original request
 	 * @param requestMethod
@@ -307,8 +330,8 @@ public final class HttpClientHelper {
 
 		httpMethod.addHeader("Content-Type", MediaType.XML.getCode()
 				+ "; charset=utf-8");
-		
-		Language lng = request.getLanguage() != null ? request.getLanguage() : PayU.language; 
+
+		Language lng = request.getLanguage() != null ? request.getLanguage() : PayU.language;
 		httpMethod.setHeader("Accept-Language", lng.name());
 
 		// Sets the method entity
@@ -330,7 +353,7 @@ public final class HttpClientHelper {
 
 	/**
 	 * Updates the base request to add the header
-	 * 
+	 *
 	 * @param requestBase
 	 *            The request that needs its header
 	 */
@@ -340,12 +363,12 @@ public final class HttpClientHelper {
 				+ "; charset=utf-8");
 		requestBase.addHeader(HttpHeaders.ACCEPT, MediaType.XML.getCode());
 
-		String username = apiRequest.getApiLogin() != null 
+		String username = apiRequest.getApiLogin() != null
 				? apiRequest.getApiLogin() : PayU.apiLogin;
-				
+
 		String password = apiRequest.getApiKey() != null
 				? apiRequest.getApiKey() : PayU.apiKey;
-				
+
 		Credentials credentials = new UsernamePasswordCredentials(username, password);
 
 		requestBase.addHeader(BasicScheme.authenticate(credentials,
@@ -354,7 +377,7 @@ public final class HttpClientHelper {
 
 	/**
 	 * Transforms an incoming InputStream into a String
-	 * 
+	 *
 	 * @param inputStream
 	 *            The stream to be transformed
 	 * @return The transformed stream

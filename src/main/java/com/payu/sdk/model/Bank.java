@@ -1,3 +1,26 @@
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2016 developers-payu-latam
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package com.payu.sdk.model;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -7,7 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Represents a bank in the PayU SDK.
- * 
+ *
  * @author PayU Latam
  * @since 1.0.0
  * @version 1.0.0, 21/08/2013
@@ -34,7 +57,7 @@ public class Bank {
 
 	/**
 	 * Default full constructor.
-	 * 
+	 *
 	 * @param id The bank's id
 	 * @param description The bank's description
 	 * @param pseCode The bank's pse code
@@ -48,7 +71,7 @@ public class Bank {
 
 	/**
 	 * Returns the ID of the bank.
-	 * 
+	 *
 	 * @return the ID
 	 */
 	public String getId() {
@@ -58,7 +81,7 @@ public class Bank {
 
 	/**
 	 * Returns the description of the bank.
-	 * 
+	 *
 	 * @return the description
 	 */
 	public String getDescription() {
@@ -68,7 +91,7 @@ public class Bank {
 
 	/**
 	 * Returns the code of the bank.
-	 * 
+	 *
 	 * @return the code
 	 */
 	public String getPseCode() {
@@ -78,7 +101,7 @@ public class Bank {
 
 	/**
 	 * Sets the bank's id
-	 * 
+	 *
 	 * @param id the ID to set
 	 */
 	public void setId(String id) {
@@ -88,7 +111,7 @@ public class Bank {
 
 	/**
 	 * Sets the bank's description
-	 * 
+	 *
 	 * @param description
 	 *            the description to set
 	 */
@@ -99,7 +122,7 @@ public class Bank {
 
 	/**
 	 * Sets the bank pse code
-	 * 
+	 *
 	 * @param pseCode
 	 *            the code to set
 	 */
@@ -110,7 +133,7 @@ public class Bank {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.lang.Object#toString()
 	 */
 	@Override

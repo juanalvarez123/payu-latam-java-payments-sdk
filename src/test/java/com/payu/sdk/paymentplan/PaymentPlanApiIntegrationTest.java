@@ -1,3 +1,26 @@
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2016 developers-payu-latam
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package com.payu.sdk.paymentplan;
 
 import java.text.SimpleDateFormat;
@@ -42,7 +65,7 @@ import com.payu.sdk.util.TestEnvironment;
 import com.payu.sdk.utils.LoggerUtil;
 
 /**
- * 
+ *
  * @author PayULatam
  * @since 1.0.0
  * @date 04/09/2013
@@ -264,7 +287,7 @@ public class PaymentPlanApiIntegrationTest {
 
 	/**
 	 * Error deleting a customer
-	 * 
+	 *
 	 * @throws PayUException
 	 * @throws InvalidParametersException
 	 */
@@ -310,7 +333,7 @@ public class PaymentPlanApiIntegrationTest {
 
 	/**
 	 * Authentication exception
-	 * 
+	 *
 	 * @throws PayUException
 	 */
 	@Test(expectedExceptions = { AuthenticationException.class,
@@ -522,7 +545,7 @@ public class PaymentPlanApiIntegrationTest {
 
 			Assert.assertNotNull(response, "Empty plan response");
 			Assert.assertNotNull(response.getCreditCardToken(), "Empty credit card token response");
-			Assert.assertEquals(response.getCreditCardToken(), tokenId);		
+			Assert.assertEquals(response.getCreditCardToken(), tokenId);
 
 		} catch (ConnectionException e) {
 
@@ -790,7 +813,7 @@ public class PaymentPlanApiIntegrationTest {
 
 	/**
 	 * Find the created token by customer
-	 * 
+	 *
 	 * @throws InterruptedException
 	 */
 	@Test(dependsOnMethods = "createCreditCard")
@@ -1252,7 +1275,7 @@ public class PaymentPlanApiIntegrationTest {
 
 	/**
 	 * Create empty subscription test
-	 * 
+	 *
 	 * @throws SDKException
 	 */
 	@Test(expectedExceptions = SDKException.class)
@@ -1276,7 +1299,7 @@ public class PaymentPlanApiIntegrationTest {
 
 	/**
 	 * Create failed subscription test
-	 * 
+	 *
 	 * @throws SDKException
 	 */
 	@Test(expectedExceptions = SDKException.class)
@@ -1309,7 +1332,7 @@ public class PaymentPlanApiIntegrationTest {
 
 	/**
 	 * Create failed subscription test2
-	 * 
+	 *
 	 * @throws SDKException
 	 */
 	@Test(expectedExceptions = SDKException.class)
@@ -1340,7 +1363,7 @@ public class PaymentPlanApiIntegrationTest {
 
 	/**
 	 * Create failed full subscription test
-	 * 
+	 *
 	 * @throws SDKException
 	 */
 	@Test(dependsOnMethods = { "createCustomer", "createPlan",
@@ -1493,7 +1516,7 @@ public class PaymentPlanApiIntegrationTest {
 
 	/**
 	 * Cancel subscription
-	 * 
+	 *
 	 * @throws InterruptedException
 	 * @throws SDKException
 	 */
@@ -2026,7 +2049,7 @@ public class PaymentPlanApiIntegrationTest {
 		Map<String, String> parameters = new HashMap<String, String>();
 		parameters.put(PayU.PARAMETERS.PAYER_NAME, "Test");
 		parameters.put(PayU.PARAMETERS.CUSTOMER_EMAIL, "prueba@payulatam.com");
-		
+
 		parameters.put(PayU.PARAMETERS.BANK_ACCOUNT_CUSTOMER_NAME, "Usuario de Prueba");
 		parameters.put(PayU.PARAMETERS.CUSTOMER_NAME, "Usuario de Prueba");
 		parameters.put(PayU.PARAMETERS.ACCOUNT_ID, "3");
@@ -2067,7 +2090,7 @@ public class PaymentPlanApiIntegrationTest {
 	/**
 	 * Expected Exceptions to Create a customer with a bank from brazil account
 	 * test
-	 * 
+	 *
 	 * @throws PayUException
 	 */
 	@Test(expectedExceptions = PayUException.class)
@@ -2311,7 +2334,7 @@ public class PaymentPlanApiIntegrationTest {
 
 		}
 	}
- 	
+
 	/**
 	 * find the customer list by plan Id
 	 */
@@ -2570,7 +2593,7 @@ public class PaymentPlanApiIntegrationTest {
 			LoggerUtil.error(e.getMessage(), e);
 		}
 	}
-	
 
-	
+
+
 }

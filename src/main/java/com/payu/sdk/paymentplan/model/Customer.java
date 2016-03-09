@@ -1,3 +1,26 @@
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2016 developers-payu-latam
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package com.payu.sdk.paymentplan.model;
 
 import java.util.ArrayList;
@@ -16,7 +39,7 @@ import com.payu.sdk.utils.JaxbUtil;
 
 /**
  * Represents a customer in the PayU SDK.
- * 
+ *
  * @author PayU Latam
  * @since 1.0.0
  * @version 1.0.0, 06/09/2013
@@ -55,7 +78,7 @@ public class Customer extends Request {
 	@XmlElementWrapper(name = "creditCards")
 	@XmlElement(name = "creditCard")
 	private List<PaymentPlanCreditCard> creditCards;
-	
+
 	/**
 	 * The customer bank accounts
 	 */
@@ -77,7 +100,7 @@ public class Customer extends Request {
 
 	/**
 	 * Returns the customer identifier
-	 * 
+	 *
 	 * @return the customer id
 	 */
 	public String getId() {
@@ -87,7 +110,7 @@ public class Customer extends Request {
 
 	/**
 	 * Returns the full name of the customer
-	 * 
+	 *
 	 * @return the customer name
 	 */
 	public String getFullName() {
@@ -96,7 +119,7 @@ public class Customer extends Request {
 
 	/**
 	 * Returns the email of the customer
-	 * 
+	 *
 	 * @return the customer email
 	 */
 	public String getEmail() {
@@ -105,26 +128,26 @@ public class Customer extends Request {
 
 	/**
 	 * Returns the list of credit cards associated to the customer
-	 * 
+	 *
 	 * @return the credit cards of the customer
 	 */
 	public List<PaymentPlanCreditCard> getCreditCards() {
 		return creditCards;
 	}
-	
+
 	/**
 	 * Returns the list of bank accounts associated to the customer
-	 * 
+	 *
 	 * @return the bank accounts of the customer
 	 */
 	public List<BankAccount> getBankAccounts() {
 		return bankAccounts;
 	}
-	
+
 
 	/**
 	 * Returns the list of credit cards associated to the customer
-	 * 
+	 *
 	 * @return the credit cards of the customer
 	 */
 	public List<Subscription> getSubscriptions() {
@@ -137,7 +160,7 @@ public class Customer extends Request {
 
 	/**
 	 * Sets the customer identifier
-	 * 
+	 *
 	 * @param id the customer id
 	 */
 	public void setId(String id) {
@@ -148,7 +171,7 @@ public class Customer extends Request {
 
 	/**
 	 * Sets the full name
-	 * 
+	 *
 	 * @param fullName the customer name
 	 */
 	public void setFullName(String fullName) {
@@ -157,7 +180,7 @@ public class Customer extends Request {
 
 	/**
 	 * Sets the email
-	 * 
+	 *
 	 * @param email the customer email
 	 */
 	public void setEmail(String email) {
@@ -166,7 +189,7 @@ public class Customer extends Request {
 
 	/**
 	 * Sets the list of credit cards associated to the customer
-	 * 
+	 *
 	 * @param creditCards
 	 *            the creditCards list to set
 	 */
@@ -177,7 +200,7 @@ public class Customer extends Request {
 
 	/**
 	 * Sets the list of bank accounts associated to the customer
-	 * 
+	 *
 	 * @param bankAccounts
 	 *            the bankAccounts list to set
 	 */
@@ -188,7 +211,7 @@ public class Customer extends Request {
 
 	/**
 	 * Sets the list of subscriptions associates to the customer
-	 * 
+	 *
 	 * @param subscriptions
 	 */
 	public void setSubscriptions(List<Subscription> subscriptions) {
@@ -198,7 +221,7 @@ public class Customer extends Request {
 	/**
 	 * Add a creditCard object to the associated credit card list. <br/>
 	 * <b>Important!</b>This method is only for presentation purposes.
-	 * 
+	 *
 	 * @param creditCard
 	 *            The credit card to associate with the customer
 	 */
@@ -208,11 +231,11 @@ public class Customer extends Request {
 		}
 		creditCards.add(creditCard);
 	}
-	
+
 	/**
 	 * Add a bankAccount object to the associated bankAccount list. <br/>
 	 * <b>Important!</b>This method is only for presentation purposes.
-	 * 
+	 *
 	 * @param bankAccount
 	 *            The bank account to associate with the customer
 	 */
@@ -225,7 +248,7 @@ public class Customer extends Request {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see com.payu.sdk.model.Request#getBaseRequestUrl(java.lang.String,
 	 * com.payu.sdk.constants#RequestMethod)
 	 */
@@ -248,7 +271,7 @@ public class Customer extends Request {
 
 	/**
 	 * Converts a xml string into a customer response object
-	 * 
+	 *
 	 * @param xml
 	 *            The object in a xml format
 	 * @return The customer response format

@@ -1,3 +1,26 @@
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2016 developers-payu-latam
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package com.payu.sdk.payments;
 
 import java.math.BigDecimal;
@@ -43,7 +66,7 @@ import com.payu.sdk.util.TestEnvironment;
 import com.payu.sdk.utils.LoggerUtil;
 
 /**
- * 
+ *
  * @author Payulatam.com
  * @since 4.3.7
  * @date 21/08/2013
@@ -71,7 +94,7 @@ public class PaymentsApiIntegrationTest {
 	 * Invalid order id
 	 */
 	private static final String INVALID_ORDER_ID = "1";
-	
+
 	/**
 	 * Valid installments number for Panama
 	 */
@@ -86,12 +109,12 @@ public class PaymentsApiIntegrationTest {
 	 * The created order id
 	 */
 	private Integer orderId;
-	
+
 	/**
 	 * The created order id for Authorization
 	 */
 	private Integer orderIdAuthorization;
-	
+
 	/**
 	 * the created transactionId
 	 */
@@ -100,8 +123,8 @@ public class PaymentsApiIntegrationTest {
 	/**
 	 * the created transactionId for Authorization
 	 */
-	private String transactionIdAuthorization;	
-	
+	private String transactionIdAuthorization;
+
 	/**
 	 * the created referenceCode
 	 */
@@ -195,7 +218,7 @@ public class PaymentsApiIntegrationTest {
 	public void getPaymentMethodAvailability() {
 
 		Thread.currentThread().setName("getPaymentMethodAvailability");
-		
+
 		try {
 			//VISA
 			PaymentMethodApi response = PayUPayments.getPaymentMethodAvailability("VISA");
@@ -204,7 +227,7 @@ public class PaymentsApiIntegrationTest {
 
 			Assert.assertNotNull(response, "Null response");
 			Assert.assertEquals(response.getType(), PaymentMethodType.CREDIT_CARD);
-			
+
 			//CENCOSUD
 			response = PayUPayments.getPaymentMethodAvailability("CENCOSUD");
 
@@ -212,13 +235,13 @@ public class PaymentsApiIntegrationTest {
 
 			Assert.assertNotNull(response, "Null response");
 			Assert.assertEquals(response.getType(), PaymentMethodType.CREDIT_CARD);
-			
+
 			//BOLETO_BANCARIO
 			response = PayUPayments.getPaymentMethodAvailability("BOLETO_BANCARIO");
 			LoggerUtil.info(RESPONSE_LOG_MESSAGE, response);
 			Assert.assertNotNull(response, "Null response");
 			Assert.assertEquals(response.getType(), PaymentMethodType.REFERENCED);
-			
+
 
 		} catch (ConnectionException e) {
 
@@ -232,10 +255,10 @@ public class PaymentsApiIntegrationTest {
 			Assert.fail(e.getMessage());
 		}
 
-	}	
-	
+	}
 
-	
+
+
 	/**
 	 * Get subscription plan list test
 	 */
@@ -529,7 +552,7 @@ public class PaymentsApiIntegrationTest {
 		}
 
 	}
-	
+
 	/**
 	 * Do authorization and capture with a specific confirmation page URL
 	 * @author <a href="manuel.vieda@payulatam.com">Manuel E. Vieda</a>
@@ -537,7 +560,7 @@ public class PaymentsApiIntegrationTest {
 	 */
 	@Test(dependsOnMethods = "doAuthorizationAndCapture")
 	public void doAuthorizationAndCaptureWithNotifyUrl() {
-	
+
 		Thread.currentThread().setName("doAuthorizationAndCaptureWithNotifyUrl");
 
 		Map<String, String> parameters = new HashMap<String, String>();
@@ -548,7 +571,7 @@ public class PaymentsApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "1");
 
 		parameters.put(PayU.PARAMETERS.COUNTRY, PaymentCountry.PA.name());
-		
+
 		parameters.put(PayU.PARAMETERS.NOTIFY_URL, "http://www.payulatam.com/");
 
 		// Panama account
@@ -647,7 +670,7 @@ public class PaymentsApiIntegrationTest {
 		}
 
 	}
-	
+
 	/**
 	 * Does a void transaction and sends the reason
 	 */
@@ -662,7 +685,7 @@ public class PaymentsApiIntegrationTest {
 
 		parameters.put(PayU.PARAMETERS.ORDER_ID,
 				orderId != null ? String.format("%d", orderId) : null);
-		
+
 		parameters.put(PayU.PARAMETERS.REASON, "A testing reason");
 
 		try {
@@ -729,9 +752,9 @@ public class PaymentsApiIntegrationTest {
 		}
 
 	}
-	
+
 	/**
-	 * Does a refund transaction and sends the reason 
+	 * Does a refund transaction and sends the reason
 	 */
 	@Test(dependsOnMethods = "doAuthorizationAndCapture")
 	public void doRefundWithReason() {
@@ -747,7 +770,7 @@ public class PaymentsApiIntegrationTest {
 
 		parameters.put(PayU.PARAMETERS.ORDER_ID,
 				orderId != null ? String.format("%d", orderId) : null);
-		
+
 		parameters.put(PayU.PARAMETERS.REASON, "A testing reason for refund");
 
 		try {
@@ -1229,9 +1252,9 @@ public class PaymentsApiIntegrationTest {
 
 		BigDecimal txValue = new BigDecimal(100.0).setScale(2,
 				RoundingMode.HALF_UP);
-		parameters.put(PayU.PARAMETERS.VALUE, txValue.toString()); 
-		
-		
+		parameters.put(PayU.PARAMETERS.VALUE, txValue.toString());
+
+
 		// ############# Buyer Basic Parameters
 		parameters.put(PayU.PARAMETERS.BUYER_NAME,
 				"BUYER NAME " + Long.toString(System.currentTimeMillis()));
@@ -1242,7 +1265,7 @@ public class PaymentsApiIntegrationTest {
 				.put(PayU.PARAMETERS.BUYER_CONTACT_PHONE, "(+BUY-er) 7563126");
 		parameters.put(PayU.PARAMETERS.BUYER_CNPJ, "47.247.606");
 		parameters.put(PayU.PARAMETERS.BUYER_DNI, "47.247.606/0001-90");
-		
+
 		// ############# Buyer's Address Parameters
 		parameters.put(PayU.PARAMETERS.BUYER_STREET, "Calle Buyer");
 		parameters.put(PayU.PARAMETERS.BUYER_STREET_2, "Carrera Buyer");
@@ -1303,7 +1326,7 @@ public class PaymentsApiIntegrationTest {
 
 	/**
 	 * Empty parameters exception
-	 * 
+	 *
 	 * @throws PayUException
 	 */
 	@Test(expectedExceptions = InvalidParametersException.class)
@@ -1317,7 +1340,7 @@ public class PaymentsApiIntegrationTest {
 
 	/**
 	 * Empty parameters exception
-	 * 
+	 *
 	 * @throws PayUException
 	 */
 	@Test(expectedExceptions = InvalidParametersException.class)
@@ -1375,7 +1398,7 @@ public class PaymentsApiIntegrationTest {
 
 	/**
 	 * Empty parameters exception
-	 * 
+	 *
 	 * @throws PayUException
 	 */
 	@Test(expectedExceptions = ConnectionException.class)
@@ -1398,7 +1421,7 @@ public class PaymentsApiIntegrationTest {
 
 	/**
 	 * Connection exception
-	 * 
+	 *
 	 * @throws PayUException
 	 */
 	@Test(expectedExceptions = PayUException.class)
@@ -1421,7 +1444,7 @@ public class PaymentsApiIntegrationTest {
 
 	/**
 	 * PayUException exception
-	 * 
+	 *
 	 * @throws PayUException
 	 */
 	@Test(expectedExceptions = PayUException.class)
@@ -1473,7 +1496,7 @@ public class PaymentsApiIntegrationTest {
 
 		//Device ID
 		parameters.put(PayU.PARAMETERS.DEVICE_SESSION_ID, "1254000");
-		
+
 		// Transaction value
 		BigDecimal txValue = new BigDecimal(2000.00).setScale(2,
 				RoundingMode.HALF_UP);
@@ -1602,13 +1625,13 @@ public class PaymentsApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.PAYER_DOCUMENT_TYPE, DocumentType.CC.name());
 		parameters.put(PayU.PARAMETERS.PAYER_DNI, "654654321");
 		parameters.put(PayU.PARAMETERS.PAYER_CONTACT_PHONE, "211424540");
-		
+
 		//MAF
 		parameters.put(PayU.PARAMETERS.COOKIE, "ABCde201" + System.currentTimeMillis());
 		parameters.put(PayU.PARAMETERS.IP_ADDRESS, "10.20.30.40");
 		parameters.put(PayU.PARAMETERS.USER_AGENT, "Mozilla-" + System.currentTimeMillis());
 		parameters.put(PayU.PARAMETERS.DEVICE_SESSION_ID, "DSI-" + System.currentTimeMillis());
-		
+
 		parameters.put(PayU.PARAMETERS.COUNTRY, PaymentCountry.CO.name());
 
 		// Colombia account
@@ -1631,15 +1654,15 @@ public class PaymentsApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.VALUE, txValue.toString());
 
 		parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, PaymentMethod.PSE.name());
-		
+
 		//
 		parameters.put(PayU.PARAMETERS.PSE_FINANCIAL_INSTITUTION_CODE, "1022");
 		parameters.put(PayU.PARAMETERS.PSE_FINANCIAL_INSTITUTION_NAME, "Banco Union Colombiano");
 		parameters.put(PayU.PARAMETERS.PAYER_PERSON_TYPE, PersonType.NATURAL.name());
-		
+
 		parameters.put(PayU.PARAMETERS.NOTIFY_URL, "https://www.confirmacion.com");
 		parameters.put(PayU.PARAMETERS.RESPONSE_URL, "https://www.respuesta.com");
-		
+
 
 		try {
 			TransactionResponse response = PayUPayments
@@ -1838,7 +1861,7 @@ public class PaymentsApiIntegrationTest {
 			Assert.fail(e.getMessage());
 		}
 	}
-	
+
 	/**
 	 * Do authorization and capture with Invalid Payment Method
 	 * @author <a href="fernando.moreno@payulatam.com">Fernando Moreno</a>
@@ -1896,7 +1919,7 @@ public class PaymentsApiIntegrationTest {
 			LoggerUtil.error(e.getMessage(), e);
 		}
 
-	}	
+	}
 
 	/**
 	 * Do authorization and capture without Payment Method
@@ -1960,9 +1983,9 @@ public class PaymentsApiIntegrationTest {
 			throw e;
 		}
 
-	}	
-	
-	
+	}
+
+
 	/**
 	 * Do authorization and capture with Birth Date Payer
 	 * @author <a href="fernando.moreno@payulatam.com">Fernando Moreno</a>
@@ -1977,10 +2000,10 @@ public class PaymentsApiIntegrationTest {
 
 		String nameOnCard = "NAME " + Long.toString(System.currentTimeMillis());
 		parameters.put(PayU.PARAMETERS.PAYER_NAME, nameOnCard);
-		
+
 		//Set Payer Birth date
 		parameters.put(PayU.PARAMETERS.PAYER_BIRTH_DATE,"1980-02-13");
-		
+
 		parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "3");
 
 		parameters.put(PayU.PARAMETERS.COUNTRY, PaymentCountry.MX.name());
@@ -2026,7 +2049,7 @@ public class PaymentsApiIntegrationTest {
 			LoggerUtil.error(e.getMessage(), e);
 			Assert.fail(e.getMessage());
 		}
-	}	
+	}
 
 	/**
 	 * test for when is Authorization And Capture Cash
@@ -2035,26 +2058,26 @@ public class PaymentsApiIntegrationTest {
 	 * 	<li>2. Payment for the {@link PaymentCountry#AR}.
 	 * 	<li>3. Payment method is {@link PaymentMethod#PAGOFACIL}.
 	 * </ul>
-	 * 
-	 * @throws ConnectionException 
-	 * @throws InvalidParametersException 
-	 * @throws PayUException 
-	 * 
+	 *
+	 * @throws ConnectionException
+	 * @throws InvalidParametersException
+	 * @throws PayUException
+	 *
 	 */
 	@Test
 	public void doAuthorizationAndCaptureCashTest() throws PayUException, InvalidParametersException, ConnectionException{
-		
+
 		String reference = "TEST_CASH";
 		String value= "870";
 
 		Map<String, String> parameters = new HashMap<String, String>();
 
 		parameters.put(PayU.PARAMETERS.ACCOUNT_ID, "9");
-	
+
 		parameters.put(PayU.PARAMETERS.REFERENCE_CODE, ""+reference);
-	
+
 		parameters.put(PayU.PARAMETERS.DESCRIPTION, "payment test");
-		
+
 		parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
 
 		parameters.put(PayU.PARAMETERS.VALUE, ""+value);
@@ -2078,15 +2101,15 @@ public class PaymentsApiIntegrationTest {
 		if(response != null){
 			response.getOrderId();
 			response.getTransactionId();
-			response.getState();	
+			response.getState();
 			LoggerUtil.info(" \t Order id : {0} \n\t Transaction id : {1} \n\t State : {2}", response.getOrderId(), response.getTransactionId(), response.getState());
-			
+
 			Assert.assertNotNull(response);
 
 		}
-		
-		
-		
+
+
+
 	}
-	
+
 }

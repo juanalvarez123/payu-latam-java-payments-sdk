@@ -1,3 +1,26 @@
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2016 developers-payu-latam
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package com.payu.sdk.model;
 
 import java.io.Serializable;
@@ -15,7 +38,7 @@ import com.payu.sdk.utils.xml.MapAdditionalValueAdapter;
 
 /**
  * Represents a order in the PayU SDK.
- * 
+ *
  * @author PayU Latam
  * @since 1.0.0
  * @version 1.0.0, 21/08/2013
@@ -76,7 +99,7 @@ public class Order implements Serializable {
 
 	/**
 	 * Returns the order's id
-	 * 
+	 *
 	 * @return the id
 	 */
 	public Integer getId() {
@@ -85,7 +108,7 @@ public class Order implements Serializable {
 
 	/**
 	 * Returns the account id
-	 * 
+	 *
 	 * @return the account id
 	 */
 	public Integer getAccountId() {
@@ -94,7 +117,7 @@ public class Order implements Serializable {
 
 	/**
 	 * Returns the order's status
-	 * 
+	 *
 	 * @return the status
 	 */
 	public OrderStatus getStatus() {
@@ -103,7 +126,7 @@ public class Order implements Serializable {
 
 	/**
 	 * Returns the order's cancellation code
-	 * 
+	 *
 	 * @return the cancellation code
 	 */
 	public OrderCancellationCode getCancellationCode() {
@@ -112,7 +135,7 @@ public class Order implements Serializable {
 
 	/**
 	 * Returns the order's reference code
-	 * 
+	 *
 	 * @return the reference code
 	 */
 	public String getReferenceCode() {
@@ -121,7 +144,7 @@ public class Order implements Serializable {
 
 	/**
 	 * Returns the order's description
-	 * 
+	 *
 	 * @return the description
 	 */
 	public String getDescription() {
@@ -130,7 +153,7 @@ public class Order implements Serializable {
 
 	/**
 	 * Returns the order's airline code
-	 * 
+	 *
 	 * @return the airlineCode
 	 */
 	public String getAirlineCode() {
@@ -139,7 +162,7 @@ public class Order implements Serializable {
 
 	/**
 	 * Returns the order's language
-	 * 
+	 *
 	 * @return the language
 	 */
 	public Language getLanguage() {
@@ -148,7 +171,7 @@ public class Order implements Serializable {
 
 	/**
 	 * Returns the order's notify url
-	 * 
+	 *
 	 * @return the notify url
 	 */
 	public String getNotifyUrl() {
@@ -165,7 +188,7 @@ public class Order implements Serializable {
 
 	/**
 	 * Returns the order's buyer
-	 * 
+	 *
 	 * @return the buyer
 	 */
 	public Buyer getBuyer() {
@@ -174,7 +197,7 @@ public class Order implements Serializable {
 
 	/**
 	 * Returns the order's transactions
-	 * 
+	 *
 	 * @return the transactions
 	 */
 	public List<Transaction> getTransactions() {
@@ -183,7 +206,7 @@ public class Order implements Serializable {
 
 	/**
 	 * Returns the order's additional values
-	 * 
+	 *
 	 * @return the additional values
 	 */
 	public Map<String, AdditionalValue> getAdditionalValues() {
@@ -192,7 +215,7 @@ public class Order implements Serializable {
 
 	/**
 	 * Returns a specific order's additional value
-	 * 
+	 *
 	 * @param additionalValueName The name of the additional value to get
 	 * @return The additional value it got
 	 */
@@ -207,7 +230,7 @@ public class Order implements Serializable {
 
 	/**
 	 * Sets the order's id
-	 * 
+	 *
 	 * @param id the id to set
 	 */
 	public void setId(Integer id) {
@@ -216,7 +239,7 @@ public class Order implements Serializable {
 
 	/**
 	 * Sets the order's account id
-	 * 
+	 *
 	 * @param accountId
 	 *            the accountId to set
 	 */
@@ -226,7 +249,7 @@ public class Order implements Serializable {
 
 	/**
 	 * Sets the order's status
-	 * 
+	 *
 	 * @param status
 	 *            the status to set
 	 */
@@ -236,7 +259,7 @@ public class Order implements Serializable {
 
 	/**
 	 * Sets the order's cancellation code
-	 * 
+	 *
 	 * @param cancellationCode
 	 *            the cancellation code to set
 	 */
@@ -246,7 +269,7 @@ public class Order implements Serializable {
 
 	/**
 	 * Sets the order's reference code
-	 * 
+	 *
 	 * @param referenceCode
 	 *            the reference code to set
 	 */
@@ -256,7 +279,7 @@ public class Order implements Serializable {
 
 	/**
 	 * Sets the order's description
-	 * 
+	 *
 	 * @param description
 	 *            the description to set
 	 */
@@ -266,7 +289,7 @@ public class Order implements Serializable {
 
 	/**
 	 * Sets the order's airline code
-	 * 
+	 *
 	 * @param airlineCode
 	 *            the airline code to set
 	 */
@@ -276,7 +299,7 @@ public class Order implements Serializable {
 
 	/**
 	 * Sets the order's language
-	 * 
+	 *
 	 * @param language
 	 *            the language to set
 	 */
@@ -286,7 +309,7 @@ public class Order implements Serializable {
 
 	/**
 	 * Sets the order's notify url
-	 * 
+	 *
 	 * @param notifyUrl
 	 *            the notify url to set
 	 */
@@ -296,7 +319,7 @@ public class Order implements Serializable {
 
 	/**
 	 * Sets the order's signature
-	 * 
+	 *
 	 * @param signature
 	 *            the signature to set
 	 */
@@ -306,7 +329,7 @@ public class Order implements Serializable {
 
 	/**
 	 * Sets the order's buyer
-	 * 
+	 *
 	 * @param buyer
 	 *            the buyer to set
 	 */
@@ -316,7 +339,7 @@ public class Order implements Serializable {
 
 	/**
 	 * Sets the order's transactions
-	 * 
+	 *
 	 * @param transactions
 	 *            the transactions to set
 	 */
@@ -326,7 +349,7 @@ public class Order implements Serializable {
 
 	/**
 	 * Sets the order's additional values
-	 * 
+	 *
 	 * @param additionalValues
 	 *            the additional values to set
 	 */

@@ -1,3 +1,26 @@
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2016 developers-payu-latam
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package com.payu.sdk.payments;
 
 import java.math.BigDecimal;
@@ -41,8 +64,8 @@ public class CreditCardPaymentMethodsIntegrationTest {
 	/**
 	 * List of Payment Method of the server
 	 */
-	private List<PaymentMethodComplete> lstPaymentMethod;	
-	
+	private List<PaymentMethodComplete> lstPaymentMethod;
+
 	private Map<String, Integer> mapAccounts;
 
 	/**
@@ -62,7 +85,7 @@ public class CreditCardPaymentMethodsIntegrationTest {
 		TestEnvironment environment = TestEnvironment.STG;
 
 		PayU.paymentsUrl = environment.getPaymentsApiUrl();
-		
+
 		mapAccounts = new HashMap<String, Integer>();
 		mapAccounts.put(PaymentCountry.CO.name(), 1);
 		mapAccounts.put(PaymentCountry.BR.name(), 3);
@@ -71,7 +94,7 @@ public class CreditCardPaymentMethodsIntegrationTest {
 		mapAccounts.put(PaymentCountry.CL.name(), 10);
 		mapAccounts.put(PaymentCountry.MX.name(), 11);
 		mapAccounts.put(PaymentCountry.PE.name(), 500198);
-		
+
 		LoggerUtil.setLogLevel(Level.ALL);
 	}
 
@@ -132,7 +155,7 @@ public class CreditCardPaymentMethodsIntegrationTest {
 		}
 
 	}
-	
+
 	/**
 	 * Test Credit Card Payment Methods with and without Security Code
 	 *  @author fernando.moreno
@@ -141,7 +164,7 @@ public class CreditCardPaymentMethodsIntegrationTest {
 	public void testPaymentMethodsCreditCardWithAndWithoutSecurityCode(){
 		Thread.currentThread().setName("testPaymentMethodsCreditCardWithSecurityCode");
 		if (lstPaymentMethod != null && !lstPaymentMethod.isEmpty())
-		{		
+		{
 			CreditCard creditCard;
 			for (PaymentMethodComplete paymentMethod:lstPaymentMethod){
 				creditCard = CreditCard.fromString(paymentMethod.getDescription(), paymentMethod.getCountry());
@@ -154,7 +177,7 @@ public class CreditCardPaymentMethodsIntegrationTest {
 			}
 		}
 	}
-	
+
 
 	/**
 	 * Do authorization and capture with CVV2
@@ -211,7 +234,7 @@ public class CreditCardPaymentMethodsIntegrationTest {
 
 			if (TransactionResponseCode.APPROVED.equals(response
 					.getResponseCode())) {
-				
+
 				String transactionId = response.getTransactionId();
 				Integer orderId = response.getOrderId();
 				LoggerUtil.info("Transaction Aproveed. orderId ={0} transactionId = {1}", orderId, transactionId );
@@ -230,10 +253,10 @@ public class CreditCardPaymentMethodsIntegrationTest {
 			//Assert.fail(e.getMessage());
 		}
 
-	}	
-	
+	}
 
-	
+
+
 
 	/**
 	 * Do authorization and capture without security code
@@ -306,11 +329,11 @@ public class CreditCardPaymentMethodsIntegrationTest {
 			//Assert.fail(e.getMessage());
 		}
 
-	}	
-	
+	}
+
 	/**
 	 * Some possible credit cards to be used in the tests
-	 * 
+	 *
 	 */
 	protected enum CreditCard {
 
@@ -335,7 +358,7 @@ public class CreditCardPaymentMethodsIntegrationTest {
 
 		// ELO
 		ELO("4462784368283422", "2015/01", "123",PaymentCountry.BR ),
-		
+
 		//Naranja-Dineromail
 		NARANJA("5895625600534000","2014/12","478",PaymentCountry.AR);
 
@@ -353,12 +376,12 @@ public class CreditCardPaymentMethodsIntegrationTest {
 		 * credit card security code
 		 */
 		private String securityCode;
-		
+
 		private PaymentCountry country;
 
 		/**
 		 * The credit card constructor
-		 * 
+		 *
 		 * @param creditCardNumber
 		 *            The credit card's number
 		 * @param expirationDate
@@ -398,7 +421,7 @@ public class CreditCardPaymentMethodsIntegrationTest {
 		public PaymentCountry getCountry() {
 			return country;
 		}
-		
+
 		public static CreditCard fromString(String desc, String country ) {
 			if (desc != null) {
 				for (CreditCard creditCard : CreditCard.values()) {
@@ -413,7 +436,7 @@ public class CreditCardPaymentMethodsIntegrationTest {
 			}
 			return null;
 		}
-		
-	}	
-	
+
+	}
+
 }

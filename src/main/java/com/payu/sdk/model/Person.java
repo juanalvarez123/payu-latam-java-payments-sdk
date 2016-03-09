@@ -1,3 +1,26 @@
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2016 developers-payu-latam
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package com.payu.sdk.model;
 
 import java.io.Serializable;
@@ -9,7 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * Represents a person in the PayU SDK.
- * 
+ *
  * @author PayU Latam
  * @since 1.0.0
  * @version 1.0.0, 06/09/2013
@@ -44,7 +67,7 @@ public abstract class Person implements Serializable {
 
 	/**
 	 * Returns the buyer/payer id in the merchant system
-	 * 
+	 *
 	 * @return the person identifier
 	 */
 	public String getMerchantPersonId() {
@@ -53,7 +76,7 @@ public abstract class Person implements Serializable {
 
 	/**
 	 * Returns the persons name
-	 * 
+	 *
 	 * @return the name
 	 */
 	public String getFullName() {
@@ -62,7 +85,7 @@ public abstract class Person implements Serializable {
 
 	/**
 	 * Returns the person's address
-	 * 
+	 *
 	 * @return the address
 	 */
 	public Address getAddress() {
@@ -71,7 +94,7 @@ public abstract class Person implements Serializable {
 
 	/**
 	 * Returns the person's e-mail
-	 * 
+	 *
 	 * @return the emailAddress
 	 */
 	public String getEmailAddress() {
@@ -80,7 +103,7 @@ public abstract class Person implements Serializable {
 
 	/**
 	 * Returns the person's contact phone
-	 * 
+	 *
 	 * @return the contactPhone
 	 */
 	public String getContactPhone() {
@@ -89,7 +112,7 @@ public abstract class Person implements Serializable {
 
 	/**
 	 * Returns the person's DNI number
-	 * 
+	 *
 	 * @return the DNI number
 	 */
 	public String getDniNumber() {
@@ -107,7 +130,7 @@ public abstract class Person implements Serializable {
 
 	/**
 	 * Set's the pers'ns CNPJ
-	 * 
+	 *
 	 * @param cNPJ
 	 *            the cNPJ to set
 	 */
@@ -117,7 +140,7 @@ public abstract class Person implements Serializable {
 
 	/**
 	 * Sets the buyer/payer id in the merchant system
-	 * 
+	 *
 	 * @param merchantPersonId the person identifier to set
 	 */
 	public void setMerchantPersonId(String merchantPersonId) {
@@ -135,7 +158,7 @@ public abstract class Person implements Serializable {
 
 	/**
 	 * Sets the person's billing address
-	 * 
+	 *
 	 * @param address
 	 *            the billingAddress to set
 	 */
@@ -145,7 +168,7 @@ public abstract class Person implements Serializable {
 
 	/**
 	 * Sets the person's e-mail
-	 * 
+	 *
 	 * @param emailAddress
 	 *            the emailAddress to set
 	 */
@@ -155,7 +178,7 @@ public abstract class Person implements Serializable {
 
 	/**
 	 * Sets the person's contact phone
-	 * 
+	 *
 	 * @param contactPhone
 	 *            the contact phone to set
 	 */
@@ -165,7 +188,7 @@ public abstract class Person implements Serializable {
 
 	/**
 	 * Returns the person's CNPJ
-	 * 
+	 *
 	 * @return the CNPJ
 	 */
 	public String getCNPJ() {

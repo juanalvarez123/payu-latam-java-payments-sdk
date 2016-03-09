@@ -1,3 +1,26 @@
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2016 developers-payu-latam
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package com.payu.sdk.utils;
 
 import java.io.UnsupportedEncodingException;
@@ -45,7 +68,7 @@ import com.payu.sdk.reporting.model.ReportingRequest;
 
 /**
  * Utility for requests in the PayU SDK.
- * 
+ *
  * @author PayU Latam
  * @since 1.0.0
  * @version 1.0.0, 21/08/2013
@@ -68,7 +91,7 @@ public final class RequestUtil extends CommonRequestUtil {
 
 	/**
 	 * Builds a payments ping request
-	 * 
+	 *
 	 * @return The complete payments ping request
 	 */
 	public static PaymentRequest buildPaymentsPingRequest() {
@@ -81,7 +104,7 @@ public final class RequestUtil extends CommonRequestUtil {
 
 	/**
 	 * Builds a reporting ping request
-	 * 
+	 *
 	 * @return The complete reporting request to be sent to the server
 	 */
 	public static ReportingRequest buildReportingPingRequest() {
@@ -96,7 +119,7 @@ public final class RequestUtil extends CommonRequestUtil {
 
 	/**
 	 * Builds a get bank list request
-	 * 
+	 *
 	 * @param paymentCountry
 	 *            The country in which the transaction is being done
 	 * @return The complete bank list request
@@ -114,7 +137,7 @@ public final class RequestUtil extends CommonRequestUtil {
 
 	/**
 	 * Builds a payment request
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to be sent to the server
 	 * @param transactionType
@@ -135,7 +158,7 @@ public final class RequestUtil extends CommonRequestUtil {
 
 	/**
 	 * Builds the payment method list request
-	 * 
+	 *
 	 * @return The complete payment methods list request
 	 */
 	public static Request buildPaymentMethodsListRequest() {
@@ -157,13 +180,13 @@ public final class RequestUtil extends CommonRequestUtil {
 		request.setCommand(Command.GET_PAYMENT_METHOD_AVAILABILITY);
 		request.setPaymentMethod(paymentMethod);
 		return request;
-	}	
+	}
 
 	/* Reporting Requests */
 
 	/**
 	 * Builds a order details reporting by the id
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to be sent to the server
 	 * @return The complete reporting request to be sent to the server
@@ -188,7 +211,7 @@ public final class RequestUtil extends CommonRequestUtil {
 
 	/**
 	 * Builds a order details reporting by reference code
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to be sent to the server
 	 * @return The complete reporting request to be sent to the server
@@ -206,7 +229,7 @@ public final class RequestUtil extends CommonRequestUtil {
 
 	/**
 	 * Builds a transaction reporting by the id
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to be sent to the server
 	 * @return The complete reporting request to be sent to the server
@@ -226,7 +249,7 @@ public final class RequestUtil extends CommonRequestUtil {
 
 	/**
 	 * Builds a create credit card token request
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to be sent to the server
 	 * @return The complete create credit card token request
@@ -262,7 +285,7 @@ public final class RequestUtil extends CommonRequestUtil {
 
 	/**
 	 * Builds a get credit card token request
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to be sent to the server
 	 * @return The complete get credit card token request
@@ -304,7 +327,7 @@ public final class RequestUtil extends CommonRequestUtil {
 
 	/**
 	 * Builds a remove credit card token request
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to be sent to the server
 	 * @return The complete remove credit card token request
@@ -335,7 +358,7 @@ public final class RequestUtil extends CommonRequestUtil {
 
 	/**
 	 * Builds a default request
-	 * 
+	 *
 	 * @return A simple request with merchant and language
 	 */
 	private static Request buildDefaultRequest(CommandRequest request) {
@@ -346,7 +369,7 @@ public final class RequestUtil extends CommonRequestUtil {
 
 	/**
 	 * Builds the default payment request
-	 * 
+	 *
 	 * @return A simple payment request with merchant, language and test
 	 */
 	private static PaymentRequest buildDefaultPaymentRequest() {
@@ -358,7 +381,7 @@ public final class RequestUtil extends CommonRequestUtil {
 
 	/**
 	 * Builds the default reporting request
-	 * 
+	 *
 	 * @return A simple reporting request with merchant, language and test
 	 */
 	private static ReportingRequest buildDefaultReportingRequest() {
@@ -367,10 +390,10 @@ public final class RequestUtil extends CommonRequestUtil {
 		request.setTest(PayU.isTest);
 		return request;
 	}
-	
+
 	/**
 	 * Builds a credit card entity
-	 * 
+	 *
 	 * @param name
 	 *            The credit card owner's name
 	 * @param creditCardNumber
@@ -402,7 +425,7 @@ public final class RequestUtil extends CommonRequestUtil {
 
 	/**
 	 * builds credit card token
-	 * 
+	 *
 	 * @param nameOnCard
 	 *            the credit card owner's name
 	 * @param payerId
@@ -435,7 +458,7 @@ public final class RequestUtil extends CommonRequestUtil {
 
 	/**
 	 * Builds a credit card transaction
-	 * 
+	 *
 	 * @param transaction
 	 *            The transaction to modify
 	 * @param nameOnCard
@@ -472,7 +495,7 @@ public final class RequestUtil extends CommonRequestUtil {
 
 	/**
 	 * Builds a merchant entity
-	 * 
+	 *
 	 * @return The merchant entity built
 	 */
 	private static Merchant buildMerchant() {
@@ -486,7 +509,7 @@ public final class RequestUtil extends CommonRequestUtil {
 
 	/**
 	 * Builds the order
-	 * 
+	 *
 	 * @param accountId
 	 *            The account's id number
 	 * @param txCurrency
@@ -519,7 +542,7 @@ public final class RequestUtil extends CommonRequestUtil {
 
 	/**
 	 * Builds the buyer entity
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters map to build the buyer
 	 * @return The buyer built
@@ -562,7 +585,7 @@ public final class RequestUtil extends CommonRequestUtil {
 
 	/**
 	 * Builds the payer entity
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters map to build the payer
 	 * @return The payer built
@@ -600,7 +623,7 @@ public final class RequestUtil extends CommonRequestUtil {
 				PayU.PARAMETERS.PAYER_BUSINESS_NAME);
 		PersonType payerType = getEnumValueParameter(PersonType.class,
 				parameters, PayU.PARAMETERS.PAYER_PERSON_TYPE);
-		
+
 		String payerBirthdate = getParameter(parameters,
 				PayU.PARAMETERS.PAYER_BIRTH_DATE);
 		if (payerBirthdate != null && !payerBirthdate.isEmpty()){
@@ -620,7 +643,7 @@ public final class RequestUtil extends CommonRequestUtil {
 
 	/**
 	 * Builds the person entity
-	 * 
+	 *
 	 * @param person
 	 *            The person to build
 	 * @param personId
@@ -682,7 +705,7 @@ public final class RequestUtil extends CommonRequestUtil {
 
 	/**
 	 * Build a transaction request based on the query parameters
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters map to send to the request
 	 * @param transactionType
@@ -704,7 +727,7 @@ public final class RequestUtil extends CommonRequestUtil {
 				PayU.PARAMETERS.REFERENCE_CODE);
 		String orderDescription = getParameter(parameters,
 				PayU.PARAMETERS.DESCRIPTION);
-		String orderNotifyUrl = getParameter(parameters, 
+		String orderNotifyUrl = getParameter(parameters,
 				PayU.PARAMETERS.NOTIFY_URL);
 
 		String creditCardNumber = getParameter(parameters,
@@ -737,7 +760,7 @@ public final class RequestUtil extends CommonRequestUtil {
 
 		String reason = getParameter(parameters,
 				PayU.PARAMETERS.REASON);
-		
+
 		Currency txCurrency = getEnumValueParameter(Currency.class, parameters,
 				PayU.PARAMETERS.CURRENCY);
 
@@ -764,18 +787,18 @@ public final class RequestUtil extends CommonRequestUtil {
 		// Device session ID
 		String deviceSessionId = getParameter(parameters,
 				PayU.PARAMETERS.DEVICE_SESSION_ID);
-		
+
 		//Response page
 		String responseUrlPage = getParameter(parameters, PayU.PARAMETERS.RESPONSE_URL);
-	
+
 		String tokenId = getParameter(parameters, PayU.PARAMETERS.TOKEN_ID);
 
 		Transaction transaction = new Transaction();
 		transaction.setType(transactionType);
-		
-		
+
+
 		if(responseUrlPage != null){
-			
+
 			addResponseUrlPage(transaction, responseUrlPage );
 		}
 
@@ -864,7 +887,7 @@ public final class RequestUtil extends CommonRequestUtil {
 			transaction.setAdditionalValues(buildAdditionalValues(txCurrency,
 					txValue, taxValue, taxReturnBase));
 			transaction.setOrder(order);
-			
+
 			transaction.setReason(reason);
 		}
 
@@ -873,7 +896,7 @@ public final class RequestUtil extends CommonRequestUtil {
 
 	/**
 	 * Adds the extra parameters required by the PSE payment method
-	 * 
+	 *
 	 * @param transaction
 	 * @param parameters
 	 * @throws InvalidParametersException
@@ -965,24 +988,24 @@ public final class RequestUtil extends CommonRequestUtil {
 		}
 		return stringBuilder.toString();
 	}
-	
-	
+
+
 	/**
 	 * Method for add in the transaccion a {@link ExtraParemeterNames} with the response url page.
 	 * <ul>
 	 * 	<li>1. Get of the {@link ExtraParemeterNames} RESPONSE_URL.</li>
 	 * 	<li>2. sets in the extra parameter of the {@code responseUrl value}.</li>
 	 * </ul>
-	 * 
+	 *
 	 * @param transaction
 	 * @param responseUrl
 	 * @throws InvalidParametersException
 	 */
 	private static void addResponseUrlPage(final Transaction transaction, String responseUrl) throws InvalidParametersException{
-	
+
 		transaction.addExtraParameter(ExtraParemeterNames.RESPONSE_URL.name(),
 				responseUrl);
-		
+
 	}
 
 }

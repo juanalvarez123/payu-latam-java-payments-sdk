@@ -1,3 +1,26 @@
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2016 developers-payu-latam
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package com.payu.sdk.reporting;
 
 import java.math.BigDecimal;
@@ -27,7 +50,7 @@ import com.payu.sdk.util.TestEnvironment;
 import com.payu.sdk.utils.LoggerUtil;
 
 /**
- * 
+ *
  * @author PayuLatam
  * @since 1.0.0
  * @date 21/08/2013
@@ -54,7 +77,7 @@ public class ReportingApiIntegrationTest {
 	 * the created transactionId
 	 */
 	private static String transactionId;
-	
+
 	/**
 	 * Panama Installments
 	 */
@@ -67,15 +90,15 @@ public class ReportingApiIntegrationTest {
 
 	@BeforeClass
 	private void init() {
-		
+
 		PayU.apiKey = "012345678901";
 		PayU.apiLogin = "012345678901";
 		PayU.merchantId = "1";
 		PayU.language = Language.en;
 		PayU.isTest = false;
-		
+
 		TestEnvironment environment = TestEnvironment.QA;
-		
+
 		PayU.paymentsUrl = environment.getPaymentsApiUrl();
 		PayU.reportsUrl = environment.getReportsApiUrl();
 
@@ -209,7 +232,7 @@ public class ReportingApiIntegrationTest {
 			Assert.assertNotNull(response, "Order not found");
 
 			Assert.assertEquals(response.getId(), orderId);
-			
+
 			if(!response.getTransactions().isEmpty()) {
 				Assert.assertNotNull(response.getTransactions().get(0).getId());
 			}
@@ -276,7 +299,7 @@ public class ReportingApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.TRANSACTION_ID, transactionId);
 
 		try {
-			
+
 			TransactionResponse response = PayUReports
 					.getTransactionResponse(parameters);
 

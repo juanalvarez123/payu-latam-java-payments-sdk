@@ -1,3 +1,26 @@
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2016 developers-payu-latam
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package com.payu.sdk.utils.xml;
 
 import java.util.HashMap;
@@ -19,7 +42,7 @@ import org.w3c.dom.Element;
 /**
  * Utility to adapt Object into {@link MapDetailsElement} and vice
  * versa.
- * 
+ *
  * @author PayU Latam
  * @since 1.0.0
  * @version 1.0.0, 21/08/2013
@@ -76,12 +99,12 @@ public class MapDetailsAdapter extends
 
 	/**
 	 * Marshals a given object
-	 * 
+	 *
 	 * @param obj
 	 *            The object
 	 * @return The marshalled object
-	 * @throws JAXBException 
-	 * @throws ParserConfigurationException 
+	 * @throws JAXBException
+	 * @throws ParserConfigurationException
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private Element marshalObject(Object obj) throws JAXBException,
@@ -103,9 +126,9 @@ public class MapDetailsAdapter extends
 
 	/**
 	 * Returns the document builder
-	 * 
+	 *
 	 * @return The document builder
-	 * @throws ParserConfigurationException 
+	 * @throws ParserConfigurationException
 	 */
 	private DocumentBuilder getDocumentBuilder() throws ParserConfigurationException {
 		// Lazy load the DocumentBuilder as it is not used for unmarshalling.
@@ -118,11 +141,11 @@ public class MapDetailsAdapter extends
 
 	/**
 	 * Returns the singleton JAXB context
-	 * 
+	 *
 	 * @param type
 	 *            The type for the context to be built
 	 * @return The built context
-	 * @throws JAXBException 
+	 * @throws JAXBException
 	 */
 	private JAXBContext getJAXBContext(Class<?> type) throws JAXBException {
 		if (jaxbContext == null) {

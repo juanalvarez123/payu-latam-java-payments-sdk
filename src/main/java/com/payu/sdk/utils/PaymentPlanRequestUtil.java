@@ -1,3 +1,26 @@
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2016 developers-payu-latam
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package com.payu.sdk.utils;
 
 import java.math.BigDecimal;
@@ -32,8 +55,8 @@ import com.payu.sdk.payments.model.SubscriptionsListRequest;
 import com.payu.sdk.payments.model.SubscriptionPlanListRequest;
 
 /**
- * Utility for payment plan requests in the PayU SDK. 
- * 
+ * Utility for payment plan requests in the PayU SDK.
+ *
  * @author PayU Latam
  * @since 1.0.0
  * @version 1.0.0, 11/09/2013
@@ -70,13 +93,13 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 			PayU.PARAMETERS.BANK_ACCOUNT_BANK_NAME,
 			PayU.PARAMETERS.BANK_ACCOUNT_TYPE,
 			PayU.PARAMETERS.BANK_ACCOUNT_STATE };
-	
+
 	public final static String EMPTY = "";
 	/* Build Methods */
-	
+
 	/**
 	 * Sets the authentication credentials to the API request object.
-	 * 
+	 *
 	 * @param parameters the parameters.
 	 * @param request the API request.
 	 */
@@ -84,7 +107,7 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 
 		request.setApiLogin(getParameter(parameters, PayU.PARAMETERS.API_LOGIN));
 		request.setApiKey(getParameter(parameters, PayU.PARAMETERS.API_KEY));
-		
+
 		String language = getParameter(parameters, PayU.PARAMETERS.LANGUAGE);
 		if (language != null) {
 			request.setLanguage(Language.valueOf(language));
@@ -99,14 +122,14 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 		}
 		else {
 			request.setTest(false);
-		}		
+		}
 	}
 
 	/* PRIVATE METHODS */
 
 	/**
 	 * Build the plan additional values (currency and value)
-	 * 
+	 *
 	 * @param txCurrency
 	 *            The currency of the plan
 	 * @param txValue
@@ -136,7 +159,7 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 
 	/**
 	 * Build the item additional values (currency and value)
-	 * 
+	 *
 	 * @param txCurrency
 	 *            The currency of the plan
 	 * @param txValue
@@ -166,7 +189,7 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 
 	/**
 	 * Creates or updates an additional value
-	 * 
+	 *
 	 * @param txCurrency
 	 *            The transaction currency
 	 * @param name
@@ -193,14 +216,14 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 
 	/**
 	 * Builds a costumer request
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to be sent to the server
 	 * @return The complete remove credit card token request
 	 */
 	public static Customer buildCustomerRequest(Map<String, String> parameters) {
 
-		
+
 		String customerName = getParameter(parameters,
 				PayU.PARAMETERS.CUSTOMER_NAME);
 
@@ -219,41 +242,41 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 
 		return request;
 	}
-	
+
 	/**
 	 * Builds a costumer request
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to be sent to the server
 	 * @return The request by customerRequestList
-	 * @throws PayUException 
+	 * @throws PayUException
 	 */
 	public static CustomerListRequest buildCustomerListRequest(Map<String, String> parameters) throws PayUException {
-	
+
 		Map<String, String> parametersFilter=new HashMap<String, String>();
-		
+
 		parametersFilter.put(PayU.PARAMETERS.PLAN_ID,
 				parameters.get(PayU.PARAMETERS.PLAN_ID));
-		
+
 		parametersFilter.put(PayU.PARAMETERS.PLAN_CODE,
 				parameters.get(PayU.PARAMETERS.PLAN_CODE));
-		
+
 		parametersFilter.put(PayU.PARAMETERS.LIMIT,
 				parameters.get(PayU.PARAMETERS.LIMIT));
-		
+
 		parametersFilter.put(PayU.PARAMETERS.OFFSET,
 				parameters.get(PayU.PARAMETERS.OFFSET));
-		 
+
 		CustomerListRequest request = new CustomerListRequest();
 		setAuthenticationCredentials(parameters, request);
 		request.setMap(parametersFilter);
-		
+
 		return request;
 	}
-	
+
 	/**
 	 * Builds a credit card request
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to be sent to the server
 	 * @return The complete credit card request
@@ -281,7 +304,7 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 		String phone = getParameter(parameters, PayU.PARAMETERS.PAYER_PHONE);
 		String expDate = getParameter(parameters,
 				PayU.PARAMETERS.CREDIT_CARD_EXPIRATION_DATE);
-		
+
 		String document = getParameter(parameters,
 				PayU.PARAMETERS.CREDIT_CARD_DOCUMENT);
 
@@ -297,7 +320,7 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 
 		PaymentPlanCreditCard request = new PaymentPlanCreditCard();
 		setAuthenticationCredentials(parameters, request);
-		
+
 		request.setToken(tokenId);
 		request.setCustomerId(customerId);
 		request.setNumber(creditCardNumber);
@@ -321,10 +344,10 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 
 		return request;
 	}
-	
+
 	/**
 	 * Builds a credit card request
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to be sent to the server
 	 * @return The complete credit card request
@@ -341,46 +364,46 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 
 	/**
 	 * Builds a bank account request
-	 * 
+	 *
 	 * @param parameters The parameters to be sent to the server
 	 * @return The complete bank account request
 	 * @throws InvalidParametersException
 	 */
 	public static BankAccount buildBankAccountRequest(Map<String, String> parameters)
 			throws InvalidParametersException {
-		
-		String bankAccountId = getParameter(parameters, 
+
+		String bankAccountId = getParameter(parameters,
 				PayU.PARAMETERS.BANK_ACCOUNT_ID);
-		String customerId = getParameter(parameters, 
+		String customerId = getParameter(parameters,
 				PayU.PARAMETERS.CUSTOMER_ID);
-		String accountId = getParameter(parameters, 
+		String accountId = getParameter(parameters,
 				PayU.PARAMETERS.ACCOUNT_ID);
-		String customerName = getParameter(parameters, 
+		String customerName = getParameter(parameters,
 				PayU.PARAMETERS.BANK_ACCOUNT_CUSTOMER_NAME);
 		String documentNumber = getParameter(parameters,
 				PayU.PARAMETERS.BANK_ACCOUNT_DOCUMENT_NUMBER);
-		String documentNumberType = getParameter(parameters, 
+		String documentNumberType = getParameter(parameters,
 				PayU.PARAMETERS.BANK_ACCOUNT_DOCUMENT_NUMBER_TYPE);
-		String bankName = getParameter(parameters, 
+		String bankName = getParameter(parameters,
 				PayU.PARAMETERS.BANK_ACCOUNT_BANK_NAME);
-		String bankType = getParameter(parameters, 
+		String bankType = getParameter(parameters,
 				PayU.PARAMETERS.BANK_ACCOUNT_TYPE);
-		String accountNumber = getParameter(parameters, 
+		String accountNumber = getParameter(parameters,
 				PayU.PARAMETERS.BANK_ACCOUNT_NUMBER);
-		String state = getParameter(parameters, 
+		String state = getParameter(parameters,
 				PayU.PARAMETERS.BANK_ACCOUNT_STATE);
-		String country = getParameter(parameters, 
+		String country = getParameter(parameters,
 				PayU.PARAMETERS.COUNTRY);
-		String accountDigit = getParameter(parameters, 
+		String accountDigit = getParameter(parameters,
 				PayU.PARAMETERS.BANK_ACCOUNT_ACCOUNT_DIGIT);
-		String agencyDigit = getParameter(parameters, 
+		String agencyDigit = getParameter(parameters,
 				PayU.PARAMETERS.BANK_ACCOUNT_AGENCY_DIGIT);
-		String agencyNumber = getParameter(parameters, 
+		String agencyNumber = getParameter(parameters,
 				PayU.PARAMETERS.BANK_ACCOUNT_AGENCY_NUMBER);
-		
+
 		BankAccount request = new BankAccount();
 		setAuthenticationCredentials(parameters, request);
-		
+
 		request.setId(bankAccountId);
 	    request.setAccountId(accountId);
 		request.setCustomerId(customerId);
@@ -395,34 +418,34 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 		request.setAgencyDigit(agencyDigit);
 		request.setAgencyNumber(agencyNumber);
 		request.setAccountDigit(accountDigit);
-		
+
 		return request;
 	}
-	
+
 	/**
 	 * Builds a bank account list request
-	 * 
+	 *
 	 * @param parameters The parameters to be sent to the server
 	 * @return The complete bank account request
 	 * @throws InvalidParametersException
 	 */
 	public static BankAccountListRequest buildBankAccountListRequest(Map<String, String> parameters)
 			throws InvalidParametersException {
-		
-		String customerId = getParameter(parameters, 
+
+		String customerId = getParameter(parameters,
 				PayU.PARAMETERS.CUSTOMER_ID);
-		
+
 		BankAccountListRequest request = new BankAccountListRequest();
 		setAuthenticationCredentials(parameters, request);
-		
+
 		request.setCustomerId(customerId);
-		
+
 		return request;
 	}
-	
+
 	/**
 	 * Builds a subscription plan request
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to be sent to the server
 	 * @return The complete SubscriptionPlan request
@@ -475,18 +498,18 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 		request.setPaymentAttemptsDelay(planPaymentAttemptsDelay);
 		request.setMaxPaymentAttempts(planPaymentMaxPaymentAttemps);
 		request.setMaxPendingPayments(planPaymentMaxPendingPayments);
-		
+
 		return request;
 	}
 
 	/**
 	 * Builds a subscription plan list request
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to be sent to the server
 	 * @return The complete SubscriptionPlan request
 	 * @throws InvalidParametersException
-	 * @throws PayUException 
+	 * @throws PayUException
 	 */
 	public static SubscriptionPlanListRequest buildSubscriptionPlanListRequest(Map<String, String> parameters)
 			throws InvalidParametersException, PayUException {
@@ -494,13 +517,13 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 		SubscriptionPlanListRequest request = new SubscriptionPlanListRequest();
 		request.setMap(parameters);
 		setAuthenticationCredentials(parameters, request);
-		
+
 		return request;
 	}
 
 	/**
 	 * Builds a Customer with a CreditCard request
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to be sent to the server
 	 * @return The complete Customer with a CreditCard request
@@ -518,10 +541,10 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 		return request;
 	}
 
-	
+
 	/**
 	 * Builds a Customer with a BankAccount request
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to be sent to the server
 	 * @return The complete Customer with a CreditCard request
@@ -541,7 +564,7 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 
 	/**
 	 * Builds a subscription request
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to be sent to the server
 	 * @return The complete subscription request
@@ -570,7 +593,7 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 		if(planId!=null){
 			plan.setAccountId(null);
 		}
-		
+
 		// Customer parameter
 		Customer customer = buildCustomerRequest(parameters);
 		// CreditCard parameter
@@ -589,14 +612,14 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 			if(bankAccount.getId()!=null){
 				bankAccount.setAccountId(null);
 			}
-			customer.addBankAccount(bankAccount);			
+			customer.addBankAccount(bankAccount);
 		}
-		
+
 
 		// Subscription basic parameters
 		Subscription request = new Subscription();
 		setAuthenticationCredentials(parameters, request);
-		
+
 		request.setTrialDays(trialDays);
 		request.setQuantity(quantity);
 		request.setInstallments(installments);
@@ -610,10 +633,10 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 
 		return request;
 	}
-	
+
 	/**
 	 * Builds an update subscription request
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to be sent to the server
 	 * @return The complete subscription request
@@ -621,30 +644,30 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 	 */
 	public static Request buildSubscriptionUpdateRequest(
 			Map<String, String> parameters) throws InvalidParametersException {
-		
-		String newCreditCardToken = getParameter(parameters, 
+
+		String newCreditCardToken = getParameter(parameters,
 				 PayU.PARAMETERS.TOKEN_ID);
-		
-		String newBankAccountId = getParameter(parameters, 
+
+		String newBankAccountId = getParameter(parameters,
 				 PayU.PARAMETERS.BANK_ACCOUNT_ID);
-		
+
 		String subscriptionId = getParameter(parameters,
 				PayU.PARAMETERS.SUBSCRIPTION_ID);
-		
+
 		Subscription request = new Subscription();
 		setAuthenticationCredentials(parameters, request);
-		
+
 		request.setUrlId(subscriptionId);
 		request.setCreditCardToken(newCreditCardToken);
 		request.setBankAccountId(newBankAccountId);
-		
+
 		return request;
-		
+
 	}
 
 	/**
 	 * Builds a recurring bill item request
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to be sent to the server
 	 * @return The complete recurring bill item request
@@ -671,7 +694,7 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 
 		String recurringBillItemId = getParameter(parameters,
 				PayU.PARAMETERS.RECURRING_BILL_ITEM_ID);
-		
+
 		String recurringItemId = getParameter(parameters,
 				PayU.PARAMETERS.RECURRING_ITEM_ID);
 
@@ -681,7 +704,7 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 		// Subscription basic parameters
 		RecurringBillItem request = new RecurringBillItem();
 		setAuthenticationCredentials(parameters, request);
-		
+
 		request.setId(recurringBillItemId);
 		request.setDescription(description);
 		request.setSubscriptionId(subscriptionId);
@@ -692,15 +715,15 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 
 		return request;
 	}
-	
+
 	/**
 	 * Builds a recurring bill item request
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to be sent to the server
 	 * @return The complete recurring bill item request
 	 * @throws InvalidParametersException
-	 * @throws PayUException 
+	 * @throws PayUException
 	 */
 	public static Request buildRecurringBillItemListRequest(
 			Map<String, String> parameters) throws InvalidParametersException, PayUException {
@@ -716,13 +739,13 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 		RecurringBillItemListRequest request = new RecurringBillItemListRequest();
 		setAuthenticationCredentials(parameters, request);
 		request.setMap(parametersRequest);
-		
+
 		return request;
 	}
 
 	/**
 	 * Builds a recurring bill request
-	 * 
+	 *
 	 * @param parameters The parameters to be sent to the server
 	 * @return The complete recurring bill request
 	 * @throws InvalidParametersException
@@ -742,11 +765,11 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 
 	/**
 	 * Builds a recurring bill list request
-	 * 
+	 *
 	 * @param parameters The parameters to be sent to the server
 	 * @return The complete recurring bill list request
 	 * @throws InvalidParametersException
-	 * @throws PayUException 
+	 * @throws PayUException
 	 */
 	public static Request buildRecurringBillListRequest(
 			Map<String, String> parameters) throws InvalidParametersException, PayUException {
@@ -769,16 +792,16 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 
 		return request;
 	}
-	
-	
+
+
 	/**
 	 * Builds a subscription request
-	 * 
-	 * @param parameters	
+	 *
+	 * @param parameters
 	 *            The parameters to be sent to the server
 	 * @return The complete subscription request
 	 * @throws InvalidParametersException
-	 * @throws PayUException 
+	 * @throws PayUException
 	 */
 	public static Request buildSubscriptionListRequest(
 			Map<String, String> parameters) throws InvalidParametersException, PayUException {
@@ -801,7 +824,7 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 				PayU.PARAMETERS.LIMIT);
 		String offset=getParameter(parameters,
 				PayU.PARAMETERS.OFFSET);
-		
+
 		Map<String, String> paramsFilter=new HashMap<String, String>();
 		paramsFilter.put(PayU.PARAMETERS.CUSTOMER_ID, customerId);
 		paramsFilter.put(PayU.PARAMETERS.PLAN_CODE, planCode);
@@ -811,12 +834,12 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 		paramsFilter.put(PayU.PARAMETERS.ACCOUNT_ID, accountId);
 		paramsFilter.put(PayU.PARAMETERS.LIMIT, limit);
 		paramsFilter.put(PayU.PARAMETERS.OFFSET, offset);
- 
+
 		SubscriptionsListRequest request = new SubscriptionsListRequest();
-		
+
 		request.setMap(paramsFilter);
 		setAuthenticationCredentials(parameters, request);
- 
+
 		return request;
 	}
 }
