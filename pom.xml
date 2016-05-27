@@ -6,8 +6,8 @@
 	<groupId>com.payulatam.sdk</groupId>
 	<artifactId>payu-java-sdk</artifactId>
 	<packaging>jar</packaging>
-	<version>1.1.4</version>
-	
+	<version>1.1.5</version>
+
 	<name>payu-java-sdk</name>
 	<description>PAYU SDK - Java 6+</description>
 	<url>http://www.payu.com.co</url>
@@ -29,12 +29,12 @@
 		<sonar.failsafe.reportsPath>/target/failsafe-reports</sonar.failsafe.reportsPath>
 		<sonar.language>java</sonar.language>
 		<sonar.exclusions>
-       		**com/payu/sdk/model/**,
-       		**com/payu/sdk/constants/**,
-       		**com/payu/sdk/exceptions/**,
-       		**com/payu/sdk/payments/model/**,
-       		**com/payu/sdk/reporting/model/**
-    	</sonar.exclusions>
+			**com/payu/sdk/model/**,
+			**com/payu/sdk/constants/**,
+			**com/payu/sdk/exceptions/**,
+			**com/payu/sdk/payments/model/**,
+			**com/payu/sdk/reporting/model/**
+		</sonar.exclusions>
 	</properties>
 
 	<dependencies>
@@ -77,8 +77,6 @@
 			<version>1.7.7</version>
 			<scope>test</scope>
 		</dependency>
-
-
 	</dependencies>
 
 
@@ -93,13 +91,11 @@
 					<target>${maven.compile.target}</target>
 				</configuration>
 			</plugin>
-
 			<plugin>
-        		<groupId>org.codehaus.mojo</groupId>
+				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>sonar-maven-plugin</artifactId>
 				<version>2.6</version>
-      		</plugin>
-
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
@@ -114,28 +110,8 @@
 					</excludes>
 				</configuration>
 			</plugin>
-
-			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<configuration>
-					<appendAssemblyId>false</appendAssemblyId>
-					<attach>false</attach>
-					<ignoreDirFormatExtensions>true</ignoreDirFormatExtensions>
-					<descriptors>
-						<descriptor>${pom.basedir}/src/assemble/distribution.xml</descriptor>
-					</descriptors>
-				</configuration>
-				<executions>
-					<execution>
-						<id>assembly</id>
-						<phase>package</phase>
-						<goals>
-							<goal>single</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
+
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
@@ -147,9 +123,48 @@
 		</resources>
 	</build>
 
-
 	<!-- Profiles -->
 	<profiles>
+		<profile>
+			<id>build-fat-jar</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<version>3.3</version>
+						<configuration>
+							<source>${maven.compile.source}</source>
+							<target>${maven.compile.target}</target>
+						</configuration>
+					</plugin>
+					<plugin>
+						<artifactId>maven-assembly-plugin</artifactId>
+						<configuration>
+							<appendAssemblyId>false</appendAssemblyId>
+							<attach>false</attach>
+							<ignoreDirFormatExtensions>true</ignoreDirFormatExtensions>
+							<descriptors>
+								<descriptor>${pom.basedir}/src/assemble/distribution.xml</descriptor>
+							</descriptors>
+						</configuration>
+						<executions>
+							<execution>
+								<id>assembly</id>
+								<phase>package</phase>
+								<goals>
+									<goal>single</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+				</plugins>
+			</build>
+		</profile>
+
+
+
 		<profile>
 			<id>integration-tests</id>
 			<build>
@@ -194,8 +209,7 @@
 								</execution>
 							</executions>
 						</plugin>
-						</plugins>
-
+					</plugins>
 				</pluginManagement>
 
 				<plugins>
@@ -256,7 +270,7 @@
 		</profile>
 
 
-		<profile>		
+		<profile>
 			<id>sonar</id>
 			<build>
 				<pluginManagement>

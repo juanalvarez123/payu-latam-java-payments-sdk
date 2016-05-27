@@ -10,6 +10,22 @@ Java SDK for connecting with the PayU Latam Payments API.
 Under construction.
 
 
+
+###Build
+
+In order to build the SDK from the source code you need to use Apache Maven and Java 1.6+.
+
+``mvn clean package``
+
+
+If you need to build the Jar embedding the required dependencies, you can use the Maven profile: build-fat-jar
+
+``mvn -P build-fat-jar clean package``
+
+
+NOTE: By default, maven will not include any dependency unless you explicitly use the profile
+
+
 ###Features
 
 Under construction.
