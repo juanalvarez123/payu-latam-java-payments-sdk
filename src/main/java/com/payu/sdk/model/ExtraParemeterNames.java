@@ -70,6 +70,21 @@ public enum ExtraParemeterNames {
 	/**
 	 * Response URL
 	 */
-	RESPONSE_URL
+	RESPONSE_URL,
+	
+	/**
+	 * 	Generic extra parameter 1
+	 */
+	EXTRA1,
+	
+	/**
+	 * 	Generic extra parameter 2
+	 */
+	EXTRA2,
+	
+	/**
+	 * 	Generic extra parameter 3
+	 */
+	EXTRA3		
 
 }
