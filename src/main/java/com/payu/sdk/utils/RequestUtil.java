@@ -870,6 +870,8 @@ public final class RequestUtil extends CommonRequestUtil {
 			transaction.setPaymentMethod(paramPaymentMethod);
 			//transaction.setPaymentMethod(paymentMethod);
 			transaction.setPayer(buildPayer(parameters));
+			
+			addTransactionExtraParameters(transaction, parameters);
 
 		} else if (TransactionType.VOID.equals(transactionType)
 				|| TransactionType.REFUND.equals(transactionType)
@@ -892,6 +894,33 @@ public final class RequestUtil extends CommonRequestUtil {
 		}
 
 		return transaction;
+	}
+	
+	/**
+	 * Adds the transaction extra parameters.
+	 *
+	 * @param transaction the transaction
+	 * @param parameters the parameters
+	 * @throws InvalidParametersException the invalid parameters exception
+	 */
+	private static void addTransactionExtraParameters(Transaction transaction, Map<String, String> parameters) throws InvalidParametersException {
+
+		String extra1 = getParameter(parameters, PayU.PARAMETERS.EXTRA1);
+		String extra2 = getParameter(parameters, PayU.PARAMETERS.EXTRA2);
+		String extra3 = getParameter(parameters, PayU.PARAMETERS.EXTRA3);
+		
+		if (extra1 != null) {
+			transaction.addExtraParameter(ExtraParemeterNames.EXTRA1.name(), extra1);
+		}
+		
+		if (extra2 != null) {
+			transaction.addExtraParameter(ExtraParemeterNames.EXTRA2.name(), extra2);
+		}
+		
+		if (extra3 != null) {
+			transaction.addExtraParameter(ExtraParemeterNames.EXTRA3.name(), extra3);
+		}
+		
 	}
 
 	/**

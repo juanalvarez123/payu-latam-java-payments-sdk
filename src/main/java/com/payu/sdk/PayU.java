@@ -339,6 +339,16 @@ public abstract class PayU {
 		String NOTIFY_URL = "notifyUrl";
 		/**The response page URL */
 		String RESPONSE_URL = "responseUrl";
+		
+		
+		/** The EXTRA 1 transaction extra parameter. */
+		String EXTRA1 = "extra1";
+		
+		/** The EXTRA 2 transaction extra parameter. */
+		String EXTRA2 = "extra2";
+		
+		/** The EXTRA 3 transaction extra parameter. */
+		String EXTRA3 = "extra3";
 
 	}
 
