@@ -103,7 +103,7 @@ public final class SignatureHelper {
 		DecimalFormat df = (DecimalFormat) NumberFormat.getInstance(Locale.US);
 		df.applyPattern(valueFormat);
 
-		StringBuffer message = new StringBuffer();
+		StringBuilder message = new StringBuilder();
 		message.append(key);
 		message.append("~");
 		message.append(merchantId);
