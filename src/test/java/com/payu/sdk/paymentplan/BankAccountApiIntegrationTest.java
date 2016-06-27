@@ -442,6 +442,7 @@ public class BankAccountApiIntegrationTest {
 
 		// Subscription parameters
 		parameters.put(PayU.PARAMETERS.QUANTITY, "5");
+		parameters.put(PayU.PARAMETERS.IMMEDIATE_PAYMENT, "true");
 		parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "2");
 		parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "2");
 		parameters.put(PayU.PARAMETERS.TERMS_AND_CONDITIONS_ACEPTED, "true");
@@ -489,6 +490,7 @@ public class BankAccountApiIntegrationTest {
 
 		// Subscription parameters
 		parameters.put(PayU.PARAMETERS.QUANTITY, "5");
+		parameters.put(PayU.PARAMETERS.IMMEDIATE_PAYMENT, "true");
 		parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "2");
 		parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "2");
 		parameters.put(PayU.PARAMETERS.TERMS_AND_CONDITIONS_ACEPTED, "true");
@@ -549,6 +551,7 @@ public class BankAccountApiIntegrationTest {
 
 		// Subscription parameters
 		parameters.put(PayU.PARAMETERS.QUANTITY, "5");
+		parameters.put(PayU.PARAMETERS.IMMEDIATE_PAYMENT, "true");
 		parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "2");
 		parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "2");
 
@@ -688,6 +691,7 @@ public class BankAccountApiIntegrationTest {
 
 		// Subscription parameters
 		parameters.put(PayU.PARAMETERS.QUANTITY, "5");
+		parameters.put(PayU.PARAMETERS.IMMEDIATE_PAYMENT, "true");
 		parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "2");
 		parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "2");
 		parameters.put(PayU.PARAMETERS.TERMS_AND_CONDITIONS_ACEPTED, "true");
@@ -739,6 +743,7 @@ public class BankAccountApiIntegrationTest {
 
 		// Subscription parameters
 		parameters.put(PayU.PARAMETERS.QUANTITY, "5");
+		parameters.put(PayU.PARAMETERS.IMMEDIATE_PAYMENT, "true");
 		parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "2");
 		parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "2");
 		parameters.put(PayU.PARAMETERS.TERMS_AND_CONDITIONS_ACEPTED, "true");
@@ -813,6 +818,7 @@ public class BankAccountApiIntegrationTest {
 
 		// Subscription parameters
 		parameters.put(PayU.PARAMETERS.QUANTITY, "5");
+		parameters.put(PayU.PARAMETERS.IMMEDIATE_PAYMENT, "true");
 		parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "2");
 		parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "2");
 		parameters.put(PayU.PARAMETERS.TERMS_AND_CONDITIONS_ACEPTED, "true");
@@ -859,6 +865,7 @@ public class BankAccountApiIntegrationTest {
 
 		// Subscription parameters
 		parameters.put(PayU.PARAMETERS.QUANTITY, "5");
+		parameters.put(PayU.PARAMETERS.IMMEDIATE_PAYMENT, "true");
 		parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "2");
 		parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "2");
 		parameters.put(PayU.PARAMETERS.TERMS_AND_CONDITIONS_ACEPTED, "true");
@@ -920,6 +927,7 @@ public class BankAccountApiIntegrationTest {
 
 		// Subscription parameters
 		parameters.put(PayU.PARAMETERS.QUANTITY, "5");
+		parameters.put(PayU.PARAMETERS.IMMEDIATE_PAYMENT, "true");
 		parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "2");
 		parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "2");
 		parameters.put(PayU.PARAMETERS.TERMS_AND_CONDITIONS_ACEPTED, "true");
@@ -975,6 +983,7 @@ public class BankAccountApiIntegrationTest {
 
 		// Subscription parameters
 		parameters.put(PayU.PARAMETERS.QUANTITY, "5");
+		parameters.put(PayU.PARAMETERS.IMMEDIATE_PAYMENT, "true");
 		parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "2");
 		parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "2");
 		parameters.put(PayU.PARAMETERS.TERMS_AND_CONDITIONS_ACEPTED, "true");
@@ -1026,6 +1035,7 @@ public class BankAccountApiIntegrationTest {
 
 		// Subscription parameters
 		parameters.put(PayU.PARAMETERS.QUANTITY, "5");
+		parameters.put(PayU.PARAMETERS.IMMEDIATE_PAYMENT, "true");
 		parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "2");
 		parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "2");
 		parameters.put(PayU.PARAMETERS.TERMS_AND_CONDITIONS_ACEPTED, "true");
@@ -1083,6 +1093,7 @@ public class BankAccountApiIntegrationTest {
 
 		// Subscription parameters
 		parameters.put(PayU.PARAMETERS.QUANTITY, "5");
+		parameters.put(PayU.PARAMETERS.IMMEDIATE_PAYMENT, "true");
 		parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "2");
 		parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "2");
 		parameters.put(PayU.PARAMETERS.TERMS_AND_CONDITIONS_ACEPTED, "true");
@@ -1146,6 +1157,7 @@ public class BankAccountApiIntegrationTest {
 
 		// Subscription parameters
 		parameters.put(PayU.PARAMETERS.QUANTITY, "5");
+		parameters.put(PayU.PARAMETERS.IMMEDIATE_PAYMENT, "true");
 		parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "2");
 		parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "2");
 		parameters.put(PayU.PARAMETERS.TERMS_AND_CONDITIONS_ACEPTED, "true");
@@ -1299,6 +1311,7 @@ public class BankAccountApiIntegrationTest {
 
 		// Subscription parameters
 		parameters.put(PayU.PARAMETERS.QUANTITY, "5");
+		parameters.put(PayU.PARAMETERS.IMMEDIATE_PAYMENT, "true");
 		parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "2");
 		parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "2");
 		// Customer parameters

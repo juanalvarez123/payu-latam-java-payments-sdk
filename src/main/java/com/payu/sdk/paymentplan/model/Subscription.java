@@ -34,8 +34,10 @@ import javax.xml.bind.annotation.XmlType;
 import com.payu.sdk.constants.Resources;
 import com.payu.sdk.constants.Resources.RequestMethod;
 import com.payu.sdk.exceptions.PayUException;
+import com.payu.sdk.model.Address;
 import com.payu.sdk.model.request.Request;
 import com.payu.sdk.utils.JaxbUtil;
+import java.util.List;
 
 /**
  * Represents a Subscription (Recurrent Payment) in the PayU SDK.
@@ -46,9 +48,9 @@ import com.payu.sdk.utils.JaxbUtil;
  */
 @XmlRootElement(name = "subscription")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(propOrder = { "id", "trialDays", "quantity", "installments",
+@XmlType(propOrder = { "id", "trialDays", "immediatePayment", "quantity", "installments",
 		"currentPeriodStart", "currentPeriodEnd", "customer", "plan",
-		"creditCardToken", "bankAccountId","termsAndConditionsAcepted" })
+		"creditCardToken", "bankAccountId","termsAndConditionsAcepted", "deliveryAddress", "recurringBillItems" })
 public class Subscription extends Request {
 
 	/**
@@ -110,13 +112,27 @@ public class Subscription extends Request {
 	 * Bank account identifier to modify for the subscription
 	 */
 	private String  bankAccountId;
-
-
-	/*
+	
+	/**
 	 *  If the client accepted the terms and conditions document.
 	 */
 	private Boolean termsAndConditionsAcepted;
-
+	
+	/**
+	 * Allows to process an immediate payment when the subscription is created
+	 */
+	private Boolean immediatePayment;
+	
+	/**
+	 * Subscription delivery address
+	 */
+	private Address deliveryAddress;
+	
+	/**
+	 * The extra charges of a subscription
+	 */
+	private List<RecurringBillItem> recurringBillItems;
+	
 	// -------------------------------------------------------
 	// GETTERS AND SETTERS
 	// -------------------------------------------------------
@@ -227,7 +243,37 @@ public class Subscription extends Request {
 
 		return bankAccountId;
 	}
+	
+	/**
+	 * Returns a flag to indicate an inmmediate payment
+	 * 
+	 * @return the immediate payment flag
+	 */
+	public Boolean getImmediatePayment() {
 
+		return immediatePayment;
+	}
+	
+	/**
+	 * Returns the subscription delivery address
+	 * 
+	 * @return the object delivery address
+	 */
+	public Address getDeliveryAddress() {
+		
+		return deliveryAddress;
+	}
+	
+	/**
+	 * Returns the subscription recurring bill items
+	 * 
+	 * @return the recurringBillItems
+	 */
+	public List<RecurringBillItem> getRecurringBillItems() {
+		
+		return recurringBillItems;
+	}
+	
 	/**
 	 * Sets the subscription identifier
 	 *
@@ -339,8 +385,40 @@ public class Subscription extends Request {
 
 		this.bankAccountId = bankAccountId;
 	}
+	
+	/**
+	 * Sets the inmmediate payment
+	 * 
+	 * @param immediatePayment
+	 *            the immediate payment flag
+	 */
+	public void setImmediatePayment(Boolean immediatePayment) {
 
+		this.immediatePayment = immediatePayment;
+	}
+	
+	/**
+	 * Sets the subscription deliveryAddres
+	 * 
+	 * @param deliveryAddress
+	 *            the delivery address
+	 */
+	public void setDeliveryAddress(Address deliveryAddress) {
+		
+		this.deliveryAddress = deliveryAddress;
+	}
+	
+	/**
+	 * Sets the suscription recurring bill items
+	 * 
+	 * @param recurringBillItems
+	 *            the recurringBillItems to set
+	 */
+	public void setRecurringBillItems(List<RecurringBillItem> recurringBillItems) {
 
+		this.recurringBillItems = recurringBillItems;
+	}
+	
 	/* (non-Javadoc)
 	 * @see com.payu.sdk.model.request.Request#getBaseRequestUrl(java.lang.String, com.payu.sdk.constants.Resources.RequestMethod)
 	 */

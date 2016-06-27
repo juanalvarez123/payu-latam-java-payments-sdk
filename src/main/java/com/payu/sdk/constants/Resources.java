@@ -59,11 +59,16 @@ public interface Resources {
 	 * API Version 4.0
 	 */
 	String V4_0 = "4.0";
+	
+	/**
+	 * API Version 4.9
+	 */
+	String V4_9 = "v4.9";
 
 	/**
 	 * Payment Plan Current Version
 	 */
-	String PAYMENT_PLAN_VERSION = V4_3;
+	String PAYMENT_PLAN_VERSION = V4_9;
 
 	/**
 	 * Default API Current Version
