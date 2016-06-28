@@ -24,6 +24,7 @@
 package com.payu.sdk.paymentplan.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -37,7 +38,6 @@ import com.payu.sdk.exceptions.PayUException;
 import com.payu.sdk.model.Address;
 import com.payu.sdk.model.request.Request;
 import com.payu.sdk.utils.JaxbUtil;
-import java.util.List;
 
 /**
  * Represents a Subscription (Recurrent Payment) in the PayU SDK.
@@ -48,9 +48,9 @@ import java.util.List;
  */
 @XmlRootElement(name = "subscription")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(propOrder = { "id", "trialDays", "immediatePayment", "quantity", "installments",
-		"currentPeriodStart", "currentPeriodEnd", "customer", "plan",
-		"creditCardToken", "bankAccountId","termsAndConditionsAcepted", "deliveryAddress", "recurringBillItems" })
+@XmlType(propOrder = { "id", "trialDays", "quantity", "installments", "currentPeriodStart", "currentPeriodEnd", "customer",
+		"plan", "creditCardToken", "bankAccountId", "termsAndConditionsAcepted", "immediatePayment", "deliveryAddress",
+		"notifyUrl", "sourceReference", "recurringBillItems", "extra1", "extra2" })
 public class Subscription extends Request {
 
 	/**
@@ -129,9 +129,29 @@ public class Subscription extends Request {
 	private Address deliveryAddress;
 	
 	/**
+	 * The subscription notify url
+	 */
+	private String notifyUrl;
+	
+	/**
+	 * The subscription source reference
+	 */
+	private String sourceReference;
+	
+	/**
 	 * The extra charges of a subscription
 	 */
 	private List<RecurringBillItem> recurringBillItems;
+	
+	/**
+	 * The extra1 field
+	 */
+	private String extra1;
+	
+	/**
+	 * The extra2 field
+	 */
+	private String extra2;
 	
 	// -------------------------------------------------------
 	// GETTERS AND SETTERS
@@ -265,6 +285,26 @@ public class Subscription extends Request {
 	}
 	
 	/**
+	 * Returns the subscription notify url
+	 * 
+	 * @return the notifyUrl
+	 */
+	public String getNotifyUrl() {
+	
+		return notifyUrl;
+	}
+
+	/**
+	 * Returns the subscription source reference
+	 * 
+	 * @return the sourceReference
+	 */
+	public String getSourceReference() {
+		
+		return sourceReference;
+	}
+	
+	/**
 	 * Returns the subscription recurring bill items
 	 * 
 	 * @return the recurringBillItems
@@ -272,6 +312,26 @@ public class Subscription extends Request {
 	public List<RecurringBillItem> getRecurringBillItems() {
 		
 		return recurringBillItems;
+	}
+	
+	/**
+	 * Returns the subscription extra1 field
+	 * 
+	 * @return the extra1
+	 */
+	public String getExtra1() {
+
+		return extra1;
+	}
+
+	/**
+	 * Returns the subscription's extra2 field
+	 * 
+	 * @return the extra2
+	 */
+	public String getExtra2() {
+
+		return extra2;
 	}
 	
 	/**
@@ -396,7 +456,7 @@ public class Subscription extends Request {
 
 		this.immediatePayment = immediatePayment;
 	}
-	
+
 	/**
 	 * Sets the subscription deliveryAddres
 	 * 
@@ -404,10 +464,32 @@ public class Subscription extends Request {
 	 *            the delivery address
 	 */
 	public void setDeliveryAddress(Address deliveryAddress) {
-		
+
 		this.deliveryAddress = deliveryAddress;
 	}
-	
+
+	/**
+	 * Sets the subscription notify url
+	 * 
+	 * @param notifyUrl
+	 *            the notifyUrl to set
+	 */
+	public void setNotifyUrl(String notifyUrl) {
+
+		this.notifyUrl = notifyUrl;
+	}
+
+	/**
+	 * Sets the subscription source reference
+	 * 
+	 * @param sourceReference
+	 *            the source reference to set
+	 */
+	public void setSourceReference(String sourceReference) {
+
+		this.sourceReference = sourceReference;
+	}
+
 	/**
 	 * Sets the suscription recurring bill items
 	 * 
@@ -417,6 +499,28 @@ public class Subscription extends Request {
 	public void setRecurringBillItems(List<RecurringBillItem> recurringBillItems) {
 
 		this.recurringBillItems = recurringBillItems;
+	}
+
+	/**
+	 * Sets the extra1 field
+	 * 
+	 * @param extra1
+	 *            the extra1 to set
+	 */
+	public void setExtra1(String extra1) {
+
+		this.extra1 = extra1;
+	}
+
+	/**
+	 * Sets the extra2 field
+	 * 
+	 * @param extra2
+	 *            the extra2 to set
+	 */
+	public void setExtra2(String extra2) {
+
+		this.extra2 = extra2;
 	}
 	
 	/* (non-Javadoc)

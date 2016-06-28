@@ -632,6 +632,12 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 		deliveryAddress.setPostalCode(getParameter(parameters, PayU.PARAMETERS.DELIVERY_POSTAL_CODE));
 		deliveryAddress.setPhone(getParameter(parameters, PayU.PARAMETERS.DELIVERY_PHONE));
 		
+		// Subscription notifyUrl, sourceReference, extra1 and extra 2 parameters
+		String notifyUrl = getParameter(parameters, PayU.PARAMETERS.NOTIFY_URL);
+		String sourceReference = getParameter(parameters, PayU.PARAMETERS.SOURCE_REFERENCE);
+		String extra1 = getParameter(parameters, PayU.PARAMETERS.EXTRA1);
+		String extra2 = getParameter(parameters, PayU.PARAMETERS.EXTRA2);
+		
 		// Subscription basic parameters
 		Subscription request = new Subscription();
 		setAuthenticationCredentials(parameters, request);
@@ -642,12 +648,16 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 		request.setInstallments(installments);
 		request.setTermsAndConditionsAcepted(termsAndConditionsAcepted);
 		request.setDeliveryAddress(deliveryAddress);
+		request.setRecurringBillItems(recurringBillItems);
+		request.setNotifyUrl(notifyUrl);
+		request.setSourceReference(sourceReference);
+		request.setExtra1(extra1);
+		request.setExtra1(extra2);
 
 		// Subscription complex parameters (customer and plan)
 		request.setPlan(plan);
 		request.setCustomer(customer);
 		request.setId(subscriptionId);
-		request.setRecurringBillItems(recurringBillItems);
 
 		return request;
 	}

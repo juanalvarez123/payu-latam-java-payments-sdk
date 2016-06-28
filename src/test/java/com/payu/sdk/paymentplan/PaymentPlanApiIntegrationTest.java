@@ -1074,6 +1074,18 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.QUANTITY, "5");
 		parameters.put(PayU.PARAMETERS.IMMEDIATE_PAYMENT, "true");
 		parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "2");
+		parameters.put(PayU.PARAMETERS.NOTIFY_URL, "testUrl");
+		parameters.put(PayU.PARAMETERS.SOURCE_REFERENCE, "testSourceReference");
+		parameters.put(PayU.PARAMETERS.EXTRA1, "extra1");
+		parameters.put(PayU.PARAMETERS.EXTRA2, "extra2");
+		parameters.put(PayU.PARAMETERS.DELIVERY_ADDRESS_1, "line1");
+		parameters.put(PayU.PARAMETERS.DELIVERY_ADDRESS_2, "line2");
+		parameters.put(PayU.PARAMETERS.DELIVERY_ADDRESS_3, "line3");
+		parameters.put(PayU.PARAMETERS.DELIVERY_CITY, "Bogotá");
+		parameters.put(PayU.PARAMETERS.DELIVERY_STATE, "Cundinamarca");
+		parameters.put(PayU.PARAMETERS.DELIVERY_COUNTRY, "CO");
+		parameters.put(PayU.PARAMETERS.DELIVERY_POSTAL_CODE, "101010");
+		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
 
 		try {
 			Subscription response = PayUSubscription.create(parameters);
@@ -1111,6 +1123,18 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.IMMEDIATE_PAYMENT, "true");
 		parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "2");
 		parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "2");
+		parameters.put(PayU.PARAMETERS.NOTIFY_URL, "testUrl");
+		parameters.put(PayU.PARAMETERS.SOURCE_REFERENCE, "testSourceReference");
+		parameters.put(PayU.PARAMETERS.EXTRA1, "extra1");
+		parameters.put(PayU.PARAMETERS.EXTRA2, "extra2");
+		parameters.put(PayU.PARAMETERS.DELIVERY_ADDRESS_1, "line1");
+		parameters.put(PayU.PARAMETERS.DELIVERY_ADDRESS_2, "line2");
+		parameters.put(PayU.PARAMETERS.DELIVERY_ADDRESS_3, "line3");
+		parameters.put(PayU.PARAMETERS.DELIVERY_CITY, "Bogotá");
+		parameters.put(PayU.PARAMETERS.DELIVERY_STATE, "Cundinamarca");
+		parameters.put(PayU.PARAMETERS.DELIVERY_COUNTRY, "CO");
+		parameters.put(PayU.PARAMETERS.DELIVERY_POSTAL_CODE, "101010");
+		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
 
 		// Customer parameters
 		parameters.put(PayU.PARAMETERS.CUSTOMER_NAME, "Oscar");
@@ -1170,6 +1194,18 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.IMMEDIATE_PAYMENT, "true");
 		parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "2");
 		parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "2");
+		parameters.put(PayU.PARAMETERS.NOTIFY_URL, "testUrl");
+		parameters.put(PayU.PARAMETERS.SOURCE_REFERENCE, "testSourceReference");
+		parameters.put(PayU.PARAMETERS.EXTRA1, "extra1");
+		parameters.put(PayU.PARAMETERS.EXTRA2, "extra2");
+		parameters.put(PayU.PARAMETERS.DELIVERY_ADDRESS_1, "line1");
+		parameters.put(PayU.PARAMETERS.DELIVERY_ADDRESS_2, "line2");
+		parameters.put(PayU.PARAMETERS.DELIVERY_ADDRESS_3, "line3");
+		parameters.put(PayU.PARAMETERS.DELIVERY_CITY, "Bogotá");
+		parameters.put(PayU.PARAMETERS.DELIVERY_STATE, "Cundinamarca");
+		parameters.put(PayU.PARAMETERS.DELIVERY_COUNTRY, "CO");
+		parameters.put(PayU.PARAMETERS.DELIVERY_POSTAL_CODE, "101010");
+		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
 
 		// Customer parameters
 		parameters.put(PayU.PARAMETERS.CUSTOMER_ID, customerId);
@@ -1225,6 +1261,18 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.IMMEDIATE_PAYMENT, "true");
 		parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "2");
 		parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "2");
+		parameters.put(PayU.PARAMETERS.NOTIFY_URL, "testUrl");
+		parameters.put(PayU.PARAMETERS.SOURCE_REFERENCE, "testSourceReference");
+		parameters.put(PayU.PARAMETERS.EXTRA1, "extra1");
+		parameters.put(PayU.PARAMETERS.EXTRA2, "extra2");
+		parameters.put(PayU.PARAMETERS.DELIVERY_ADDRESS_1, "line1");
+		parameters.put(PayU.PARAMETERS.DELIVERY_ADDRESS_2, "line2");
+		parameters.put(PayU.PARAMETERS.DELIVERY_ADDRESS_3, "line3");
+		parameters.put(PayU.PARAMETERS.DELIVERY_CITY, "Bogotá");
+		parameters.put(PayU.PARAMETERS.DELIVERY_STATE, "Cundinamarca");
+		parameters.put(PayU.PARAMETERS.DELIVERY_COUNTRY, "CO");
+		parameters.put(PayU.PARAMETERS.DELIVERY_POSTAL_CODE, "101010");
+		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
 
 		// Customer parameters
 		parameters.put(PayU.PARAMETERS.CUSTOMER_ID, customerId);
@@ -1293,6 +1341,18 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.IMMEDIATE_PAYMENT, "true");
 		parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "2");
 		parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "2");
+		parameters.put(PayU.PARAMETERS.NOTIFY_URL, "testUrl");
+		parameters.put(PayU.PARAMETERS.SOURCE_REFERENCE, "testSourceReference");
+		parameters.put(PayU.PARAMETERS.EXTRA1, "extra1");
+		parameters.put(PayU.PARAMETERS.EXTRA2, "extra2");
+		parameters.put(PayU.PARAMETERS.DELIVERY_ADDRESS_1, "line1");
+		parameters.put(PayU.PARAMETERS.DELIVERY_ADDRESS_2, "line2");
+		parameters.put(PayU.PARAMETERS.DELIVERY_ADDRESS_3, "line3");
+		parameters.put(PayU.PARAMETERS.DELIVERY_CITY, "Bogotá");
+		parameters.put(PayU.PARAMETERS.DELIVERY_STATE, "Cundinamarca");
+		parameters.put(PayU.PARAMETERS.DELIVERY_COUNTRY, "CO");
+		parameters.put(PayU.PARAMETERS.DELIVERY_POSTAL_CODE, "101010");
+		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
 
 		Subscription response = PayUSubscription.create(parameters);
 
@@ -1319,6 +1379,18 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.IMMEDIATE_PAYMENT, "true");
 		parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "2");
 		parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "2");
+		parameters.put(PayU.PARAMETERS.NOTIFY_URL, "testUrl");
+		parameters.put(PayU.PARAMETERS.SOURCE_REFERENCE, "testSourceReference");
+		parameters.put(PayU.PARAMETERS.EXTRA1, "extra1");
+		parameters.put(PayU.PARAMETERS.EXTRA2, "extra2");
+		parameters.put(PayU.PARAMETERS.DELIVERY_ADDRESS_1, "line1");
+		parameters.put(PayU.PARAMETERS.DELIVERY_ADDRESS_2, "line2");
+		parameters.put(PayU.PARAMETERS.DELIVERY_ADDRESS_3, "line3");
+		parameters.put(PayU.PARAMETERS.DELIVERY_CITY, "Bogotá");
+		parameters.put(PayU.PARAMETERS.DELIVERY_STATE, "Cundinamarca");
+		parameters.put(PayU.PARAMETERS.DELIVERY_COUNTRY, "CO");
+		parameters.put(PayU.PARAMETERS.DELIVERY_POSTAL_CODE, "101010");
+		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
 
 		// Customer parameters
 
@@ -1353,6 +1425,18 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.IMMEDIATE_PAYMENT, "true");
 		parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "2");
 		parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "2");
+		parameters.put(PayU.PARAMETERS.NOTIFY_URL, "testUrl");
+		parameters.put(PayU.PARAMETERS.SOURCE_REFERENCE, "testSourceReference");
+		parameters.put(PayU.PARAMETERS.EXTRA1, "extra1");
+		parameters.put(PayU.PARAMETERS.EXTRA2, "extra2");
+		parameters.put(PayU.PARAMETERS.DELIVERY_ADDRESS_1, "line1");
+		parameters.put(PayU.PARAMETERS.DELIVERY_ADDRESS_2, "line2");
+		parameters.put(PayU.PARAMETERS.DELIVERY_ADDRESS_3, "line3");
+		parameters.put(PayU.PARAMETERS.DELIVERY_CITY, "Bogotá");
+		parameters.put(PayU.PARAMETERS.DELIVERY_STATE, "Cundinamarca");
+		parameters.put(PayU.PARAMETERS.DELIVERY_COUNTRY, "CO");
+		parameters.put(PayU.PARAMETERS.DELIVERY_POSTAL_CODE, "101010");
+		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
 
 		// Plan parameters
 		parameters.put(PayU.PARAMETERS.PLAN_CODE, planCode);
@@ -1386,6 +1470,18 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.IMMEDIATE_PAYMENT, "true");
 		parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "2");
 		parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "2");
+		parameters.put(PayU.PARAMETERS.NOTIFY_URL, "testUrl");
+		parameters.put(PayU.PARAMETERS.SOURCE_REFERENCE, "testSourceReference");
+		parameters.put(PayU.PARAMETERS.EXTRA1, "extra1");
+		parameters.put(PayU.PARAMETERS.EXTRA2, "extra2");
+		parameters.put(PayU.PARAMETERS.DELIVERY_ADDRESS_1, "line1");
+		parameters.put(PayU.PARAMETERS.DELIVERY_ADDRESS_2, "line2");
+		parameters.put(PayU.PARAMETERS.DELIVERY_ADDRESS_3, "line3");
+		parameters.put(PayU.PARAMETERS.DELIVERY_CITY, "Bogotá");
+		parameters.put(PayU.PARAMETERS.DELIVERY_STATE, "Cundinamarca");
+		parameters.put(PayU.PARAMETERS.DELIVERY_COUNTRY, "CO");
+		parameters.put(PayU.PARAMETERS.DELIVERY_POSTAL_CODE, "101010");
+		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
 
 		// Customer parameters
 		parameters.put(PayU.PARAMETERS.CUSTOMER_ID, customerId);
@@ -1445,6 +1541,18 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.IMMEDIATE_PAYMENT, "true");
 		parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "2");
 		parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "2");
+		parameters.put(PayU.PARAMETERS.NOTIFY_URL, "testUrl");
+		parameters.put(PayU.PARAMETERS.SOURCE_REFERENCE, "testSourceReference");
+		parameters.put(PayU.PARAMETERS.EXTRA1, "extra1");
+		parameters.put(PayU.PARAMETERS.EXTRA2, "extra2");
+		parameters.put(PayU.PARAMETERS.DELIVERY_ADDRESS_1, "line1");
+		parameters.put(PayU.PARAMETERS.DELIVERY_ADDRESS_2, "line2");
+		parameters.put(PayU.PARAMETERS.DELIVERY_ADDRESS_3, "line3");
+		parameters.put(PayU.PARAMETERS.DELIVERY_CITY, "Bogotá");
+		parameters.put(PayU.PARAMETERS.DELIVERY_STATE, "Cundinamarca");
+		parameters.put(PayU.PARAMETERS.DELIVERY_COUNTRY, "CO");
+		parameters.put(PayU.PARAMETERS.DELIVERY_POSTAL_CODE, "101010");
+		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
 
 		// Customer parameters
 		parameters.put(PayU.PARAMETERS.CUSTOMER_NAME, "Oscar");

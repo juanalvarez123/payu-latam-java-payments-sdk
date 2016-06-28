@@ -374,6 +374,9 @@ public abstract class PayU {
 		/** The subscription extra charges description */
 		String SUBSCRIPTION_EXTRA_CHARGES_DESCRIPTION = "subscriptionExtraChargesDescription";
 		
+		/** The subscription source reference */
+		String SOURCE_REFERENCE = "sourceReference";
+		
 	}
 
 }
