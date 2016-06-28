@@ -25,6 +25,8 @@ package com.payu.sdk.utils;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,8 +53,8 @@ import com.payu.sdk.payments.model.CustomerListRequest;
 import com.payu.sdk.payments.model.PaymentPlanCreditCardListRequest;
 import com.payu.sdk.payments.model.RecurringBillItemListRequest;
 import com.payu.sdk.payments.model.RecurringBillListRequest;
-import com.payu.sdk.payments.model.SubscriptionsListRequest;
 import com.payu.sdk.payments.model.SubscriptionPlanListRequest;
+import com.payu.sdk.payments.model.SubscriptionsListRequest;
 
 /**
  * Utility for payment plan requests in the PayU SDK.
@@ -561,7 +563,7 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 
 		return request;
 	}
-
+	
 	/**
 	 * Builds a subscription request
 	 *
@@ -576,6 +578,8 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 		// Subscription basic parameters
 		Integer trialDays = getIntegerParameter(parameters,
 				PayU.PARAMETERS.TRIAL_DAYS);
+		Boolean immediatePayment = getBooleanParameter(parameters,
+				PayU.PARAMETERS.IMMEDIATE_PAYMENT);
 		Integer quantity = getIntegerParameter(parameters,
 				PayU.PARAMETERS.QUANTITY);
 		Integer installments = getIntegerParameter(parameters,
@@ -585,6 +589,8 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 				PayU.PARAMETERS.SUBSCRIPTION_ID);
 		Boolean termsAndConditionsAcepted=getBooleanParameter(parameters,
 				PayU.PARAMETERS.TERMS_AND_CONDITIONS_ACEPTED);
+		
+		List<RecurringBillItem> recurringBillItems = buildRecurringBillItemList(parameters);
 
 		// Plan parameter
 		SubscriptionPlan plan = buildSubscriptionPlanRequest(parameters);
@@ -614,26 +620,75 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 			}
 			customer.addBankAccount(bankAccount);
 		}
-
-
+		
+		// Delivery address parameters
+		Address deliveryAddress = new Address();
+		deliveryAddress.setLine1(getParameter(parameters, PayU.PARAMETERS.DELIVERY_ADDRESS_1));
+		deliveryAddress.setLine2(getParameter(parameters, PayU.PARAMETERS.DELIVERY_ADDRESS_2));
+		deliveryAddress.setLine3(getParameter(parameters, PayU.PARAMETERS.DELIVERY_ADDRESS_3));
+		deliveryAddress.setCity(getParameter(parameters, PayU.PARAMETERS.DELIVERY_CITY));
+		deliveryAddress.setState(getParameter(parameters, PayU.PARAMETERS.DELIVERY_STATE));
+		deliveryAddress.setCountry(getParameter(parameters, PayU.PARAMETERS.DELIVERY_COUNTRY));
+		deliveryAddress.setPostalCode(getParameter(parameters, PayU.PARAMETERS.DELIVERY_POSTAL_CODE));
+		deliveryAddress.setPhone(getParameter(parameters, PayU.PARAMETERS.DELIVERY_PHONE));
+		
+		// Subscription notifyUrl, sourceReference, extra1 and extra 2 parameters
+		String notifyUrl = getParameter(parameters, PayU.PARAMETERS.NOTIFY_URL);
+		String sourceReference = getParameter(parameters, PayU.PARAMETERS.SOURCE_REFERENCE);
+		String extra1 = getParameter(parameters, PayU.PARAMETERS.EXTRA1);
+		String extra2 = getParameter(parameters, PayU.PARAMETERS.EXTRA2);
+		
 		// Subscription basic parameters
 		Subscription request = new Subscription();
 		setAuthenticationCredentials(parameters, request);
 
 		request.setTrialDays(trialDays);
+		request.setImmediatePayment(immediatePayment);
 		request.setQuantity(quantity);
 		request.setInstallments(installments);
 		request.setTermsAndConditionsAcepted(termsAndConditionsAcepted);
+		request.setDeliveryAddress(deliveryAddress);
+		request.setRecurringBillItems(recurringBillItems);
+		request.setNotifyUrl(notifyUrl);
+		request.setSourceReference(sourceReference);
+		request.setExtra1(extra1);
+		request.setExtra1(extra2);
 
 		// Subscription complex parameters (customer and plan)
 		request.setPlan(plan);
 		request.setCustomer(customer);
-
 		request.setId(subscriptionId);
 
 		return request;
 	}
-
+	
+	/**
+	 * Builds a recurring billing item request without authentication
+	 * 
+	 * @param parameters
+	 *            The parameters to be sent to the server
+	 * @return List<RecurringBillItem> The RecurringBillItems list
+	 * @throws InvalidParametersException
+	 */
+	private static List<RecurringBillItem> buildRecurringBillItemList(Map<String, String> parameters)
+			throws InvalidParametersException {
+		
+		if (parameters.containsKey(PayU.PARAMETERS.SUBSCRIPTION_EXTRA_CHARGES_DESCRIPTION)) {
+			String description = getParameter(parameters, PayU.PARAMETERS.SUBSCRIPTION_EXTRA_CHARGES_DESCRIPTION);
+			BigDecimal value = getBigDecimalParameter(parameters, PayU.PARAMETERS.ITEM_VALUE);
+			BigDecimal taxValue = getBigDecimalParameter(parameters, PayU.PARAMETERS.ITEM_TAX);
+			BigDecimal taxReturnBase = getBigDecimalParameter(parameters, PayU.PARAMETERS.ITEM_TAX_RETURN_BASE);
+			Currency currency = getEnumValueParameter(Currency.class, parameters, PayU.PARAMETERS.CURRENCY);
+			RecurringBillItem recurringBillItem = new RecurringBillItem();
+			recurringBillItem.setDescription(description);
+			List<AdditionalValue> additionalValues = buildItemAdditionalValues(currency, value, taxValue, taxReturnBase);
+			recurringBillItem.setAdditionalValues(additionalValues);
+			return Arrays.asList(recurringBillItem);
+		}
+		
+		return Collections.emptyList();
+	}
+	
 	/**
 	 * Builds an update subscription request
 	 *
@@ -653,14 +708,27 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 
 		String subscriptionId = getParameter(parameters,
 				PayU.PARAMETERS.SUBSCRIPTION_ID);
-
+		
 		Subscription request = new Subscription();
+		
+		// Set the delivery address fields
+		Address deliveryAddress = new Address();
+		deliveryAddress.setLine1(getParameter(parameters,PayU.PARAMETERS.DELIVERY_ADDRESS_1));
+		deliveryAddress.setLine2(getParameter(parameters,PayU.PARAMETERS.DELIVERY_ADDRESS_2));
+		deliveryAddress.setLine3(getParameter(parameters,PayU.PARAMETERS.DELIVERY_ADDRESS_3));
+		deliveryAddress.setCity(getParameter(parameters,PayU.PARAMETERS.DELIVERY_CITY));
+		deliveryAddress.setState(getParameter(parameters,PayU.PARAMETERS.DELIVERY_STATE));
+		deliveryAddress.setCountry(getParameter(parameters,PayU.PARAMETERS.DELIVERY_COUNTRY));
+		deliveryAddress.setPostalCode(getParameter(parameters,PayU.PARAMETERS.DELIVERY_POSTAL_CODE));
+		deliveryAddress.setPhone(getParameter(parameters,PayU.PARAMETERS.DELIVERY_PHONE));
+		
 		setAuthenticationCredentials(parameters, request);
 
 		request.setUrlId(subscriptionId);
 		request.setCreditCardToken(newCreditCardToken);
 		request.setBankAccountId(newBankAccountId);
-
+		request.setDeliveryAddress(deliveryAddress);
+		
 		return request;
 
 	}
