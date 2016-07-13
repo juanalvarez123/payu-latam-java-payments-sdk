@@ -638,6 +638,10 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 		String extra1 = getParameter(parameters, PayU.PARAMETERS.EXTRA1);
 		String extra2 = getParameter(parameters, PayU.PARAMETERS.EXTRA2);
 		
+		// Subscription sourceId and description
+		Long sourceId = getLongParameter(parameters, PayU.PARAMETERS.SOURCE_ID);
+		String description = getParameter(parameters, PayU.PARAMETERS.DESCRIPTION);
+		
 		// Subscription basic parameters
 		Subscription request = new Subscription();
 		setAuthenticationCredentials(parameters, request);
@@ -653,6 +657,8 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 		request.setSourceReference(sourceReference);
 		request.setExtra1(extra1);
 		request.setExtra1(extra2);
+		request.setSourceId(sourceId);
+		request.setDescription(description);
 
 		// Subscription complex parameters (customer and plan)
 		request.setPlan(plan);

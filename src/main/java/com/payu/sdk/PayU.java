@@ -377,6 +377,9 @@ public abstract class PayU {
 		/** The subscription source reference */
 		String SOURCE_REFERENCE = "sourceReference";
 		
+		/** The subscription ID from POL */
+		String SOURCE_ID = "sourceId";
+		
 	}
 
 }
