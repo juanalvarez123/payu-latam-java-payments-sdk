@@ -223,7 +223,7 @@ public class CommonRequestUtil {
 			throws InvalidParametersException {
 		Long longValue = null;
 		try {
-			longValue = new Long(value);
+			longValue = Long.valueOf(value);
 		} catch (Exception e) {
 			throw new InvalidParametersException(String.format(
 					"The parameter [%s] isn't a valid Long value", name),
