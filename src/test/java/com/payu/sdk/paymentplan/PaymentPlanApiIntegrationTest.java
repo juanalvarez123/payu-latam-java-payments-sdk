@@ -639,6 +639,7 @@ public class PaymentPlanApiIntegrationTest {
 				.put(PayU.PARAMETERS.CREDIT_CARD_NUMBER, "5511275364819572");
 		parametersCC
 				.put(PayU.PARAMETERS.CREDIT_CARD_EXPIRATION_DATE, "2020/12");
+		parametersCC.put(PayU.PARAMETERS.CREDIT_CARD_DOCUMENT, "123456789");
 		parametersCC.put(PayU.PARAMETERS.PAYMENT_METHOD, "MASTERCARD");
 
 		parametersCC.put(PayU.PARAMETERS.PAYER_NAME, "Manuel V");
@@ -956,6 +957,7 @@ public class PaymentPlanApiIntegrationTest {
 		// Credit card data
 		parameters.put(PayU.PARAMETERS.CREDIT_CARD_NUMBER, "4005580000029205");
 		parameters.put(PayU.PARAMETERS.CREDIT_CARD_EXPIRATION_DATE, "2025/01");
+		parameters.put(PayU.PARAMETERS.CREDIT_CARD_DOCUMENT, "123456789");
 		parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, "VISA");
 
 		parameters.put(PayU.PARAMETERS.PAYER_NAME, "Luis Alejandro");
@@ -1086,6 +1088,8 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_COUNTRY, "CO");
 		parameters.put(PayU.PARAMETERS.DELIVERY_POSTAL_CODE, "101010");
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
+		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
+		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
 
 		try {
 			Subscription response = PayUSubscription.create(parameters);
@@ -1093,12 +1097,10 @@ public class PaymentPlanApiIntegrationTest {
 			LoggerUtil.info(RESPONSE_LOG_MESSAGE, response);
 
 			Assert.assertNotNull(response, "Empty subscription response");
-
 		} catch (ConnectionException e) {
 
 			// Service Unavailable
 			LoggerUtil.error(e.getMessage(), e);
-
 		} catch (SDKException e) {
 
 			// SDK error
@@ -1135,6 +1137,8 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_COUNTRY, "CO");
 		parameters.put(PayU.PARAMETERS.DELIVERY_POSTAL_CODE, "101010");
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
+		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
+		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
 
 		// Customer parameters
 		parameters.put(PayU.PARAMETERS.CUSTOMER_NAME, "Oscar");
@@ -1146,6 +1150,7 @@ public class PaymentPlanApiIntegrationTest {
 		// Credit card parameters
 		parameters.put(PayU.PARAMETERS.CREDIT_CARD_NUMBER, "4005580000029205");
 		parameters.put(PayU.PARAMETERS.CREDIT_CARD_EXPIRATION_DATE, "2030/01");
+		parameters.put(PayU.PARAMETERS.CREDIT_CARD_DOCUMENT, "123456789");
 		parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, "VISA");
 
 		parameters.put(PayU.PARAMETERS.PAYER_NAME, "Santiago A");
@@ -1206,6 +1211,8 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_COUNTRY, "CO");
 		parameters.put(PayU.PARAMETERS.DELIVERY_POSTAL_CODE, "101010");
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
+		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
+		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
 
 		// Customer parameters
 		parameters.put(PayU.PARAMETERS.CUSTOMER_ID, customerId);
@@ -1273,6 +1280,8 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_COUNTRY, "CO");
 		parameters.put(PayU.PARAMETERS.DELIVERY_POSTAL_CODE, "101010");
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
+		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
+		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
 
 		// Customer parameters
 		parameters.put(PayU.PARAMETERS.CUSTOMER_ID, customerId);
@@ -1292,6 +1301,7 @@ public class PaymentPlanApiIntegrationTest {
 		// Credit card parameters
 		parameters.put(PayU.PARAMETERS.CREDIT_CARD_NUMBER, "4005580000029205");
 		parameters.put(PayU.PARAMETERS.CREDIT_CARD_EXPIRATION_DATE, "2030/01");
+		parameters.put(PayU.PARAMETERS.CREDIT_CARD_DOCUMENT, "123456789");
 		parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, "VISA");
 
 		parameters.put(PayU.PARAMETERS.PAYER_NAME, "Santiago A");
@@ -1353,6 +1363,8 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_COUNTRY, "CO");
 		parameters.put(PayU.PARAMETERS.DELIVERY_POSTAL_CODE, "101010");
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
+		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
+		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
 
 		Subscription response = PayUSubscription.create(parameters);
 
@@ -1391,6 +1403,8 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_COUNTRY, "CO");
 		parameters.put(PayU.PARAMETERS.DELIVERY_POSTAL_CODE, "101010");
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
+		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
+		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
 
 		// Customer parameters
 
@@ -1437,6 +1451,8 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_COUNTRY, "CO");
 		parameters.put(PayU.PARAMETERS.DELIVERY_POSTAL_CODE, "101010");
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
+		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
+		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
 
 		// Plan parameters
 		parameters.put(PayU.PARAMETERS.PLAN_CODE, planCode);
@@ -1482,6 +1498,8 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_COUNTRY, "CO");
 		parameters.put(PayU.PARAMETERS.DELIVERY_POSTAL_CODE, "101010");
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
+		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
+		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
 
 		// Customer parameters
 		parameters.put(PayU.PARAMETERS.CUSTOMER_ID, customerId);
@@ -1553,6 +1571,8 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_COUNTRY, "CO");
 		parameters.put(PayU.PARAMETERS.DELIVERY_POSTAL_CODE, "101010");
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
+		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
+		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
 
 		// Customer parameters
 		parameters.put(PayU.PARAMETERS.CUSTOMER_NAME, "Oscar");
@@ -1573,6 +1593,7 @@ public class PaymentPlanApiIntegrationTest {
 		// Credit card parameters
 		parameters.put(PayU.PARAMETERS.CREDIT_CARD_NUMBER, "4005580000029205");
 		parameters.put(PayU.PARAMETERS.CREDIT_CARD_EXPIRATION_DATE, "2030/01");
+		parameters.put(PayU.PARAMETERS.CREDIT_CARD_DOCUMENT, "123456789");
 		parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, "VISA");
 
 		parameters.put(PayU.PARAMETERS.PAYER_NAME, "Santiago A");

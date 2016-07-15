@@ -50,7 +50,7 @@ import com.payu.sdk.utils.JaxbUtil;
 @XmlAccessorType(XmlAccessType.PROPERTY)
 @XmlType(propOrder = { "id", "trialDays", "quantity", "installments", "currentPeriodStart", "currentPeriodEnd", "customer",
 		"plan", "creditCardToken", "bankAccountId", "termsAndConditionsAcepted", "immediatePayment", "deliveryAddress",
-		"notifyUrl", "sourceReference", "recurringBillItems", "extra1", "extra2" })
+		"notifyUrl", "sourceReference", "recurringBillItems", "extra1", "extra2", "sourceId", "description" })
 public class Subscription extends Request {
 
 	/**
@@ -152,6 +152,16 @@ public class Subscription extends Request {
 	 * The extra2 field
 	 */
 	private String extra2;
+	
+	/**
+	 * The susbscription ID in POL
+	 */
+	private Long sourceId;
+	
+	/**
+	 * The subscription's description / comments 
+	 */
+	private String description;
 	
 	// -------------------------------------------------------
 	// GETTERS AND SETTERS
@@ -332,6 +342,26 @@ public class Subscription extends Request {
 	public String getExtra2() {
 
 		return extra2;
+	}
+	
+	/**
+	 * Returns the source id. Represents the subscription ID in POL when subscription is migrated
+	 * 
+	 * @return the source id
+	 */
+	public Long getSourceId() {
+		
+		return sourceId; 
+	}
+	
+	/**
+	 * Returns the subscription description
+	 * 
+	 * @return the subscription description
+	 */
+	public String getDescription() {
+		
+		return description;
 	}
 	
 	/**
@@ -521,6 +551,28 @@ public class Subscription extends Request {
 	public void setExtra2(String extra2) {
 
 		this.extra2 = extra2;
+	}
+	
+	/**
+	 * Sets the source id. Represents the subscription ID in POL when subscription is migrated
+	 * 
+	 * @param sourceId
+	 *            The subscription ID in POL
+	 */
+	public void setSourceId(Long sourceId) {
+
+		this.sourceId = sourceId;
+	}
+
+	/**
+	 * Sets the subscription description
+	 * 
+	 * @param description
+	 *            The subscription description
+	 */
+	public void setDescription(String description) {
+
+		this.description = description;
 	}
 	
 	/* (non-Javadoc)

@@ -458,6 +458,8 @@ public class BankAccountApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_COUNTRY, "CO");
 		parameters.put(PayU.PARAMETERS.DELIVERY_POSTAL_CODE, "101010");
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
+		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
+		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
 
 		// Customer parameters
 		parameters.put(PayU.PARAMETERS.CUSTOMER_ID, customer.getId());
@@ -518,6 +520,8 @@ public class BankAccountApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_COUNTRY, "CO");
 		parameters.put(PayU.PARAMETERS.DELIVERY_POSTAL_CODE, "101010");
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
+		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
+		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
 		
 		// Customer parameters
 		parameters.put(PayU.PARAMETERS.CUSTOMER_NAME, "David");
@@ -591,6 +595,8 @@ public class BankAccountApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_COUNTRY, "CO");
 		parameters.put(PayU.PARAMETERS.DELIVERY_POSTAL_CODE, "101010");
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
+		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
+		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
 
 		// Customer parameters
 		parameters.put(PayU.PARAMETERS.CUSTOMER_ID, customer.getId());
@@ -675,6 +681,7 @@ public class BankAccountApiIntegrationTest {
 		// Credit card parameters
 		parameters.put(PayU.PARAMETERS.CREDIT_CARD_NUMBER, "4005580000029205");
 		parameters.put(PayU.PARAMETERS.CREDIT_CARD_EXPIRATION_DATE, "2025/01");
+		parameters.put(PayU.PARAMETERS.CREDIT_CARD_DOCUMENT, "123456789");
 		parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, "VISA");
 
 		parameters.put(PayU.PARAMETERS.PAYER_NAME, "Oscar R");
@@ -744,6 +751,8 @@ public class BankAccountApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_COUNTRY, "CO");
 		parameters.put(PayU.PARAMETERS.DELIVERY_POSTAL_CODE, "101010");
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
+		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
+		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
 
 		// Customer parameters
 		parameters.put(PayU.PARAMETERS.CUSTOMER_ID, customer.getId());
@@ -808,6 +817,8 @@ public class BankAccountApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_COUNTRY, "CO");
 		parameters.put(PayU.PARAMETERS.DELIVERY_POSTAL_CODE, "101010");
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
+		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
+		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
 
 		// Customer parameters
 		parameters.put(PayU.PARAMETERS.CUSTOMER_NAME, "David");
@@ -895,6 +906,8 @@ public class BankAccountApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_COUNTRY, "CO");
 		parameters.put(PayU.PARAMETERS.DELIVERY_POSTAL_CODE, "101010");
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
+		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
+		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
 
 		// Customer parameters
 		parameters.put(PayU.PARAMETERS.CUSTOMER_NAME, "David");
@@ -954,6 +967,8 @@ public class BankAccountApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_COUNTRY, "CO");
 		parameters.put(PayU.PARAMETERS.DELIVERY_POSTAL_CODE, "101010");
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
+		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
+		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
 
 		// Customer parameters
 		parameters.put(PayU.PARAMETERS.CUSTOMER_ID, customer.getId());
@@ -1028,6 +1043,8 @@ public class BankAccountApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_COUNTRY, "CO");
 		parameters.put(PayU.PARAMETERS.DELIVERY_POSTAL_CODE, "101010");
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
+		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
+		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
 		
 		// Customer parameters
 		parameters.put(PayU.PARAMETERS.CUSTOMER_ID, customer.getId());
@@ -1097,6 +1114,8 @@ public class BankAccountApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_COUNTRY, "CO");
 		parameters.put(PayU.PARAMETERS.DELIVERY_POSTAL_CODE, "101010");
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
+		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
+		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
 
 		// Plan parameters
 		parameters.put(PayU.PARAMETERS.PLAN_ID, planId);
@@ -1161,6 +1180,8 @@ public class BankAccountApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_COUNTRY, "CO");
 		parameters.put(PayU.PARAMETERS.DELIVERY_POSTAL_CODE, "101010");
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
+		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
+		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
 
 		// Plan parameters
 		parameters.put(PayU.PARAMETERS.PLAN_ID, planId);
@@ -1231,6 +1252,8 @@ public class BankAccountApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_COUNTRY, "CO");
 		parameters.put(PayU.PARAMETERS.DELIVERY_POSTAL_CODE, "101010");
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
+		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
+		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
 
 		// plan parameters
 		parameters.put(PayU.PARAMETERS.PLAN_DESCRIPTION, "Basic Plan");
@@ -1307,6 +1330,8 @@ public class BankAccountApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_COUNTRY, "CO");
 		parameters.put(PayU.PARAMETERS.DELIVERY_POSTAL_CODE, "101010");
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
+		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
+		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
 		
 		// Customer parameters
 		parameters.put(PayU.PARAMETERS.CUSTOMER_ID, customer.getId());
@@ -1473,6 +1498,8 @@ public class BankAccountApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_COUNTRY, "CO");
 		parameters.put(PayU.PARAMETERS.DELIVERY_POSTAL_CODE, "101010");
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
+		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
+		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
 		
 		// Customer parameters
 		parameters.put(PayU.PARAMETERS.CUSTOMER_ID, customer.getId());
