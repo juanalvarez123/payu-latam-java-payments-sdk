@@ -898,6 +898,8 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 				PayU.PARAMETERS.LIMIT);
 		String offset=getParameter(parameters,
 				PayU.PARAMETERS.OFFSET);
+		String sourceId = getParameter(parameters, 
+				PayU.PARAMETERS.SOURCE_ID);
 
 		Map<String, String> paramsFilter=new HashMap<String, String>();
 		paramsFilter.put(PayU.PARAMETERS.CUSTOMER_ID, customerId);
@@ -908,6 +910,7 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 		paramsFilter.put(PayU.PARAMETERS.ACCOUNT_ID, accountId);
 		paramsFilter.put(PayU.PARAMETERS.LIMIT, limit);
 		paramsFilter.put(PayU.PARAMETERS.OFFSET, offset);
+		paramsFilter.put(PayU.PARAMETERS.SOURCE_ID, sourceId);
 
 		SubscriptionsListRequest request = new SubscriptionsListRequest();
 
