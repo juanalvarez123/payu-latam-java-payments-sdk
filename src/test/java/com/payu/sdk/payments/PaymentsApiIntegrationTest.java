@@ -57,8 +57,10 @@ import com.payu.sdk.model.PaymentMethodApi;
 import com.payu.sdk.model.PaymentMethodComplete;
 import com.payu.sdk.model.PaymentMethodType;
 import com.payu.sdk.model.PersonType;
+import com.payu.sdk.model.Transaction;
 import com.payu.sdk.model.TransactionResponse;
 import com.payu.sdk.model.TransactionResponseCode;
+import com.payu.sdk.model.TransactionType;
 import com.payu.sdk.paymentplan.model.SubscriptionPlan;
 import com.payu.sdk.payments.model.CreditCardTokenResponse;
 import com.payu.sdk.util.CreditCards;
@@ -141,7 +143,7 @@ public class PaymentsApiIntegrationTest {
 		PayU.language = Language.en;
 		PayU.isTest = false;
 
-		TestEnvironment environment = TestEnvironment.STG;
+		TestEnvironment environment = TestEnvironment.SANDBOX;
 
 		PayU.paymentsUrl = environment.getPaymentsApiUrl();
 
@@ -525,6 +527,88 @@ public class PaymentsApiIntegrationTest {
 		try {
 			TransactionResponse response = PayUPayments
 					.doAuthorizationAndCapture(parameters);
+
+			LoggerUtil.info(RESPONSE_LOG_MESSAGE, response);
+
+			Assert.assertNotNull(response, "Invalid response");
+			Assert.assertNotNull(response.getResponseCode(),
+					"Invalid response code");
+
+			if (TransactionResponseCode.APPROVED.equals(response
+					.getResponseCode())) {
+				transactionId = response.getTransactionId();
+				orderId = response.getOrderId();
+			}
+
+		} catch (ConnectionException e) {
+
+			// Service Unavailable
+			LoggerUtil.error(e.getMessage(), e);
+			Assert.fail("The conection couldn't be stablished");
+
+		} catch (SDKException e) {
+
+			// SDK error
+			LoggerUtil.error(e.getMessage(), e);
+			Assert.fail(e.getMessage());
+		}
+
+	}
+	
+	
+	/**
+	 * Do submit auth and capture transaction.
+	 * 
+	 * @author <a href="mailto:juan.roman@payulatam.com">Juan Roman</a>
+	 * @since 1.5.1
+	 */
+	@Test
+	public void doSubmitAuthAndCaptureTransaction() {
+
+		Thread.currentThread().setName("doSubmitAuthAndCaptureTransaction");
+
+		Map<String, String> parameters = new HashMap<String, String>();
+
+		String nameOnCard = "NAME " + Long.toString(System.currentTimeMillis());
+		parameters.put(PayU.PARAMETERS.PAYER_NAME, nameOnCard);
+
+		parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, INSTALLMENT_NUMBRES_PA);
+
+		parameters.put(PayU.PARAMETERS.COUNTRY, PaymentCountry.PA.name());
+
+		// Panama account
+		Integer accountId = 8;
+
+		parameters.put(PayU.PARAMETERS.ACCOUNT_ID, accountId.toString());
+
+		// Currency
+		Currency txCurrency = Currency.USD;
+		parameters.put(PayU.PARAMETERS.CURRENCY, txCurrency.toString());
+
+		String orderReferenceCode = "A1B2C3" + System.currentTimeMillis();
+		parameters.put(PayU.PARAMETERS.REFERENCE_CODE, orderReferenceCode);
+
+		String description = "ALL IN 5";
+		parameters.put(PayU.PARAMETERS.DESCRIPTION, description);
+
+		BigDecimal txValue = new BigDecimal(100.00).setScale(2,
+				RoundingMode.HALF_UP);
+		parameters.put(PayU.PARAMETERS.VALUE, txValue.toString());
+
+		// Credit card values
+		CreditCards creditCard = CreditCards.VISA;
+
+		parameters.put(PayU.PARAMETERS.CREDIT_CARD_NUMBER,
+				creditCard.getCreditCardNumber());
+		parameters.put(PayU.PARAMETERS.CREDIT_CARD_EXPIRATION_DATE,
+				creditCard.getExpirationDate());
+		parameters.put(PayU.PARAMETERS.CREDIT_CARD_SECURITY_CODE,
+				creditCard.getSecurityCode());
+		parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, creditCard.name());
+		
+		try {
+			Transaction transaction = PayUPayments.fromParametersMapToTransaction(parameters, TransactionType.AUTHORIZATION_AND_CAPTURE);
+			TransactionResponse response = PayUPayments.submitTransaction(transaction, 60);
 
 			LoggerUtil.info(RESPONSE_LOG_MESSAGE, response);
 
