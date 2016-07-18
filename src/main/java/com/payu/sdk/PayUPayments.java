@@ -34,14 +34,18 @@ import com.payu.sdk.exceptions.PayUException;
 import com.payu.sdk.exceptions.SDKException.ErrorCode;
 import com.payu.sdk.helper.HttpClientHelper;
 import com.payu.sdk.model.Bank;
+import com.payu.sdk.model.Merchant;
 import com.payu.sdk.model.PaymentCountry;
 import com.payu.sdk.model.PaymentMethodComplete;
+import com.payu.sdk.model.Transaction;
 import com.payu.sdk.model.TransactionResponse;
 import com.payu.sdk.model.TransactionType;
+import com.payu.sdk.model.request.Command;
 import com.payu.sdk.model.response.ResponseCode;
 import com.payu.sdk.payments.model.BankListResponse;
 import com.payu.sdk.payments.model.PaymentMethodListResponse;
 import com.payu.sdk.payments.model.PaymentMethodResponse;
+import com.payu.sdk.payments.model.PaymentRequest;
 import com.payu.sdk.payments.model.PaymentResponse;
 import com.payu.sdk.utils.CommonRequestUtil;
 import com.payu.sdk.utils.PaymentMethodMap;
@@ -320,6 +324,55 @@ public final class PayUPayments extends PayU {
 				RequestUtil.buildPaymentRequest(parameters, transactionType),
 				RequestMethod.POST, socketTimeOut);
 
+		PaymentResponse response = PaymentResponse.fromXml(res);
+
+		return response.getTransactionResponse();
+	}
+	
+	/**
+	 * From parameters map to transaction.
+	 *
+	 * @param parameters the parameters
+	 * @param transactionType the transaction type
+	 * @return the transaction
+	 * @throws PayUException the pay u exception
+	 * @throws InvalidParametersException the invalid parameters exception
+	 * @throws ConnectionException the connection exception
+	 */
+	public static Transaction fromParametersMapToTransaction(Map<String, String> parameters, TransactionType transactionType) throws PayUException, InvalidParametersException, ConnectionException {
+		
+		String[] required = getRequiredParameters(parameters);
+
+		RequestUtil.validateParameters(parameters, required);
+		
+		return RequestUtil.buildTransaction(parameters, transactionType);
+	}
+	
+	/**
+	 * Submit transaction.
+	 *
+	 * @param transaction the transaction
+	 * @param socketTimeOut the socket time out
+	 * @return the transaction response
+	 * @throws PayUException the pay u exception
+	 * @throws ConnectionException the connection exception
+	 */
+	public static TransactionResponse submitTransaction(Transaction transaction, Integer socketTimeOut) throws PayUException, ConnectionException {
+		
+		Merchant merchant = new Merchant();
+		merchant.setApiKey(PayU.apiKey);
+		merchant.setApiLogin(PayU.apiLogin);
+		
+		PaymentRequest request = new PaymentRequest();
+		request.setLanguage(PayU.language);
+		request.setTest(PayU.isTest);
+		request.setCommand(Command.SUBMIT_TRANSACTION);
+		
+		request.setMerchant(merchant);
+		request.setTransaction(transaction);
+		
+		String res = HttpClientHelper.sendRequest(request, RequestMethod.POST, socketTimeOut);
+		
 		PaymentResponse response = PaymentResponse.fromXml(res);
 
 		return response.getTransactionResponse();
