@@ -24,6 +24,7 @@
 package com.payu.sdk.paymentplan.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -34,6 +35,7 @@ import javax.xml.bind.annotation.XmlType;
 import com.payu.sdk.constants.Resources;
 import com.payu.sdk.constants.Resources.RequestMethod;
 import com.payu.sdk.exceptions.PayUException;
+import com.payu.sdk.model.Address;
 import com.payu.sdk.model.request.Request;
 import com.payu.sdk.utils.JaxbUtil;
 
@@ -46,9 +48,9 @@ import com.payu.sdk.utils.JaxbUtil;
  */
 @XmlRootElement(name = "subscription")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(propOrder = { "id", "trialDays", "quantity", "installments",
-		"currentPeriodStart", "currentPeriodEnd", "customer", "plan",
-		"creditCardToken", "bankAccountId","termsAndConditionsAcepted" })
+@XmlType(propOrder = { "id", "trialDays", "quantity", "installments", "currentPeriodStart", "currentPeriodEnd", "customer",
+		"plan", "creditCardToken", "bankAccountId", "termsAndConditionsAcepted", "immediatePayment", "deliveryAddress",
+		"notifyUrl", "sourceReference", "recurringBillItems", "extra1", "extra2", "sourceId", "description" })
 public class Subscription extends Request {
 
 	/**
@@ -110,13 +112,57 @@ public class Subscription extends Request {
 	 * Bank account identifier to modify for the subscription
 	 */
 	private String  bankAccountId;
-
-
-	/*
+	
+	/**
 	 *  If the client accepted the terms and conditions document.
 	 */
 	private Boolean termsAndConditionsAcepted;
-
+	
+	/**
+	 * Allows to process an immediate payment when the subscription is created
+	 */
+	private Boolean immediatePayment;
+	
+	/**
+	 * Subscription delivery address
+	 */
+	private Address deliveryAddress;
+	
+	/**
+	 * The subscription notify url
+	 */
+	private String notifyUrl;
+	
+	/**
+	 * The subscription source reference
+	 */
+	private String sourceReference;
+	
+	/**
+	 * The extra charges of a subscription
+	 */
+	private List<RecurringBillItem> recurringBillItems;
+	
+	/**
+	 * The extra1 field
+	 */
+	private String extra1;
+	
+	/**
+	 * The extra2 field
+	 */
+	private String extra2;
+	
+	/**
+	 * The susbscription ID in POL
+	 */
+	private Long sourceId;
+	
+	/**
+	 * The subscription's description / comments 
+	 */
+	private String description;
+	
 	// -------------------------------------------------------
 	// GETTERS AND SETTERS
 	// -------------------------------------------------------
@@ -227,7 +273,97 @@ public class Subscription extends Request {
 
 		return bankAccountId;
 	}
+	
+	/**
+	 * Returns a flag to indicate an inmmediate payment
+	 * 
+	 * @return the immediate payment flag
+	 */
+	public Boolean getImmediatePayment() {
 
+		return immediatePayment;
+	}
+	
+	/**
+	 * Returns the subscription delivery address
+	 * 
+	 * @return the object delivery address
+	 */
+	public Address getDeliveryAddress() {
+		
+		return deliveryAddress;
+	}
+	
+	/**
+	 * Returns the subscription notify url
+	 * 
+	 * @return the notifyUrl
+	 */
+	public String getNotifyUrl() {
+	
+		return notifyUrl;
+	}
+
+	/**
+	 * Returns the subscription source reference
+	 * 
+	 * @return the sourceReference
+	 */
+	public String getSourceReference() {
+		
+		return sourceReference;
+	}
+	
+	/**
+	 * Returns the subscription recurring bill items
+	 * 
+	 * @return the recurringBillItems
+	 */
+	public List<RecurringBillItem> getRecurringBillItems() {
+		
+		return recurringBillItems;
+	}
+	
+	/**
+	 * Returns the subscription extra1 field
+	 * 
+	 * @return the extra1
+	 */
+	public String getExtra1() {
+
+		return extra1;
+	}
+
+	/**
+	 * Returns the subscription's extra2 field
+	 * 
+	 * @return the extra2
+	 */
+	public String getExtra2() {
+
+		return extra2;
+	}
+	
+	/**
+	 * Returns the source id. Represents the subscription ID in POL when subscription is migrated
+	 * 
+	 * @return the source id
+	 */
+	public Long getSourceId() {
+		
+		return sourceId; 
+	}
+	
+	/**
+	 * Returns the subscription description
+	 * 
+	 * @return the subscription description
+	 */
+	public String getDescription() {
+		
+		return description;
+	}
+	
 	/**
 	 * Sets the subscription identifier
 	 *
@@ -339,8 +475,106 @@ public class Subscription extends Request {
 
 		this.bankAccountId = bankAccountId;
 	}
+	
+	/**
+	 * Sets the inmmediate payment
+	 * 
+	 * @param immediatePayment
+	 *            the immediate payment flag
+	 */
+	public void setImmediatePayment(Boolean immediatePayment) {
 
+		this.immediatePayment = immediatePayment;
+	}
 
+	/**
+	 * Sets the subscription deliveryAddres
+	 * 
+	 * @param deliveryAddress
+	 *            the delivery address
+	 */
+	public void setDeliveryAddress(Address deliveryAddress) {
+
+		this.deliveryAddress = deliveryAddress;
+	}
+
+	/**
+	 * Sets the subscription notify url
+	 * 
+	 * @param notifyUrl
+	 *            the notifyUrl to set
+	 */
+	public void setNotifyUrl(String notifyUrl) {
+
+		this.notifyUrl = notifyUrl;
+	}
+
+	/**
+	 * Sets the subscription source reference
+	 * 
+	 * @param sourceReference
+	 *            the source reference to set
+	 */
+	public void setSourceReference(String sourceReference) {
+
+		this.sourceReference = sourceReference;
+	}
+
+	/**
+	 * Sets the suscription recurring bill items
+	 * 
+	 * @param recurringBillItems
+	 *            the recurringBillItems to set
+	 */
+	public void setRecurringBillItems(List<RecurringBillItem> recurringBillItems) {
+
+		this.recurringBillItems = recurringBillItems;
+	}
+
+	/**
+	 * Sets the extra1 field
+	 * 
+	 * @param extra1
+	 *            the extra1 to set
+	 */
+	public void setExtra1(String extra1) {
+
+		this.extra1 = extra1;
+	}
+
+	/**
+	 * Sets the extra2 field
+	 * 
+	 * @param extra2
+	 *            the extra2 to set
+	 */
+	public void setExtra2(String extra2) {
+
+		this.extra2 = extra2;
+	}
+	
+	/**
+	 * Sets the source id. Represents the subscription ID in POL when subscription is migrated
+	 * 
+	 * @param sourceId
+	 *            The subscription ID in POL
+	 */
+	public void setSourceId(Long sourceId) {
+
+		this.sourceId = sourceId;
+	}
+
+	/**
+	 * Sets the subscription description
+	 * 
+	 * @param description
+	 *            The subscription description
+	 */
+	public void setDescription(String description) {
+
+		this.description = description;
+	}
+	
 	/* (non-Javadoc)
 	 * @see com.payu.sdk.model.request.Request#getBaseRequestUrl(java.lang.String, com.payu.sdk.constants.Resources.RequestMethod)
 	 */

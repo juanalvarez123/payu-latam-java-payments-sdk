@@ -89,7 +89,17 @@ public final class PayUSubscription extends PayU {
 					PayU.PARAMETERS.ACCOUNT_ID};
 			PaymentPlanRequestUtil.validateParameters(parameters, params);
 		}
+		
+		// Subscription extra charges parameters
+		if (parameters.containsKey(PayU.PARAMETERS.SUBSCRIPTION_EXTRA_CHARGES_DESCRIPTION)) {
+			params = new String[] { 
+					PayU.PARAMETERS.SUBSCRIPTION_EXTRA_CHARGES_DESCRIPTION, 
+					PayU.PARAMETERS.ITEM_VALUE,
+					PayU.PARAMETERS.CURRENCY };
 
+			PaymentPlanRequestUtil.validateParameters(parameters, params);
+		}
+		
 		// Customer parameters
 		if (parameters.containsKey(PayU.PARAMETERS.CUSTOMER_ID)) {
 

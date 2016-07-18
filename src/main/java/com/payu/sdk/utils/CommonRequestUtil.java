@@ -208,6 +208,30 @@ public class CommonRequestUtil {
 
 		return bigDecimalValue;
 	}
+	
+	/**
+	 * Gets a long value from parameters
+	 *
+	 * @param value
+	 *            the value to convert to long
+	 * @param name
+	 *            the name of the parameter (exception purposes)
+	 * @return the long it got
+	 * @throws InvalidParametersException
+	 */
+	private static Long getLong(String value, String name)
+			throws InvalidParametersException {
+		Long longValue = null;
+		try {
+			longValue = Long.valueOf(value);
+		} catch (Exception e) {
+			throw new InvalidParametersException(String.format(
+					"The parameter [%s] isn't a valid Long value", name),
+					e);
+		}
+
+		return longValue;
+	}
 
 	/**
 	 * Gets a parameter based on it's name
@@ -346,6 +370,29 @@ public class CommonRequestUtil {
 				parameter, paramName) : null);
 
 		return bigDecimalParameter;
+	}
+	
+	/**
+	 * Gets a long parameter from the parameters map
+	 *
+	 * @param parameters
+	 *            The parameters to be sent to the server
+	 * @param paramName
+	 *            the parameter to get
+	 * @return The long parameter it got
+	 * @throws InvalidParametersException
+	 */
+	protected static Long getLongParameter(
+			Map<String, String> parameters, String paramName)
+			throws InvalidParametersException {
+		String parameter = getParameter(parameters, paramName);
+		if (parameter != null && parameter.trim().isEmpty()) {
+			parameter = null;
+		}
+		Long longParameter = (parameter != null ? getLong(parameter,
+				paramName) : null);
+
+		return longParameter;
 	}
 
 	/**

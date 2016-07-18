@@ -283,6 +283,8 @@ public abstract class PayU {
 
 		/** The number of trial days. */
 		String TRIAL_DAYS = "trialDays";
+		/** The immediate payment flag. */
+		String IMMEDIATE_PAYMENT = "immediatePayment";
 		/** The quantity to purchase. */
 		String QUANTITY = "quantity";
 
@@ -349,7 +351,35 @@ public abstract class PayU {
 		
 		/** The EXTRA 3 transaction extra parameter. */
 		String EXTRA3 = "extra3";
-
+		
+		/** Delivery Address Fields */
+		
+		/** Delivery Address1 field */
+		String DELIVERY_ADDRESS_1 = "line1";
+		/** Delivery Address2 field */
+		String DELIVERY_ADDRESS_2= "line2";
+		/** Delivery Address3 field */
+		String DELIVERY_ADDRESS_3 = "line3";
+		/** Delivery city field */
+		String DELIVERY_CITY = "city";
+		/** Delivery state field */
+		String DELIVERY_STATE = "state";
+		/** Delivery country field */
+		String DELIVERY_COUNTRY = "country";
+		/** Delivery postal code field */
+		String DELIVERY_POSTAL_CODE = "postalCode";
+		/** Delivery phone field */
+		String DELIVERY_PHONE = "phone";
+		
+		/** The subscription extra charges description */
+		String SUBSCRIPTION_EXTRA_CHARGES_DESCRIPTION = "subscriptionExtraChargesDescription";
+		
+		/** The subscription source reference */
+		String SOURCE_REFERENCE = "sourceReference";
+		
+		/** The subscription ID from POL */
+		String SOURCE_ID = "sourceId";
+		
 	}
 
 }
