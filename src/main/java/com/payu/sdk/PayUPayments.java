@@ -36,6 +36,7 @@ import com.payu.sdk.helper.HttpClientHelper;
 import com.payu.sdk.model.Bank;
 import com.payu.sdk.model.Merchant;
 import com.payu.sdk.model.PaymentCountry;
+import com.payu.sdk.model.PaymentMethodApi;
 import com.payu.sdk.model.PaymentMethodComplete;
 import com.payu.sdk.model.Transaction;
 import com.payu.sdk.model.TransactionResponse;
@@ -49,7 +50,6 @@ import com.payu.sdk.payments.model.PaymentRequest;
 import com.payu.sdk.payments.model.PaymentResponse;
 import com.payu.sdk.utils.CommonRequestUtil;
 import com.payu.sdk.utils.PaymentMethodMap;
-import com.payu.sdk.model.PaymentMethodApi;
 import com.payu.sdk.utils.RequestUtil;
 
 /**
@@ -352,12 +352,12 @@ public final class PayUPayments extends PayU {
 	 * Submit transaction.
 	 *
 	 * @param transaction the transaction
-	 * @param socketTimeOut the socket time out
+	 * @param timeoutMs the timeout milliseconds
 	 * @return the transaction response
 	 * @throws PayUException the pay u exception
 	 * @throws ConnectionException the connection exception
 	 */
-	public static TransactionResponse submitTransaction(Transaction transaction, Integer socketTimeOut) throws PayUException, ConnectionException {
+	public static TransactionResponse submitTransaction(Transaction transaction, Integer timeoutMs) throws PayUException, ConnectionException {
 		
 		Merchant merchant = new Merchant();
 		merchant.setApiKey(PayU.apiKey);
@@ -371,7 +371,7 @@ public final class PayUPayments extends PayU {
 		request.setMerchant(merchant);
 		request.setTransaction(transaction);
 		
-		String res = HttpClientHelper.sendRequest(request, RequestMethod.POST, socketTimeOut);
+		String res = HttpClientHelper.sendRequest(request, RequestMethod.POST, timeoutMs);
 		
 		PaymentResponse response = PaymentResponse.fromXml(res);
 
