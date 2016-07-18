@@ -1869,8 +1869,9 @@ public class BankAccountApiIntegrationTest {
 			Assert.assertNotNull(subscriptions);
 			for (Subscription sus : subscriptions) {
 				Assert.assertNotNull(sus);
-				Assert.assertEquals(sus.getSourceId(), Long.valueOf("12345"));
 			}
+			
+			Assert.assertTrue(subscriptionsCreated.size() == subscriptions.size());
 		}
 		catch (ConnectionException e) {
 
@@ -1880,6 +1881,33 @@ public class BankAccountApiIntegrationTest {
 		catch (SDKException e) {
 
 			// SDK error
+			LoggerUtil.error(e.getMessage(), e);
+			Assert.fail(e.getMessage());
+		}
+	}
+	
+	@Test(expectedExceptions = PayUException.class)
+	public void findSubscriptionsBySourceIdReturnsNothing() throws Exception {
+		
+		Thread.currentThread().setName("findSubscriptionsBySourceId");
+		
+		Map<String, String> parameters = new HashMap<String, String>();
+		parameters.put(PayU.PARAMETERS.SOURCE_ID, "300777999");
+		
+		try {
+			List<Subscription> subscriptions = PayUSubscription.findList(parameters);
+			LoggerUtil.info(RESPONSE_LOG_MESSAGE, subscriptions);
+			
+			Assert.fail("Has results");
+		}
+		catch (ConnectionException e) {
+			
+			// Service Unavailable
+			LoggerUtil.error(e.getMessage(), e);
+		}
+		catch (InvalidParametersException e) {
+			
+			// Different error
 			LoggerUtil.error(e.getMessage(), e);
 			Assert.fail(e.getMessage());
 		}
