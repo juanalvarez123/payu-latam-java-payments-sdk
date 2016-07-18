@@ -1,0 +1,3 @@
+2016-07-18
+----------
+Se adiciona metodo PayUPayments.submitTransaction() con el fin de tener mayor flexibilidad de la información adicional de la transaccion antes en enviarla a procesar.
