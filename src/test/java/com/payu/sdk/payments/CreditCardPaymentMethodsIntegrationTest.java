@@ -82,7 +82,7 @@ public class CreditCardPaymentMethodsIntegrationTest {
 		PayU.language = Language.en;
 		PayU.isTest = false;
 
-		TestEnvironment environment = TestEnvironment.STG;
+		TestEnvironment environment = TestEnvironment.SANDBOX;
 
 		PayU.paymentsUrl = environment.getPaymentsApiUrl();
 

@@ -1,0 +1,3 @@
+2016-06-21
+----------
+Se adiciona soporte para enviar los extra-parametros extra1, extra2 y extra3 en las transacciones de autorización y captura.

@@ -129,7 +129,7 @@ public class BankAccountApiIntegrationTest {
 		PayU.language = Language.en;
 		PayU.isTest = false;
 
-		TestEnvironment enviroment = TestEnvironment.STG;
+		TestEnvironment enviroment = TestEnvironment.SANDBOX;
 		PayU.paymentsUrl = enviroment.getPaymentsApiUrl();
 
 		LoggerUtil.setLogLevel(Level.ALL);
