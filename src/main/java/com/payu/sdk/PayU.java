@@ -380,6 +380,7 @@ public abstract class PayU {
 		/** The subscription ID from POL */
 		String SOURCE_ID = "sourceId";
 		
+		/** The creation source field */
+		String CREATION_SOURCE = "creationSource";
 	}
-
 }

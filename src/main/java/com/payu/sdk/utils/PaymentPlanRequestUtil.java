@@ -33,6 +33,7 @@ import java.util.Map;
 
 import com.payu.sdk.PayU;
 import com.payu.sdk.constants.Constants;
+import com.payu.sdk.enums.SubscriptionCreationSource;
 import com.payu.sdk.exceptions.InvalidParametersException;
 import com.payu.sdk.exceptions.PayUException;
 import com.payu.sdk.model.AdditionalValue;
@@ -641,6 +642,8 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 		// Subscription sourceId and description
 		Long sourceId = getLongParameter(parameters, PayU.PARAMETERS.SOURCE_ID);
 		String description = getParameter(parameters, PayU.PARAMETERS.DESCRIPTION);
+		SubscriptionCreationSource creationSource = getEnumValueParameter(SubscriptionCreationSource.class, parameters,
+				PayU.PARAMETERS.CREATION_SOURCE);
 		
 		// Subscription basic parameters
 		Subscription request = new Subscription();
@@ -659,6 +662,10 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 		request.setExtra1(extra2);
 		request.setSourceId(sourceId);
 		request.setDescription(description);
+		
+		if (creationSource != null) {
+			request.setCreationSource(creationSource.name());
+		}
 
 		// Subscription complex parameters (customer and plan)
 		request.setPlan(plan);
