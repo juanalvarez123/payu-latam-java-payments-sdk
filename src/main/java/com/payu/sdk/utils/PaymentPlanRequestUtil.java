@@ -659,7 +659,7 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 		request.setNotifyUrl(notifyUrl);
 		request.setSourceReference(sourceReference);
 		request.setExtra1(extra1);
-		request.setExtra1(extra2);
+		request.setExtra2(extra2);
 		request.setSourceId(sourceId);
 		request.setDescription(description);
 		
