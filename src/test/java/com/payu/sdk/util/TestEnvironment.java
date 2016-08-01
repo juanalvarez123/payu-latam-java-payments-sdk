@@ -32,7 +32,7 @@ package com.payu.sdk.util;
 public enum TestEnvironment {
 
 	CUSTOM("", ""),
-
+	
 	QA("https://qa.api.payulatam.com/payments-api/", "https://qa.api.payulatam.com/reports-api/"),
 
 	QALT("https://load.api.payulatam.com/payments-api/", "https://load.api.payulatam.com/reports-api/"),
@@ -42,7 +42,7 @@ public enum TestEnvironment {
 	LOCAL("http://172.17.0.1:18085/payments-api/", "http://localhost:8080/ppp-web-reports-api/"),
 
 	PRD("https://api.payulatam.com/payments-api/", "https://api.payulatam.com/reports-api/");
-
+	
 	private String paymentsApiUrl;
 
 	private String reportsApiUrl;
