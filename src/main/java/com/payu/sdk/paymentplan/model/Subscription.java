@@ -50,7 +50,7 @@ import com.payu.sdk.utils.JaxbUtil;
 @XmlAccessorType(XmlAccessType.PROPERTY)
 @XmlType(propOrder = { "id", "trialDays", "quantity", "installments", "currentPeriodStart", "currentPeriodEnd", "customer",
 		"plan", "creditCardToken", "bankAccountId", "termsAndConditionsAcepted", "immediatePayment", "deliveryAddress",
-		"notifyUrl", "sourceReference", "recurringBillItems", "extra1", "extra2", "sourceId", "description" })
+		"notifyUrl", "sourceReference", "recurringBillItems", "extra1", "extra2", "sourceId", "description", "creationSource" })
 public class Subscription extends Request {
 
 	/**
@@ -162,6 +162,11 @@ public class Subscription extends Request {
 	 * The subscription's description / comments 
 	 */
 	private String description;
+	
+	/**
+	 * The subscriptions's creation source
+	 */
+	private String creationSource;
 	
 	// -------------------------------------------------------
 	// GETTERS AND SETTERS
@@ -574,6 +579,22 @@ public class Subscription extends Request {
 
 		this.description = description;
 	}
+
+	/**
+	 * @return the creationSource
+	 */
+	public String getCreationSource() {
+
+		return creationSource;
+	}
+
+	/**
+	 * @param creationSource the creationSource to set
+	 */
+	public void setCreationSource(String creationSource) {
+
+		this.creationSource = creationSource;
+	}
 	
 	/* (non-Javadoc)
 	 * @see com.payu.sdk.model.request.Request#getBaseRequestUrl(java.lang.String, com.payu.sdk.constants.Resources.RequestMethod)
@@ -613,5 +634,4 @@ public class Subscription extends Request {
 		return JaxbUtil.convertXmlToJava(Subscription.class, xml);
 
 	}
-
 }
