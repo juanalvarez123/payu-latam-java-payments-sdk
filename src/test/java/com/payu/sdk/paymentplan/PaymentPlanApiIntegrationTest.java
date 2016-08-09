@@ -127,7 +127,7 @@ public class PaymentPlanApiIntegrationTest {
 		PayU.language = Language.en;
 		PayU.isTest = false;
 
-		TestEnvironment enviroment = TestEnvironment.LOCAL;
+		TestEnvironment enviroment = TestEnvironment.STG;
 		PayU.paymentsUrl = enviroment.getPaymentsApiUrl();
 
 		LoggerUtil.setLogLevel(Level.ALL);
