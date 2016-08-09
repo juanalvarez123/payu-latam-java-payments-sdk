@@ -380,6 +380,26 @@ public abstract class PayU {
 		/** The subscription ID from POL */
 		String SOURCE_ID = "sourceId";
 		
+		/**
+		 * To be used by migrated subscriptions. The buyer IP as 
+		 * informed by the origin platform.
+		 */
+		String BUYER_IP_SOURCE = "buyerIpSource";
+		
+		/**
+		 * To be used by migrated subscriptions. The number of payments 
+		 * charged on the origin platform at the moment that the subscription 
+		 * was migrated.
+		 */
+		String PAYMENTS_NUMBER_SOURCE = "paymentsNumberSource";
+
+		/**
+		 * To be used by migrated subscriptions. The number of the next payment
+		 * to be charged on the origin platform at the moment that the subscription 
+		 * was migrated. 
+		 */
+		String NEXT_PAYMENT_NUMBER_SOURCE = "nextPaymentNumberSource";
+
 	}
 
 }

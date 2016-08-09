@@ -50,7 +50,8 @@ import com.payu.sdk.utils.JaxbUtil;
 @XmlAccessorType(XmlAccessType.PROPERTY)
 @XmlType(propOrder = { "id", "trialDays", "quantity", "installments", "currentPeriodStart", "currentPeriodEnd", "customer",
 		"plan", "creditCardToken", "bankAccountId", "termsAndConditionsAcepted", "immediatePayment", "deliveryAddress",
-		"notifyUrl", "sourceReference", "recurringBillItems", "extra1", "extra2", "sourceId", "description" })
+		"notifyUrl", "sourceReference", "recurringBillItems", "extra1", "extra2", "sourceId", "description", "buyerIpSource",
+		"paymentsNumberSource", "nextPaymentNumberSource" })
 public class Subscription extends Request {
 
 	/**
@@ -163,6 +164,26 @@ public class Subscription extends Request {
 	 */
 	private String description;
 	
+	/**
+	 * To be used by migrated subscriptions. The buyer IP as 
+	 * informed by the origin platform.
+	 */
+	private String buyerIpSource;
+	
+	/**
+	 * To be used by migrated subscriptions. The number of payments 
+	 * charged on the origin platform at the moment that the subscription 
+	 * was migrated.
+	 */
+	private Integer paymentsNumberSource;
+
+	/**
+	 * To be used by migrated subscriptions. The number of the next payment
+	 * to be charged on the origin platform at the moment that the subscription 
+	 * was migrated. 
+	 */
+	private Integer nextPaymentNumberSource;
+
 	// -------------------------------------------------------
 	// GETTERS AND SETTERS
 	// -------------------------------------------------------
@@ -363,7 +384,34 @@ public class Subscription extends Request {
 		
 		return description;
 	}
-	
+
+	/**
+	 * Returns the source buyer IP
+	 * 
+	 * @return the buyerIpSource
+	 */
+	public String getBuyerIpSource() {
+		return buyerIpSource;
+	}
+
+	/**
+	 * Returns the source payments number
+	 * 
+	 * @return the paymentsNumberSource
+	 */
+	public Integer getPaymentsNumberSource() {
+		return paymentsNumberSource;
+	}
+
+	/**
+	 * Returns the source next payment number
+	 * 
+	 * @return the nextPaymentNumberSource
+	 */
+	public Integer getNextPaymentNumberSource() {
+		return nextPaymentNumberSource;
+	}
+
 	/**
 	 * Sets the subscription identifier
 	 *
@@ -575,6 +623,36 @@ public class Subscription extends Request {
 		this.description = description;
 	}
 	
+	/**
+	 * Sets the source buyer IP
+	 * 
+	 * @param buyerIpSource
+	 * 			The buyer IP source
+	 */
+	public void setBuyerIpSource(String buyerIpSource) {
+		this.buyerIpSource = buyerIpSource;
+	}
+
+	/**
+	 * Sets the source payments number
+	 * 
+	 * @param paymentsNumberSource
+	 * 			The source payment number
+	 */
+	public void setPaymentsNumberSource(Integer paymentsNumberSource) {
+		this.paymentsNumberSource = paymentsNumberSource;
+	}
+
+	/**
+	 * Sets the source next payment number
+	 * 
+	 * @param nextPaymentNumberSource
+	 * 			The source next payment number
+	 */
+	public void setNextPaymentNumberSource(Integer nextPaymentNumberSource) {
+		this.nextPaymentNumberSource = nextPaymentNumberSource;
+	}
+
 	/* (non-Javadoc)
 	 * @see com.payu.sdk.model.request.Request#getBaseRequestUrl(java.lang.String, com.payu.sdk.constants.Resources.RequestMethod)
 	 */
