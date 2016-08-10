@@ -713,7 +713,7 @@ public final class RequestUtil extends CommonRequestUtil {
 	 * @return The transaction to be sent built
 	 * @throws InvalidParametersException
 	 */
-	private static Transaction buildTransaction(Map<String, String> parameters,
+	public static Transaction buildTransaction(Map<String, String> parameters,
 			TransactionType transactionType) throws InvalidParametersException {
 
 		String payerName = getParameter(parameters, PayU.PARAMETERS.PAYER_NAME);

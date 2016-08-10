@@ -127,7 +127,7 @@ public class PaymentPlanApiIntegrationTest {
 		PayU.language = Language.en;
 		PayU.isTest = false;
 
-		TestEnvironment enviroment = TestEnvironment.LOCAL;
+		TestEnvironment enviroment = TestEnvironment.SANDBOX;
 		PayU.paymentsUrl = enviroment.getPaymentsApiUrl();
 
 		LoggerUtil.setLogLevel(Level.ALL);
@@ -1161,7 +1161,7 @@ public class PaymentPlanApiIntegrationTest {
 		}
 
 	}
-	
+
 	/**
 	 * Create subscription test with existing plan
 	 */
@@ -1192,7 +1192,7 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
 		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
 		parameters.put(PayU.PARAMETERS.CREATION_SOURCE, "POL_RECURRING_PAYMENT");
-		
+
 		// Customer parameters
 		parameters.put(PayU.PARAMETERS.CUSTOMER_NAME, "Oscar");
 		parameters.put(PayU.PARAMETERS.CUSTOMER_EMAIL, "prueba@payulatam.com");
@@ -1267,7 +1267,7 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
 		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
 		parameters.put(PayU.PARAMETERS.CREATION_SOURCE, "POL_RECURRING_PAYMENT");
-		
+
 		// Customer parameters
 		parameters.put(PayU.PARAMETERS.CUSTOMER_ID, customerId);
 
@@ -1337,7 +1337,7 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
 		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
 		parameters.put(PayU.PARAMETERS.CREATION_SOURCE, "POL_RECURRING_PAYMENT");
-		
+
 		// Customer parameters
 		parameters.put(PayU.PARAMETERS.CUSTOMER_ID, customerId);
 
@@ -1421,7 +1421,7 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
 		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
 		parameters.put(PayU.PARAMETERS.CREATION_SOURCE, "POL_RECURRING_PAYMENT");
-		
+
 		Subscription response = PayUSubscription.create(parameters);
 
 		LoggerUtil.info(RESPONSE_LOG_MESSAGE, response);
@@ -1462,7 +1462,7 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
 		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
 		parameters.put(PayU.PARAMETERS.CREATION_SOURCE, "POL_RECURRING_PAYMENT");
-		
+
 		// Customer parameters
 
 		// Plan parameters
@@ -1511,7 +1511,7 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
 		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
 		parameters.put(PayU.PARAMETERS.CREATION_SOURCE, "POL_RECURRING_PAYMENT");
-		
+
 		// Plan parameters
 		parameters.put(PayU.PARAMETERS.PLAN_CODE, planCode);
 
@@ -1559,7 +1559,7 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
 		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
 		parameters.put(PayU.PARAMETERS.CREATION_SOURCE, "POL_RECURRING_PAYMENT");
-		
+
 		// Customer parameters
 		parameters.put(PayU.PARAMETERS.CUSTOMER_ID, customerId);
 		parameters.put(PayU.PARAMETERS.CUSTOMER_NAME, "Name");
@@ -1633,7 +1633,7 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
 		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
 		parameters.put(PayU.PARAMETERS.CREATION_SOURCE, "POL_RECURRING_PAYMENT");
-		
+
 		// Customer parameters
 		parameters.put(PayU.PARAMETERS.CUSTOMER_NAME, "Oscar");
 		parameters.put(PayU.PARAMETERS.CUSTOMER_EMAIL, "prueba@payulatam.com");
