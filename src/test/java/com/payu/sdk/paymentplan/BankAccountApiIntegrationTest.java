@@ -113,6 +113,11 @@ public class BankAccountApiIntegrationTest {
 	 * The bank account identifier
 	 */
 	private String bankAccountBrazilId;
+	
+	/**
+	 * The subscriptions created
+	 */
+	private List<Subscription> subscriptionsCreated = new ArrayList<Subscription>();
 
 	@BeforeClass
 	private void init() {
@@ -473,6 +478,7 @@ public class BankAccountApiIntegrationTest {
 
 		try {
 			Subscription response = PayUSubscription.create(parameters);
+			subscriptionsCreated.add(response);
 			subscriptionIds.add(response.getId());
 			LoggerUtil.info(RESPONSE_LOG_MESSAGE, response);
 
@@ -924,7 +930,8 @@ public class BankAccountApiIntegrationTest {
 
 		try {
 			Subscription response = PayUSubscription.create(parameters);
-
+			subscriptionsCreated.add(response);
+			
 			LoggerUtil.info(RESPONSE_LOG_MESSAGE, response);
 
 		} catch (ConnectionException e) {
@@ -1002,6 +1009,7 @@ public class BankAccountApiIntegrationTest {
 			Subscription response = PayUSubscription.create(parameters);
 			subscriptionIds.add(response.getId());
 			planCodes.add(response.getPlan().getPlanCode());
+			subscriptionsCreated.add(response);
 			LoggerUtil.info(RESPONSE_LOG_MESSAGE, response);
 
 			Assert.assertNotNull(response, "Empty subscription response");
@@ -1142,6 +1150,8 @@ public class BankAccountApiIntegrationTest {
 
 		try {
 			Subscription response = PayUSubscription.create(parameters);
+			subscriptionsCreated.add(response);
+			
 			LoggerUtil.info(RESPONSE_LOG_MESSAGE, response);
 			Assert.fail("is valid?");
 
@@ -1197,7 +1207,7 @@ public class BankAccountApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.PLAN_ID, planId);
 
 		// customer parameters
-				parameters.put(PayU.PARAMETERS.CUSTOMER_NAME, "david");
+		parameters.put(PayU.PARAMETERS.CUSTOMER_NAME, "david");
 
 		// Bank account parameters
 		parameters.put(PayU.PARAMETERS.BANK_ACCOUNT_CUSTOMER_NAME, "David");
@@ -1217,6 +1227,7 @@ public class BankAccountApiIntegrationTest {
 			Assert.assertNotNull(response.getCustomer(),"Null customer response");
 			Assert.assertNotNull(response.getCustomer().getId(),"Null customer identifier response");
 			customerIds.add(response.getCustomer().getId());
+			subscriptionsCreated.add(response);
 		} catch (ConnectionException e) {
 
 			// Service Unavailable
@@ -1521,9 +1532,9 @@ public class BankAccountApiIntegrationTest {
 		// Bank account parameters
 		parameters.put(PayU.PARAMETERS.BANK_ACCOUNT_ID, bankAccountId);
 
-
 		try {
 			Subscription response = PayUSubscription.create(parameters);
+			subscriptionsCreated.add(response);
 
 			LoggerUtil.info(RESPONSE_LOG_MESSAGE, response);
 
@@ -1849,7 +1860,72 @@ public class BankAccountApiIntegrationTest {
 			Assert.fail(e.getMessage());
 		}
 	}
+	
+	@Test(dependsOnMethods = { 
+			"createSubscriptionExistingPlanAndBankAccountExisting", 
+			"createSubscriptionWithoutPaymentMethod",
+			"createSubscriptionNewPlanAndExistingBankAccount", 
+			"createSubscriptionWithoutCustomer",
+			"createSubscriptionWithoutCustomer2", 
+			"createSubscriptionWithoutTermAndConditions" })
+	public void findSubscriptionsBySourceId() {
 
+		Thread.currentThread().setName("findSubscriptionsBySourceId");
+
+		Map<String, String> parameters = new HashMap<String, String>();
+		parameters.put(PayU.PARAMETERS.SOURCE_ID, subscriptionsCreated.get(0).getSourceId().toString());
+
+		try {
+			List<Subscription> subscriptions = PayUSubscription.findList(parameters);
+			LoggerUtil.info(RESPONSE_LOG_MESSAGE, subscriptions);
+
+			Assert.assertNotNull(subscriptions);
+			for (Subscription sus : subscriptions) {
+				Assert.assertNotNull(sus);
+			}
+			
+			Assert.assertTrue(subscriptionsCreated.size() == subscriptions.size());
+		}
+		catch (ConnectionException e) {
+
+			// Service Unavailable
+			LoggerUtil.error(e.getMessage(), e);
+		}
+		catch (SDKException e) {
+
+			// SDK error
+			LoggerUtil.error(e.getMessage(), e);
+			Assert.fail(e.getMessage());
+		}
+	}
+	
+	@Test(expectedExceptions = PayUException.class)
+	public void findSubscriptionsBySourceIdReturnsNothing() throws Exception {
+		
+		Thread.currentThread().setName("findSubscriptionsBySourceId");
+		
+		Map<String, String> parameters = new HashMap<String, String>();
+		parameters.put(PayU.PARAMETERS.SOURCE_ID, "300777999");
+		
+		try {
+			List<Subscription> subscriptions = PayUSubscription.findList(parameters);
+			LoggerUtil.info(RESPONSE_LOG_MESSAGE, subscriptions);
+			
+			Assert.fail("Has results");
+		}
+		catch (ConnectionException e) {
+			
+			// Service Unavailable
+			LoggerUtil.error(e.getMessage(), e);
+		}
+		catch (InvalidParametersException e) {
+			
+			// Different error
+			LoggerUtil.error(e.getMessage(), e);
+			Assert.fail(e.getMessage());
+		}
+	}
+	
 	@AfterTest
 	public void deleteCustomer() {
 
@@ -1873,9 +1949,5 @@ public class BankAccountApiIntegrationTest {
 			Assert.fail(e.getMessage());
 		}
 	}
-
-
-
-
-
+	
 }
