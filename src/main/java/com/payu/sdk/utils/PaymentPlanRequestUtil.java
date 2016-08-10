@@ -643,9 +643,9 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 		String description = getParameter(parameters, PayU.PARAMETERS.DESCRIPTION);
 		
 		// Migrated subscriptions parameters
-		String buyerIpSource = getParameter(parameters, PayU.PARAMETERS.BUYER_IP_SOURCE);
-		Integer paymentsNumberSource = getIntegerParameter(parameters, PayU.PARAMETERS.PAYMENTS_NUMBER_SOURCE); 
-		Integer nextPaymentNumberSource = getIntegerParameter(parameters, PayU.PARAMETERS.NEXT_PAYMENT_NUMBER_SOURCE);
+		String sourceBuyerIP = getParameter(parameters, PayU.PARAMETERS.SOURCE_BUYER_IP);
+		Integer sourceNumberOfPayments = getIntegerParameter(parameters, PayU.PARAMETERS.SOURCE_NUMBER_OF_PAYMENTS); 
+		Integer sourceNextPaymentNumber = getIntegerParameter(parameters, PayU.PARAMETERS.SOURCE_NEXT_PAYMENT_NUMBER);
 		
 		// Subscription basic parameters
 		Subscription request = new Subscription();
@@ -664,9 +664,9 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 		request.setExtra1(extra2);
 		request.setSourceId(sourceId);
 		request.setDescription(description);
-		request.setBuyerIpSource(buyerIpSource);
-		request.setPaymentsNumberSource(paymentsNumberSource);
-		request.setNextPaymentNumberSource(nextPaymentNumberSource);
+		request.setSourceBuyerIp(sourceBuyerIP);
+		request.setSourceNumberOfPayments(sourceNumberOfPayments);
+		request.setSourceNextPaymentNumber(sourceNextPaymentNumber);
 		
 
 		// Subscription complex parameters (customer and plan)

@@ -50,8 +50,8 @@ import com.payu.sdk.utils.JaxbUtil;
 @XmlAccessorType(XmlAccessType.PROPERTY)
 @XmlType(propOrder = { "id", "trialDays", "quantity", "installments", "currentPeriodStart", "currentPeriodEnd", "customer",
 		"plan", "creditCardToken", "bankAccountId", "termsAndConditionsAcepted", "immediatePayment", "deliveryAddress",
-		"notifyUrl", "sourceReference", "recurringBillItems", "extra1", "extra2", "sourceId", "description", "buyerIpSource",
-		"paymentsNumberSource", "nextPaymentNumberSource" })
+		"notifyUrl", "sourceReference", "recurringBillItems", "extra1", "extra2", "sourceId", "description", "sourceBuyerIp",
+		"sourceNumberOfPayments", "sourceNextPaymentNumber" })
 public class Subscription extends Request {
 
 	/**
@@ -168,21 +168,21 @@ public class Subscription extends Request {
 	 * To be used by migrated subscriptions. The buyer IP as 
 	 * informed by the origin platform.
 	 */
-	private String buyerIpSource;
+	private String sourceBuyerIp;
 	
 	/**
 	 * To be used by migrated subscriptions. The number of payments 
 	 * charged on the origin platform at the moment that the subscription 
 	 * was migrated.
 	 */
-	private Integer paymentsNumberSource;
+	private Integer sourceNumberOfPayments;
 
 	/**
 	 * To be used by migrated subscriptions. The number of the next payment
 	 * to be charged on the origin platform at the moment that the subscription 
 	 * was migrated. 
 	 */
-	private Integer nextPaymentNumberSource;
+	private Integer sourceNextPaymentNumber;
 
 	// -------------------------------------------------------
 	// GETTERS AND SETTERS
@@ -388,28 +388,28 @@ public class Subscription extends Request {
 	/**
 	 * Returns the source buyer IP
 	 * 
-	 * @return the buyerIpSource
+	 * @return the sourceBuyerIp
 	 */
-	public String getBuyerIpSource() {
-		return buyerIpSource;
+	public String getSourceBuyerIp() {
+		return sourceBuyerIp;
 	}
 
 	/**
-	 * Returns the source payments number
+	 * Returns the source number of payments
 	 * 
-	 * @return the paymentsNumberSource
+	 * @return the sourceNumberOfPayments
 	 */
-	public Integer getPaymentsNumberSource() {
-		return paymentsNumberSource;
+	public Integer getSourceNumberOfPayments() {
+		return sourceNumberOfPayments;
 	}
 
 	/**
 	 * Returns the source next payment number
 	 * 
-	 * @return the nextPaymentNumberSource
+	 * @return the sourceNextPaymentNumber
 	 */
-	public Integer getNextPaymentNumberSource() {
-		return nextPaymentNumberSource;
+	public Integer getSourceNextPaymentNumber() {
+		return sourceNextPaymentNumber;
 	}
 
 	/**
@@ -626,31 +626,31 @@ public class Subscription extends Request {
 	/**
 	 * Sets the source buyer IP
 	 * 
-	 * @param buyerIpSource
-	 * 			The buyer IP source
+	 * @param sourceBuyerIp
+	 * 			The source buyer IP
 	 */
-	public void setBuyerIpSource(String buyerIpSource) {
-		this.buyerIpSource = buyerIpSource;
+	public void setSourceBuyerIp(String sourceBuyerIp) {
+		this.sourceBuyerIp = sourceBuyerIp;
 	}
 
 	/**
-	 * Sets the source payments number
+	 * Sets the source number of payments
 	 * 
-	 * @param paymentsNumberSource
-	 * 			The source payment number
+	 * @param sourceNumberOfPayments
+	 * 			The source number of payments
 	 */
-	public void setPaymentsNumberSource(Integer paymentsNumberSource) {
-		this.paymentsNumberSource = paymentsNumberSource;
+	public void setSourceNumberOfPayments(Integer sourceNumberOfPayments) {
+		this.sourceNumberOfPayments = sourceNumberOfPayments;
 	}
 
 	/**
 	 * Sets the source next payment number
 	 * 
-	 * @param nextPaymentNumberSource
+	 * @param sourceNextPaymentNumber
 	 * 			The source next payment number
 	 */
-	public void setNextPaymentNumberSource(Integer nextPaymentNumberSource) {
-		this.nextPaymentNumberSource = nextPaymentNumberSource;
+	public void setSourceNextPaymentNumber(Integer sourceNextPaymentNumber) {
+		this.sourceNextPaymentNumber = sourceNextPaymentNumber;
 	}
 
 	/* (non-Javadoc)

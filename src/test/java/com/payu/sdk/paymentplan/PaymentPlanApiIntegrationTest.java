@@ -1090,9 +1090,9 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
 		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
 		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
-		parameters.put(PayU.PARAMETERS.BUYER_IP_SOURCE, "123.321.123.321");
-		parameters.put(PayU.PARAMETERS.PAYMENTS_NUMBER_SOURCE, "6");
-		parameters.put(PayU.PARAMETERS.NEXT_PAYMENT_NUMBER_SOURCE, "7");
+		parameters.put(PayU.PARAMETERS.SOURCE_BUYER_IP, "123.321.123.321");
+		parameters.put(PayU.PARAMETERS.SOURCE_NUMBER_OF_PAYMENTS, "6");
+		parameters.put(PayU.PARAMETERS.SOURCE_NEXT_PAYMENT_NUMBER, "7");
 
 		try {
 			Subscription response = PayUSubscription.create(parameters);
@@ -1142,9 +1142,9 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
 		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
 		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
-		parameters.put(PayU.PARAMETERS.BUYER_IP_SOURCE, "123.321.123.321");
-		parameters.put(PayU.PARAMETERS.PAYMENTS_NUMBER_SOURCE, "6");
-		parameters.put(PayU.PARAMETERS.NEXT_PAYMENT_NUMBER_SOURCE, "7");
+		parameters.put(PayU.PARAMETERS.SOURCE_BUYER_IP, "123.321.123.321");
+		parameters.put(PayU.PARAMETERS.SOURCE_NUMBER_OF_PAYMENTS, "6");
+		parameters.put(PayU.PARAMETERS.SOURCE_NEXT_PAYMENT_NUMBER, "7");
 
 		// Customer parameters
 		parameters.put(PayU.PARAMETERS.CUSTOMER_NAME, "Oscar");
@@ -1219,9 +1219,9 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
 		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
 		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
-		parameters.put(PayU.PARAMETERS.BUYER_IP_SOURCE, "123.321.123.321");
-		parameters.put(PayU.PARAMETERS.PAYMENTS_NUMBER_SOURCE, "6");
-		parameters.put(PayU.PARAMETERS.NEXT_PAYMENT_NUMBER_SOURCE, "7");
+		parameters.put(PayU.PARAMETERS.SOURCE_BUYER_IP, "123.321.123.321");
+		parameters.put(PayU.PARAMETERS.SOURCE_NUMBER_OF_PAYMENTS, "6");
+		parameters.put(PayU.PARAMETERS.SOURCE_NEXT_PAYMENT_NUMBER, "7");
 
 		// Customer parameters
 		parameters.put(PayU.PARAMETERS.CUSTOMER_ID, customerId);
@@ -1291,9 +1291,9 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
 		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
 		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
-		parameters.put(PayU.PARAMETERS.BUYER_IP_SOURCE, "123.321.123.321");
-		parameters.put(PayU.PARAMETERS.PAYMENTS_NUMBER_SOURCE, "6");
-		parameters.put(PayU.PARAMETERS.NEXT_PAYMENT_NUMBER_SOURCE, "7");
+		parameters.put(PayU.PARAMETERS.SOURCE_BUYER_IP, "123.321.123.321");
+		parameters.put(PayU.PARAMETERS.SOURCE_NUMBER_OF_PAYMENTS, "6");
+		parameters.put(PayU.PARAMETERS.SOURCE_NEXT_PAYMENT_NUMBER, "7");
 
 		// Customer parameters
 		parameters.put(PayU.PARAMETERS.CUSTOMER_ID, customerId);
@@ -1377,9 +1377,9 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
 		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
 		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
-		parameters.put(PayU.PARAMETERS.BUYER_IP_SOURCE, "123.321.123.321");
-		parameters.put(PayU.PARAMETERS.PAYMENTS_NUMBER_SOURCE, "6");
-		parameters.put(PayU.PARAMETERS.NEXT_PAYMENT_NUMBER_SOURCE, "7");
+		parameters.put(PayU.PARAMETERS.SOURCE_BUYER_IP, "123.321.123.321");
+		parameters.put(PayU.PARAMETERS.SOURCE_NUMBER_OF_PAYMENTS, "6");
+		parameters.put(PayU.PARAMETERS.SOURCE_NEXT_PAYMENT_NUMBER, "7");
 
 		Subscription response = PayUSubscription.create(parameters);
 
@@ -1420,9 +1420,9 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
 		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
 		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
-		parameters.put(PayU.PARAMETERS.BUYER_IP_SOURCE, "123.321.123.321");
-		parameters.put(PayU.PARAMETERS.PAYMENTS_NUMBER_SOURCE, "6");
-		parameters.put(PayU.PARAMETERS.NEXT_PAYMENT_NUMBER_SOURCE, "7");
+		parameters.put(PayU.PARAMETERS.SOURCE_BUYER_IP, "123.321.123.321");
+		parameters.put(PayU.PARAMETERS.SOURCE_NUMBER_OF_PAYMENTS, "6");
+		parameters.put(PayU.PARAMETERS.SOURCE_NEXT_PAYMENT_NUMBER, "7");
 
 		// Customer parameters
 
@@ -1471,9 +1471,9 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
 		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
 		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
-		parameters.put(PayU.PARAMETERS.BUYER_IP_SOURCE, "123.321.123.321");
-		parameters.put(PayU.PARAMETERS.PAYMENTS_NUMBER_SOURCE, "6");
-		parameters.put(PayU.PARAMETERS.NEXT_PAYMENT_NUMBER_SOURCE, "7");
+		parameters.put(PayU.PARAMETERS.SOURCE_BUYER_IP, "123.321.123.321");
+		parameters.put(PayU.PARAMETERS.SOURCE_NUMBER_OF_PAYMENTS, "6");
+		parameters.put(PayU.PARAMETERS.SOURCE_NEXT_PAYMENT_NUMBER, "7");
 
 		// Plan parameters
 		parameters.put(PayU.PARAMETERS.PLAN_CODE, planCode);
@@ -1521,9 +1521,9 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
 		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
 		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
-		parameters.put(PayU.PARAMETERS.BUYER_IP_SOURCE, "123.321.123.321");
-		parameters.put(PayU.PARAMETERS.PAYMENTS_NUMBER_SOURCE, "6");
-		parameters.put(PayU.PARAMETERS.NEXT_PAYMENT_NUMBER_SOURCE, "7");
+		parameters.put(PayU.PARAMETERS.SOURCE_BUYER_IP, "123.321.123.321");
+		parameters.put(PayU.PARAMETERS.SOURCE_NUMBER_OF_PAYMENTS, "6");
+		parameters.put(PayU.PARAMETERS.SOURCE_NEXT_PAYMENT_NUMBER, "7");
 
 		// Customer parameters
 		parameters.put(PayU.PARAMETERS.CUSTOMER_ID, customerId);
@@ -1597,9 +1597,9 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
 		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
 		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
-		parameters.put(PayU.PARAMETERS.BUYER_IP_SOURCE, "123.321.123.321");
-		parameters.put(PayU.PARAMETERS.PAYMENTS_NUMBER_SOURCE, "6");
-		parameters.put(PayU.PARAMETERS.NEXT_PAYMENT_NUMBER_SOURCE, "7");
+		parameters.put(PayU.PARAMETERS.SOURCE_BUYER_IP, "123.321.123.321");
+		parameters.put(PayU.PARAMETERS.SOURCE_NUMBER_OF_PAYMENTS, "6");
+		parameters.put(PayU.PARAMETERS.SOURCE_NEXT_PAYMENT_NUMBER, "7");
 
 		// Customer parameters
 		parameters.put(PayU.PARAMETERS.CUSTOMER_NAME, "Oscar");

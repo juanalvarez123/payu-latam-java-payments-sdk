@@ -384,21 +384,21 @@ public abstract class PayU {
 		 * To be used by migrated subscriptions. The buyer IP as 
 		 * informed by the origin platform.
 		 */
-		String BUYER_IP_SOURCE = "buyerIpSource";
+		String SOURCE_BUYER_IP = "sourceBuyerIp";
 		
 		/**
 		 * To be used by migrated subscriptions. The number of payments 
 		 * charged on the origin platform at the moment that the subscription 
 		 * was migrated.
 		 */
-		String PAYMENTS_NUMBER_SOURCE = "paymentsNumberSource";
+		String SOURCE_NUMBER_OF_PAYMENTS = "sourceNumberOfPayments";
 
 		/**
 		 * To be used by migrated subscriptions. The number of the next payment
 		 * to be charged on the origin platform at the moment that the subscription 
 		 * was migrated. 
 		 */
-		String NEXT_PAYMENT_NUMBER_SOURCE = "nextPaymentNumberSource";
+		String SOURCE_NEXT_PAYMENT_NUMBER = "sourceNextPaymentNumber";
 
 	}
 
