@@ -39,7 +39,7 @@ public enum TestEnvironment {
 
 	SANDBOX("https://sandbox.api.payulatam.com/payments-api/", "https://sandbox.api.payulatam.com/reports-api/"),
 
-	LOCAL("http://172.17.0.1:18085/payments-api/", "http://localhost:8080/ppp-web-reports-api/"),
+	LOCAL("http://localhost:8080/ppp-web-payments-api/", "http://localhost:8080/ppp-web-reports-api/"),
 
 	PRD("https://api.payulatam.com/payments-api/", "https://api.payulatam.com/reports-api/");
 	
