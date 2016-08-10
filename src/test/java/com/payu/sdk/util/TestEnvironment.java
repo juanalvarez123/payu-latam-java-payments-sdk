@@ -37,7 +37,7 @@ public enum TestEnvironment {
 
 	QALT("https://load.api.payulatam.com/payments-api/", "https://load.api.payulatam.com/reports-api/"),
 
-	STG("https://stg.api.payulatam.com/payments-api/", "https://stg.api.payulatam.com/reports-api/"),
+	SANDBOX("https://sandbox.api.payulatam.com/payments-api/", "https://sandbox.api.payulatam.com/reports-api/"),
 
 	LOCAL("http://localhost:8080/ppp-web-payments-api/", "http://localhost:8080/ppp-web-reports-api/"),
 
