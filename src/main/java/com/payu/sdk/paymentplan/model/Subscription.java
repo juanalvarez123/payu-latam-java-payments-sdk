@@ -51,7 +51,7 @@ import com.payu.sdk.utils.JaxbUtil;
 @XmlType(propOrder = { "id", "trialDays", "quantity", "installments", "currentPeriodStart", "currentPeriodEnd", "customer",
 		"plan", "creditCardToken", "bankAccountId", "termsAndConditionsAcepted", "immediatePayment", "deliveryAddress",
 		"notifyUrl", "sourceReference", "recurringBillItems", "extra1", "extra2", "sourceId", "description", "sourceBuyerIp",
-		"sourceNumberOfPayments", "sourceNextPaymentNumber" })
+		"sourceNumberOfPayments", "sourceNextPaymentNumber", "creationSource" })
 public class Subscription extends Request {
 
 	/**
@@ -184,6 +184,11 @@ public class Subscription extends Request {
 	 */
 	private Integer sourceNextPaymentNumber;
 
+	/**
+	 * The subscriptions's creation source
+	 */
+	private String creationSource;
+	
 	// -------------------------------------------------------
 	// GETTERS AND SETTERS
 	// -------------------------------------------------------
@@ -622,6 +627,22 @@ public class Subscription extends Request {
 
 		this.description = description;
 	}
+
+	/**
+	 * @return the creationSource
+	 */
+	public String getCreationSource() {
+
+		return creationSource;
+	}
+
+	/**
+	 * @param creationSource the creationSource to set
+	 */
+	public void setCreationSource(String creationSource) {
+
+		this.creationSource = creationSource;
+	}
 	
 	/**
 	 * Sets the source buyer IP
@@ -691,5 +712,4 @@ public class Subscription extends Request {
 		return JaxbUtil.convertXmlToJava(Subscription.class, xml);
 
 	}
-
 }

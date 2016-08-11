@@ -1093,6 +1093,58 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.SOURCE_BUYER_IP, "123.321.123.321");
 		parameters.put(PayU.PARAMETERS.SOURCE_NUMBER_OF_PAYMENTS, "6");
 		parameters.put(PayU.PARAMETERS.SOURCE_NEXT_PAYMENT_NUMBER, "7");
+		parameters.put(PayU.PARAMETERS.CREATION_SOURCE, "POL_RECURRING_PAYMENT");
+
+		try {
+			Subscription response = PayUSubscription.create(parameters);
+			subscriptionId = response.getId();
+			LoggerUtil.info(RESPONSE_LOG_MESSAGE, response);
+
+			Assert.assertNotNull(response, "Empty subscription response");
+		} catch (ConnectionException e) {
+
+			// Service Unavailable
+			LoggerUtil.error(e.getMessage(), e);
+		} catch (SDKException e) {
+
+			// SDK error
+			LoggerUtil.error(e.getMessage(), e);
+			Assert.fail(e.getMessage());
+		}
+
+	}
+
+	/**
+	 * Create basic subscription test
+	 */
+	@Test(dependsOnMethods = { "createCustomer", "createPlan",
+			"createCreditCard" })
+	public void createSubscriptionWithoutCreationSource() {
+
+		Thread.currentThread().setName("createBasicSubscription");
+
+		Map<String, String> parameters = new HashMap<String, String>();
+
+		parameters.put(PayU.PARAMETERS.PLAN_CODE, planCode);
+		parameters.put(PayU.PARAMETERS.CUSTOMER_ID, customerId);
+		parameters.put(PayU.PARAMETERS.TOKEN_ID, tokenId);
+		parameters.put(PayU.PARAMETERS.QUANTITY, "5");
+		parameters.put(PayU.PARAMETERS.IMMEDIATE_PAYMENT, "true");
+		parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "2");
+		parameters.put(PayU.PARAMETERS.NOTIFY_URL, "testUrl");
+		parameters.put(PayU.PARAMETERS.SOURCE_REFERENCE, "testSourceReference");
+		parameters.put(PayU.PARAMETERS.EXTRA1, "extra1");
+		parameters.put(PayU.PARAMETERS.EXTRA2, "extra2");
+		parameters.put(PayU.PARAMETERS.DELIVERY_ADDRESS_1, "line1");
+		parameters.put(PayU.PARAMETERS.DELIVERY_ADDRESS_2, "line2");
+		parameters.put(PayU.PARAMETERS.DELIVERY_ADDRESS_3, "line3");
+		parameters.put(PayU.PARAMETERS.DELIVERY_CITY, "Bogotá");
+		parameters.put(PayU.PARAMETERS.DELIVERY_STATE, "Cundinamarca");
+		parameters.put(PayU.PARAMETERS.DELIVERY_COUNTRY, "CO");
+		parameters.put(PayU.PARAMETERS.DELIVERY_POSTAL_CODE, "101010");
+		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
+		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
+		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
 
 		try {
 			Subscription response = PayUSubscription.create(parameters);
@@ -1145,6 +1197,7 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.SOURCE_BUYER_IP, "123.321.123.321");
 		parameters.put(PayU.PARAMETERS.SOURCE_NUMBER_OF_PAYMENTS, "6");
 		parameters.put(PayU.PARAMETERS.SOURCE_NEXT_PAYMENT_NUMBER, "7");
+		parameters.put(PayU.PARAMETERS.CREATION_SOURCE, "POL_RECURRING_PAYMENT");
 
 		// Customer parameters
 		parameters.put(PayU.PARAMETERS.CUSTOMER_NAME, "Oscar");
@@ -1222,6 +1275,7 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.SOURCE_BUYER_IP, "123.321.123.321");
 		parameters.put(PayU.PARAMETERS.SOURCE_NUMBER_OF_PAYMENTS, "6");
 		parameters.put(PayU.PARAMETERS.SOURCE_NEXT_PAYMENT_NUMBER, "7");
+		parameters.put(PayU.PARAMETERS.CREATION_SOURCE, "POL_RECURRING_PAYMENT");
 
 		// Customer parameters
 		parameters.put(PayU.PARAMETERS.CUSTOMER_ID, customerId);
@@ -1294,6 +1348,7 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.SOURCE_BUYER_IP, "123.321.123.321");
 		parameters.put(PayU.PARAMETERS.SOURCE_NUMBER_OF_PAYMENTS, "6");
 		parameters.put(PayU.PARAMETERS.SOURCE_NEXT_PAYMENT_NUMBER, "7");
+		parameters.put(PayU.PARAMETERS.CREATION_SOURCE, "POL_RECURRING_PAYMENT");
 
 		// Customer parameters
 		parameters.put(PayU.PARAMETERS.CUSTOMER_ID, customerId);
@@ -1380,6 +1435,7 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.SOURCE_BUYER_IP, "123.321.123.321");
 		parameters.put(PayU.PARAMETERS.SOURCE_NUMBER_OF_PAYMENTS, "6");
 		parameters.put(PayU.PARAMETERS.SOURCE_NEXT_PAYMENT_NUMBER, "7");
+		parameters.put(PayU.PARAMETERS.CREATION_SOURCE, "POL_RECURRING_PAYMENT");
 
 		Subscription response = PayUSubscription.create(parameters);
 
@@ -1423,6 +1479,7 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.SOURCE_BUYER_IP, "123.321.123.321");
 		parameters.put(PayU.PARAMETERS.SOURCE_NUMBER_OF_PAYMENTS, "6");
 		parameters.put(PayU.PARAMETERS.SOURCE_NEXT_PAYMENT_NUMBER, "7");
+		parameters.put(PayU.PARAMETERS.CREATION_SOURCE, "POL_RECURRING_PAYMENT");
 
 		// Customer parameters
 
@@ -1474,6 +1531,7 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.SOURCE_BUYER_IP, "123.321.123.321");
 		parameters.put(PayU.PARAMETERS.SOURCE_NUMBER_OF_PAYMENTS, "6");
 		parameters.put(PayU.PARAMETERS.SOURCE_NEXT_PAYMENT_NUMBER, "7");
+		parameters.put(PayU.PARAMETERS.CREATION_SOURCE, "POL_RECURRING_PAYMENT");
 
 		// Plan parameters
 		parameters.put(PayU.PARAMETERS.PLAN_CODE, planCode);
@@ -1524,6 +1582,7 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.SOURCE_BUYER_IP, "123.321.123.321");
 		parameters.put(PayU.PARAMETERS.SOURCE_NUMBER_OF_PAYMENTS, "6");
 		parameters.put(PayU.PARAMETERS.SOURCE_NEXT_PAYMENT_NUMBER, "7");
+		parameters.put(PayU.PARAMETERS.CREATION_SOURCE, "POL_RECURRING_PAYMENT");
 
 		// Customer parameters
 		parameters.put(PayU.PARAMETERS.CUSTOMER_ID, customerId);
@@ -1600,6 +1659,7 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.SOURCE_BUYER_IP, "123.321.123.321");
 		parameters.put(PayU.PARAMETERS.SOURCE_NUMBER_OF_PAYMENTS, "6");
 		parameters.put(PayU.PARAMETERS.SOURCE_NEXT_PAYMENT_NUMBER, "7");
+		parameters.put(PayU.PARAMETERS.CREATION_SOURCE, "POL_RECURRING_PAYMENT");
 
 		// Customer parameters
 		parameters.put(PayU.PARAMETERS.CUSTOMER_NAME, "Oscar");

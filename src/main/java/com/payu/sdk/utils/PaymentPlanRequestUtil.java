@@ -33,6 +33,7 @@ import java.util.Map;
 
 import com.payu.sdk.PayU;
 import com.payu.sdk.constants.Constants;
+import com.payu.sdk.enums.SubscriptionCreationSource;
 import com.payu.sdk.exceptions.InvalidParametersException;
 import com.payu.sdk.exceptions.PayUException;
 import com.payu.sdk.model.AdditionalValue;
@@ -641,6 +642,8 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 		// Subscription sourceId and description
 		Long sourceId = getLongParameter(parameters, PayU.PARAMETERS.SOURCE_ID);
 		String description = getParameter(parameters, PayU.PARAMETERS.DESCRIPTION);
+		SubscriptionCreationSource creationSource = getEnumValueParameter(SubscriptionCreationSource.class, parameters,
+				PayU.PARAMETERS.CREATION_SOURCE);
 		
 		// Migrated subscriptions parameters
 		String sourceBuyerIP = getParameter(parameters, PayU.PARAMETERS.SOURCE_BUYER_IP);
@@ -661,13 +664,16 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 		request.setNotifyUrl(notifyUrl);
 		request.setSourceReference(sourceReference);
 		request.setExtra1(extra1);
-		request.setExtra1(extra2);
+		request.setExtra2(extra2);
 		request.setSourceId(sourceId);
 		request.setDescription(description);
 		request.setSourceBuyerIp(sourceBuyerIP);
 		request.setSourceNumberOfPayments(sourceNumberOfPayments);
 		request.setSourceNextPaymentNumber(sourceNextPaymentNumber);
 		
+		if (creationSource != null) {
+			request.setCreationSource(creationSource.name());
+		}
 
 		// Subscription complex parameters (customer and plan)
 		request.setPlan(plan);
@@ -907,6 +913,8 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 				PayU.PARAMETERS.LIMIT);
 		String offset=getParameter(parameters,
 				PayU.PARAMETERS.OFFSET);
+		String sourceId = getParameter(parameters, 
+				PayU.PARAMETERS.SOURCE_ID);
 
 		Map<String, String> paramsFilter=new HashMap<String, String>();
 		paramsFilter.put(PayU.PARAMETERS.CUSTOMER_ID, customerId);
@@ -917,6 +925,7 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 		paramsFilter.put(PayU.PARAMETERS.ACCOUNT_ID, accountId);
 		paramsFilter.put(PayU.PARAMETERS.LIMIT, limit);
 		paramsFilter.put(PayU.PARAMETERS.OFFSET, offset);
+		paramsFilter.put(PayU.PARAMETERS.SOURCE_ID, sourceId);
 
 		SubscriptionsListRequest request = new SubscriptionsListRequest();
 

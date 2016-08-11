@@ -400,6 +400,7 @@ public abstract class PayU {
 		 */
 		String SOURCE_NEXT_PAYMENT_NUMBER = "sourceNextPaymentNumber";
 
+		/** The creation source field */
+		String CREATION_SOURCE = "creationSource";
 	}
-
 }
