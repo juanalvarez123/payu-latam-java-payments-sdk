@@ -465,6 +465,9 @@ public class BankAccountApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
 		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
 		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
+		parameters.put(PayU.PARAMETERS.SOURCE_BUYER_IP, "123.321.123.321");
+		parameters.put(PayU.PARAMETERS.SOURCE_NUMBER_OF_PAYMENTS, "6");
+		parameters.put(PayU.PARAMETERS.SOURCE_NEXT_PAYMENT_NUMBER, "7");
 		parameters.put(PayU.PARAMETERS.CREATION_SOURCE, "POL_RECURRING_PAYMENT");
 
 		// Customer parameters
@@ -529,6 +532,9 @@ public class BankAccountApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
 		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
 		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
+		parameters.put(PayU.PARAMETERS.SOURCE_BUYER_IP, "123.321.123.321");
+		parameters.put(PayU.PARAMETERS.SOURCE_NUMBER_OF_PAYMENTS, "6");
+		parameters.put(PayU.PARAMETERS.SOURCE_NEXT_PAYMENT_NUMBER, "7");
 		parameters.put(PayU.PARAMETERS.CREATION_SOURCE, "POL_RECURRING_PAYMENT");
 		
 		// Customer parameters
@@ -605,6 +611,9 @@ public class BankAccountApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
 		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
 		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
+		parameters.put(PayU.PARAMETERS.SOURCE_BUYER_IP, "123.321.123.321");
+		parameters.put(PayU.PARAMETERS.SOURCE_NUMBER_OF_PAYMENTS, "6");
+		parameters.put(PayU.PARAMETERS.SOURCE_NEXT_PAYMENT_NUMBER, "7");
 		parameters.put(PayU.PARAMETERS.CREATION_SOURCE, "POL_RECURRING_PAYMENT");
 
 		// Customer parameters
@@ -762,6 +771,9 @@ public class BankAccountApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
 		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
 		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
+		parameters.put(PayU.PARAMETERS.SOURCE_BUYER_IP, "123.321.123.321");
+		parameters.put(PayU.PARAMETERS.SOURCE_NUMBER_OF_PAYMENTS, "6");
+		parameters.put(PayU.PARAMETERS.SOURCE_NEXT_PAYMENT_NUMBER, "7");
 		parameters.put(PayU.PARAMETERS.CREATION_SOURCE, "POL_RECURRING_PAYMENT");
 
 		// Customer parameters
@@ -829,6 +841,9 @@ public class BankAccountApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
 		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
 		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
+		parameters.put(PayU.PARAMETERS.SOURCE_BUYER_IP, "123.321.123.321");
+		parameters.put(PayU.PARAMETERS.SOURCE_NUMBER_OF_PAYMENTS, "6");
+		parameters.put(PayU.PARAMETERS.SOURCE_NEXT_PAYMENT_NUMBER, "7");
 		parameters.put(PayU.PARAMETERS.CREATION_SOURCE, "POL_RECURRING_PAYMENT");
 
 		// Customer parameters
@@ -919,6 +934,9 @@ public class BankAccountApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
 		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
 		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
+		parameters.put(PayU.PARAMETERS.SOURCE_BUYER_IP, "123.321.123.321");
+		parameters.put(PayU.PARAMETERS.SOURCE_NUMBER_OF_PAYMENTS, "6");
+		parameters.put(PayU.PARAMETERS.SOURCE_NEXT_PAYMENT_NUMBER, "7");
 		parameters.put(PayU.PARAMETERS.CREATION_SOURCE, "POL_RECURRING_PAYMENT");
 
 		// Customer parameters
@@ -982,6 +1000,9 @@ public class BankAccountApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
 		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
 		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
+		parameters.put(PayU.PARAMETERS.SOURCE_BUYER_IP, "123.321.123.321");
+		parameters.put(PayU.PARAMETERS.SOURCE_NUMBER_OF_PAYMENTS, "6");
+		parameters.put(PayU.PARAMETERS.SOURCE_NEXT_PAYMENT_NUMBER, "7");
 		parameters.put(PayU.PARAMETERS.CREATION_SOURCE, "POL_RECURRING_PAYMENT");
 
 		// Customer parameters
@@ -1060,6 +1081,9 @@ public class BankAccountApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
 		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
 		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
+		parameters.put(PayU.PARAMETERS.SOURCE_BUYER_IP, "123.321.123.321");
+		parameters.put(PayU.PARAMETERS.SOURCE_NUMBER_OF_PAYMENTS, "6");
+		parameters.put(PayU.PARAMETERS.SOURCE_NEXT_PAYMENT_NUMBER, "7");
 		parameters.put(PayU.PARAMETERS.CREATION_SOURCE, "POL_RECURRING_PAYMENT");
 		
 		// Customer parameters
@@ -1132,6 +1156,9 @@ public class BankAccountApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
 		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
 		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
+		parameters.put(PayU.PARAMETERS.SOURCE_BUYER_IP, "123.321.123.321");
+		parameters.put(PayU.PARAMETERS.SOURCE_NUMBER_OF_PAYMENTS, "6");
+		parameters.put(PayU.PARAMETERS.SOURCE_NEXT_PAYMENT_NUMBER, "7");
 		parameters.put(PayU.PARAMETERS.CREATION_SOURCE, "POL_RECURRING_PAYMENT");
 
 		// Plan parameters
@@ -1201,6 +1228,9 @@ public class BankAccountApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
 		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
 		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
+		parameters.put(PayU.PARAMETERS.SOURCE_BUYER_IP, "123.321.123.321");
+		parameters.put(PayU.PARAMETERS.SOURCE_NUMBER_OF_PAYMENTS, "6");
+		parameters.put(PayU.PARAMETERS.SOURCE_NEXT_PAYMENT_NUMBER, "7");
 		parameters.put(PayU.PARAMETERS.CREATION_SOURCE, "POL_RECURRING_PAYMENT");
 
 		// Plan parameters
@@ -1275,6 +1305,9 @@ public class BankAccountApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
 		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
 		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
+		parameters.put(PayU.PARAMETERS.SOURCE_BUYER_IP, "123.321.123.321");
+		parameters.put(PayU.PARAMETERS.SOURCE_NUMBER_OF_PAYMENTS, "6");
+		parameters.put(PayU.PARAMETERS.SOURCE_NEXT_PAYMENT_NUMBER, "7");
 		parameters.put(PayU.PARAMETERS.CREATION_SOURCE, "POL_RECURRING_PAYMENT");
 
 		// plan parameters
@@ -1354,6 +1387,9 @@ public class BankAccountApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
 		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
 		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
+		parameters.put(PayU.PARAMETERS.SOURCE_BUYER_IP, "123.321.123.321");
+		parameters.put(PayU.PARAMETERS.SOURCE_NUMBER_OF_PAYMENTS, "6");
+		parameters.put(PayU.PARAMETERS.SOURCE_NEXT_PAYMENT_NUMBER, "7");
 		parameters.put(PayU.PARAMETERS.CREATION_SOURCE, "POL_RECURRING_PAYMENT");
 		
 		// Customer parameters
@@ -1523,6 +1559,9 @@ public class BankAccountApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.DELIVERY_PHONE, "777123123");
 		parameters.put(PayU.PARAMETERS.SOURCE_ID, "12345");
 		parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test description");
+		parameters.put(PayU.PARAMETERS.SOURCE_BUYER_IP, "123.321.123.321");
+		parameters.put(PayU.PARAMETERS.SOURCE_NUMBER_OF_PAYMENTS, "6");
+		parameters.put(PayU.PARAMETERS.SOURCE_NEXT_PAYMENT_NUMBER, "7");
 		parameters.put(PayU.PARAMETERS.CREATION_SOURCE, "POL_RECURRING_PAYMENT");
 		
 		// Customer parameters

@@ -645,6 +645,11 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 		SubscriptionCreationSource creationSource = getEnumValueParameter(SubscriptionCreationSource.class, parameters,
 				PayU.PARAMETERS.CREATION_SOURCE);
 		
+		// Migrated subscriptions parameters
+		String sourceBuyerIP = getParameter(parameters, PayU.PARAMETERS.SOURCE_BUYER_IP);
+		Integer sourceNumberOfPayments = getIntegerParameter(parameters, PayU.PARAMETERS.SOURCE_NUMBER_OF_PAYMENTS); 
+		Integer sourceNextPaymentNumber = getIntegerParameter(parameters, PayU.PARAMETERS.SOURCE_NEXT_PAYMENT_NUMBER);
+		
 		// Subscription basic parameters
 		Subscription request = new Subscription();
 		setAuthenticationCredentials(parameters, request);
@@ -662,6 +667,9 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 		request.setExtra2(extra2);
 		request.setSourceId(sourceId);
 		request.setDescription(description);
+		request.setSourceBuyerIp(sourceBuyerIP);
+		request.setSourceNumberOfPayments(sourceNumberOfPayments);
+		request.setSourceNextPaymentNumber(sourceNextPaymentNumber);
 		
 		if (creationSource != null) {
 			request.setCreationSource(creationSource.name());
