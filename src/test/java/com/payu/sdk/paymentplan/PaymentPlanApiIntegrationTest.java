@@ -387,6 +387,8 @@ public class PaymentPlanApiIntegrationTest {
 		parameters.put(PayU.PARAMETERS.PLAN_MAX_PAYMENT_ATTEMPTS, "2");
 		parameters.put(PayU.PARAMETERS.PLAN_MAX_PENDING_PAYMENTS, "2");
 
+		parameters.put(PayU.PARAMETERS.PLAN_VALUE, "5000");
+
 		try {
 			SubscriptionPlan response = PayUPlans.create(parameters);
 
