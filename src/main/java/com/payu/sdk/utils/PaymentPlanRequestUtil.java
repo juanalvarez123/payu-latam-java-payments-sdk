@@ -141,11 +141,13 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 	 *            The tax of the plan
 	 * @param txTaxReturnBase
 	 *            The tax return base of the plan
+	 * @param txAdditionalValue
+	 *            The additional value of the plan
 	 * @return The created list of additional values
 	 */
 	private static List<AdditionalValue> buildPlanAdditionalValues(
 			Currency txCurrency, BigDecimal txValue, BigDecimal txTax,
-			BigDecimal txTaxReturnBase) {
+			BigDecimal txTaxReturnBase, BigDecimal txAdditionalValue) {
 
 		if (txCurrency == null || txValue == null) {
 			return null;
@@ -156,6 +158,8 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 		addAdditionalValue(txCurrency, Constants.PLAN_TAX, txTax, values);
 		addAdditionalValue(txCurrency, Constants.PLAN_TAX_RETURN_BASE,
 				txTaxReturnBase, values);
+		addAdditionalValue(txCurrency, Constants.PLAN_ADDITIONAL_VALUE,
+				txAdditionalValue, values);
 
 		return values;
 	}
@@ -486,6 +490,9 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 		Integer planPaymentMaxPaymentAttemps = getIntegerParameter(parameters,
 				PayU.PARAMETERS.PLAN_MAX_PAYMENT_ATTEMPTS);
 
+		BigDecimal planAdditionalValue = getBigDecimalParameter(parameters,
+				PayU.PARAMETERS.PLAN_ADDITIONAL_VALUE);
+
 		SubscriptionPlan request = new SubscriptionPlan();
 		setAuthenticationCredentials(parameters, request);
 
@@ -497,7 +504,7 @@ public final class PaymentPlanRequestUtil extends CommonRequestUtil {
 		request.setTrialDays(planTrialPeriodDays);
 		request.setMaxPaymentsAllowed(maxPaymentsAllowed);
 		request.setAdditionalValues(buildPlanAdditionalValues(planCurrency,
-				planValue, planTax, planTaxReturnBase));
+				planValue, planTax, planTaxReturnBase, planAdditionalValue));
 		request.setPaymentAttemptsDelay(planPaymentAttemptsDelay);
 		request.setMaxPaymentAttempts(planPaymentMaxPaymentAttemps);
 		request.setMaxPendingPayments(planPaymentMaxPendingPayments);

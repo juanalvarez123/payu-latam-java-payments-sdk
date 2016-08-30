@@ -275,6 +275,9 @@ public abstract class PayU {
 		/** The plan max pending payments. */
 		String PLAN_MAX_PENDING_PAYMENTS = "maxPendingPayments";
 
+		/** The plan additional value */
+		String PLAN_ADDITIONAL_VALUE = "planAdditionalValue";
+
 		/** The subscription id. */
 		String SUBSCRIPTION_ID = "subscriptionId";
 

@@ -111,4 +111,10 @@ public interface Constants {
 	 * The item tax return base variable
 	 */
 	String ITEM_TAX_RETURN_BASE = "ITEM_TAX_RETURN_BASE";
+
+	/**
+	 * The plan additional value variable
+	 */
+	String PLAN_ADDITIONAL_VALUE = "PLAN_ADDITIONAL_VALUE";
+
 }
