@@ -151,6 +151,9 @@ public final class RequestUtil extends CommonRequestUtil {
 		PaymentRequest request = buildDefaultPaymentRequest();
 		request.setCommand(Command.SUBMIT_TRANSACTION);
 
+		request.setApiKey(getParameter(parameters, PayU.PARAMETERS.API_KEY));
+		request.setApiLogin(getParameter(parameters, PayU.PARAMETERS.API_LOGIN));
+
 		request.setTransaction(buildTransaction(parameters, transactionType));
 
 		return request;
@@ -870,7 +873,7 @@ public final class RequestUtil extends CommonRequestUtil {
 			transaction.setPaymentMethod(paramPaymentMethod);
 			//transaction.setPaymentMethod(paymentMethod);
 			transaction.setPayer(buildPayer(parameters));
-			
+
 			addTransactionExtraParameters(transaction, parameters);
 
 		} else if (TransactionType.VOID.equals(transactionType)
@@ -895,7 +898,7 @@ public final class RequestUtil extends CommonRequestUtil {
 
 		return transaction;
 	}
-	
+
 	/**
 	 * Adds the transaction extra parameters.
 	 *
@@ -908,19 +911,19 @@ public final class RequestUtil extends CommonRequestUtil {
 		String extra1 = getParameter(parameters, PayU.PARAMETERS.EXTRA1);
 		String extra2 = getParameter(parameters, PayU.PARAMETERS.EXTRA2);
 		String extra3 = getParameter(parameters, PayU.PARAMETERS.EXTRA3);
-		
+
 		if (extra1 != null) {
 			transaction.addExtraParameter(ExtraParemeterNames.EXTRA1.name(), extra1);
 		}
-		
+
 		if (extra2 != null) {
 			transaction.addExtraParameter(ExtraParemeterNames.EXTRA2.name(), extra2);
 		}
-		
+
 		if (extra3 != null) {
 			transaction.addExtraParameter(ExtraParemeterNames.EXTRA3.name(), extra3);
 		}
-		
+
 	}
 
 	/**
