@@ -127,6 +127,10 @@ public class Transaction implements Serializable {
 	@XmlElement(required = false)
 	private String reason;
 
+	/** The Bcash request */
+	@XmlElement
+	private BcashRequest bcashRequest;
+
 	/**
 	 * Returns the transaction order
 	 *
@@ -296,6 +300,16 @@ public class Transaction implements Serializable {
 	 */
 	public Map<String, String> getExtraParameters() {
 		return extraParameters;
+	}
+
+	/**
+	 * Returns the Bcash request
+	 *
+	 * @return the Bcash request
+	 */
+	public BcashRequest getBcashRequest() {
+
+		return bcashRequest;
 	}
 
 	/**
@@ -547,6 +561,16 @@ public class Transaction implements Serializable {
 	 */
 	public String getId() {
 		return id;
+	}
+
+	/**
+	 * Sets the Bcash request
+	 *
+	 * @param bcashRequest the Bcash request to set
+	 */
+	public void setBcashRequest(BcashRequest bcashRequest) {
+
+		this.bcashRequest = bcashRequest;
 	}
 
 }

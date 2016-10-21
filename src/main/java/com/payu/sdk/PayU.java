@@ -405,5 +405,12 @@ public abstract class PayU {
 
 		/** The creation source field */
 		String CREATION_SOURCE = "creationSource";
+
+		/** The Bcash request content type */
+		String BCASH_REQUEST_CONTENT_TYPE = "bcashRequestContentType";
+
+		/** The Bcash request content */
+		String BCASH_REQUEST_CONTENT = "bcashRequestContent";
+
 	}
 }
