@@ -1050,8 +1050,13 @@ public final class RequestUtil extends CommonRequestUtil {
 	 * @param contentType the content type
 	 * @param content     the content
 	 * @return the Bcash request
+	 * @throws InvalidParametersException if any of the arguments is null
 	 */
-	private static BcashRequest buildBcashRequest(String contentType, String content) {
+	private static BcashRequest buildBcashRequest(String contentType, String content) throws InvalidParametersException {
+
+		if (contentType == null || content == null) {
+			throw new InvalidParametersException("Both the bcashRequestContentType and bcashRequestContent must be set set");
+		}
 
 		BcashRequest bcashRequest = new BcashRequest();
 		bcashRequest.setContentType(contentType);
