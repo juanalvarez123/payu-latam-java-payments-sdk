@@ -791,7 +791,7 @@ public final class RequestUtil extends CommonRequestUtil {
 		String deviceSessionId = getParameter(parameters,
 				PayU.PARAMETERS.DEVICE_SESSION_ID);
 
-		//Response page
+		// Response page
 		String responseUrlPage = getParameter(parameters, PayU.PARAMETERS.RESPONSE_URL);
 
 		String tokenId = getParameter(parameters, PayU.PARAMETERS.TOKEN_ID);
@@ -799,12 +799,19 @@ public final class RequestUtil extends CommonRequestUtil {
 		Transaction transaction = new Transaction();
 		transaction.setType(transactionType);
 
-
-		if(responseUrlPage != null){
-
+		if(responseUrlPage != null) {
 			addResponseUrlPage(transaction, responseUrlPage );
 		}
 
+		// Shipping address fields
+		String shippingAddressLine1 = getParameter(parameters, PayU.PARAMETERS.SHIPPING_ADDRESS_1);
+		String shippingAddressLine2 = getParameter(parameters, PayU.PARAMETERS.SHIPPING_ADDRESS_2);
+		String shippingAddressLine3 = getParameter(parameters, PayU.PARAMETERS.SHIPPING_ADDRESS_3);
+		String shippingAddressCity = getParameter(parameters, PayU.PARAMETERS.SHIPPING_CITY);
+		String shippingAddressState = getParameter(parameters, PayU.PARAMETERS.SHIPPING_STATE);
+		String shippingAddressCountry = getParameter(parameters, PayU.PARAMETERS.SHIPPING_COUNTRY);
+		String shippingAddressPostalCode = getParameter(parameters, PayU.PARAMETERS.SHIPPING_POSTAL_CODE);
+		String shippingAddressPhone = getParameter(parameters, PayU.PARAMETERS.SHIPPING_PHONE);
 
 		if (TransactionType.AUTHORIZATION_AND_CAPTURE.equals(transactionType)
 				|| TransactionType.AUTHORIZATION.equals(transactionType)) {
@@ -829,8 +836,16 @@ public final class RequestUtil extends CommonRequestUtil {
 				}
 
 				order.setSignature(signature);
-				transaction.setOrder(order);
 
+				// Adds the shipping address
+				Address shippingAddress = buildShippingAddress(
+						shippingAddressLine1, shippingAddressLine2,
+						shippingAddressLine3, shippingAddressCity,
+						shippingAddressState, shippingAddressCountry,
+						shippingAddressPostalCode, shippingAddressPhone);
+				order.setShippingAddress(shippingAddress);
+
+				transaction.setOrder(order);
 			} else {
 				Order order = new Order();
 				order.setId(orderId);
@@ -888,6 +903,14 @@ public final class RequestUtil extends CommonRequestUtil {
 			order.setReferenceCode(orderReference);
 			order.setDescription(orderDescription);
 			order.setLanguage(PayU.language);
+
+			// Adds the shipping address
+			Address shippingAddress = buildShippingAddress(
+					shippingAddressLine1, shippingAddressLine2,
+					shippingAddressLine3, shippingAddressCity,
+					shippingAddressState, shippingAddressCountry,
+					shippingAddressPostalCode, shippingAddressPhone);
+			order.setShippingAddress(shippingAddress);
 
 			transaction.setAdditionalValues(buildAdditionalValues(txCurrency,
 					txValue, taxValue, taxReturnBase));
@@ -1037,7 +1060,46 @@ public final class RequestUtil extends CommonRequestUtil {
 
 		transaction.addExtraParameter(ExtraParemeterNames.RESPONSE_URL.name(),
 				responseUrl);
+	}
 
+	/**
+	 * Builds a {@link Address} according to parameters.
+	 *
+	 * @param shippingAddressLine1
+	 *            the address line 1 to set.
+	 * @param shippingAddressLine2
+	 *            the address line 2 to set.
+	 * @param shippingAddressLine3
+	 *            the address line 3 to set.
+	 * @param shippingAddressCity
+	 *            the address city to set.
+	 * @param shippingAddressState
+	 *            the address state to set.
+	 * @param shippingAddressCountry
+	 *            the address country to set.
+	 * @param shippingAddressPostalCode
+	 *            the address postal code to set.
+	 * @param shippingAddressPhone
+	 *            the address phone to set.
+	 * @return {@link Address} object.
+	 */
+	private static Address buildShippingAddress(String shippingAddressLine1,
+			String shippingAddressLine2, String shippingAddressLine3,
+			String shippingAddressCity, String shippingAddressState,
+			String shippingAddressCountry, String shippingAddressPostalCode,
+			String shippingAddressPhone) {
+
+		Address shippingAddress = new Address();
+		shippingAddress.setLine1(shippingAddressLine1);
+		shippingAddress.setLine2(shippingAddressLine2);
+		shippingAddress.setLine3(shippingAddressLine3);
+		shippingAddress.setCity(shippingAddressCity);
+		shippingAddress.setState(shippingAddressState);
+		shippingAddress.setCountry(shippingAddressCountry);
+		shippingAddress.setPostalCode(shippingAddressPostalCode);
+		shippingAddress.setPhone(shippingAddressPhone);
+
+		return shippingAddress;
 	}
 
 }
