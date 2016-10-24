@@ -61,6 +61,9 @@ public abstract class Person implements Serializable {
 	/** DNI number. */
 	@XmlElement(required = false)
 	private String dniNumber;
+	/** DNI yype*/
+	@XmlElement(required = false)
+	private DocumentType dniType;
 	/** The payer CNPJ business number */
 	@XmlElement(required = false, name = "cnpj")
 	private String CNPJ;
@@ -129,6 +132,25 @@ public abstract class Person implements Serializable {
 	}
 
 	/**
+	 * Returns the person's DNI type
+	 *
+	 * @return the DNI type
+	 */
+	public DocumentType getDniType() {
+		return dniType;
+	}
+
+	/**
+	 * Sets the person's DNI type
+	 *
+	 * @param dniType
+	 *            the DNI type to set
+	 */
+	public void setDniType(DocumentType dniType) {
+		this.dniType = dniType;
+	}
+
+	/**
 	 * Set's the pers'ns CNPJ
 	 *
 	 * @param cNPJ
@@ -194,4 +216,5 @@ public abstract class Person implements Serializable {
 	public String getCNPJ() {
 		return CNPJ;
 	}
+
 }

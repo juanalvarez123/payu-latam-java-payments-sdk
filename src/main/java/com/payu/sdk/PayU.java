@@ -178,6 +178,8 @@ public abstract class PayU {
 		String PAYER_CNPJ = "payerCNPJ";
 		/** The payer's DNI. */
 		String PAYER_DNI = "payerDNI";
+		/** The payer's DNI type. */
+		String PAYER_DNI_TYPE = "buyerDniType";
 		/** The payer's Business Name. */
 		String PAYER_BUSINESS_NAME = "payerBusinessName";
 
@@ -212,6 +214,8 @@ public abstract class PayU {
 		String BUYER_CNPJ = "buyerCNPJ";
 		/** The buyer's DNI. */
 		String BUYER_DNI = "buyerDNI";
+		/** The buyer's DNI type. */
+		String BUYER_DNI_TYPE = "buyerDniType";
 
 		/** The buyer's address (part 1). */
 		String BUYER_STREET = "buyerStreet";

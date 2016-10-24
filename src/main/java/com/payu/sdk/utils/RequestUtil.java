@@ -551,7 +551,7 @@ public final class RequestUtil extends CommonRequestUtil {
 	 *            The parameters map to build the buyer
 	 * @return The buyer built
 	 */
-	private static Buyer buildBuyer(Map<String, String> parameters) {
+	private static Buyer buildBuyer(Map<String, String> parameters) throws InvalidParametersException {
 
 		String buyerId = getParameter(parameters, PayU.PARAMETERS.BUYER_ID);
 		String buyerEmail = getParameter(parameters,
@@ -562,6 +562,8 @@ public final class RequestUtil extends CommonRequestUtil {
 				PayU.PARAMETERS.BUYER_CONTACT_PHONE);
 		String buyerDniNumber = getParameter(parameters,
 				PayU.PARAMETERS.BUYER_DNI);
+		DocumentType buyerDniType = getEnumValueParameter(DocumentType.class,
+				parameters, PayU.PARAMETERS.BUYER_DNI_TYPE);
 		String buyerCity = getParameter(parameters, PayU.PARAMETERS.BUYER_CITY);
 		String buyerCountry = getParameter(parameters,
 				PayU.PARAMETERS.BUYER_COUNTRY);
@@ -580,9 +582,9 @@ public final class RequestUtil extends CommonRequestUtil {
 
 		Buyer buyer = new Buyer();
 		buildPerson(buyer, buyerId, buyerEmail, buyerName, buyerCNPJ,
-				buyerContactPhone, buyerDniNumber, buyerCity, buyerCountry,
-				buyerPhone, buyerPostalCode, buyerState, buyerStreet,
-				buyerStreet2, buyerStreet3);
+				buyerContactPhone, buyerDniNumber, buyerDniType, buyerCity,
+				buyerCountry, buyerPhone, buyerPostalCode, buyerState,
+				buyerStreet, buyerStreet2, buyerStreet3);
 
 		return buyer;
 	}
@@ -607,6 +609,8 @@ public final class RequestUtil extends CommonRequestUtil {
 				PayU.PARAMETERS.PAYER_CONTACT_PHONE);
 		String payerDniNumber = getParameter(parameters,
 				PayU.PARAMETERS.PAYER_DNI);
+		DocumentType payerDniType = getEnumValueParameter(DocumentType.class,
+				parameters, PayU.PARAMETERS.PAYER_DNI_TYPE);
 		String payerCity = getParameter(parameters, PayU.PARAMETERS.PAYER_CITY);
 		String payerCountry = getParameter(parameters,
 				PayU.PARAMETERS.PAYER_COUNTRY);
@@ -636,9 +640,9 @@ public final class RequestUtil extends CommonRequestUtil {
 		}
 		Payer payer = new Payer();
 		buildPerson(payer, payerId, payerEmail, payerName, payerCNPJ,
-				payerContactPhone, payerDniNumber, payerCity, payerCountry,
-				payerPhone, payerPostalCode, payerState, payerStreet,
-				payerStreet2, payerStreet3);
+				payerContactPhone, payerDniNumber, payerDniType, payerCity,
+				payerCountry, payerPhone, payerPostalCode, payerState,
+				payerStreet, payerStreet2, payerStreet3);
 		payer.setBusinessName(payerBusinessName);
 		payer.setPayerType(payerType);
 		payer.setBirthdate(payerBirthdate);
@@ -662,6 +666,8 @@ public final class RequestUtil extends CommonRequestUtil {
 	 *            The person's contact phone
 	 * @param dniNumber
 	 *            The person's dni number
+	 * @param dniType
+	 *            The person's dni type
 	 * @param city
 	 *            The person's city
 	 * @param country
@@ -681,9 +687,9 @@ public final class RequestUtil extends CommonRequestUtil {
 	 */
 	private static void buildPerson(Person person, String personId,
 			String email, String name, String CNPJ, String contactPhone,
-			String dniNumber, String city, String country, String phone,
-			String postalCode, String state, String street, String street2,
-			String street3) {
+			String dniNumber, DocumentType dniType, String city, String country,
+			String phone, String postalCode, String state, String street,
+			String street2, String street3) {
 
 		person.setMerchantPersonId(personId);
 		person.setEmailAddress(email);
@@ -692,6 +698,7 @@ public final class RequestUtil extends CommonRequestUtil {
 
 		person.setContactPhone(contactPhone);
 		person.setDniNumber(dniNumber);
+		person.setDniType(dniType);
 
 		Address address = new Address();
 		address.setCity(city);
@@ -704,7 +711,6 @@ public final class RequestUtil extends CommonRequestUtil {
 		address.setLine3(street3);
 
 		person.setAddress(address);
-
 	}
 
 	/**
@@ -801,7 +807,7 @@ public final class RequestUtil extends CommonRequestUtil {
 		transaction.setType(transactionType);
 
 		if(responseUrlPage != null) {
-			addResponseUrlPage(transaction, responseUrlPage );
+			addResponseUrlPage(transaction, responseUrlPage);
 		}
 
 		// Shipping address fields
@@ -813,6 +819,9 @@ public final class RequestUtil extends CommonRequestUtil {
 		String shippingAddressCountry = getParameter(parameters, PayU.PARAMETERS.SHIPPING_COUNTRY);
 		String shippingAddressPostalCode = getParameter(parameters, PayU.PARAMETERS.SHIPPING_POSTAL_CODE);
 		String shippingAddressPhone = getParameter(parameters, PayU.PARAMETERS.SHIPPING_PHONE);
+
+		Boolean termsAndConditionsAcepted = getBooleanParameter(parameters,
+				PayU.PARAMETERS.TERMS_AND_CONDITIONS_ACEPTED);
 
 		String bcashRequestContentType = getParameter(parameters, PayU.PARAMETERS.BCASH_REQUEST_CONTENT_TYPE);
 		String bcashRequestContent = getParameter(parameters, PayU.PARAMETERS.BCASH_REQUEST_CONTENT);
@@ -897,8 +906,9 @@ public final class RequestUtil extends CommonRequestUtil {
 			//transaction.setPaymentMethod(paymentMethod);
 			transaction.setPayer(buildPayer(parameters));
 
-			addTransactionExtraParameters(transaction, parameters);
+			transaction.setTermsAndConditionsAcepted(termsAndConditionsAcepted);
 
+			addTransactionExtraParameters(transaction, parameters);
 		} else if (TransactionType.VOID.equals(transactionType)
 				|| TransactionType.REFUND.equals(transactionType)
 				|| TransactionType.CAPTURE.equals(transactionType)) {
@@ -954,7 +964,6 @@ public final class RequestUtil extends CommonRequestUtil {
 		if (extra3 != null) {
 			transaction.addExtraParameter(ExtraParemeterNames.EXTRA3.name(), extra3);
 		}
-
 	}
 
 	/**
