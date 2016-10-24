@@ -33,8 +33,8 @@ import java.io.Serializable;
  * Represents a Bcash request in the PayU SDK
  *
  * @author <a href="mailto:he.alarcon@transportsystems.co">Hernán Alarcón</a>
- * @version 1.1.11, 21/10/2016
- * @since 1.1.11
+ * @version 1.1.12, 21/10/2016
+ * @since 1.1.12
  */
 @XmlRootElement(name = "bcashRequest")
 @XmlAccessorType(XmlAccessType.FIELD)
