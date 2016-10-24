@@ -178,8 +178,6 @@ public abstract class PayU {
 		String PAYER_CNPJ = "payerCNPJ";
 		/** The payer's DNI. */
 		String PAYER_DNI = "payerDNI";
-		/** The payer's DNI type. */
-		String PAYER_DNI_TYPE = "buyerDniType";
 		/** The payer's Business Name. */
 		String PAYER_BUSINESS_NAME = "payerBusinessName";
 
@@ -214,8 +212,6 @@ public abstract class PayU {
 		String BUYER_CNPJ = "buyerCNPJ";
 		/** The buyer's DNI. */
 		String BUYER_DNI = "buyerDNI";
-		/** The buyer's DNI type. */
-		String BUYER_DNI_TYPE = "buyerDniType";
 
 		/** The buyer's address (part 1). */
 		String BUYER_STREET = "buyerStreet";
@@ -348,19 +344,19 @@ public abstract class PayU {
 		String NOTIFY_URL = "notifyUrl";
 		/**The response page URL */
 		String RESPONSE_URL = "responseUrl";
-
-
+		
+		
 		/** The EXTRA 1 transaction extra parameter. */
 		String EXTRA1 = "extra1";
-
+		
 		/** The EXTRA 2 transaction extra parameter. */
 		String EXTRA2 = "extra2";
-
+		
 		/** The EXTRA 3 transaction extra parameter. */
 		String EXTRA3 = "extra3";
-
+		
 		/** Delivery Address Fields */
-
+		
 		/** Delivery Address1 field */
 		String DELIVERY_ADDRESS_1 = "line1";
 		/** Delivery Address2 field */
@@ -377,52 +373,33 @@ public abstract class PayU {
 		String DELIVERY_POSTAL_CODE = "postalCode";
 		/** Delivery phone field */
 		String DELIVERY_PHONE = "phone";
-
-		/** Shipping Address Fields */
-
-		/** Shipping Address1 field */
-		String SHIPPING_ADDRESS_1 = "shippingAddressLine1";
-		/** Shipping Address2 field */
-		String SHIPPING_ADDRESS_2= "shippingAddressLine2";
-		/** Shipping Address3 field */
-		String SHIPPING_ADDRESS_3 = "shippingAddressLine3";
-		/** Shipping city field */
-		String SHIPPING_CITY = "shippingAddressCity";
-		/** Shipping state field */
-		String SHIPPING_STATE = "shippingAddressState";
-		/** Shipping country field */
-		String SHIPPING_COUNTRY = "shippingAddressCountry";
-		/** Shipping postal code field */
-		String SHIPPING_POSTAL_CODE = "shippingAddressPostalCode";
-		/** Shipping phone field */
-		String SHIPPING_PHONE = "shippingAddressPhone";
-
+		
 		/** The subscription extra charges description */
 		String SUBSCRIPTION_EXTRA_CHARGES_DESCRIPTION = "subscriptionExtraChargesDescription";
-
+		
 		/** The subscription source reference */
 		String SOURCE_REFERENCE = "sourceReference";
-
+		
 		/** The subscription ID from POL */
 		String SOURCE_ID = "sourceId";
-
+		
 		/**
-		 * To be used by migrated subscriptions. The buyer IP as
+		 * To be used by migrated subscriptions. The buyer IP as 
 		 * informed by the origin platform.
 		 */
 		String SOURCE_BUYER_IP = "sourceBuyerIp";
-
+		
 		/**
-		 * To be used by migrated subscriptions. The number of payments
-		 * charged on the origin platform at the moment that the subscription
+		 * To be used by migrated subscriptions. The number of payments 
+		 * charged on the origin platform at the moment that the subscription 
 		 * was migrated.
 		 */
 		String SOURCE_NUMBER_OF_PAYMENTS = "sourceNumberOfPayments";
 
 		/**
 		 * To be used by migrated subscriptions. The number of the next payment
-		 * to be charged on the origin platform at the moment that the subscription
-		 * was migrated.
+		 * to be charged on the origin platform at the moment that the subscription 
+		 * was migrated. 
 		 */
 		String SOURCE_NEXT_PAYMENT_NUMBER = "sourceNextPaymentNumber";
 
