@@ -60,6 +60,9 @@ import com.payu.sdk.utils.RequestUtil;
  * @version 1.0.0, 21/08/2013
  */
 public final class PayUPayments extends PayU {
+	
+	/** Payment method CODENSA */
+	private final static String PAYMENT_METHOD_CODENSA = "CODENSA";
 
 	/**
 	 * Private constructor
@@ -440,7 +443,11 @@ public final class PayUPayments extends PayU {
 				requiredParameters.add(PayU.PARAMETERS.PAYER_STATE);
 				requiredParameters.add(PayU.PARAMETERS.PAYER_POSTAL_CODE);
 
-			}
+			}else if (PAYMENT_METHOD_CODENSA.equals(paymentMethod.getName())) {
+				
+				requiredParameters.add(PayU.PARAMETERS.PAYER_DNI_TYPE);
+				requiredParameters.add(PayU.PARAMETERS.PAYER_DNI);
+		   }
 			else if (paymentMethod.getType() != null){
 				switch (paymentMethod.getType()) {
 				case CASH:
