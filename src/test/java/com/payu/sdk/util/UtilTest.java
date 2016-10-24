@@ -28,11 +28,13 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 import java.text.ParseException;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.http.client.HttpClient;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.w3c.dom.Element;
@@ -57,8 +59,10 @@ import com.payu.sdk.helper.WebClientDevWrapper;
 import com.payu.sdk.model.AdditionalValue;
 import com.payu.sdk.model.Address;
 import com.payu.sdk.model.AddressV4;
+import com.payu.sdk.model.BcashRequest;
 import com.payu.sdk.model.Currency;
 import com.payu.sdk.model.Order;
+import com.payu.sdk.model.Transaction;
 import com.payu.sdk.model.TransactionType;
 import com.payu.sdk.paymentplan.model.SubscriptionPlan;
 import com.payu.sdk.payments.model.PaymentRequest;
@@ -587,6 +591,125 @@ public class UtilTest {
 		Map<String, Object> obj = adapter.unmarshal(v);
 		Assert.assertEquals(1, obj.size(), "Invalid size.");
 
+	}
+
+	@Test(dataProvider = "noBcashRequestParameters")
+	public void theRequestUtilShouldNotCreateAnyBcashRequestInsideATransactionIfThereAreNoBcashRequestParameters(
+			Map<String, String> parameters) throws InvalidParametersException {
+
+		Transaction transaction = RequestUtil.buildTransaction(parameters, null);
+		Assert.assertNull(transaction.getBcashRequest());
+	}
+
+	@Test(dataProvider = "invalidBcashRequestParameters", expectedExceptions = InvalidParametersException.class, expectedExceptionsMessageRegExp = "Both the bcashRequestContentType and bcashRequestContent must be set set")
+	public void theRequestUtilShouldThrowAnInvalidParametersExceptionIfTheBcashRequestParametersAreInvalid(
+			Map<String, String> parameters) throws InvalidParametersException {
+
+		Transaction transaction = RequestUtil.buildTransaction(parameters, null);
+	}
+
+	@Test(dataProvider = "validBcashRequestParameters")
+	public void theRequestUtilShouldMapTheBcashRequestContentTypeAndBcashRequestContentCorrectly(Map<String, String> parameters)
+			throws InvalidParametersException {
+
+		Transaction transaction = RequestUtil.buildTransaction(parameters, null);
+
+		BcashRequest bcashRequest = transaction.getBcashRequest();
+
+		Assert.assertNotNull(bcashRequest);
+		Assert.assertEquals(bcashRequest.getContentType(), parameters.get(PayU.PARAMETERS.BCASH_REQUEST_CONTENT_TYPE));
+		Assert.assertEquals(bcashRequest.getContent(), parameters.get(PayU.PARAMETERS.BCASH_REQUEST_CONTENT));
+	}
+
+	@DataProvider
+	private static Object[][] noBcashRequestParameters() {
+
+		Map<String, String> empty = Collections.emptyMap();
+
+		Map<String, String> onlyEmptyContentType1 = new HashMap<String, String>();
+		onlyEmptyContentType1.put(PayU.PARAMETERS.BCASH_REQUEST_CONTENT_TYPE, "");
+
+		Map<String, String> onlyEmptyContentType2 = new HashMap<String, String>();
+		onlyEmptyContentType2.put(PayU.PARAMETERS.BCASH_REQUEST_CONTENT_TYPE, " ");
+
+		Map<String, String> onlyEmptyContent1 = new HashMap<String, String>();
+		onlyEmptyContent1.put(PayU.PARAMETERS.BCASH_REQUEST_CONTENT, "");
+
+		Map<String, String> onlyEmptyContent2 = new HashMap<String, String>();
+		onlyEmptyContent2.put(PayU.PARAMETERS.BCASH_REQUEST_CONTENT, " ");
+
+		Map<String, String> emptyContentTypeAndContent1 = new HashMap<String, String>();
+		emptyContentTypeAndContent1.put(PayU.PARAMETERS.BCASH_REQUEST_CONTENT_TYPE, "");
+		emptyContentTypeAndContent1.put(PayU.PARAMETERS.BCASH_REQUEST_CONTENT, "");
+
+		Map<String, String> emptyContentTypeAndContent2 = new HashMap<String, String>();
+		emptyContentTypeAndContent2.put(PayU.PARAMETERS.BCASH_REQUEST_CONTENT_TYPE, "");
+		emptyContentTypeAndContent2.put(PayU.PARAMETERS.BCASH_REQUEST_CONTENT, " ");
+
+		Map<String, String> emptyContentTypeAndContent3 = new HashMap<String, String>();
+		emptyContentTypeAndContent3.put(PayU.PARAMETERS.BCASH_REQUEST_CONTENT_TYPE, " ");
+		emptyContentTypeAndContent3.put(PayU.PARAMETERS.BCASH_REQUEST_CONTENT, "");
+
+		Map<String, String> emptyContentTypeAndContent4 = new HashMap<String, String>();
+		emptyContentTypeAndContent4.put(PayU.PARAMETERS.BCASH_REQUEST_CONTENT_TYPE, " ");
+		emptyContentTypeAndContent4.put(PayU.PARAMETERS.BCASH_REQUEST_CONTENT, " ");
+
+		return new Object[][] { { empty },
+				{ onlyEmptyContentType1 },
+				{ onlyEmptyContentType2 },
+				{ onlyEmptyContent1 },
+				{ onlyEmptyContent2 },
+				{ emptyContentTypeAndContent1 },
+				{ emptyContentTypeAndContent2 },
+				{ emptyContentTypeAndContent3 },
+				{ emptyContentTypeAndContent4 } };
+	}
+
+	@DataProvider
+	private static Object[][] invalidBcashRequestParameters() {
+
+		Map<String, String> onlyContentType = new HashMap<String, String>();
+		onlyContentType.put(PayU.PARAMETERS.BCASH_REQUEST_CONTENT_TYPE, "application/json");
+
+		Map<String, String> contentTypeAndEmptyContent1 = new HashMap<String, String>();
+		contentTypeAndEmptyContent1.put(PayU.PARAMETERS.BCASH_REQUEST_CONTENT_TYPE, "application/json");
+		contentTypeAndEmptyContent1.put(PayU.PARAMETERS.BCASH_REQUEST_CONTENT, "");
+
+		Map<String, String> contentTypeAndEmptyContent2 = new HashMap<String, String>();
+		contentTypeAndEmptyContent2.put(PayU.PARAMETERS.BCASH_REQUEST_CONTENT_TYPE, "application/json");
+		contentTypeAndEmptyContent2.put(PayU.PARAMETERS.BCASH_REQUEST_CONTENT, " ");
+
+		Map<String, String> onlyContent = new HashMap<String, String>();
+		onlyContent.put(PayU.PARAMETERS.BCASH_REQUEST_CONTENT, "{}");
+
+		Map<String, String> contentAndEmptyContentType1 = new HashMap<String, String>();
+		contentAndEmptyContentType1.put(PayU.PARAMETERS.BCASH_REQUEST_CONTENT, "{}");
+		contentAndEmptyContentType1.put(PayU.PARAMETERS.BCASH_REQUEST_CONTENT_TYPE, "");
+
+		Map<String, String> contentAndEmptyContentType2 = new HashMap<String, String>();
+		contentAndEmptyContentType2.put(PayU.PARAMETERS.BCASH_REQUEST_CONTENT, "{}");
+		contentAndEmptyContentType2.put(PayU.PARAMETERS.BCASH_REQUEST_CONTENT_TYPE, " ");
+
+		return new Object[][] { { onlyContentType },
+				{ contentTypeAndEmptyContent1 },
+				{ contentTypeAndEmptyContent2 },
+				{ onlyContent },
+				{ contentAndEmptyContentType1 },
+				{ contentAndEmptyContentType2 } };
+	}
+
+	@DataProvider
+	private Object[][] validBcashRequestParameters() {
+
+		Map<String, String> json = new HashMap<String, String>();
+		json.put(PayU.PARAMETERS.BCASH_REQUEST_CONTENT_TYPE, "application/json");
+		json.put(PayU.PARAMETERS.BCASH_REQUEST_CONTENT, "{}");
+
+		Map<String, String> xml = new HashMap<String, String>();
+		xml.put(PayU.PARAMETERS.BCASH_REQUEST_CONTENT_TYPE, "application/xml");
+		xml.put(PayU.PARAMETERS.BCASH_REQUEST_CONTENT, "<?xml version=\"1.0\" encoding=\"UTF-8\"?><root></root>");
+
+		return new Object[][] { { json }, { xml } };
 	}
 
 }
