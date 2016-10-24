@@ -178,6 +178,8 @@ public abstract class PayU {
 		String PAYER_CNPJ = "payerCNPJ";
 		/** The payer's DNI. */
 		String PAYER_DNI = "payerDNI";
+		/** The payer's DNI type. */
+		String PAYER_DNI_TYPE = "buyerDniType";
 		/** The payer's Business Name. */
 		String PAYER_BUSINESS_NAME = "payerBusinessName";
 
@@ -212,6 +214,8 @@ public abstract class PayU {
 		String BUYER_CNPJ = "buyerCNPJ";
 		/** The buyer's DNI. */
 		String BUYER_DNI = "buyerDNI";
+		/** The buyer's DNI type. */
+		String BUYER_DNI_TYPE = "buyerDniType";
 
 		/** The buyer's address (part 1). */
 		String BUYER_STREET = "buyerStreet";
@@ -373,6 +377,25 @@ public abstract class PayU {
 		String DELIVERY_POSTAL_CODE = "postalCode";
 		/** Delivery phone field */
 		String DELIVERY_PHONE = "phone";
+		
+		/** Shipping Address Fields */
+
+		/** Shipping Address1 field */
+		String SHIPPING_ADDRESS_1 = "shippingAddressLine1";
+		/** Shipping Address2 field */
+		String SHIPPING_ADDRESS_2= "shippingAddressLine2";
+		/** Shipping Address3 field */
+		String SHIPPING_ADDRESS_3 = "shippingAddressLine3";
+		/** Shipping city field */
+		String SHIPPING_CITY = "shippingAddressCity";
+		/** Shipping state field */
+		String SHIPPING_STATE = "shippingAddressState";
+		/** Shipping country field */
+		String SHIPPING_COUNTRY = "shippingAddressCountry";
+		/** Shipping postal code field */
+		String SHIPPING_POSTAL_CODE = "shippingAddressPostalCode";
+		/** Shipping phone field */
+		String SHIPPING_PHONE = "shippingAddressPhone";
 		
 		/** The subscription extra charges description */
 		String SUBSCRIPTION_EXTRA_CHARGES_DESCRIPTION = "subscriptionExtraChargesDescription";

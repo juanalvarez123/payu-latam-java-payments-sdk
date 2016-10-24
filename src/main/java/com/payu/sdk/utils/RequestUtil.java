@@ -806,7 +806,7 @@ public final class RequestUtil extends CommonRequestUtil {
 		Transaction transaction = new Transaction();
 		transaction.setType(transactionType);
 
-		if(responseUrlPage != null) {
+		if (responseUrlPage != null) {
 			addResponseUrlPage(transaction, responseUrlPage);
 		}
 
@@ -939,7 +939,7 @@ public final class RequestUtil extends CommonRequestUtil {
 
 		return transaction;
 	}
-
+	
 	/**
 	 * Adds the transaction extra parameters.
 	 *
@@ -952,15 +952,15 @@ public final class RequestUtil extends CommonRequestUtil {
 		String extra1 = getParameter(parameters, PayU.PARAMETERS.EXTRA1);
 		String extra2 = getParameter(parameters, PayU.PARAMETERS.EXTRA2);
 		String extra3 = getParameter(parameters, PayU.PARAMETERS.EXTRA3);
-
+		
 		if (extra1 != null) {
 			transaction.addExtraParameter(ExtraParemeterNames.EXTRA1.name(), extra1);
 		}
-
+		
 		if (extra2 != null) {
 			transaction.addExtraParameter(ExtraParemeterNames.EXTRA2.name(), extra2);
 		}
-
+		
 		if (extra3 != null) {
 			transaction.addExtraParameter(ExtraParemeterNames.EXTRA3.name(), extra3);
 		}
