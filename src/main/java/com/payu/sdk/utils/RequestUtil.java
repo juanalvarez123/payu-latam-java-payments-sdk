@@ -38,6 +38,7 @@ import com.payu.sdk.exceptions.SDKException.ErrorCode;
 import com.payu.sdk.helper.SignatureHelper;
 import com.payu.sdk.model.Address;
 import com.payu.sdk.model.BankListInformation;
+import com.payu.sdk.model.BcashRequest;
 import com.payu.sdk.model.Buyer;
 import com.payu.sdk.model.CreditCard;
 import com.payu.sdk.model.CreditCardToken;
@@ -813,6 +814,13 @@ public final class RequestUtil extends CommonRequestUtil {
 		String shippingAddressPostalCode = getParameter(parameters, PayU.PARAMETERS.SHIPPING_POSTAL_CODE);
 		String shippingAddressPhone = getParameter(parameters, PayU.PARAMETERS.SHIPPING_PHONE);
 
+		String bcashRequestContentType = getParameter(parameters, PayU.PARAMETERS.BCASH_REQUEST_CONTENT_TYPE);
+		String bcashRequestContent = getParameter(parameters, PayU.PARAMETERS.BCASH_REQUEST_CONTENT);
+
+		if (bcashRequestContentType != null || bcashRequestContent != null) {
+			transaction.setBcashRequest(buildBcashRequest(bcashRequestContentType, bcashRequestContent));
+		}
+
 		if (TransactionType.AUTHORIZATION_AND_CAPTURE.equals(transactionType)
 				|| TransactionType.AUTHORIZATION.equals(transactionType)) {
 
@@ -1100,6 +1108,26 @@ public final class RequestUtil extends CommonRequestUtil {
 		shippingAddress.setPhone(shippingAddressPhone);
 
 		return shippingAddress;
+	}
+
+	/**
+	 * Builds a Bcash request
+	 *
+	 * @param contentType the content type
+	 * @param content     the content
+	 * @return the Bcash request
+	 * @throws InvalidParametersException if any of the arguments is null
+	 */
+	private static BcashRequest buildBcashRequest(String contentType, String content) throws InvalidParametersException {
+
+		if (contentType == null || content == null) {
+			throw new InvalidParametersException("Both the bcashRequestContentType and bcashRequestContent must be set set");
+		}
+
+		BcashRequest bcashRequest = new BcashRequest();
+		bcashRequest.setContentType(contentType);
+		bcashRequest.setContent(content);
+		return bcashRequest;
 	}
 
 }
