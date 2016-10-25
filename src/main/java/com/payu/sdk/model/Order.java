@@ -97,7 +97,7 @@ public class Order implements Serializable {
 	@XmlJavaTypeAdapter(MapAdditionalValueAdapter.class)
 	private Map<String, AdditionalValue> additionalValues;
 
-	@XmlElement(name = "addres", required = false)
+	@XmlElement(name = "shippingAddress", required = false)
 	private Address shippingAddress;
 
 	/**
