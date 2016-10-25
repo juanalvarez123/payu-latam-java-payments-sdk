@@ -592,60 +592,51 @@ public final class RequestUtil extends CommonRequestUtil {
 	/**
 	 * Builds the payer entity
 	 *
-	 * @param parameters
-	 *            The parameters map to build the payer
+	 * @param parameters The parameters map to build the payer
 	 * @return The payer built
 	 * @throws InvalidParametersException
 	 */
-	private static Payer buildPayer(Map<String, String> parameters)
-			throws InvalidParametersException {
+	private static Payer buildPayer(final Map<String, String> parameters) throws InvalidParametersException {
 
-		String payerId = getParameter(parameters, PayU.PARAMETERS.PAYER_ID);
-		String payerEmail = getParameter(parameters,
-				PayU.PARAMETERS.PAYER_EMAIL);
-		String payerName = getParameter(parameters, PayU.PARAMETERS.PAYER_NAME);
-		String payerCNPJ = getParameter(parameters, PayU.PARAMETERS.PAYER_CNPJ);
-		String payerContactPhone = getParameter(parameters,
-				PayU.PARAMETERS.PAYER_CONTACT_PHONE);
-		String payerDniNumber = getParameter(parameters,
-				PayU.PARAMETERS.PAYER_DNI);
-		DocumentType payerDniType = getEnumValueParameter(DocumentType.class,
-				parameters, PayU.PARAMETERS.PAYER_DNI_TYPE);
-		String payerCity = getParameter(parameters, PayU.PARAMETERS.PAYER_CITY);
-		String payerCountry = getParameter(parameters,
-				PayU.PARAMETERS.PAYER_COUNTRY);
-		String payerPhone = getParameter(parameters,
-				PayU.PARAMETERS.PAYER_PHONE);
-		String payerPostalCode = getParameter(parameters,
-				PayU.PARAMETERS.PAYER_POSTAL_CODE);
-		String payerState = getParameter(parameters,
-				PayU.PARAMETERS.PAYER_STATE);
-		String payerStreet = getParameter(parameters,
-				PayU.PARAMETERS.PAYER_STREET);
-		String payerStreet2 = getParameter(parameters,
-				PayU.PARAMETERS.PAYER_STREET_2);
-		String payerStreet3 = getParameter(parameters,
-				PayU.PARAMETERS.PAYER_STREET_3);
+		final String payerId = getParameter(parameters, PayU.PARAMETERS.PAYER_ID);
+		final String payerEmail = getParameter(parameters, PayU.PARAMETERS.PAYER_EMAIL);
+		final String payerName = getParameter(parameters, PayU.PARAMETERS.PAYER_NAME);
+		final String payerCNPJ = getParameter(parameters, PayU.PARAMETERS.PAYER_CNPJ);
+		final String payerContactPhone = getParameter(parameters, PayU.PARAMETERS.PAYER_CONTACT_PHONE);
+		final String payerDniNumber = getParameter(parameters, PayU.PARAMETERS.PAYER_DNI);
+		final String payerCity = getParameter(parameters, PayU.PARAMETERS.PAYER_CITY);
+		final String payerCountry = getParameter(parameters, PayU.PARAMETERS.PAYER_COUNTRY);
+		final String payerPhone = getParameter(parameters, PayU.PARAMETERS.PAYER_PHONE);
+		final String payerPostalCode = getParameter(parameters, PayU.PARAMETERS.PAYER_POSTAL_CODE);
+		final String payerState = getParameter(parameters, PayU.PARAMETERS.PAYER_STATE);
+		final String payerStreet = getParameter(parameters, PayU.PARAMETERS.PAYER_STREET);
+		final String payerStreet2 = getParameter(parameters, PayU.PARAMETERS.PAYER_STREET_2);
+		final String payerStreet3 = getParameter(parameters, PayU.PARAMETERS.PAYER_STREET_3);
 
-		String payerBusinessName = getParameter(parameters,
-				PayU.PARAMETERS.PAYER_BUSINESS_NAME);
-		PersonType payerType = getEnumValueParameter(PersonType.class,
-				parameters, PayU.PARAMETERS.PAYER_PERSON_TYPE);
+		final String payerBusinessName = getParameter(parameters, PayU.PARAMETERS.PAYER_BUSINESS_NAME);
+		final PersonType payerType = getEnumValueParameter(PersonType.class, parameters,
+				PayU.PARAMETERS.PAYER_PERSON_TYPE);
+		final String payerBirthdate = getParameter(parameters, PayU.PARAMETERS.PAYER_BIRTH_DATE);
+		final DocumentType payerDniType = getEnumValueParameter(DocumentType.class, parameters,
+				PayU.PARAMETERS.PAYER_DNI_TYPE);
 
-		String payerBirthdate = getParameter(parameters,
-				PayU.PARAMETERS.PAYER_BIRTH_DATE);
-		if (payerBirthdate != null && !payerBirthdate.isEmpty()){
+		if (payerBirthdate != null && !payerBirthdate.isEmpty()) {
+
 			validateDateParameter(payerBirthdate, PayU.PARAMETERS.PAYER_BIRTH_DATE,
 					Constants.DEFAULT_DATE_WITHOUT_HOUR_FORMAT, false);
 		}
-		Payer payer = new Payer();
+
+		final Payer payer = new Payer();
+
 		buildPerson(payer, payerId, payerEmail, payerName, payerCNPJ,
 				payerContactPhone, payerDniNumber, payerDniType, payerCity,
 				payerCountry, payerPhone, payerPostalCode, payerState,
 				payerStreet, payerStreet2, payerStreet3);
+
 		payer.setBusinessName(payerBusinessName);
 		payer.setPayerType(payerType);
 		payer.setBirthdate(payerBirthdate);
+
 		return payer;
 	}
 

@@ -212,6 +212,7 @@ public abstract class PayU {
 		String BUYER_CONTACT_PHONE = "buyerContactPhone";
 		/** The buyer's CNPJ. */
 		String BUYER_CNPJ = "buyerCNPJ";
+
 		/** The buyer's DNI. */
 		String BUYER_DNI = "buyerDNI";
 		/** The buyer's DNI type. */

@@ -58,12 +58,13 @@ public abstract class Person implements Serializable {
 	/** The payer contact phone. */
 	@XmlElement(required = false)
 	private String contactPhone;
+	/** The DNI type */
+	@XmlElement(required = false)
+	private DocumentType dniType;    
+
 	/** DNI number. */
 	@XmlElement(required = false)
 	private String dniNumber;
-	/** DNI yype*/
-	@XmlElement(required = false)
-	private DocumentType dniType;
 	/** The payer CNPJ business number */
 	@XmlElement(required = false, name = "cnpj")
 	private String CNPJ;
@@ -112,7 +113,7 @@ public abstract class Person implements Serializable {
 	public String getContactPhone() {
 		return contactPhone;
 	}
-
+	
 	/**
 	 * Returns the person's DNI number
 	 *
