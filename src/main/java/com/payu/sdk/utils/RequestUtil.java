@@ -153,11 +153,14 @@ public final class RequestUtil extends CommonRequestUtil {
 		PaymentRequest request = buildDefaultPaymentRequest();
 		request.setCommand(Command.SUBMIT_TRANSACTION);
 		
-		if (request.getMerchant() != null) {
-			request.getMerchant().setApiKey(
-					getParameter(parameters, PayU.PARAMETERS.API_KEY));
-			request.getMerchant().setApiLogin(
-					getParameter(parameters, PayU.PARAMETERS.API_LOGIN));
+		// Priority the api key obtained from PayU.apiKey
+		if (request.getMerchant() != null && request.getMerchant().getApiKey() == null) {
+			request.getMerchant().setApiKey(getParameter(parameters, PayU.PARAMETERS.API_KEY));
+		}
+		
+		// Priority the api login obtained from PayU.apiLogin
+		if (request.getMerchant() != null && request.getMerchant().getApiLogin() == null) {
+			request.getMerchant().setApiLogin(getParameter(parameters, PayU.PARAMETERS.API_LOGIN));
 		}
 		
 		request.setTransaction(buildTransaction(parameters, transactionType));
@@ -194,11 +197,15 @@ public final class RequestUtil extends CommonRequestUtil {
 		request.setCommand(Command.GET_PAYMENT_METHOD_AVAILABILITY);
 		request.setPaymentMethod(paymentMethod);
 		
-		Merchant merchant = new Merchant();
-		merchant.setApiKey(apiKey);
-		merchant.setApiLogin(apiLogin);
+		// Priority the api key obtained from PayU.apiKey
+		if (request.getMerchant() != null && request.getMerchant().getApiKey() == null) {
+			request.getMerchant().setApiKey(apiKey);
+		}
 		
-		request.setMerchant(merchant);
+		// Priority the api login obtained from PayU.apiLogin
+		if (request.getMerchant() != null && request.getMerchant().getApiLogin() == null) {
+			request.getMerchant().setApiLogin(apiLogin);
+		}
 		
 		return request;
 	}
