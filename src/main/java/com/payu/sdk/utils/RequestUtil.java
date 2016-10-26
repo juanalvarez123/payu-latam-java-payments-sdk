@@ -188,8 +188,12 @@ public final class RequestUtil extends CommonRequestUtil {
 		request.setTest(PayU.isTest);
 		request.setCommand(Command.GET_PAYMENT_METHOD_AVAILABILITY);
 		request.setPaymentMethod(paymentMethod);
-		request.setApiKey(apiKey);
-		request.setApiLogin(apiLogin);
+		
+		Merchant merchant = new Merchant();
+		merchant.setApiKey(apiKey);
+		merchant.setApiLogin(apiLogin);
+		
+		request.setMerchant(merchant);
 		
 		return request;
 	}
