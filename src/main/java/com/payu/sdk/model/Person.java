@@ -115,6 +115,14 @@ public abstract class Person implements Serializable {
 	}
 	
 	/**
+	* Returns the person's DNI type
+	* @return {@link DocumentType}
+	*/
+	public DocumentType getDniType() {
+		return dniType;
+	}
+
+	/**
 	 * Returns the person's DNI number
 	 *
 	 * @return the DNI number
@@ -122,6 +130,14 @@ public abstract class Person implements Serializable {
 	public String getDniNumber() {
 		return dniNumber;
 	}
+	
+	/**
+	* Sets the person's DNI type
+	* @param dniType
+	*/
+	public void setDniType(DocumentType dniType) {
+		this.dniType = dniType;
+	}	
 
 	/**
 	 * Sets the person's DNI number
@@ -130,25 +146,6 @@ public abstract class Person implements Serializable {
 	 */
 	public void setDniNumber(String dniNumber) {
 		this.dniNumber = dniNumber;
-	}
-
-	/**
-	 * Returns the person's DNI type
-	 *
-	 * @return the DNI type
-	 */
-	public DocumentType getDniType() {
-		return dniType;
-	}
-
-	/**
-	 * Sets the person's DNI type
-	 *
-	 * @param dniType
-	 *            the DNI type to set
-	 */
-	public void setDniType(DocumentType dniType) {
-		this.dniType = dniType;
 	}
 
 	/**
@@ -217,5 +214,4 @@ public abstract class Person implements Serializable {
 	public String getCNPJ() {
 		return CNPJ;
 	}
-
 }
