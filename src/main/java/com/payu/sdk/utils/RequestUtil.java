@@ -37,6 +37,7 @@ import com.payu.sdk.exceptions.PayUException;
 import com.payu.sdk.exceptions.SDKException.ErrorCode;
 import com.payu.sdk.helper.SignatureHelper;
 import com.payu.sdk.model.Address;
+import com.payu.sdk.model.AddressV4;
 import com.payu.sdk.model.BankListInformation;
 import com.payu.sdk.model.BcashRequest;
 import com.payu.sdk.model.Buyer;
@@ -151,10 +152,14 @@ public final class RequestUtil extends CommonRequestUtil {
 
 		PaymentRequest request = buildDefaultPaymentRequest();
 		request.setCommand(Command.SUBMIT_TRANSACTION);
-
-		request.setApiKey(getParameter(parameters, PayU.PARAMETERS.API_KEY));
-		request.setApiLogin(getParameter(parameters, PayU.PARAMETERS.API_LOGIN));
-
+		
+		if (request.getMerchant() != null) {
+			request.getMerchant().setApiKey(
+					getParameter(parameters, PayU.PARAMETERS.API_KEY));
+			request.getMerchant().setApiLogin(
+					getParameter(parameters, PayU.PARAMETERS.API_LOGIN));
+		}
+		
 		request.setTransaction(buildTransaction(parameters, transactionType));
 
 		return request;
@@ -858,7 +863,7 @@ public final class RequestUtil extends CommonRequestUtil {
 				order.setSignature(signature);
 
 				// Adds the shipping address
-				Address shippingAddress = buildShippingAddress(
+				AddressV4 shippingAddress = buildShippingAddress(
 						shippingAddressLine1, shippingAddressLine2,
 						shippingAddressLine3, shippingAddressCity,
 						shippingAddressState, shippingAddressCountry,
@@ -924,14 +929,6 @@ public final class RequestUtil extends CommonRequestUtil {
 			order.setReferenceCode(orderReference);
 			order.setDescription(orderDescription);
 			order.setLanguage(PayU.language);
-
-			// Adds the shipping address
-			Address shippingAddress = buildShippingAddress(
-					shippingAddressLine1, shippingAddressLine2,
-					shippingAddressLine3, shippingAddressCity,
-					shippingAddressState, shippingAddressCountry,
-					shippingAddressPostalCode, shippingAddressPhone);
-			order.setShippingAddress(shippingAddress);
 
 			transaction.setAdditionalValues(buildAdditionalValues(txCurrency,
 					txValue, taxValue, taxReturnBase));
@@ -1103,16 +1100,16 @@ public final class RequestUtil extends CommonRequestUtil {
 	 *            the address phone to set.
 	 * @return {@link Address} object.
 	 */
-	private static Address buildShippingAddress(String shippingAddressLine1,
+	private static AddressV4 buildShippingAddress(String shippingAddressLine1,
 			String shippingAddressLine2, String shippingAddressLine3,
 			String shippingAddressCity, String shippingAddressState,
 			String shippingAddressCountry, String shippingAddressPostalCode,
 			String shippingAddressPhone) {
 
-		Address shippingAddress = new Address();
-		shippingAddress.setLine1(shippingAddressLine1);
-		shippingAddress.setLine2(shippingAddressLine2);
-		shippingAddress.setLine3(shippingAddressLine3);
+		AddressV4 shippingAddress = new AddressV4();
+		shippingAddress.setStreet1(shippingAddressLine1);
+		shippingAddress.setStreet2(shippingAddressLine2);
+		shippingAddress.setStreet3(shippingAddressLine3);
 		shippingAddress.setCity(shippingAddressCity);
 		shippingAddress.setState(shippingAddressState);
 		shippingAddress.setCountry(shippingAddressCountry);

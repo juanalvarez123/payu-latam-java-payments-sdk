@@ -98,7 +98,7 @@ public class Order implements Serializable {
 	private Map<String, AdditionalValue> additionalValues;
 
 	@XmlElement(name = "shippingAddress", required = false)
-	private Address shippingAddress;
+	private AddressV4 shippingAddress;
 
 	/**
 	 * Returns the order's id
@@ -236,7 +236,7 @@ public class Order implements Serializable {
 	 *
 	 * @return the order's shipping address.
 	 */
-	public Address getShippingAddress() {
+	public AddressV4 getShippingAddress() {
 		return shippingAddress;
 	}
 
@@ -376,7 +376,7 @@ public class Order implements Serializable {
 	 * @param shippingAddress
 	 *            the shipping address to set.
 	 */
-	public void setShippingAddress(Address shippingAddress) {
+	public void setShippingAddress(AddressV4 shippingAddress) {
 		this.shippingAddress = shippingAddress;
 	}
 
