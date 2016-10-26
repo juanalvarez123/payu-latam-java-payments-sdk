@@ -175,14 +175,22 @@ public final class RequestUtil extends CommonRequestUtil {
 
 	/**
 	 * Builds the payment method request
-	 * @return
+	 * 
+	 * @param paymentMethod
+	 * @param apiKey
+	 * @param apiLogin
+	 * @return the payment method request
 	 */
-	public static Request buildPaymentMethodAvailability(String paymentMethod) {
+	public static Request buildPaymentMethodAvailability(String paymentMethod, String apiKey, String apiLogin) {
+		
 		PaymentMethodRequest request = new PaymentMethodRequest();
 		request = (PaymentMethodRequest) buildDefaultRequest(request);
 		request.setTest(PayU.isTest);
 		request.setCommand(Command.GET_PAYMENT_METHOD_AVAILABILITY);
 		request.setPaymentMethod(paymentMethod);
+		request.setApiKey(apiKey);
+		request.setApiLogin(apiLogin);
+		
 		return request;
 	}
 
