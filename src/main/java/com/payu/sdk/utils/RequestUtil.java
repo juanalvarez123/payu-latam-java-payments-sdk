@@ -755,6 +755,8 @@ public final class RequestUtil extends CommonRequestUtil {
 		String orderNotifyUrl = getParameter(parameters,
 				PayU.PARAMETERS.NOTIFY_URL);
 
+		String creditCardHolderName = getParameter(parameters,
+				PayU.PARAMETERS.CREDIT_CARD_HOLDER_NAME);
 		String creditCardNumber = getParameter(parameters,
 				PayU.PARAMETERS.CREDIT_CARD_NUMBER);
 		String creditCardExpirationDate = getParameter(parameters,
@@ -901,7 +903,14 @@ public final class RequestUtil extends CommonRequestUtil {
 			transaction.setSource(TransactionSource.PAYU_SDK);
 
 			if (creditCardNumber != null || tokenId != null) {
-				buildCreditCardTransaction(transaction, payerName,
+				
+				// If credit card holder name is null or empty, a payer name
+				// will be send to build a credit card
+				creditCardHolderName = creditCardHolderName != null
+						&& !creditCardHolderName.trim().equals("") ? creditCardHolderName
+						: payerName;
+				
+				buildCreditCardTransaction(transaction, creditCardHolderName,
 						creditCardNumber, creditCardExpirationDate,
 						processWithoutCvv2, securityCode, installments,
 						createCreditCardToken);

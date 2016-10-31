@@ -139,6 +139,8 @@ public abstract class PayU {
 		String CREDIT_CARD_SECURITY_CODE = "creditCardSecurityCode";
 		/** The credit card holder's identification number */
 		String CREDIT_CARD_DOCUMENT = "document";
+		/** The credit card holder's name */
+		String CREDIT_CARD_HOLDER_NAME = "creditCardHolderName";
 
 		/** Create a credit card token **/
 		String CREATE_CREDIT_CARD_TOKEN = "createCreditCardToken";
