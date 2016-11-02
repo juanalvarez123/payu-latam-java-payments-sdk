@@ -730,10 +730,11 @@ public class UtilTest {
 			Assert.assertNotNull(paymentRequest);
 			Assert.assertEquals(paymentRequest.getCommand(),
 					Command.SUBMIT_TRANSACTION);
-			Assert.assertNotNull(paymentRequest.getApiKey());
-			Assert.assertNotNull(paymentRequest.getApiLogin());
-			Assert.assertEquals(paymentRequest.getApiKey(), "ABc123QWErty");
-			Assert.assertEquals(paymentRequest.getApiLogin(), "0321654987abC");
+			Assert.assertNotNull(paymentRequest.getMerchant());
+			Assert.assertNotNull(paymentRequest.getMerchant().getApiKey());
+			Assert.assertNotNull(paymentRequest.getMerchant().getApiLogin());
+			Assert.assertEquals(paymentRequest.getMerchant().getApiKey(), "ABc123QWErty");
+			Assert.assertEquals(paymentRequest.getMerchant().getApiLogin(), "0321654987abC");
 		} catch (InvalidParametersException ex) {
 			LoggerUtil.error(ex.getMessage(), ex);
 		}
