@@ -749,6 +749,8 @@ public final class RequestUtil extends CommonRequestUtil {
 				PayU.PARAMETERS.ACCOUNT_ID);
 		String merchantIdParam = getParameter(parameters,
 				PayU.PARAMETERS.MARCHANT_ID);
+		String apiKeyParam = getParameter(parameters,
+				PayU.PARAMETERS.API_KEY);
 
 		String orderReference = getParameter(parameters,
 				PayU.PARAMETERS.REFERENCE_CODE);
@@ -859,6 +861,7 @@ public final class RequestUtil extends CommonRequestUtil {
 				String signature = getParameter(parameters,
 						PayU.PARAMETERS.SIGNATURE);
 				String merchantId = PayU.merchantId != null ? PayU.merchantId : merchantIdParam;
+				String apiKey = PayU.apiKey != null ? PayU.apiKey : apiKeyParam;
 
 				Order order = buildOrder(accountId, txCurrency, txValue,
 						taxValue, taxReturnBase, orderDescription,
@@ -866,7 +869,7 @@ public final class RequestUtil extends CommonRequestUtil {
 
 				if (signature == null && merchantId != null) {
 					signature = SignatureHelper.buildSignature(order,
-							Integer.parseInt(merchantId), PayU.apiKey,
+							Integer.parseInt(merchantId), apiKey,
 							SignatureHelper.DECIMAL_FORMAT_3,
 							SignatureHelper.MD5_ALGORITHM);
 				}
