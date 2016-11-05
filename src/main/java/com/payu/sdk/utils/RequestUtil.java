@@ -37,6 +37,7 @@ import com.payu.sdk.exceptions.PayUException;
 import com.payu.sdk.exceptions.SDKException.ErrorCode;
 import com.payu.sdk.helper.SignatureHelper;
 import com.payu.sdk.model.Address;
+import com.payu.sdk.model.AddressV4;
 import com.payu.sdk.model.BankListInformation;
 import com.payu.sdk.model.BcashRequest;
 import com.payu.sdk.model.Buyer;
@@ -151,7 +152,17 @@ public final class RequestUtil extends CommonRequestUtil {
 
 		PaymentRequest request = buildDefaultPaymentRequest();
 		request.setCommand(Command.SUBMIT_TRANSACTION);
-
+		
+		// Priority the api key obtained from PayU.apiKey
+		if (request.getMerchant() != null && request.getMerchant().getApiKey() == null) {
+			request.getMerchant().setApiKey(getParameter(parameters, PayU.PARAMETERS.API_KEY));
+		}
+		
+		// Priority the api login obtained from PayU.apiLogin
+		if (request.getMerchant() != null && request.getMerchant().getApiLogin() == null) {
+			request.getMerchant().setApiLogin(getParameter(parameters, PayU.PARAMETERS.API_LOGIN));
+		}
+		
 		request.setTransaction(buildTransaction(parameters, transactionType));
 
 		return request;
@@ -172,14 +183,30 @@ public final class RequestUtil extends CommonRequestUtil {
 
 	/**
 	 * Builds the payment method request
-	 * @return
+	 * 
+	 * @param paymentMethod
+	 * @param apiKey
+	 * @param apiLogin
+	 * @return the payment method request
 	 */
-	public static Request buildPaymentMethodAvailability(String paymentMethod) {
+	public static Request buildPaymentMethodAvailability(String paymentMethod, String apiKey, String apiLogin) {
+		
 		PaymentMethodRequest request = new PaymentMethodRequest();
 		request = (PaymentMethodRequest) buildDefaultRequest(request);
 		request.setTest(PayU.isTest);
 		request.setCommand(Command.GET_PAYMENT_METHOD_AVAILABILITY);
 		request.setPaymentMethod(paymentMethod);
+		
+		// Priority the api key obtained from PayU.apiKey
+		if (request.getMerchant() != null && request.getMerchant().getApiKey() == null) {
+			request.getMerchant().setApiKey(apiKey);
+		}
+		
+		// Priority the api login obtained from PayU.apiLogin
+		if (request.getMerchant() != null && request.getMerchant().getApiLogin() == null) {
+			request.getMerchant().setApiLogin(apiLogin);
+		}
+		
 		return request;
 	}
 
@@ -548,7 +575,7 @@ public final class RequestUtil extends CommonRequestUtil {
 	 *            The parameters map to build the buyer
 	 * @return The buyer built
 	 */
-	private static Buyer buildBuyer(Map<String, String> parameters) {
+	private static Buyer buildBuyer(Map<String, String> parameters) throws InvalidParametersException {
 
 		String buyerId = getParameter(parameters, PayU.PARAMETERS.BUYER_ID);
 		String buyerEmail = getParameter(parameters,
@@ -559,6 +586,8 @@ public final class RequestUtil extends CommonRequestUtil {
 				PayU.PARAMETERS.BUYER_CONTACT_PHONE);
 		String buyerDniNumber = getParameter(parameters,
 				PayU.PARAMETERS.BUYER_DNI);
+		DocumentType buyerDniType = getEnumValueParameter(DocumentType.class,
+				parameters, PayU.PARAMETERS.BUYER_DNI_TYPE);
 		String buyerCity = getParameter(parameters, PayU.PARAMETERS.BUYER_CITY);
 		String buyerCountry = getParameter(parameters,
 				PayU.PARAMETERS.BUYER_COUNTRY);
@@ -577,9 +606,9 @@ public final class RequestUtil extends CommonRequestUtil {
 
 		Buyer buyer = new Buyer();
 		buildPerson(buyer, buyerId, buyerEmail, buyerName, buyerCNPJ,
-				buyerContactPhone, buyerDniNumber, buyerCity, buyerCountry,
-				buyerPhone, buyerPostalCode, buyerState, buyerStreet,
-				buyerStreet2, buyerStreet3);
+				buyerContactPhone, buyerDniNumber, buyerDniType, buyerCity,
+				buyerCountry, buyerPhone, buyerPostalCode, buyerState,
+				buyerStreet, buyerStreet2, buyerStreet3);
 
 		return buyer;
 	}
@@ -623,13 +652,14 @@ public final class RequestUtil extends CommonRequestUtil {
 
 		final Payer payer = new Payer();
 
-		buildPerson(payer, payerId, payerEmail, payerName, payerCNPJ, payerContactPhone, payerDniNumber, payerCity,
-				payerCountry, payerPhone, payerPostalCode, payerState, payerStreet, payerStreet2, payerStreet3);
+		buildPerson(payer, payerId, payerEmail, payerName, payerCNPJ,
+				payerContactPhone, payerDniNumber, payerDniType, payerCity,
+				payerCountry, payerPhone, payerPostalCode, payerState,
+				payerStreet, payerStreet2, payerStreet3);
 
 		payer.setBusinessName(payerBusinessName);
 		payer.setPayerType(payerType);
 		payer.setBirthdate(payerBirthdate);
-		payer.setDniType(payerDniType);
 
 		return payer;
 	}
@@ -651,6 +681,8 @@ public final class RequestUtil extends CommonRequestUtil {
 	 *            The person's contact phone
 	 * @param dniNumber
 	 *            The person's dni number
+	 * @param dniType
+	 *            The person's dni type
 	 * @param city
 	 *            The person's city
 	 * @param country
@@ -670,9 +702,9 @@ public final class RequestUtil extends CommonRequestUtil {
 	 */
 	private static void buildPerson(Person person, String personId,
 			String email, String name, String CNPJ, String contactPhone,
-			String dniNumber, String city, String country, String phone,
-			String postalCode, String state, String street, String street2,
-			String street3) {
+			String dniNumber, DocumentType dniType, String city, String country,
+			String phone, String postalCode, String state, String street,
+			String street2, String street3) {
 
 		person.setMerchantPersonId(personId);
 		person.setEmailAddress(email);
@@ -681,6 +713,7 @@ public final class RequestUtil extends CommonRequestUtil {
 
 		person.setContactPhone(contactPhone);
 		person.setDniNumber(dniNumber);
+		person.setDniType(dniType);
 
 		Address address = new Address();
 		address.setCity(city);
@@ -693,7 +726,6 @@ public final class RequestUtil extends CommonRequestUtil {
 		address.setLine3(street3);
 
 		person.setAddress(address);
-
 	}
 
 	/**
@@ -715,6 +747,10 @@ public final class RequestUtil extends CommonRequestUtil {
 				PayU.PARAMETERS.ORDER_ID);
 		Integer accountId = getIntegerParameter(parameters,
 				PayU.PARAMETERS.ACCOUNT_ID);
+		String merchantIdParam = getParameter(parameters,
+				PayU.PARAMETERS.MARCHANT_ID);
+		String apiKeyParam = getParameter(parameters,
+				PayU.PARAMETERS.API_KEY);
 
 		String orderReference = getParameter(parameters,
 				PayU.PARAMETERS.REFERENCE_CODE);
@@ -723,6 +759,8 @@ public final class RequestUtil extends CommonRequestUtil {
 		String orderNotifyUrl = getParameter(parameters,
 				PayU.PARAMETERS.NOTIFY_URL);
 
+		String creditCardHolderName = getParameter(parameters,
+				PayU.PARAMETERS.CREDIT_CARD_HOLDER_NAME);
 		String creditCardNumber = getParameter(parameters,
 				PayU.PARAMETERS.CREDIT_CARD_NUMBER);
 		String creditCardExpirationDate = getParameter(parameters,
@@ -781,7 +819,7 @@ public final class RequestUtil extends CommonRequestUtil {
 		String deviceSessionId = getParameter(parameters,
 				PayU.PARAMETERS.DEVICE_SESSION_ID);
 
-		//Response page
+		// Response page
 		String responseUrlPage = getParameter(parameters, PayU.PARAMETERS.RESPONSE_URL);
 
 		String tokenId = getParameter(parameters, PayU.PARAMETERS.TOKEN_ID);
@@ -789,11 +827,22 @@ public final class RequestUtil extends CommonRequestUtil {
 		Transaction transaction = new Transaction();
 		transaction.setType(transactionType);
 
-
-		if(responseUrlPage != null){
-
-			addResponseUrlPage(transaction, responseUrlPage );
+		if (responseUrlPage != null) {
+			addResponseUrlPage(transaction, responseUrlPage);
 		}
+
+		// Shipping address fields
+		String shippingAddressLine1 = getParameter(parameters, PayU.PARAMETERS.SHIPPING_ADDRESS_1);
+		String shippingAddressLine2 = getParameter(parameters, PayU.PARAMETERS.SHIPPING_ADDRESS_2);
+		String shippingAddressLine3 = getParameter(parameters, PayU.PARAMETERS.SHIPPING_ADDRESS_3);
+		String shippingAddressCity = getParameter(parameters, PayU.PARAMETERS.SHIPPING_CITY);
+		String shippingAddressState = getParameter(parameters, PayU.PARAMETERS.SHIPPING_STATE);
+		String shippingAddressCountry = getParameter(parameters, PayU.PARAMETERS.SHIPPING_COUNTRY);
+		String shippingAddressPostalCode = getParameter(parameters, PayU.PARAMETERS.SHIPPING_POSTAL_CODE);
+		String shippingAddressPhone = getParameter(parameters, PayU.PARAMETERS.SHIPPING_PHONE);
+
+		Boolean termsAndConditionsAcepted = getBooleanParameter(parameters,
+				PayU.PARAMETERS.TERMS_AND_CONDITIONS_ACEPTED);
 
 		String bcashRequestContentType = getParameter(parameters, PayU.PARAMETERS.BCASH_REQUEST_CONTENT_TYPE);
 		String bcashRequestContent = getParameter(parameters, PayU.PARAMETERS.BCASH_REQUEST_CONTENT);
@@ -811,7 +860,8 @@ public final class RequestUtil extends CommonRequestUtil {
 
 				String signature = getParameter(parameters,
 						PayU.PARAMETERS.SIGNATURE);
-				String merchantId = PayU.merchantId;
+				String merchantId = PayU.merchantId != null ? PayU.merchantId : merchantIdParam;
+				String apiKey = PayU.apiKey != null ? PayU.apiKey : apiKeyParam;
 
 				Order order = buildOrder(accountId, txCurrency, txValue,
 						taxValue, taxReturnBase, orderDescription,
@@ -819,14 +869,22 @@ public final class RequestUtil extends CommonRequestUtil {
 
 				if (signature == null && merchantId != null) {
 					signature = SignatureHelper.buildSignature(order,
-							Integer.parseInt(merchantId), PayU.apiKey,
+							Integer.parseInt(merchantId), apiKey,
 							SignatureHelper.DECIMAL_FORMAT_3,
 							SignatureHelper.MD5_ALGORITHM);
 				}
 
 				order.setSignature(signature);
-				transaction.setOrder(order);
 
+				// Adds the shipping address
+				AddressV4 shippingAddress = buildShippingAddress(
+						shippingAddressLine1, shippingAddressLine2,
+						shippingAddressLine3, shippingAddressCity,
+						shippingAddressState, shippingAddressCountry,
+						shippingAddressPostalCode, shippingAddressPhone);
+				order.setShippingAddress(shippingAddress);
+
+				transaction.setOrder(order);
 			} else {
 				Order order = new Order();
 				order.setId(orderId);
@@ -850,7 +908,14 @@ public final class RequestUtil extends CommonRequestUtil {
 			transaction.setSource(TransactionSource.PAYU_SDK);
 
 			if (creditCardNumber != null || tokenId != null) {
-				buildCreditCardTransaction(transaction, payerName,
+				
+				// If credit card holder name is null or empty, a payer name
+				// will be send to build a credit card
+				creditCardHolderName = creditCardHolderName != null
+						&& !creditCardHolderName.trim().equals("") ? creditCardHolderName
+						: payerName;
+				
+				buildCreditCardTransaction(transaction, creditCardHolderName,
 						creditCardNumber, creditCardExpirationDate,
 						processWithoutCvv2, securityCode, installments,
 						createCreditCardToken);
@@ -869,9 +934,10 @@ public final class RequestUtil extends CommonRequestUtil {
 			transaction.setPaymentMethod(paramPaymentMethod);
 			//transaction.setPaymentMethod(paymentMethod);
 			transaction.setPayer(buildPayer(parameters));
-			
-			addTransactionExtraParameters(transaction, parameters);
 
+			transaction.setTermsAndConditionsAcepted(termsAndConditionsAcepted);
+
+			addTransactionExtraParameters(transaction, parameters);
 		} else if (TransactionType.VOID.equals(transactionType)
 				|| TransactionType.REFUND.equals(transactionType)
 				|| TransactionType.CAPTURE.equals(transactionType)) {
@@ -919,7 +985,6 @@ public final class RequestUtil extends CommonRequestUtil {
 		if (extra3 != null) {
 			transaction.addExtraParameter(ExtraParemeterNames.EXTRA3.name(), extra3);
 		}
-		
 	}
 
 	/**
@@ -1033,7 +1098,46 @@ public final class RequestUtil extends CommonRequestUtil {
 
 		transaction.addExtraParameter(ExtraParemeterNames.RESPONSE_URL.name(),
 				responseUrl);
+	}
 
+	/**
+	 * Builds a {@link Address} according to parameters.
+	 *
+	 * @param shippingAddressLine1
+	 *            the address line 1 to set.
+	 * @param shippingAddressLine2
+	 *            the address line 2 to set.
+	 * @param shippingAddressLine3
+	 *            the address line 3 to set.
+	 * @param shippingAddressCity
+	 *            the address city to set.
+	 * @param shippingAddressState
+	 *            the address state to set.
+	 * @param shippingAddressCountry
+	 *            the address country to set.
+	 * @param shippingAddressPostalCode
+	 *            the address postal code to set.
+	 * @param shippingAddressPhone
+	 *            the address phone to set.
+	 * @return {@link Address} object.
+	 */
+	private static AddressV4 buildShippingAddress(String shippingAddressLine1,
+			String shippingAddressLine2, String shippingAddressLine3,
+			String shippingAddressCity, String shippingAddressState,
+			String shippingAddressCountry, String shippingAddressPostalCode,
+			String shippingAddressPhone) {
+
+		AddressV4 shippingAddress = new AddressV4();
+		shippingAddress.setStreet1(shippingAddressLine1);
+		shippingAddress.setStreet2(shippingAddressLine2);
+		shippingAddress.setStreet3(shippingAddressLine3);
+		shippingAddress.setCity(shippingAddressCity);
+		shippingAddress.setState(shippingAddressState);
+		shippingAddress.setCountry(shippingAddressCountry);
+		shippingAddress.setPostalCode(shippingAddressPostalCode);
+		shippingAddress.setPhone(shippingAddressPhone);
+
+		return shippingAddress;
 	}
 
 	/**

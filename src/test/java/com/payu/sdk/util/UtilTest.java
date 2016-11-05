@@ -64,6 +64,7 @@ import com.payu.sdk.model.Currency;
 import com.payu.sdk.model.Order;
 import com.payu.sdk.model.Transaction;
 import com.payu.sdk.model.TransactionType;
+import com.payu.sdk.model.request.Command;
 import com.payu.sdk.paymentplan.model.SubscriptionPlan;
 import com.payu.sdk.payments.model.PaymentRequest;
 import com.payu.sdk.utils.CommonRequestUtil;
@@ -374,13 +375,13 @@ public class UtilTest {
 			PaymentRequest request = (PaymentRequest) RequestUtil
 					.buildPaymentRequest(parameters,
 							TransactionType.AUTHORIZATION);
+
 			Assert.assertNotNull(request.getTransaction().getOrder(),
 					"Null order");
 
 		} catch (InvalidParametersException e) {
 			LoggerUtil.error(e.getMessage(), e);
 		}
-
 	}
 
 	/* UTILS XML TESTS */
@@ -590,7 +591,6 @@ public class UtilTest {
 		v.addEntry("test", 1);
 		Map<String, Object> obj = adapter.unmarshal(v);
 		Assert.assertEquals(1, obj.size(), "Invalid size.");
-
 	}
 
 	@Test(dataProvider = "noBcashRequestParameters")
@@ -710,6 +710,34 @@ public class UtilTest {
 		xml.put(PayU.PARAMETERS.BCASH_REQUEST_CONTENT, "<?xml version=\"1.0\" encoding=\"UTF-8\"?><root></root>");
 
 		return new Object[][] { { json }, { xml } };
+	}
+
+	/**
+	 * Builds a payment request with Api Key and Api Login values
+	 */
+	@Test
+	public void shouldBuildPaymentRequestWithApiKeyAndApiLoginValues() {
+
+		Map<String, String> parameters = new HashMap<String, String>();
+		parameters.put(PayU.PARAMETERS.API_KEY, "ABc123QWErty");
+		parameters.put(PayU.PARAMETERS.API_LOGIN, "0321654987abC");
+
+		PaymentRequest paymentRequest;
+		try {
+			paymentRequest = (PaymentRequest) RequestUtil.buildPaymentRequest(
+					parameters, TransactionType.AUTHORIZATION_AND_CAPTURE);
+
+			Assert.assertNotNull(paymentRequest);
+			Assert.assertEquals(paymentRequest.getCommand(),
+					Command.SUBMIT_TRANSACTION);
+			Assert.assertNotNull(paymentRequest.getMerchant());
+			Assert.assertNotNull(paymentRequest.getMerchant().getApiKey());
+			Assert.assertNotNull(paymentRequest.getMerchant().getApiLogin());
+			Assert.assertEquals(paymentRequest.getMerchant().getApiKey(), "ABc123QWErty");
+			Assert.assertEquals(paymentRequest.getMerchant().getApiLogin(), "0321654987abC");
+		} catch (InvalidParametersException ex) {
+			LoggerUtil.error(ex.getMessage(), ex);
+		}
 	}
 
 }

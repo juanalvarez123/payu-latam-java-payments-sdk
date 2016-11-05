@@ -131,6 +131,9 @@ public class Transaction implements Serializable {
 	@XmlElement
 	private BcashRequest bcashRequest;
 
+	@XmlElement(required = false)
+	private Boolean termsAndConditionsAcepted;
+
 	/**
 	 * Returns the transaction order
 	 *
@@ -310,6 +313,16 @@ public class Transaction implements Serializable {
 	public BcashRequest getBcashRequest() {
 
 		return bcashRequest;
+	}
+
+	/**
+	 * Return the terms and conditions accepted
+	 *
+	 * @return the terms and conditions accepted
+	 */
+	public Boolean getTermsAndConditionsAcepted() {
+
+		return termsAndConditionsAcepted;
 	}
 
 	/**
@@ -571,6 +584,17 @@ public class Transaction implements Serializable {
 	public void setBcashRequest(BcashRequest bcashRequest) {
 
 		this.bcashRequest = bcashRequest;
+	}
+
+	/**
+	 * Sets the terms and conditions accepted
+	 *
+	 * @param termsAndConditionsAcepted
+	 *            the terms and conditions accepted to set
+	 */
+	public void setTermsAndConditionsAcepted(Boolean termsAndConditionsAcepted) {
+
+		this.termsAndConditionsAcepted = termsAndConditionsAcepted;
 	}
 
 }
