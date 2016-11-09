@@ -108,7 +108,39 @@ public enum TransactionResponseCode {
 	/** Transaction was not fixed due to incomplete data code */
 	ERROR_FIXING_INCOMPLETE_DATA("10006"),
 	/** Awaiting PSE confirmation **/
-	PENDING_AWAITING_PSE_CONFIRMATION("");
+	PENDING_AWAITING_PSE_CONFIRMATION("28"),
+	/** **/
+	INVALID_RESPONSE_PARTIAL_APPROVAL("10007"),
+
+	/** The transaction was declined by test mode.*/
+	DECLINED_TEST_MODE_NOT_ALLOWED("40"),
+	/** **/
+	ERROR_CONVERTING_DEPOSIT_AMOUNTS("56"),
+	/** The transaction is related to a bank account with an error during its activation process */
+	BANK_ACCOUNT_ACTIVATION_ERROR("31"),
+	/** The bank account is not authorized for automatic debit. */
+	BANK_ACCOUNT_NOT_AUTHORIZED_FOR_AUTOMATIC_DEBIT("32"),
+	/** The bank account agency value is invalid. */
+	INVALID_AGENCY_BANK_ACCOUNT("33"),
+	/** The bank account is invalid. */
+	INVALID_BANK_ACCOUNT("34"),
+	/** The bank is invalid. */
+	INVALID_BANK("35"),
+	/** The transaction was sent to answer questionnaire. */
+	PENDING_ANSWER_MAF_QUESTIONNAIRE("16"),
+	/** The transaction is pending for payment in entity*/
+	PENDING_PAYMENT_IN_ENTITY("25"),
+	/** The transaction is pending for payment in bank */
+	PENDING_PAYMENT_IN_BANK("26"),
+	/** The transaction is pending to sent tot financial entity*/
+	PENDING_SENT_TO_FINANCIAL_ENTITY("29"),
+	/** The transaction is pending for notifying entity*/
+	PENDING_NOTIFYING_ENTITY("30"),
+
+	/** The transaction cancelled by payer before being processed */
+	CANCELLED_TRANSACTION_PAYER("10008"),
+	/** The transaction cancelled by merchant before being processed */
+	CANCELLED_TRANSACTION_MERCHANT("10009");
 
 	/**
 	 * The transaction response code.
@@ -120,7 +152,7 @@ public enum TransactionResponseCode {
 	 *
 	 * @param code the transaction response code.
 	 */
-	private TransactionResponseCode(String code) {
+	private TransactionResponseCode(String code) {																																																																																																																																																																																																																																																																																						xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 		this.code = code;
 	}
 
