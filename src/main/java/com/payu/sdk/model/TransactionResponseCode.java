@@ -152,7 +152,7 @@ public enum TransactionResponseCode {
 	 *
 	 * @param code the transaction response code.
 	 */
-	private TransactionResponseCode(String code) {																																																																																																																																																																																																																																																																																						xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	private TransactionResponseCode(String code) {
 		this.code = code;
 	}
 
