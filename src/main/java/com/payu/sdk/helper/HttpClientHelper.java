@@ -62,7 +62,9 @@ import com.payu.sdk.exceptions.SDKException;
 import com.payu.sdk.exceptions.SDKException.ErrorCode;
 import com.payu.sdk.model.Language;
 import com.payu.sdk.model.MediaType;
+import com.payu.sdk.model.Merchant;
 import com.payu.sdk.model.error.ErrorResponse;
+import com.payu.sdk.model.request.CommandRequest;
 import com.payu.sdk.model.request.Request;
 import com.payu.sdk.utils.JaxbUtil;
 import com.payu.sdk.utils.LoggerUtil;
@@ -363,16 +365,52 @@ public final class HttpClientHelper {
 				+ "; charset=utf-8");
 		requestBase.addHeader(HttpHeaders.ACCEPT, MediaType.XML.getCode());
 
-		String username = apiRequest.getApiLogin() != null
-				? apiRequest.getApiLogin() : PayU.apiLogin;
+		String username = getUserName(apiRequest);
 
-		String password = apiRequest.getApiKey() != null
-				? apiRequest.getApiKey() : PayU.apiKey;
+		String password = getPassword(apiRequest);
 
 		Credentials credentials = new UsernamePasswordCredentials(username, password);
 
 		requestBase.addHeader(BasicScheme.authenticate(credentials,
 				Constants.DEFAULT_ENCODING, false));
+	}
+
+	/**
+	 * Gets the user name.
+	 * 
+	 * @param apiRequest
+	 * @return
+	 */
+	private static String getUserName(Request apiRequest) {
+
+		Merchant merchant = null;
+
+		if (apiRequest instanceof CommandRequest) {
+			merchant = ((CommandRequest) apiRequest).getMerchant();
+		}
+
+		return apiRequest.getApiLogin() != null ? apiRequest.getApiLogin()
+				: merchant != null && merchant.getApiLogin() != null ? merchant
+						.getApiLogin() : PayU.apiLogin;
+	}
+
+	/**
+	 * Gets the password.
+	 * 
+	 * @param apiRequest
+	 * @return
+	 */
+	private static String getPassword(Request apiRequest) {
+		
+		Merchant merchant = null;
+
+		if (apiRequest instanceof CommandRequest) {
+			merchant = ((CommandRequest) apiRequest).getMerchant();
+		}
+
+		return apiRequest.getApiKey() != null ? apiRequest.getApiKey()
+				: merchant != null && merchant.getApiKey() != null ? merchant
+						.getApiKey() : PayU.apiKey;
 	}
 
 	/**

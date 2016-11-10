@@ -1,0 +1,7 @@
+2016-10-21
+----------
+Se adiciona soporte para enviar los parámetros bcashRequestContentType (transaction.bcashRequest.contentType) y bcashRequestContent
+(transaction.bcashRequest.content) a la API de pagos.
+
+Issue:
+https://pagosonline.jira.com/browse/PAGOSONLINEPPS-32962

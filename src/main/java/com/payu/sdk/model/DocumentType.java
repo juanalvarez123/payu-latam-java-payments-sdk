@@ -67,6 +67,9 @@ public enum DocumentType {
 	RUT,
 
 	/** Tarjeta de identidad. */
-	TI;
+	TI,
+
+	/** Documento CPF para Brasil. */
+	CPF;
 
 }

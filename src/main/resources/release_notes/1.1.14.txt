@@ -1,0 +1,6 @@
+2016-10-24
+----------
+Se agregan los campos para identificar el tipo de DNI del pagador, el tipo de DNI del comprador y los datos de la dirección de envío cuando se hace la solicitud de un pago de tipo AUTHORIZATION_AND_CAPTURE. 
+
+Issue:
+https://pagosonline.jira.com/browse/PAGOSONLINEPPS-32880

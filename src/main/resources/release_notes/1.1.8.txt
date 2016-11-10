@@ -1,3 +1,8 @@
 2016-07-18
 ----------
 Se adiciona metodo PayUPayments.submitTransaction() con el fin de tener mayor flexibilidad de la información adicional de la transaccion antes en enviarla a procesar.
+
+2016-07-24
+jose.mejia@payulatam.com
+------------------------
+Para el medio de pago CODENSA se adicina la validacion para que el dniType y dniNumber no se envien nulos.  

@@ -97,6 +97,9 @@ public class Order implements Serializable {
 	@XmlJavaTypeAdapter(MapAdditionalValueAdapter.class)
 	private Map<String, AdditionalValue> additionalValues;
 
+	@XmlElement(name = "shippingAddress", required = false)
+	private AddressV4 shippingAddress;
+
 	/**
 	 * Returns the order's id
 	 *
@@ -229,6 +232,15 @@ public class Order implements Serializable {
 	}
 
 	/**
+	 * Returns the order's shipping address.
+	 *
+	 * @return the order's shipping address.
+	 */
+	public AddressV4 getShippingAddress() {
+		return shippingAddress;
+	}
+
+	/**
 	 * Sets the order's id
 	 *
 	 * @param id the id to set
@@ -356,6 +368,16 @@ public class Order implements Serializable {
 	public void setAdditionalValues(
 			Map<String, AdditionalValue> additionalValues) {
 		this.additionalValues = additionalValues;
+	}
+
+	/**
+	 * Sets the order's shipping address
+	 *
+	 * @param shippingAddress
+	 *            the shipping address to set.
+	 */
+	public void setShippingAddress(AddressV4 shippingAddress) {
+		this.shippingAddress = shippingAddress;
 	}
 
 }
