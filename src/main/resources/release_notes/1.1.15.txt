@@ -1,0 +1,8 @@
+2016-11-10
+----------
+*   se modifica PENDING_AWAITING_PSE_CONFIRMATION(""); a PENDING_AWAITING_PSE_CONFIRMATION("28"); así estaba en "com.pagosonline.ppp4.core.common.model.TransactionResponseCode".
+*   Se agregan los campos en el enumerado desde payments-api "com.pagosonline.ppp4.core.common.model.TransactionResponseCode" hacia "com.payu.sdk.model.TransactionResponseCode"
+
+
+Issue:
+https://pagosonline.jira.com/browse/PAGOSONLINEPPS-33399
