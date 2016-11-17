@@ -72,6 +72,7 @@ import com.payu.sdk.utils.JaxbUtil;
 import com.payu.sdk.utils.LoggerUtil;
 import com.payu.sdk.utils.PaymentPlanRequestUtil;
 import com.payu.sdk.utils.RequestUtil;
+import com.payu.sdk.utils.SignUtil;
 import com.payu.sdk.utils.xml.AddressAdapter;
 import com.payu.sdk.utils.xml.MapDetailsAdapter;
 import com.payu.sdk.utils.xml.MapDetailsElement;
@@ -738,6 +739,89 @@ public class UtilTest {
 		} catch (InvalidParametersException ex) {
 			LoggerUtil.error(ex.getMessage(), ex);
 		}
+	}
+	
+
+	/**
+	 * Test the signature utility
+	 */
+	@Test
+	public void signUtilTest() {
+
+		PayU.apiKey = "12345";
+		PayU.merchantId = "1";
+		
+		Order order = new Order();
+		
+		Transaction transaction = new Transaction();
+
+		try {
+
+			SignUtil.createSignature(transaction);
+			Assert.fail("No exception was thrown");
+
+		} catch (IllegalArgumentException e) {
+			LoggerUtil.error(e.getMessage(), e);
+		}
+
+		try {
+
+			transaction.setOrder(order);
+			SignUtil.createSignature(transaction);
+			Assert.fail("No exception was thrown");
+
+		} catch (IllegalArgumentException e) {
+			LoggerUtil.error(e.getMessage(), e);
+		}
+
+		try {
+			order.setReferenceCode("ABC");
+			SignUtil.createSignature(transaction);
+			Assert.fail("No exception was thrown");
+
+		} catch (IllegalArgumentException e) {
+			LoggerUtil.error(e.getMessage(), e);
+		}
+
+		try {
+			order.setAdditionalValues(new HashMap<String, AdditionalValue>());
+
+			AdditionalValue additionalValue = new AdditionalValue();
+
+			order.getAdditionalValues().put("TX_VALUE", additionalValue);
+			SignUtil.createSignature(transaction);
+			Assert.fail("No exception was thrown");
+
+		} catch (IllegalArgumentException e) {
+			LoggerUtil.error(e.getMessage(), e);
+		}
+
+		try {
+			order.setAdditionalValues(new HashMap<String, AdditionalValue>());
+
+			AdditionalValue additionalValue = new AdditionalValue();
+			additionalValue.setCurrency(Currency.COP);
+
+			order.getAdditionalValues().put("TX_VALUE", additionalValue);
+			SignUtil.createSignature(transaction);
+			Assert.fail("No exception was thrown");
+
+		} catch (IllegalArgumentException e) {
+			LoggerUtil.error(e.getMessage(), e);
+		}
+
+		order.setAdditionalValues(new HashMap<String, AdditionalValue>());
+
+		AdditionalValue additionalValue = new AdditionalValue();
+		additionalValue.setCurrency(Currency.COP);
+		additionalValue.setValue(BigDecimal.TEN);
+
+		order.getAdditionalValues().put("TX_VALUE", additionalValue);
+		SignatureHelper
+				.buildSignature(order, 1, "1",
+						SignatureHelper.DECIMAL_FORMAT_1,
+						SignatureHelper.SHA_ALGORITHM);
+
 	}
 
 }

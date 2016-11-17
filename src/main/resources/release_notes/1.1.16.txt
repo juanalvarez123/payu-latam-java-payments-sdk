@@ -1,0 +1,7 @@
+2016-11-117
+----------
+*   Se crea utilitario para generar la firma digital
+
+
+Issue:
+https://pagosonline.jira.com/browse/PAGOSONLINEPPS-31410

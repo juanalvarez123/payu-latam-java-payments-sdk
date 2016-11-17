@@ -34,20 +34,17 @@ import com.payu.sdk.model.Transaction;
 
 /**
  * Utility for create signature in the PayU SDK.
- * 
+ *
  * @author <a href="mario.murillo@payulatam.com">Mario Andres Murillo</a>
  * @version 1.0
  * @since 1.0
  * @date 16/11/2016
  */
 public final class SignUtil {
-	
-	/** The format to use for decimal values */
-	private static final String VALUE_FORMAT = "###.00";
 
 	/** The default algorithm. */
 	private static final String DEFAULT_ALGORITHM = Constants.ALGORITHM_MD5;
-	
+
 	/* Separator character to use on signature validation. */
 	private static final char SIGNATURE_SEPARATOR = '~';
 
@@ -57,7 +54,7 @@ public final class SignUtil {
 	private SignUtil() {
 		// Default empty constructor
 	}
-	
+
 	/**
 	 * Creates the signature based on information received.
 	 *
@@ -68,13 +65,13 @@ public final class SignUtil {
 	 * @param currency The currency
 	 * @return the signature created.
 	 */
-	public static String createSignature(final String key, final Integer merchantId, final String referenceCode, final
-	String amount, final String currency) {
+	public static String createSignature(final String key, final Integer merchantId, final String referenceCode,
+			final String amount, final String currency) {
 
 		return createSignature(Constants.ALGORITHM_MD5, key,
 				buildMessage(merchantId.toString(), referenceCode, amount, currency));
 	}
-	
+
 	/**
 	 * Generates the signature based on information received.
 	 *
@@ -91,16 +88,19 @@ public final class SignUtil {
 		final String localAlgorithm = StringUtils.isBlank(algorithm) ? DEFAULT_ALGORITHM : algorithm;
 		if (Constants.ALGORITHM_MD5.equalsIgnoreCase(localAlgorithm)) {
 			signature = DigestUtils.md5Hex(str);
-		} else if (Constants.ALGORITHM_SHA.equalsIgnoreCase(localAlgorithm)) {
+		}
+		else if (Constants.ALGORITHM_SHA.equalsIgnoreCase(localAlgorithm)) {
 			signature = DigestUtils.shaHex(str);
-		} else if (Constants.ALGORITHM_SHA_256.equalsIgnoreCase(localAlgorithm)) {
+		}
+		else if (Constants.ALGORITHM_SHA_256.equalsIgnoreCase(localAlgorithm)) {
 			signature = DigestUtils.sha256Hex(str);
-		} else {
+		}
+		else {
 			throw new IllegalArgumentException("Could not create signature. Invalid algorithm " + localAlgorithm);
 		}
 		return signature;
 	}
-	
+
 	/**
 	 * Generates the signature based from the transaction.
 	 *
@@ -109,13 +109,21 @@ public final class SignUtil {
 	 */
 	public static String createSignature(final Transaction transaction) {
 
-		final Order order = transaction.getOrder();
+		Order order = null;
 		
-		Integer merchantId = new Integer(PayU.merchantId);
-		
-		return SignatureHelper.buildSignature(order, merchantId, PayU.apiKey, VALUE_FORMAT, DEFAULT_ALGORITHM);
+		if(transaction != null && transaction.getOrder() != null) {
+			
+			order = transaction.getOrder();
+		} else {
+			throw new IllegalArgumentException("The order may not be null");
+		}
+
+		final Integer merchantId = new Integer(PayU.merchantId);
+
+		return SignatureHelper.buildSignature(order, merchantId, PayU.apiKey, SignatureHelper.DECIMAL_FORMAT_3,
+				DEFAULT_ALGORITHM);
 	}
-	
+
 	/**
 	 * Creates a signature message
 	 *
