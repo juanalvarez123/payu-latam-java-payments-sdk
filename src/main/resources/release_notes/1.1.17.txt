@@ -1,0 +1,6 @@
+2016-11-22
+----------
+Se retorna el campo "referencia" de la orden cuando se crean transacciones.
+
+Issue:
+https://pagosonline.jira.com/browse/PAGOSONLINEPPS-34405

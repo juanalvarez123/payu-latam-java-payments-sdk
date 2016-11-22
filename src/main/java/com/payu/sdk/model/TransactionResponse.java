@@ -52,6 +52,9 @@ public class TransactionResponse implements Serializable {
 	/** the related order id. */
 	@XmlElement(required = false)
 	private Integer orderId;
+	/** the order's reference code */
+	@XmlElement(required = false)
+	private String orderReferenceCode;
 	/** the related transaction id. */
 	@XmlElement(required = false)
 	private String transactionId;
@@ -104,6 +107,15 @@ public class TransactionResponse implements Serializable {
 	 */
 	public Integer getOrderId() {
 		return orderId;
+	}
+	
+	/**
+	 * Gets the order's reference code
+	 * 
+	 * @return the reference code from order
+	 */
+	public String getOrderReferenceCode() {
+		return orderReferenceCode;
 	}
 
 	/**
@@ -240,6 +252,16 @@ public class TransactionResponse implements Serializable {
 	 */
 	public void setOrderId(Integer orderId) {
 		this.orderId = orderId;
+	}
+	
+	/**
+	 * Sets the order's reference code
+	 * 
+	 * @param orderReferenceCode
+	 * 
+	 */
+	public void setOrderReferenceCode(String orderReferenceCode) {
+		this.orderReferenceCode = orderReferenceCode;
 	}
 
 	/**
