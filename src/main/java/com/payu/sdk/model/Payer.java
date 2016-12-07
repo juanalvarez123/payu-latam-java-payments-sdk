@@ -55,6 +55,9 @@ public class Payer extends Person {
 
 	/**	The payer's birthdate */
 	private String birthdate;
+	
+	/** The payer gender. */
+	private String gender;
 
 	/**
 	 * Returns the payer's id in the merchant
@@ -149,6 +152,25 @@ public class Payer extends Person {
 	 */
 	public void setBirthdate(String birthdate) {
 		this.birthdate = birthdate;
+	}
+	
+	/**
+	 * Gets the gender.
+	 *
+	 * @return the gender
+	 */
+	@XmlElement(required = false)
+	public String getGender() {
+		return gender;
+	}
+
+	/**
+	 * Sets the gender.
+	 *
+	 * @param gender the new gender
+	 */
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
 }

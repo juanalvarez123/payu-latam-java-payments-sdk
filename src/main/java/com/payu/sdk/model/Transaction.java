@@ -58,6 +58,9 @@ public class Transaction implements Serializable {
 	/** The transaction credit card */
 	@XmlElement(required = false)
 	private CreditCard creditCard;
+	@XmlElement(required = false)
+	/** The transaction debit card */
+	private DebitCard debitCard;
 	/** The transaction credit card swipe */
 	@XmlElement(required = false)
 	private CreditCardSwipe creditCardSwipe;
@@ -150,6 +153,15 @@ public class Transaction implements Serializable {
 	 */
 	public CreditCard getCreditCard() {
 		return creditCard;
+	}
+	
+	/**
+	 * Returns the transaction debit card.
+	 *
+	 * @return the debit card
+	 */
+	public DebitCard getDebitCard() {
+		return debitCard;
 	}
 
 	/**
@@ -345,6 +357,15 @@ public class Transaction implements Serializable {
 		this.creditCard = creditCard;
 	}
 
+	/**
+	 * Sets the transaction debit card.
+	 *
+	 * @param debitCard the new debit card
+	 */
+	public void setDebitCard(DebitCard debitCard) {
+		this.debitCard = debitCard;
+	}
+	
 	/**
 	 * Sets the transaction credit card swipe
 	 *
