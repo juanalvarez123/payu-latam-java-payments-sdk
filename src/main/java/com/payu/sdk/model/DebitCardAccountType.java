@@ -23,6 +23,8 @@
  */
 package com.payu.sdk.model;
 
+import javax.xml.bind.annotation.XmlEnumValue;
+
 /**
  * Enum representing the debit card account types in the PayU SDK.
  * 
@@ -35,11 +37,13 @@ public enum DebitCardAccountType {
 	/**
 	 * Saving account type.
 	 */
-	A,
+	@XmlEnumValue("A")
+	SAVINGS,
 
 	/**
 	 * Checking account type.
 	 */
-	R;
+	@XmlEnumValue("R")
+	CHECKING;
 
 }

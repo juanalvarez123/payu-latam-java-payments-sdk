@@ -58,8 +58,8 @@ public class Transaction implements Serializable {
 	/** The transaction credit card */
 	@XmlElement(required = false)
 	private CreditCard creditCard;
-	@XmlElement(required = false)
 	/** The transaction debit card */
+	@XmlElement(required = false)
 	private DebitCard debitCard;
 	/** The transaction credit card swipe */
 	@XmlElement(required = false)
