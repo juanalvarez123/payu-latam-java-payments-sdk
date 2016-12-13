@@ -1,0 +1,13 @@
+2016-12-07
+----------
+* Abstraer campos objeto CreditCard en AbstractCardData
+* Extender clase CreditCard de clase AbstractCardData
+* Crear enumeración DebitCardAccountType
+* Crear clase DebitCard que extiende de AbstractCardData
+* Crear enumeración CardType
+* Agregar propiedad cardType a DebitCard y CreditCard
+* Agregar objeto DebitCard a objeto Transaction
+* Agregar propiedad gender al objeto Payer
+
+Issue:
+https://pagosonline.jira.com/browse/PAGOSONLINEPPS-32264
