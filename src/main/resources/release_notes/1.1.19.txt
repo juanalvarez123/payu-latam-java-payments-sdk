@@ -1,0 +1,9 @@
+2016-12-14
+----------
+* Add authentication though parameters for methods:
+ - Ping request;
+ - Payment method list;
+ - Reporting Details;
+ - Create token;
+ - Get token;
+ - Remove token;
