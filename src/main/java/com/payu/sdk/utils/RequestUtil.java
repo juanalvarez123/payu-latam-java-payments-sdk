@@ -26,6 +26,7 @@ package com.payu.sdk.utils;
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.net.URLEncoder;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -98,8 +99,22 @@ public final class RequestUtil extends CommonRequestUtil {
 	 */
 	public static PaymentRequest buildPaymentsPingRequest() {
 
+		return buildPaymentsPingRequest(Collections.<String, String>emptyMap());
+
+	}
+	
+	/**
+	 * Builds a payments ping request
+	 *
+	 * @param parameters
+	 *            The parameters to be sent to the server
+	 * @return The complete payments ping request
+	 */
+	public static PaymentRequest buildPaymentsPingRequest(Map<String, String> parameters) {
+
 		PaymentRequest request = buildDefaultPaymentRequest();
 		request.setCommand(Command.PING);
+		setAuthenticationByParameter(parameters, request);
 		return request;
 
 	}
@@ -111,8 +126,20 @@ public final class RequestUtil extends CommonRequestUtil {
 	 */
 	public static ReportingRequest buildReportingPingRequest() {
 
+		return buildReportingPingRequest(Collections.<String, String>emptyMap());
+
+	}
+	
+	/**
+	 * Builds a reporting ping request
+	 *
+	 * @return The complete reporting request to be sent to the server
+	 */
+	public static ReportingRequest buildReportingPingRequest(Map<String, String> parameters) {
+
 		ReportingRequest request = buildDefaultReportingRequest();
 		request.setCommand(Command.PING);
+		setAuthenticationByParameter(parameters, request);
 		return request;
 
 	}
@@ -152,20 +179,35 @@ public final class RequestUtil extends CommonRequestUtil {
 
 		PaymentRequest request = buildDefaultPaymentRequest();
 		request.setCommand(Command.SUBMIT_TRANSACTION);
-		
-		// Priority the api key obtained from PayU.apiKey
-		if (request.getMerchant() != null && request.getMerchant().getApiKey() == null) {
-			request.getMerchant().setApiKey(getParameter(parameters, PayU.PARAMETERS.API_KEY));
-		}
-		
-		// Priority the api login obtained from PayU.apiLogin
-		if (request.getMerchant() != null && request.getMerchant().getApiLogin() == null) {
-			request.getMerchant().setApiLogin(getParameter(parameters, PayU.PARAMETERS.API_LOGIN));
-		}
+		setAuthenticationByParameter(parameters, request);
 		
 		request.setTransaction(buildTransaction(parameters, transactionType));
 
 		return request;
+	}
+
+	/**
+	 * Sets the apiKey and apiLogin into merchant if the values are present 
+	 * into the {@code parameters} and are not present into the constants:
+	 * <ul>
+	 * 	<li>PayU.apiKey</li>
+	 * 	<li>PayU.apiLogin</li>
+	 * </ul>
+	 * 
+	 * @param parameters
+	 * @param request
+	 */
+	private static void setAuthenticationByParameter(Map<String, String> parameters, CommandRequest request) {
+
+		// The PayU.apiKey has priority over the parameters
+		if (request.getMerchant() != null && request.getMerchant().getApiKey() == null) {
+			request.getMerchant().setApiKey(getParameter(parameters, PayU.PARAMETERS.API_KEY));
+		}
+		
+		// The PayU.apiLogin has priority over the parameters
+		if (request.getMerchant() != null && request.getMerchant().getApiLogin() == null) {
+			request.getMerchant().setApiLogin(getParameter(parameters, PayU.PARAMETERS.API_LOGIN));
+		}
 	}
 
 	/**
@@ -175,8 +217,21 @@ public final class RequestUtil extends CommonRequestUtil {
 	 */
 	public static Request buildPaymentMethodsListRequest() {
 
+		return buildPaymentMethodsListRequest(Collections.<String, String>emptyMap());
+	}
+	
+	/**
+	 * Builds the payment methods list request.
+	 *
+	 * @param parameters
+	 * 			The parameters to be sent to the server
+	 * @return The complete payment methods list request
+	 */
+	public static Request buildPaymentMethodsListRequest(Map<String, String> parameters) {
+
 		PaymentRequest request = buildDefaultPaymentRequest();
 		request.setCommand(Command.GET_PAYMENT_METHODS);
+		setAuthenticationByParameter(parameters, request);
 
 		return request;
 	}
@@ -225,7 +280,8 @@ public final class RequestUtil extends CommonRequestUtil {
 
 		ReportingRequest request = buildDefaultReportingRequest();
 		request.setCommand(Command.ORDER_DETAIL);
-
+		setAuthenticationByParameter(parameters, request);
+		
 		Integer orderId = getIntegerParameter(parameters,
 				PayU.PARAMETERS.ORDER_ID);
 
@@ -249,6 +305,7 @@ public final class RequestUtil extends CommonRequestUtil {
 
 		ReportingRequest request = buildDefaultReportingRequest();
 		request.setCommand(Command.ORDER_DETAIL_BY_REFERENCE_CODE);
+		setAuthenticationByParameter(parameters, request);
 
 		request.setDetails(new HashMap<String, Object>(parameters));
 
@@ -267,6 +324,7 @@ public final class RequestUtil extends CommonRequestUtil {
 
 		ReportingRequest request = buildDefaultReportingRequest();
 		request.setCommand(Command.TRANSACTION_RESPONSE_DETAIL);
+		setAuthenticationByParameter(parameters, request);
 
 		request.setDetails(new HashMap<String, Object>(parameters));
 
@@ -304,6 +362,7 @@ public final class RequestUtil extends CommonRequestUtil {
 		CreditCardTokenRequest request = new CreditCardTokenRequest();
 		request = (CreditCardTokenRequest) buildDefaultRequest(request);
 		request.setCommand(Command.CREATE_TOKEN);
+		setAuthenticationByParameter(parameters, request);
 
 		request.setCreditCardToken(buildCreditCardToken(nameOnCard, payerId,
 				dni, paymentMethod, creditCardNumber, expirationDate));
@@ -339,6 +398,7 @@ public final class RequestUtil extends CommonRequestUtil {
 		CreditCardTokenListRequest request = new CreditCardTokenListRequest();
 		request = (CreditCardTokenListRequest) buildDefaultRequest(request);
 		request.setCommand(Command.GET_TOKENS);
+		setAuthenticationByParameter(parameters, request);
 
 		CreditCardTokenInformation information = new CreditCardTokenInformation();
 
@@ -369,6 +429,7 @@ public final class RequestUtil extends CommonRequestUtil {
 		RemoveCreditCardTokenRequest request = new RemoveCreditCardTokenRequest();
 		request = (RemoveCreditCardTokenRequest) buildDefaultRequest(request);
 		request.setCommand(Command.REMOVE_TOKEN);
+		setAuthenticationByParameter(parameters, request);
 
 		RemoveCreditCardToken remove = new RemoveCreditCardToken();
 
