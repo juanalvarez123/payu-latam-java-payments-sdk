@@ -27,8 +27,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.codec.binary.StringUtils;
-
 import com.payu.sdk.constants.Resources.RequestMethod;
 import com.payu.sdk.exceptions.ConnectionException;
 import com.payu.sdk.exceptions.InvalidParametersException;
@@ -363,6 +361,23 @@ public final class PayUPayments extends PayU {
 		return processTransaction(parameters, TransactionType.REFUND);
 	}
 
+	/**
+	 * Do a partial refund transaction
+	 *
+	 * @param parameters
+	 *            The parameters to be sent to the server
+	 * @return The transaction response to the request sent
+	 * @throws PayUException
+	 * @throws ConnectionException
+	 * @throws InvalidParametersException
+	 */
+	public static TransactionResponse doPartialRefund(Map<String, String> parameters)
+			throws PayUException, InvalidParametersException,
+			ConnectionException {
+
+		return processTransaction(parameters, TransactionType.PARTIAL_REFUND);
+	}
+	
 	/**
 	 * Makes payment petition
 	 *
