@@ -1001,6 +1001,7 @@ public final class RequestUtil extends CommonRequestUtil {
 			addTransactionExtraParameters(transaction, parameters);
 		} else if (TransactionType.VOID.equals(transactionType)
 				|| TransactionType.REFUND.equals(transactionType)
+				|| TransactionType.PARTIAL_REFUND.equals(transactionType)
 				|| TransactionType.CAPTURE.equals(transactionType)) {
 
 			transaction.setParentTransactionId(parentTransactionId);

@@ -51,6 +51,9 @@ public enum TransactionType {
 	REFUND,
 
 	/** Credit transaction. */
-	CREDIT
+	CREDIT,
+	
+	/** Partial Refund transaction. */
+	PARTIAL_REFUND
 
 }

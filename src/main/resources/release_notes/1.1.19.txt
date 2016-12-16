@@ -7,3 +7,5 @@
  - Create token;
  - Get token;
  - Remove token;
+
+* Add support for partial refund
