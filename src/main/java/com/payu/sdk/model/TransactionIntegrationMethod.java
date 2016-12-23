@@ -27,8 +27,8 @@ package com.payu.sdk.model;
  * Enum representing the transaction integration method in the PayU SDK.
  *
  * @author PayU Latam
- * @since 1.0.0
- * @version 1.0.0, 23/12/2016
+ * @since 1.1.20
+ * @version 1.1.20, 23/12/2016
  */
 public enum TransactionIntegrationMethod {
 
