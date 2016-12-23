@@ -81,6 +81,9 @@ public class Transaction implements Serializable {
 	@XmlElement(required = false)
 	private String paymentMethod;
 
+	/** The transaction integration method. */
+	@XmlElement(required = false)
+	private TransactionIntegrationMethod integrationMethod;
 	/** The transaction source */
 	@XmlElement(required = false)
 	private TransactionSource source;
@@ -216,6 +219,15 @@ public class Transaction implements Serializable {
 	 */
 	public String getPaymentMethod() {
 		return paymentMethod;
+	}
+
+	/**
+	 * Gets the transaction integration method.
+	 *
+	 * @return the transaction integration method
+	 */
+	public TransactionIntegrationMethod getIntegrationMethod() {
+		return integrationMethod;
 	}
 
 	/**
@@ -426,6 +438,15 @@ public class Transaction implements Serializable {
 		this.paymentMethod = paymentMethod;
 	}
 
+	/**
+	 * Sets the transaction integration method.
+	 *
+	 * @param integrationMethod the new transaction integration method
+	 */
+	public void setIntegrationMethod(TransactionIntegrationMethod integrationMethod) {
+		this.integrationMethod = integrationMethod;
+	}
+	
 	/**
 	 * Sets the transaction source
 	 *

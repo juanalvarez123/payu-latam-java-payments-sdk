@@ -1,0 +1,6 @@
+2016-12-23
+----------
+* Agregar propiedad TransactionIntegrationMethod a objeto Transaction
+
+Issue:
+https://pagosonline.jira.com/browse/PAGOSONLINEPPS-35148
