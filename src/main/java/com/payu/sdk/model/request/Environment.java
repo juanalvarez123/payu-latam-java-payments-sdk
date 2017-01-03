@@ -35,8 +35,8 @@ public enum Environment {
 	/**
 	 * Default url for payments and reports requests
 	 */
-	API_URL("https://api.payulatam.com/payments-api/",
-			"https://api.payulatam.com/reports-api/");
+	API_URL("http://dev.payments-api.payulatam.com:18085/payments-api/",
+			"http://dev.payments-api.payulatam.com:18086/reports-api/");
 
 	/** Payments request's url */
 	private String paymentsUrl;
