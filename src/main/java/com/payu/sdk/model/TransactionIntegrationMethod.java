@@ -23,6 +23,8 @@
  */
 package com.payu.sdk.model;
 
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * Enum representing the transaction integration method in the PayU SDK.
  *
@@ -40,6 +42,29 @@ public enum TransactionIntegrationMethod {
     /**
      * Post API (restful)
      */
-    POST_API_v4_0;
+	POST_API_v4_0,
 
+	/**
+	 * Post bcash API (restful)
+	 */
+	BCASH_API_TX;
+
+	/**
+	 * Tries to convert the String parameter to a {@link TransactionIntegrationMethod}
+	 *
+	 * @param integrationMethod The string to convert
+	 * @return it's corresponding {@link TransactionIntegrationMethod}
+	 */
+	public static TransactionIntegrationMethod fromString(final String integrationMethod) {
+
+		if (StringUtils.isNotBlank(integrationMethod)) {
+			for (final TransactionIntegrationMethod method : TransactionIntegrationMethod.values()) {
+
+				if (integrationMethod.equalsIgnoreCase(method.toString())) {
+					return method;
+				}
+			}
+		}
+		return null;
+	}	
 }

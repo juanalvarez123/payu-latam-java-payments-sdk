@@ -62,6 +62,7 @@ import com.payu.sdk.model.TransactionType;
 import com.payu.sdk.model.request.Command;
 import com.payu.sdk.model.request.CommandRequest;
 import com.payu.sdk.model.request.Request;
+import com.payu.sdk.model.TransactionIntegrationMethod;
 import com.payu.sdk.payments.model.CreditCardTokenListRequest;
 import com.payu.sdk.payments.model.CreditCardTokenRequest;
 import com.payu.sdk.payments.model.PaymentMethodRequest;
@@ -998,6 +999,10 @@ public final class RequestUtil extends CommonRequestUtil {
 
 			transaction.setTermsAndConditionsAcepted(termsAndConditionsAcepted);
 
+			//Set the integration method of request
+			String paramIntegrationMethod = getParameter(parameters, PayU.PARAMETERS.INTEGRATION_METHOD);
+			transaction.setIntegrationMethod(TransactionIntegrationMethod.fromString(paramIntegrationMethod ));
+			
 			addTransactionExtraParameters(transaction, parameters);
 		} else if (TransactionType.VOID.equals(transactionType)
 				|| TransactionType.REFUND.equals(transactionType)
@@ -1022,7 +1027,6 @@ public final class RequestUtil extends CommonRequestUtil {
 
 		return transaction;
 	}
-	
 	/**
 	 * Adds the transaction extra parameters.
 	 *

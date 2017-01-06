@@ -1,0 +1,9 @@
+2016-12-29
+----------
+* Crear parámetro "INTEGRATION_METHOD" en PayU.PARAMETERS
+* Mapear parámetro PayU.PARAMETERS.INTEGRATION_METHOD a propiedad TransactionIntegrationMethod de objeto Transaction
+* Crear enumerado BCASH_API_TX en com.payu.sdk.model.TransactionIntegrationMethod
+* Crear método com.payu.sdk.model.TransactionIntegrationMethod.fromString
+
+Issue:
+https://pagosonline.jira.com/browse/PAGOSONLINEPPS-35602

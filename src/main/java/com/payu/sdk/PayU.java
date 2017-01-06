@@ -437,6 +437,9 @@ public abstract class PayU {
 
 		/** The Bcash request content */
 		String BCASH_REQUEST_CONTENT = "bcashRequestContent";
+		
+		/** The IntegrationMethod */
+		String INTEGRATION_METHOD = "integrationMethod";
 
 	}
 }
