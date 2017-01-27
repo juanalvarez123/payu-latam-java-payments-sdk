@@ -128,8 +128,6 @@ public final class HttpClientHelper {
 		HttpClient httpClient = new DefaultHttpClient();
 		setHttpClientParameters(httpClient.getParams(), socketTimeOut);
 
-		httpClient = WebClientDevWrapper.wrapClient(httpClient);
-
 		try {
 
 			HttpRequestBase httpRequest = createHttpRequest(request, requestMethod);
