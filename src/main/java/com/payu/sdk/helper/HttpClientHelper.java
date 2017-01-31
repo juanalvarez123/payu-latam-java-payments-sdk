@@ -127,8 +127,8 @@ public final class HttpClientHelper {
 
 		HttpClient httpClient = new DefaultHttpClient();
 		setHttpClientParameters(httpClient.getParams(), socketTimeOut);
-
-		httpClient = WebClientDevWrapper.wrapClient(httpClient);
+		
+		httpClient = doModifySSLOptions(request, requestMethod, httpClient);
 
 		try {
 
@@ -163,6 +163,25 @@ public final class HttpClientHelper {
 		finally {
 			httpClient.getConnectionManager().shutdown();
 		}
+	}
+
+	/**
+	 * This method validates the url and call the method that disable the SSL options when the case is not
+	 * PRD or Sandbox enviroments
+	 * @param request
+	 * @param requestMethod
+	 * @param httpClient
+	 * @return httpClient
+	 * @throws ConnectionException
+	 */
+	private static HttpClient doModifySSLOptions(final Request request, final RequestMethod requestMethod, HttpClient httpClient)
+			throws ConnectionException {
+		String url = request.getRequestUrl(requestMethod);
+		if(!url.contains(Constants.PAYMENTS_PRD_URL) && !url.contains(Constants.PAYMENTS_SANDBOX_URL) && 
+				!url.contains(Constants.PAYMENTS_STG_URL)){
+			httpClient = WebClientDevWrapper.wrapClient(httpClient);
+		}
+		return httpClient;
 	}
 
 	/**
