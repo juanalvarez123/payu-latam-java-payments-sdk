@@ -181,7 +181,7 @@ public abstract class PayU {
 		/** The payer's DNI. */
 		String PAYER_DNI = "payerDNI";
 		/** The payer's DNI type. */
-		String PAYER_DNI_TYPE = "buyerDniType";
+		String PAYER_DNI_TYPE = "payerDniType";
 		/** The payer's Business Name. */
 		String PAYER_BUSINESS_NAME = "payerBusinessName";
 
