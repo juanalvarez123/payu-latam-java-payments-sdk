@@ -913,8 +913,8 @@ public final class RequestUtil extends CommonRequestUtil {
 			transaction.setBcashRequest(buildBcashRequest(bcashRequestContentType, bcashRequestContent));
 		}
 		
-		Integer bcashPlatformId = getIntegerParameter(parameters, PayU.PARAMETERS.BCASH_PLATFORM_ID);
-		transaction.setBcashPlatformId(bcashPlatformId);
+		Integer platformId = getIntegerParameter(parameters, PayU.PARAMETERS.PLATFORM_ID);
+		transaction.setPlatformId(platformId);
 
 		if (TransactionType.AUTHORIZATION_AND_CAPTURE.equals(transactionType)
 				|| TransactionType.AUTHORIZATION.equals(transactionType)) {

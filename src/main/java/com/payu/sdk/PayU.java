@@ -438,11 +438,11 @@ public abstract class PayU {
 		/** The Bcash request content */
 		String BCASH_REQUEST_CONTENT = "bcashRequestContent";
 
-		/** The Bcash platform id field */
-		String BCASH_PLATFORM_ID = "bcashPlatformId";
-
 		/** The IntegrationMethod */
 		String INTEGRATION_METHOD = "integrationMethod";
+
+		/** The platform id field */
+		String PLATFORM_ID = "platformId";
 
 	}
 }

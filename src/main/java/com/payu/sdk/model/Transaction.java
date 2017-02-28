@@ -137,9 +137,9 @@ public class Transaction implements Serializable {
 	@XmlElement
 	private BcashRequest bcashRequest;
 	
-	/** The BCash platform ID */
+	/** The platform ID */
 	@XmlElement(required = false)
-	private Integer bcashPlatformId;
+	private Integer platformId;
 
 	@XmlElement(required = false)
 	private Boolean termsAndConditionsAcepted;
@@ -344,13 +344,13 @@ public class Transaction implements Serializable {
 	}
 
 	/**
-	 * Returns the BCash platform ID
+	 * Returns the platform ID
 	 * 
-	 * @return the BCash platform ID
+	 * @return the platform ID
 	 */
-	public Integer getBcashPlatformId() {
+	public Integer getPlatformId() {
 
-		return bcashPlatformId;
+		return platformId;
 	}
 
 	/**
@@ -644,14 +644,14 @@ public class Transaction implements Serializable {
 	}
 
 	/**
-	 * Sets the BCash platform ID
+	 * Sets the platform ID
 	 * 
-	 * @param bcashPlatformId
-	 *            the BCash platform ID
+	 * @param platformId
+	 *            the platform ID
 	 */
-	public void setBcashPlatformId(Integer bcashPlatformId) {
+	public void setPlatformId(Integer platformId) {
 
-		this.bcashPlatformId = bcashPlatformId;
+		this.platformId = platformId;
 	}
 
 	/**
